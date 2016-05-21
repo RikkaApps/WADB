@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WADB</string>
+    <string name="permission_error">权限故障</string>
+    <string name="supersu_tip">此程序需要超级用户权限，请确保您的设备已经破解 ROOT 授权。</string>
+    <string name="ok">确定</string>
+    <string name="exit">退出程序</string>
+    <string name="refresh_state_failure">状态更新失败</string>
+</resources>
