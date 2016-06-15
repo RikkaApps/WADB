@@ -113,6 +113,7 @@ public class MainActivity extends HaruueActivity {
         public void onGetAdbStateFailure() {
             StandardUtils.toast(R.string.refresh_state_failure);
             appendToState(getResources().getString(R.string.refresh_state_failure));
+            this.onGetAdbState(false, -1);
         }
 
         @Override

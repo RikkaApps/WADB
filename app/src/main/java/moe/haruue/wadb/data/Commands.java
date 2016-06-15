@@ -5,6 +5,7 @@ import android.app.Activity;
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
+import moe.haruue.util.StandardUtils;
 import moe.haruue.util.ThreadUtils;
 
 /**
@@ -41,7 +42,8 @@ public class Commands {
         ThreadUtils.runOnNewThread(activity, new Runnable() {
             @Override
             public void run() {
-                List<String> shellResult = Shell.SU.run(checkStateCommand);
+                List<String> shellResult;
+                shellResult = Shell.SU.run(checkStateCommand);
                 if (shellResult == null) {
                     listener.onGetAdbStateFailure();
                 } else {
@@ -49,19 +51,32 @@ public class Commands {
                     for (String s : shellResult) {
                         shellStringResult += s;
                     }
-                    final int port = Integer.parseInt(shellStringResult);
-                    if (port <= 0) {
+                    int port = -1;
+                    try {
+                        port = Integer.parseInt(shellStringResult);
+                    } catch (Exception e) {
+                        StandardUtils.printStack(e);
                         ThreadUtils.runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
-                                listener.onGetAdbState(false, port);
+                                listener.onGetAdbStateFailure();
+                            }
+                        });
+                    }
+                    if (port <= 0) {
+                        final int finalPort = port;
+                        ThreadUtils.runOnUIThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                listener.onGetAdbState(false, finalPort);
                             }
                         });
                     } else {
+                        final int finalPort1 = port;
                         ThreadUtils.runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
-                                listener.onGetAdbState(true, port);
+                                listener.onGetAdbState(true, finalPort1);
                             }
                         });
                     }
