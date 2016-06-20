@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import moe.haruue.util.ActivityManager;
+import moe.haruue.util.ActivityCollector;
 import moe.haruue.util.StandardUtils;
 import moe.haruue.util.abstracts.HaruueActivity;
 import moe.haruue.wadb.R;
@@ -129,7 +129,7 @@ public class MainActivity extends HaruueActivity {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
-            ActivityManager.exitApplication();
+            ActivityCollector.exitApplication();
         }
     }
 }
