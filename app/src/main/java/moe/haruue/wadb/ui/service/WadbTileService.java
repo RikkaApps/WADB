@@ -114,8 +114,10 @@ public class WadbTileService extends TileService {
         public void onGetAdbState(boolean isWadb, int port) {
             if (isWadb) {
                 showStateOn(port);
+                NotificationService.start(WadbTileService.this);
             } else {
                 showStateOff();
+                NotificationService.stop(WadbTileService.this);
             }
         }
 

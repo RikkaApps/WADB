@@ -1,6 +1,8 @@
 package moe.haruue.wadb.ui.activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +15,7 @@ import moe.haruue.util.StandardUtils;
 import moe.haruue.util.abstracts.HaruueActivity;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.data.Commands;
+import moe.haruue.wadb.ui.service.NotificationService;
 import moe.haruue.wadb.util.IPUtils;
 
 public class MainActivity extends HaruueActivity {
@@ -104,8 +107,10 @@ public class MainActivity extends HaruueActivity {
             setFabState(isWadb);
             if (isWadb) {
                 appendToState("Wadb is started. \n\tadb connect " + IPUtils.getLocalIPAddress(getApplication()) + ":" + port);
+                NotificationService.start(MainActivity.this);
             } else {
                 appendToState("Wadb is stopped.");
+                NotificationService.stop(MainActivity.this);
             }
         }
 
@@ -137,5 +142,10 @@ public class MainActivity extends HaruueActivity {
             dialog.dismiss();
             ActivityCollector.exitApplication();
         }
+    }
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, MainActivity.class);
+        context.startActivity(starter);
     }
 }

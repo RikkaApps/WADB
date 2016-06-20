@@ -6,4 +6,6 @@
     <string name="exit">Exit</string>
     <string name="refresh_state_failure">Refresh state failed.</string>
     <string name="failed">Failed</string>
+    <string name="wadb_on">Network adb is on</string>
+    <string name="turn_off">TURN OFF</string>
 </resources>

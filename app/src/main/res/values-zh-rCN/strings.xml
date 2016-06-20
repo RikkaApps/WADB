@@ -7,4 +7,6 @@
     <string name="exit">退出程序</string>
     <string name="refresh_state_failure">状态更新失败</string>
     <string name="failed">操作失败</string>
+    <string name="wadb_on">网络 adb 已经启动</string>
+    <string name="turn_off">关闭网络 ADB 调试</string>
 </resources>
