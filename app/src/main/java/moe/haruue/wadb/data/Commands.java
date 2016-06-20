@@ -16,34 +16,47 @@ public class Commands {
 
     public interface CommandsListener {
         void onGetSUAvailable(boolean isAvailable);
+
         void onGetAdbState(boolean isWadb, int port);
+
         void onGetAdbStateFailure();
+
         void onWadbStartListener(boolean isSuccess);
+
         void onWadbStopListener(boolean isSuccess);
     }
 
-    public static void checkSUAvailable(Activity activity, final CommandsListener listener) {
-        ThreadUtils.runOnNewThread(activity, new Runnable() {
+    private static Runnable checkSUAvailableRunnable(final CommandsListener listener) {
+        return new Runnable() {
             @Override
             public void run() {
+                final boolean isAvailable = Shell.SU.available();
                 ThreadUtils.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        listener.onGetSUAvailable(Shell.SU.available());
+                        listener.onGetSUAvailable(isAvailable);
                     }
                 });
             }
-        });
+        };
     }
 
-    protected static String checkStateCommand = "getprop service.adb.tcp.port";
+    public static void checkSUAvailable(Activity activity, final CommandsListener listener) {
+        ThreadUtils.runOnNewThread(activity, checkSUAvailableRunnable(listener));
+    }
 
-    public static void getWadbState(Activity activity, final CommandsListener listener) {
-        ThreadUtils.runOnNewThread(activity, new Runnable() {
+    public static void checkSUAvailable(final CommandsListener listener) {
+        ThreadUtils.runOnNewThread(checkSUAvailableRunnable(listener));
+    }
+
+    private static String checkWadbStateCommand = "getprop service.adb.tcp.port";
+
+    private static Runnable checkWadbStateRunnable(final CommandsListener listener) {
+        return new Runnable() {
             @Override
             public void run() {
                 List<String> shellResult;
-                shellResult = Shell.SU.run(checkStateCommand);
+                shellResult = Shell.SU.run(checkWadbStateCommand);
                 if (shellResult == null) {
                     listener.onGetAdbStateFailure();
                 } else {
@@ -82,20 +95,28 @@ public class Commands {
                     }
                 }
             }
-        });
+        };
     }
 
-    protected static String[] wadbStartCommands = new String[] {
+    public static void getWadbState(Activity activity, final CommandsListener listener) {
+        ThreadUtils.runOnNewThread(activity, checkWadbStateRunnable(listener));
+    }
+
+    public static void getWadbState(final CommandsListener listener) {
+        ThreadUtils.runOnNewThread(checkWadbStateRunnable(listener));
+    }
+
+    private static String[] startWadbCommands = new String[]{
             "setprop service.adb.tcp.port 5555",
             "stop adbd",
             "start adbd"
     };
 
-    public static void startWadb(Activity activity, final CommandsListener listener) {
-        ThreadUtils.runOnNewThread(activity, new Runnable() {
+    private static Runnable startWadbRunnable(final CommandsListener listener) {
+        return new Runnable() {
             @Override
             public void run() {
-                List<String> shellResult = Shell.SU.run(wadbStartCommands);
+                List<String> shellResult = Shell.SU.run(startWadbCommands);
                 if (shellResult != null) {
                     ThreadUtils.runOnUIThread(new Runnable() {
                         @Override
@@ -112,20 +133,28 @@ public class Commands {
                     });
                 }
             }
-        });
+        };
     }
 
-    protected static String[] wadbStopCommands = new String[] {
+    public static void startWadb(Activity activity, final CommandsListener listener) {
+        ThreadUtils.runOnNewThread(activity, startWadbRunnable(listener));
+    }
+
+    public static void startWadb(final CommandsListener listener) {
+        ThreadUtils.runOnNewThread(startWadbRunnable(listener));
+    }
+
+    private static String[] stopWadbCommands = new String[]{
             "setprop service.adb.tcp.port -1",
             "stop adbd",
             "start adbd"
     };
 
-    public static void stopWadb(Activity activity, final CommandsListener listener) {
-        ThreadUtils.runOnNewThread(activity, new Runnable() {
+    private static Runnable stopWadbRunnable(final CommandsListener listener) {
+        return new Runnable() {
             @Override
             public void run() {
-                List<String> shellResult = Shell.SU.run(wadbStopCommands);
+                List<String> shellResult = Shell.SU.run(stopWadbCommands);
                 if (shellResult != null) {
                     ThreadUtils.runOnUIThread(new Runnable() {
                         @Override
@@ -142,7 +171,15 @@ public class Commands {
                     });
                 }
             }
-        });
+        };
+    }
+
+    public static void stopWadb(Activity activity, final CommandsListener listener) {
+        ThreadUtils.runOnNewThread(activity, stopWadbRunnable(listener));
+    }
+
+    public static void stopWadb(final CommandsListener listener) {
+        ThreadUtils.runOnNewThread(stopWadbRunnable(listener));
     }
 
 }

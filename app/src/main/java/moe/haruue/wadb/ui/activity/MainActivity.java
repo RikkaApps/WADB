@@ -1,4 +1,4 @@
-package moe.haruue.wadb.ui;
+package moe.haruue.wadb.ui.activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -103,7 +103,7 @@ public class MainActivity extends HaruueActivity {
             MainActivity.this.isWadb = isWadb;
             setFabState(isWadb);
             if (isWadb) {
-                appendToState("Wadb is started. \n\tadb connect " + IPUtils.getLocalIPAddress() + ":" + port);
+                appendToState("Wadb is started. \n\tadb connect " + IPUtils.getLocalIPAddress(getApplication()) + ":" + port);
             } else {
                 appendToState("Wadb is stopped.");
             }
@@ -118,11 +118,17 @@ public class MainActivity extends HaruueActivity {
 
         @Override
         public void onWadbStartListener(boolean isSuccess) {
+            if (!isSuccess) {
+                StandardUtils.toast(R.string.failed);
+            }
             Commands.getWadbState(MainActivity.this, this);
         }
 
         @Override
         public void onWadbStopListener(boolean isSuccess) {
+            if (!isSuccess) {
+                StandardUtils.toast(R.string.failed);
+            }
             Commands.getWadbState(MainActivity.this, this);
         }
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">網路 adb 調試</string>
+    <string name="permission_error">權限問題</string>
+    <string name="supersu_tip">此程序需要超級用戶授權，請確保您的設備已破解 ROOT 授權。</string>
+    <string name="ok">確定</string>
+    <string name="exit">退出應用程式</string>
+    <string name="refresh_state_failure">狀態更新失敗</string>
+    <string name="failed">操作失敗</string>
+</resources>

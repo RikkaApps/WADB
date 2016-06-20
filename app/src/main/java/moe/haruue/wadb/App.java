@@ -1,5 +1,7 @@
 package moe.haruue.wadb;
 
+import android.util.Log;
+
 import moe.haruue.util.abstracts.HaruueApplication;
 
 /**
@@ -8,4 +10,9 @@ import moe.haruue.util.abstracts.HaruueApplication;
 
 public class App extends HaruueApplication {
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.e("App", "Application.onCreate() invoked");
+    }
 }
