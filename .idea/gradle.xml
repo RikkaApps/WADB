@@ -8,8 +8,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/HaruueUtils" />
-            <option value="$PROJECT_DIR$/HaruueUtils/haruueutils" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
