@@ -17,6 +17,10 @@ start adbd
 
 主要还是想试一下 Android N 上新加的 [Tile API](https://developer.android.com/preview/api-overview.html#tile_api) ，所以这些效果需要 Android N 才能看到。
 
+<img src="readme.res/01.png" width="30%" heigth="30%">
+<img src="readme.res/02.png" width="30%" heigth="30%">
+<img src="readme.res/03.png" width="30%" heigth="30%">
+
 然而不小心把代码搞乱了，过几天再整理吧。。。
 
 ## 下载
