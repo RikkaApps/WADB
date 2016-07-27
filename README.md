@@ -21,8 +21,6 @@ start adbd
 <img src="readme.res/02.png" width="30%" heigth="30%">
 <img src="readme.res/03.png" width="30%" heigth="30%">
 
-然而不小心把代码搞乱了，过几天再整理吧。。。
-
 ## 下载
 [请戳这里](app/app-release.apk?raw=true)
 
