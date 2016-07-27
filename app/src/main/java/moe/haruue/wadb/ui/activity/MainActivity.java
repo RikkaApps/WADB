@@ -1,22 +1,16 @@
 package moe.haruue.wadb.ui.activity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import moe.haruue.util.ActivityCollector;
-import moe.haruue.util.StandardUtils;
 import moe.haruue.util.abstracts.HaruueActivity;
 import moe.haruue.wadb.R;
-import moe.haruue.wadb.data.Commands;
-import moe.haruue.wadb.ui.service.NotificationService;
-import moe.haruue.wadb.util.IPUtils;
+import moe.haruue.wadb.presenter.Commander;
 
 public class MainActivity extends HaruueActivity {
 
@@ -35,7 +29,16 @@ public class MainActivity extends HaruueActivity {
         setContentView(R.layout.activity_main);
         initToolbar();
         initView();
-        Commands.checkSUAvailable(this, listener);
+        Commander.addChangeListener(listener);
+        Commander.addFailureListener(listener);
+        Commander.checkWadbState();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Commander.removeChangeListener(listener);
+        Commander.removeFailureListener(listener);
     }
 
     private void initToolbar() {
@@ -72,75 +75,56 @@ public class MainActivity extends HaruueActivity {
         }
     }
 
-    class Listener implements View.OnClickListener, Commands.CommandsListener, AlertDialog.OnClickListener {
+    class Listener implements View.OnClickListener, Commander.WadbStateChangeListener, Commander.WadbFailureListener {
+
+        boolean init = true;
 
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.fab_switch:
                     if (isWadb) {
-                        Commands.stopWadb(MainActivity.this, this);
+                        Commander.stopWadb();
                     } else {
-                        Commands.startWadb(MainActivity.this, this);
+                        Commander.startWadb();
                     }
                     break;
             }
         }
 
         @Override
-        public void onGetSUAvailable(boolean isAvailable) {
-            if (!isAvailable) {
-                new AlertDialog.Builder(MainActivity.this).setIcon(R.drawable.ic_error_red_24dp)
-                        .setTitle(getResources().getString(R.string.permission_error))
-                        .setMessage(getResources().getString(R.string.supersu_tip))
-                        .setPositiveButton(getResources().getString(R.string.exit), this)
-                        .setCancelable(false)
-                        .create().show();
-            } else {
-                Commands.getWadbState(MainActivity.this, this);
+        public void onWadbStart(String ip, int port) {
+            if (!isWadb || init) {
+                isWadb = true;
+                setFabState(true);
+                appendToState("Wadb is started. \n\tadb connect " + ip + ":" + port);
             }
+            init = false;
         }
 
         @Override
-        public void onGetAdbState(boolean isWadb, int port) {
-            MainActivity.this.isWadb = isWadb;
-            setFabState(isWadb);
-            if (isWadb) {
-                appendToState("Wadb is started. \n\tadb connect " + IPUtils.getLocalIPAddress(getApplication()) + ":" + port);
-                NotificationService.start(MainActivity.this);
-            } else {
+        public void onWadbStop() {
+            if (isWadb || init) {
+                isWadb = false;
+                setFabState(false);
                 appendToState("Wadb is stopped.");
-                NotificationService.stop(MainActivity.this);
             }
+            init = false;
         }
 
         @Override
-        public void onGetAdbStateFailure() {
-            StandardUtils.toast(R.string.refresh_state_failure);
+        public void onRootPermissionFailure() {
+            appendToState(getResources().getString(R.string.permission_error));
+        }
+
+        @Override
+        public void onStateRefreshFailure() {
             appendToState(getResources().getString(R.string.refresh_state_failure));
-            this.onGetAdbState(false, -1);
         }
 
         @Override
-        public void onWadbStartListener(boolean isSuccess) {
-            if (!isSuccess) {
-                StandardUtils.toast(R.string.failed);
-            }
-            Commands.getWadbState(MainActivity.this, this);
-        }
-
-        @Override
-        public void onWadbStopListener(boolean isSuccess) {
-            if (!isSuccess) {
-                StandardUtils.toast(R.string.failed);
-            }
-            Commands.getWadbState(MainActivity.this, this);
-        }
-
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-            ActivityCollector.exitApplication();
+        public void onOperateFailure() {
+            appendToState(getResources().getString(R.string.failed));
         }
     }
 

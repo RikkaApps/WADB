@@ -4,13 +4,10 @@ import android.os.Build;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
-import android.widget.Toast;
 
 import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.R;
-import moe.haruue.wadb.data.Commands;
-import moe.haruue.wadb.util.IPUtils;
+import moe.haruue.wadb.presenter.Commander;
 
 /**
  * @author Haruue Icymoon haruue@caoyue.com.cn
@@ -22,59 +19,38 @@ public class WadbTileService extends TileService {
     Listener listener = new Listener();
 
     @Override
-    public void onClick() {
-        super.onClick();
-        Commands.getWadbState(new Commands.CommandsListener() {
-            @Override
-            public void onGetSUAvailable(boolean isAvailable) {
-
-            }
-
-            @Override
-            public void onGetAdbState(boolean isWadb, int port) {
-                if (isWadb) {
-                    Commands.stopWadb(listener);
-                } else {
-                    Commands.startWadb(listener);
-                }
-            }
-
-            @Override
-            public void onGetAdbStateFailure() {
-                this.onGetAdbState(false, -1);
-            }
-
-            @Override
-            public void onWadbStartListener(boolean isSuccess) {
-
-            }
-
-            @Override
-            public void onWadbStopListener(boolean isSuccess) {
-
-            }
-        });
-
+    public void onCreate() {
+        super.onCreate();
+        Commander.addChangeListener(listener);
     }
 
     @Override
-    public void onTileAdded() {
-        super.onTileAdded();
-        StandardUtils.initialize(getApplication());
-        Commands.checkSUAvailable(listener);
+    public void onDestroy() {
+        super.onDestroy();
+        Commander.removeChangeListener(listener);
     }
 
     @Override
     public void onStartListening() {
         super.onStartListening();
-        StandardUtils.initialize(getApplication());
-        Commands.getWadbState(listener);
+        Commander.checkWadbState();
     }
 
-    private void showStateOn(int port) {
+    @Override
+    public void onClick() {
+        super.onClick();
+        StandardUtils.initialize(getApplication());
+        if (getQsTile().getState() == Tile.STATE_ACTIVE) {
+            Commander.stopWadb();
+        } else {
+            Commander.startWadb();
+        }
+    }
+
+    private void showStateOn(String ip, int port) {
         Tile tile = getQsTile();
         tile.setState(Tile.STATE_ACTIVE);
-        tile.setLabel(IPUtils.getLocalIPAddress(getApplication()) + ":" + port);
+        tile.setLabel(ip + ":" + port);
         tile.updateTile();
     }
 
@@ -91,55 +67,16 @@ public class WadbTileService extends TileService {
         tile.updateTile();
     }
 
-    class Listener implements Commands.CommandsListener {
+    class Listener implements Commander.WadbStateChangeListener {
 
         @Override
-        public void onGetSUAvailable(boolean isAvailable) {
-            if (!isAvailable) {
-                showDialog(
-                        new AlertDialog.Builder(getApplication()).setIcon(R.drawable.ic_error_red_24dp)
-                                .setTitle(getResources().getString(R.string.permission_error))
-                                .setMessage(getResources().getString(R.string.supersu_tip))
-                                .setPositiveButton(getResources().getString(R.string.exit), null)
-                                .setCancelable(true)
-                                .create()
-                );
-                showStateUnavailable();
-            } else {
-                Commands.getWadbState(this);
-            }
+        public void onWadbStart(String ip, int port) {
+            showStateOn(ip, port);
         }
 
         @Override
-        public void onGetAdbState(boolean isWadb, int port) {
-            if (isWadb) {
-                showStateOn(port);
-                NotificationService.start(WadbTileService.this);
-            } else {
-                showStateOff();
-                NotificationService.stop(WadbTileService.this);
-            }
-        }
-
-        @Override
-        public void onGetAdbStateFailure() {
-            this.onGetAdbState(false, -1);
-        }
-
-        @Override
-        public void onWadbStartListener(boolean isSuccess) {
-            if (!isSuccess) {
-                Toast.makeText(getApplication(), getString(R.string.failed), Toast.LENGTH_SHORT).show();
-            }
-            Commands.getWadbState(this);
-        }
-
-        @Override
-        public void onWadbStopListener(boolean isSuccess) {
-            if (!isSuccess) {
-                Toast.makeText(getApplication(), getString(R.string.failed), Toast.LENGTH_SHORT).show();
-            }
-            Commands.getWadbState(this);
+        public void onWadbStop() {
+            showStateOff();
         }
     }
 

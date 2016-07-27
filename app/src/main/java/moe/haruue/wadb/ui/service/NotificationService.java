@@ -8,12 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.v7.app.NotificationCompat;
-import android.widget.Toast;
 
 import moe.haruue.wadb.R;
-import moe.haruue.wadb.data.Commands;
+import moe.haruue.wadb.presenter.Commander;
 import moe.haruue.wadb.ui.activity.MainActivity;
-import moe.haruue.wadb.util.IPUtils;
 
 public class NotificationService extends Service {
 
@@ -26,12 +24,14 @@ public class NotificationService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Commands.getWadbState(listener);
+        Commander.addChangeListener(listener);
+        Commander.checkWadbState();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Commander.removeChangeListener(listener);
         cancelNotification();
     }
 
@@ -41,13 +41,13 @@ public class NotificationService extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    private void showNotification(int port) {
+    private void showNotification(String ip, int port) {
         PendingIntent contentPendingIntent = PendingIntent.getActivity(NotificationService.this, 0 , new Intent(NotificationService.this, MainActivity.class), 0);
         PendingIntent turnOffPendingIntent = PendingIntent.getBroadcast(NotificationService.this, 0, new Intent("moe.haruue.wadb.action.TURN_OFF_WADB"), 0);
         // Notification
         notification = new NotificationCompat.Builder(NotificationService.this)
                 .setContentTitle(getResources().getString(R.string.wadb_on))
-                .setContentText(IPUtils.getLocalIPAddress(getApplication()) + ":" + port)
+                .setContentText(ip + ":" + port)
                 .setSmallIcon(R.drawable.ic_developer_mode_white_24dp)
                 .setContentIntent(contentPendingIntent)
                 .addAction(R.drawable.ic_close_white_24dp, getString(R.string.turn_off), turnOffPendingIntent)
@@ -62,38 +62,16 @@ public class NotificationService extends Service {
         mNotificationManager.cancel(0);
     }
 
-    class Listener implements Commands.CommandsListener {
+    class Listener implements Commander.WadbStateChangeListener {
 
         @Override
-        public void onGetSUAvailable(boolean isAvailable) {
-
+        public void onWadbStart(String ip, int port) {
+            showNotification(ip, port);
         }
 
         @Override
-        public void onGetAdbState(boolean isWadb, int port) {
-            if (isWadb) {
-                showNotification(port);
-            } else {
-                stopSelf();
-            }
-        }
-
-        @Override
-        public void onGetAdbStateFailure() {
+        public void onWadbStop() {
             stopSelf();
-        }
-
-        @Override
-        public void onWadbStartListener(boolean isSuccess) {
-
-        }
-
-        @Override
-        public void onWadbStopListener(boolean isSuccess) {
-            if (!isSuccess) {
-                Toast.makeText(NotificationService.this, getResources().getString(R.string.failed), Toast.LENGTH_SHORT).show();
-            }
-            Commands.getWadbState(this);
         }
     }
 
