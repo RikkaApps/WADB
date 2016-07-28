@@ -48,7 +48,7 @@ public class NotificationService extends Service {
         notification = new NotificationCompat.Builder(NotificationService.this)
                 .setContentTitle(getResources().getString(R.string.wadb_on))
                 .setContentText(ip + ":" + port)
-                .setSmallIcon(R.drawable.ic_developer_mode_white_24dp)
+                .setSmallIcon(R.drawable.ic_qs_network_adb_on)
                 .setContentIntent(contentPendingIntent)
                 .addAction(R.drawable.ic_close_white_24dp, getString(R.string.turn_off), turnOffPendingIntent)
                 .build();

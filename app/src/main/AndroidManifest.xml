@@ -23,7 +23,7 @@
 
         <service
             android:name=".ui.service.WadbTileService"
-            android:icon="@drawable/ic_developer_mode_white_24dp"
+            android:icon="@drawable/ic_qs_network_adb_on"
             android:label="@string/app_name"
             android:enabled="true"
             android:exported="true"
