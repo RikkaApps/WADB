@@ -10,7 +10,7 @@ import java.util.HashSet;
 import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.data.Commands;
-import moe.haruue.wadb.ui.error.RootPermissionErrorDialog;
+import moe.haruue.wadb.ui.activity.RootPermissionErrorDialogShadowActivity;
 import moe.haruue.wadb.ui.service.NotificationService;
 import moe.haruue.wadb.util.IPUtils;
 
@@ -68,7 +68,7 @@ public class Commander {
                     });
                     break;
                 case STATE_ROOT_PERMISSION_FAILURE:
-                    RootPermissionErrorDialog.show();
+                    RootPermissionErrorDialogShadowActivity.start(StandardUtils.getApplication());
                     notifyWadbFailure(new WadbFailure() {
                         @Override
                         public void failure(WadbFailureListener listener) {
