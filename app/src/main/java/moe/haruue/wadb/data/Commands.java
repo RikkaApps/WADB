@@ -34,12 +34,8 @@ public class Commands {
         return new Runnable() {
             @Override
             public void run() {
-                if (!isSUAvailable()) {
-                    listener.onGetSUAvailable(false);
-                    return;
-                }
                 List<String> shellResult;
-                shellResult = Shell.SU.run(checkWadbStateCommand);
+                shellResult = Shell.SH.run(checkWadbStateCommand);
                 if (shellResult == null) {
                     listener.onGetAdbStateFailure();
                 } else {

@@ -66,6 +66,12 @@ public class Commander {
                             listener.onStateRefreshFailure();
                         }
                     });
+                    notifyWadbStateChange(new WadbStateChange() {
+                        @Override
+                        public void change(WadbStateChangeListener listener) {
+                            listener.onWadbStop();
+                        }
+                    });
                     break;
                 case STATE_ROOT_PERMISSION_FAILURE:
                     RootPermissionErrorDialogShadowActivity.start(StandardUtils.getApplication());
