@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="pref_key_category_switch"
+        android:title="@string/switch_">
+
+        <SwitchPreference
+            android:key="pref_key_wadb_switch"
+            android:title="@string/wadb"
+            android:defaultValue="false"
+            android:summaryOn="@string/enabled"
+            android:summaryOff="@string/disabled"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_key_category_behavior"
+        android:title="@string/behavior">
+
+        <CheckBoxPreference
+            android:key="pref_key_notification"
+            android:title="@string/notification"
+            android:defaultValue="true"
+            android:summaryOn="@string/show_notification_when_wadb_on"
+            android:summaryOff="@string/dont_show_notification_when_wadb_on"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_key_category_about"
+        android:title="@string/about">
+
+        <Preference
+            android:title="@string/app_name"
+            android:summary="@string/about_text">
+
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="https://github.com/haruue/WADB" />
+
+        </Preference>
+
+        <Preference
+            android:title="@string/license"
+            android:summary="@string/license_apache_2_0">
+
+            <intent android:targetClass="moe.haruue.wadb.ui.activity.LicenseActivity"
+                android:targetPackage="moe.haruue.wadb"/>
+
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Network adb</string>
+    <string name="app_name">ADB Over Network</string>
     <string name="permission_error">Permission denied</string>
     <string name="supersu_tip">Need root!</string>
     <string name="ok">Ok</string>
@@ -8,4 +8,22 @@
     <string name="failed">Failed</string>
     <string name="wadb_on">Network adb is on</string>
     <string name="turn_off">TURN OFF</string>
+    <string name="switch_">switch</string>
+    <string name="enable_wadb">Enable adb over network</string>
+    <string name="wadb">adb over network</string>
+    <string name="behavior">behavior</string>
+    <string name="show_notification_when_wadb_on">show notification when adb over network is on</string>
+    <string name="dont_show_notification_when_wadb_on">don\'t show notification when adb over network is on</string>
+    <string name="wadb_enabled">adb over network is enabled</string>
+    <string name="wadb_disabled">adb over network is disabled</string>
+    <string name="enabled">enabled</string>
+    <string name="disabled">disabled</string>
+    <string name="notification">Notification</string>
+    <string name="allow_switch_when_screen_locked">Allow switch when screen is locked</string>
+    <string name="you_have_to_unlock_before_switch">you have to unlock screen to switch with quick setting tile</string>
+    <string name="you_can_switch_when_screen_is_locked">you can switch with quick setting tile when screen is locked</string>
+    <string name="about">about</string>
+    <string name="about_text">Copyright © Haruue Icymoon\nTouch to visit the repository on GitHub</string>
+    <string name="license">License</string>
+    <string name="license_apache_2_0" translatable="false">Apache License 2.0</string>
 </resources>

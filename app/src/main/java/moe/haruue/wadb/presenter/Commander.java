@@ -3,12 +3,12 @@ package moe.haruue.wadb.presenter;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import moe.haruue.util.StandardUtils;
-import moe.haruue.wadb.R;
 import moe.haruue.wadb.data.Commands;
 import moe.haruue.wadb.ui.activity.RootPermissionErrorDialogShadowActivity;
 import moe.haruue.wadb.ui.service.NotificationService;
@@ -41,7 +41,9 @@ public class Commander {
                     Commands.stopWadb(commandsListener);
                     break;
                 case STATE_START_WADB:
-                    NotificationService.start(StandardUtils.getApplication());
+                    if (PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication()).getBoolean("pref_key_notification", true)) {
+                        NotificationService.start(StandardUtils.getApplication());
+                    }
                     notifyWadbStateChange(new WadbStateChange() {
                         @Override
                         public void change(WadbStateChangeListener listener) {
@@ -59,7 +61,6 @@ public class Commander {
                     });
                     break;
                 case STATE_GET_STATE_FAILURE:
-                    StandardUtils.toast(R.string.refresh_state_failure);
                     notifyWadbFailure(new WadbFailure() {
                         @Override
                         public void failure(WadbFailureListener listener) {
@@ -83,7 +84,7 @@ public class Commander {
                     });
                     break;
                 case STATE_OPERATE_FAILED:
-                    StandardUtils.toast(R.string.failed);
+                    checkWadbState();
                     notifyWadbFailure(new WadbFailure() {
                         @Override
                         public void failure(WadbFailureListener listener) {

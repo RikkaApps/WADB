@@ -9,4 +9,21 @@
     <string name="failed">操作失敗</string>
     <string name="wadb_on">網路 adb 已經啟動</string>
     <string name="turn_off">關閉網路 ADB 調試</string>
+    <string name="switch_">開關</string>
+    <string name="enable_wadb">啟用基於網路的 adb 調試</string>
+    <string name="wadb">基於網路的 adb 調試</string>
+    <string name="behavior">行為</string>
+    <string name="show_notification_when_wadb_on">網路 adb 開啟時顯示通知</string>
+    <string name="dont_show_notification_when_wadb_on">網路 adb 開啟時不顯示通知</string>
+    <string name="wadb_disabled">基於網路的 adb 調試已禁用</string>
+    <string name="wadb_enabled">基于网络的 adb 调试已啟用</string>
+    <string name="disabled">已禁用</string>
+    <string name="enabled">已啟用</string>
+    <string name="notification">通知</string>
+    <string name="allow_switch_when_screen_locked">鎖定屏幕時允許切換狀態</string>
+    <string name="you_have_to_unlock_before_switch">使用快速設置開關時必須解鎖屏幕</string>
+    <string name="you_can_switch_when_screen_is_locked">屏幕鎖定時允許使用快速設置開關直接更改狀態</string>
+    <string name="about">關於</string>
+    <string name="about_text">Copyright © Haruue Icymoon\n點按這裡來訪問 GitHub 上的開源倉庫</string>
+    <string name="license">開放原始碼許可</string>
 </resources>

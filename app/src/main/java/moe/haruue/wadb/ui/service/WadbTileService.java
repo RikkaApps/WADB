@@ -1,6 +1,8 @@
 package moe.haruue.wadb.ui.service;
 
+import android.graphics.drawable.Icon;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.support.annotation.RequiresApi;
@@ -36,20 +38,42 @@ public class WadbTileService extends TileService {
         Commander.checkWadbState();
     }
 
+    Runnable startWadbRunnable = new Runnable() {
+        @Override
+        public void run() {
+            Commander.startWadb();
+        }
+    };
+    Runnable stopWadbRunnable = new Runnable() {
+        @Override
+        public void run() {
+            Commander.stopWadb();
+        }
+    };
+
     @Override
     public void onClick() {
         super.onClick();
-        StandardUtils.initialize(getApplication());
+        boolean enableScreenLockSwitch = PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication()).getBoolean("pref_key_screen_lock_switch", false);
         if (getQsTile().getState() == Tile.STATE_ACTIVE) {
-            Commander.stopWadb();
+            if (enableScreenLockSwitch) {
+                stopWadbRunnable.run();
+            } else {
+                unlockAndRun(stopWadbRunnable);
+            }
         } else {
-            Commander.startWadb();
+            if (enableScreenLockSwitch) {
+                startWadbRunnable.run();
+            } else {
+                unlockAndRun(startWadbRunnable);
+            }
         }
     }
 
     private void showStateOn(String ip, int port) {
         Tile tile = getQsTile();
         tile.setState(Tile.STATE_ACTIVE);
+        tile.setIcon(Icon.createWithResource(getApplication(), R.drawable.ic_qs_network_adb_on));
         tile.setLabel(ip + ":" + port);
         tile.updateTile();
     }
@@ -57,6 +81,7 @@ public class WadbTileService extends TileService {
     private void showStateOff() {
         Tile tile = getQsTile();
         tile.setState(Tile.STATE_INACTIVE);
+        tile.setIcon(Icon.createWithResource(getApplication(), R.drawable.ic_qs_network_adb_off));
         tile.setLabel(getApplication().getResources().getString(R.string.app_name));
         tile.updateTile();
     }

@@ -2,35 +2,34 @@ package moe.haruue.wadb.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.TextView;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
+import android.preference.SwitchPreference;
 
-import moe.haruue.util.abstracts.HaruueActivity;
+import moe.haruue.util.ActivityCollector;
+import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.presenter.Commander;
+import moe.haruue.wadb.ui.service.NotificationService;
 
-public class MainActivity extends HaruueActivity {
+public class MainActivity extends PreferenceActivity {
 
-    Toolbar toolbar;
-    TextView infoTextView;
-    String currentDisplay = "";
-    FloatingActionButton fab;
-
-    boolean isWadb = false;
+    SwitchPreference wadbSwitchPreference;
 
     Listener listener = new Listener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initToolbar();
-        initView();
+        ActivityCollector.push(this);
+        StandardUtils.initializeInActivity(this);
         Commander.addChangeListener(listener);
         Commander.addFailureListener(listener);
+        addPreferencesFromResource(R.xml.preferences);
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+        wadbSwitchPreference = (SwitchPreference) findPreference("pref_key_wadb_switch");
         Commander.checkWadbState();
     }
 
@@ -39,92 +38,80 @@ public class MainActivity extends HaruueActivity {
         super.onDestroy();
         Commander.removeChangeListener(listener);
         Commander.removeFailureListener(listener);
+        ActivityCollector.pop(this);
     }
 
-    private void initToolbar() {
-        toolbar = $(R.id.toolbar);
-        toolbar.setTitle(R.string.app_name);
-        setSupportActionBar(toolbar);
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(listener);
     }
 
-    private void initView() {
-        infoTextView = $(R.id.wadb_state_info);
-        fab = $(R.id.fab_switch);
-        fab.setOnClickListener(listener);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Commander.checkWadbState();
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(listener);
     }
 
-    private void refreshInfoTextView() {
-        infoTextView.setText(currentDisplay);
-    }
-
-    private void appendToState(String s) {
-        currentDisplay += s + "\n";
-        refreshInfoTextView();
-    }
-
-    private void clearState() {
-        currentDisplay = "";
-        refreshInfoTextView();
-    }
-
-    private void setFabState(boolean isWadb) {
-        if (isWadb) {
-            fab.setImageResource(R.drawable.ic_check_white_24dp);
-        } else {
-            fab.setImageResource(R.drawable.ic_close_white_24dp);
-        }
-    }
-
-    class Listener implements View.OnClickListener, Commander.WadbStateChangeListener, Commander.WadbFailureListener {
-
-        boolean init = true;
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.fab_switch:
-                    if (isWadb) {
-                        Commander.stopWadb();
-                    } else {
-                        Commander.startWadb();
-                    }
-                    break;
-            }
-        }
-
-        @Override
-        public void onWadbStart(String ip, int port) {
-            if (!isWadb || init) {
-                isWadb = true;
-                setFabState(true);
-                appendToState("Wadb is started. \n\tadb connect " + ip + ":" + port);
-            }
-            init = false;
-        }
-
-        @Override
-        public void onWadbStop() {
-            if (isWadb || init) {
-                isWadb = false;
-                setFabState(false);
-                appendToState("Wadb is stopped.");
-            }
-            init = false;
-        }
+    class Listener implements Commander.WadbStateChangeListener, Commander.WadbFailureListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
         @Override
         public void onRootPermissionFailure() {
-            appendToState(getResources().getString(R.string.permission_error));
+
         }
 
         @Override
         public void onStateRefreshFailure() {
-            appendToState(getResources().getString(R.string.refresh_state_failure));
+            onWadbStop();
         }
 
         @Override
         public void onOperateFailure() {
-            appendToState(getResources().getString(R.string.failed));
+
+        }
+
+        @Override
+        public void onWadbStart(String ip, int port) {
+            wadbSwitchPreference.setChecked(true);
+            wadbSwitchPreference.setSummaryOn(ip + ":" + port);
+            wadbSwitchPreference.setEnabled(true);
+        }
+
+        @Override
+        public void onWadbStop() {
+            wadbSwitchPreference.setChecked(false);
+            wadbSwitchPreference.getEditor().putBoolean("pref_key_wadb_switch", false).commit();
+            wadbSwitchPreference.setEnabled(true);
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+            switch (s) {
+                case "pref_key_wadb_switch":
+                    if (wadbSwitchPreference.isEnabled()) {
+                        wadbSwitchPreference.setEnabled(false);
+                        if (sharedPreferences.getBoolean("pref_key_wadb_switch", false)) {
+                            Commander.startWadb();
+                        } else {
+                            Commander.stopWadb();
+                        }
+                    }
+                    break;
+                case "pref_key_notification":
+                    if (sharedPreferences.getBoolean("pref_key_notification", true)) {
+                        if (sharedPreferences.getBoolean("pref_key_wadb_switch", false)) {
+                            NotificationService.start(StandardUtils.getApplication());
+                        }
+                    } else {
+                        try {
+                            NotificationService.stop(StandardUtils.getApplication());
+                        } catch (Throwable t) {
+                            StandardUtils.printStack(t);
+                        }
+                    }
+                    break;
+            }
         }
     }
 

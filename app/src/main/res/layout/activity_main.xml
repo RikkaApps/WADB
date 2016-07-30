@@ -18,19 +18,10 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         </android.support.v7.widget.Toolbar>
 
-        <ScrollView
-            android:id="@+id/scroll_wadb_state"
+        <com.jude.easyrecyclerview.EasyRecyclerView
+            android:id="@+id/list_menu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/toolbar">
-
-            <TextView
-                android:id="@+id/wadb_state_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"/>
-
-        </ScrollView>
+            android:layout_height="match_parent"/>
 
     </RelativeLayout>
 
@@ -43,7 +34,7 @@
         app:pressedTranslationZ="12dp"
         android:layout_margin="16dp"
         app:fabSize="normal"
-        app:layout_anchor="@id/scroll_wadb_state"
+        app:layout_anchor="@id/list_menu"
         app:layout_anchorGravity="bottom|right"/>
     
 </android.support.design.widget.CoordinatorLayout>
