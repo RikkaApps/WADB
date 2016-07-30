@@ -20,6 +20,7 @@ start adbd
 <img src="readme.res/01.png" width="30%" heigth="30%">
 <img src="readme.res/02.png" width="30%" heigth="30%">
 <img src="readme.res/03.png" width="30%" heigth="30%">
+<img src="readme.res/04.png" width="30%" heigth="30%">
 
 ## 下载
 [请戳这里](app/app-release.apk?raw=true)
