@@ -50,7 +50,6 @@ public class MainActivity extends PreferenceActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Commander.checkWadbState();
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(listener);
     }
 
