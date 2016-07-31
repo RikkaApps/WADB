@@ -23,7 +23,8 @@ start adbd
 <img src="readme.res/04.png" width="30%" heigth="30%">
 
 ## 下载
-[请戳这里](app/app-release.apk?raw=true)
+[戳这里直接下载 APK](app/app-release.apk?raw=true)    
+[在 Play 商店支持我们](https://play.google.com/store/apps/details?id=moe.haruue.wadb)   
 
 ## License
 Apache License 2.0
