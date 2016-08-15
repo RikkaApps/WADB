@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.activity.MainActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -24,10 +25,12 @@
         </activity>
 
         <activity android:name=".ui.activity.RootPermissionErrorDialogShadowActivity"
-                  android:theme="@style/Transparent"/>
+                  android:theme="@style/Transparent"
+                  android:launchMode="singleTask"/>
 
         <activity android:name=".ui.activity.LicenseActivity"
-                  android:theme="@style/Transparent">
+                  android:theme="@style/Transparent"
+                  android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="moe.haruue.wadb.action.LICENSE" />
             </intent-filter>

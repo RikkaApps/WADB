@@ -116,6 +116,7 @@ public class MainActivity extends PreferenceActivity {
 
     public static void start(Context context) {
         Intent starter = new Intent(context, MainActivity.class);
+        starter.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(starter);
     }
 }

@@ -40,6 +40,7 @@ public class RootPermissionErrorDialogShadowActivity extends HaruueActivity {
 
     public static void start(Context context) {
         Intent starter = new Intent(context, RootPermissionErrorDialogShadowActivity.class);
+        starter.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(starter);
     }
 }
