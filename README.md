@@ -23,8 +23,10 @@ start adbd
 <img src="readme.res/04.png" width="30%" heigth="30%">
 
 ## 下载
-[戳这里直接下载 APK](app/app-release.apk?raw=true)    
-[在 Play 商店支持我们](https://play.google.com/store/apps/details?id=moe.haruue.wadb)   
+在 Play 商店支持我们：    
+<a href='https://play.google.com/store/apps/details?id=moe.haruue.wadb&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='即刻获取 Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/zh-cn_badge_web_generic.png' width="250"/></a>
+
+或者 [戳这里直接下载 APK](app/app-release.apk?raw=true)    
 
 ## License
 Apache License 2.0
