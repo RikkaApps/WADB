@@ -26,4 +26,9 @@
     <string name="about_text">Copyright © Haruue Icymoon\nTouch to visit the repository on GitHub</string>
     <string name="license">License</string>
     <string name="license_apache_2_0" translatable="false">Apache License 2.0</string>
+    <string name="summary_off_hide_launcher_icon">don\'t hide the icon in launcher</string>
+    <string name="summary_on_hide_launcher_icon">hide the icon in launcher, you can launch this app by long pressing our quick setting tile</string>
+    <string name="hide_the_icon_in_launcher">Hide the icon in launcher</string>
+    <string name="tip_on_hide_launch_icon">It may take a while before system hides the launcher icon</string>
+    <string name="tip_on_show_launch_icon">It may take a while before system unhides the launcher icon</string>
 </resources>

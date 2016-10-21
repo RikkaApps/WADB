@@ -9,6 +9,7 @@ import android.preference.SwitchPreference;
 import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.presenter.Commander;
+import moe.haruue.wadb.ui.activity.LaunchActivity;
 import moe.haruue.wadb.ui.service.NotificationService;
 
 /**
@@ -105,6 +106,13 @@ public class MainFragment extends PreferenceFragment {
                         } catch (Throwable t) {
                             StandardUtils.printStack(t);
                         }
+                    }
+                    break;
+                case "pref_key_hide_launcher_icon":
+                    if (sharedPreferences.getBoolean("pref_key_hide_launcher_icon", false)) {
+                        LaunchActivity.hideLaunchIcon(getContext());
+                    } else {
+                        LaunchActivity.showLaunchIcon(getContext());
                     }
                     break;
             }

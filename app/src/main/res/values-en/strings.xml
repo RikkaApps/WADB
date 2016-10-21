@@ -2,7 +2,7 @@
     <string name="app_name">ADB Over Network</string>
     <string name="permission_error">Permission denied</string>
     <string name="supersu_tip">Need root!</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="exit">Exit</string>
     <string name="refresh_state_failure">Refresh state failed.</string>
     <string name="failed">Failed</string>
@@ -25,4 +25,10 @@
     <string name="about">about</string>
     <string name="about_text">Copyright © Haruue Icymoon\nTouch to visit the repository on GitHub</string>
     <string name="license">License</string>
+    <string name="hide_the_icon_in_launcher">Hide the icon in launcher</string>
+    <string name="summary_off_hide_launcher_icon">don\'t hide the icon in launcher</string>
+    <string name="summary_on_hide_launcher_icon">hide the icon in launcher, you can launch this app by long pressing our quick setting tile</string>
+    <string name="license_apache_2_0" translatable="false"></string>
+    <string name="tip_on_hide_launch_icon">It may takes minutes before launcher hides the app icon</string>
+    <string name="tip_on_show_launch_icon">It may takes minutes before launcher unhides the app icon</string>
 </resources>

@@ -26,4 +26,9 @@
     <string name="about">關於</string>
     <string name="about_text">Copyright © Haruue Icymoon\n點按這裡來訪問 GitHub 上的開源倉庫</string>
     <string name="license">開放原始碼許可</string>
+    <string name="hide_the_icon_in_launcher">在啟動器中隱藏圖標</string>
+    <string name="summary_off_hide_launcher_icon">不隱藏啟動器中的圖標</string>
+    <string name="summary_on_hide_launcher_icon">隱藏圖標，你可以通過長按我們的快速設置磁貼來回到此介面</string>
+    <string name="tip_on_hide_launch_icon">圖標隱藏可能需要幾分鐘的時間才能生效</string>
+    <string name="tip_on_show_launch_icon">取消圖標隱藏可能需要幾分鐘的時間才能生效</string>
 </resources>

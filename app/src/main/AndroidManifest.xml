@@ -18,9 +18,16 @@
             android:theme="@style/AppTheme"
             android:launchMode="singleTask">
             <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activity.LaunchActivity"
+                  android:theme="@style/Transparent"
+                  android:launchMode="singleTask">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
             </intent-filter>
         </activity>
 
@@ -50,13 +57,13 @@
         <service
             android:name=".ui.service.NotificationService"
             android:enabled="true"
-            android:exported="true">
+            android:exported="false">
         </service>
 
         <receiver
             android:name=".ui.receiver.TurnOffReceiver"
             android:enabled="true"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="moe.haruue.wadb.action.TURN_OFF_WADB"/>
             </intent-filter>
