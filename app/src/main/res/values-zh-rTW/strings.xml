@@ -31,4 +31,7 @@
     <string name="summary_on_hide_launcher_icon">隱藏圖標，你可以通過長按我們的快速設置磁貼來回到此介面</string>
     <string name="tip_on_hide_launch_icon">圖標隱藏可能需要幾分鐘的時間才能生效</string>
     <string name="tip_on_show_launch_icon">取消圖標隱藏可能需要幾分鐘的時間才能生效</string>
+    <string name="wake_lock">屏幕常亮</string>
+    <string name="wake_lock_on">啟用調試時屏幕常亮</string>
+    <string name="wake_lock_off">不啟用調試時屏幕常亮</string>
 </resources>

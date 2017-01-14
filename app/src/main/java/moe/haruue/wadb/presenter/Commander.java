@@ -40,6 +40,9 @@ public class Commander {
                 case ACTION_STOP_WADB:
                     Commands.stopWadb(commandsListener);
                     break;
+                case ACTION_CHECK_STATE:
+                    Commands.getWadbState(commandsListener);
+                    break;
                 case STATE_START_WADB:
                     if (PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication()).getBoolean("pref_key_notification", true)) {
                         NotificationService.start(StandardUtils.getApplication());
@@ -91,9 +94,6 @@ public class Commander {
                             listener.onOperateFailure();
                         }
                     });
-                    break;
-                case ACTION_CHECK_STATE:
-                    Commands.getWadbState(commandsListener);
                     break;
             }
         }

@@ -12,6 +12,7 @@ import android.support.v7.app.NotificationCompat;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.presenter.Commander;
 import moe.haruue.wadb.ui.activity.MainActivity;
+import moe.haruue.wadb.util.ScreenKeeper;
 
 public class NotificationService extends Service {
 
@@ -42,7 +43,7 @@ public class NotificationService extends Service {
     }
 
     private void showNotification(String ip, int port) {
-        PendingIntent contentPendingIntent = PendingIntent.getActivity(NotificationService.this, 0 , new Intent(NotificationService.this, MainActivity.class), 0);
+        PendingIntent contentPendingIntent = PendingIntent.getActivity(NotificationService.this, 0, new Intent(NotificationService.this, MainActivity.class), 0);
         PendingIntent turnOffPendingIntent = PendingIntent.getBroadcast(NotificationService.this, 0, new Intent("moe.haruue.wadb.action.TURN_OFF_WADB"), 0);
         // Notification
         notification = new NotificationCompat.Builder(NotificationService.this)
@@ -67,10 +68,12 @@ public class NotificationService extends Service {
         @Override
         public void onWadbStart(String ip, int port) {
             showNotification(ip, port);
+            ScreenKeeper.acquireWakeLock();
         }
 
         @Override
         public void onWadbStop() {
+            ScreenKeeper.releaseWakeLock();
             stopSelf();
         }
     }

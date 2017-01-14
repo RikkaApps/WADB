@@ -31,4 +31,7 @@
     <string name="summary_on_hide_launcher_icon">隐藏图标，你可以通过长按我们的快速设置瓷贴打开此应用</string>
     <string name="tip_on_hide_launch_icon">图标隐藏可能需要几分钟的时间才能生效</string>
     <string name="tip_on_show_launch_icon">取消图标隐藏可能需要几分钟的时间才能生效</string>
+    <string name="wake_lock">屏幕常亮</string>
+    <string name="wake_lock_on">启用调试时屏幕常亮</string>
+    <string name="wake_lock_off">不启用调试时屏幕常亮</string>
 </resources>

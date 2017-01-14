@@ -26,6 +26,13 @@
             android:summaryOff="@string/dont_show_notification_when_wadb_on"/>
 
         <CheckBoxPreference
+            android:key="pref_key_wake_lock"
+            android:title="@string/wake_lock"
+            android:defaultValue="false"
+            android:summaryOn="@string/wake_lock_on"
+            android:summaryOff="@string/wake_lock_off"/>
+
+        <CheckBoxPreference
             android:key="pref_key_screen_lock_switch"
             android:title="@string/allow_switch_when_screen_locked"
             android:defaultValue="false"
