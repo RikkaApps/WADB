@@ -35,7 +35,7 @@ public class Commander {
             super.handleMessage(msg);
             switch (msg.what) {
                 case ACTION_START_WADB:
-                    Commands.startWadb(commandsListener);
+                    Commands.startWadb(commandsListener, PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication()).getString("pref_key_wadb_port", "5555"));
                     break;
                 case ACTION_STOP_WADB:
                     Commands.stopWadb(commandsListener);
@@ -101,6 +101,7 @@ public class Commander {
 
     public interface WadbStateChangeListener {
         void onWadbStart(String ip, int port);
+
         void onWadbStop();
     }
 
@@ -108,7 +109,9 @@ public class Commander {
 
     public interface WadbFailureListener {
         void onRootPermissionFailure();
+
         void onStateRefreshFailure();
+
         void onOperateFailure();
     }
 
@@ -146,7 +149,7 @@ public class Commander {
 
     private static synchronized void notifyWadbStateChange(WadbStateChange change) {
         ArrayList<WadbStateChangeListener> uselessListener = new ArrayList<>(0);
-        for (WadbStateChangeListener l: wadbStateChangeListeners) {
+        for (WadbStateChangeListener l : wadbStateChangeListeners) {
             try {
                 change.change(l);
             } catch (Throwable t) {
@@ -171,7 +174,7 @@ public class Commander {
 
     private static synchronized void notifyWadbFailure(WadbFailure failure) {
         ArrayList<WadbFailureListener> uselessListener = new ArrayList<>(0);
-        for (WadbFailureListener l: wadbFailureListeners) {
+        for (WadbFailureListener l : wadbFailureListeners) {
             try {
                 failure.failure(l);
             } catch (Throwable t) {

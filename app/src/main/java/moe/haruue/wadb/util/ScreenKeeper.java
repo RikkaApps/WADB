@@ -7,6 +7,10 @@ import moe.haruue.util.StandardUtils;
 
 import static android.content.Context.POWER_SERVICE;
 
+/**
+ * @author PinkD
+ */
+
 public class ScreenKeeper {
     private static PowerManager.WakeLock wakeLock;
 

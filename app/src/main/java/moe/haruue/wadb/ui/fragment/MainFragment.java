@@ -2,9 +2,11 @@ package moe.haruue.wadb.ui.fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
+import android.widget.Toast;
 
 import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.R;
@@ -20,6 +22,7 @@ import moe.haruue.wadb.util.ScreenKeeper;
 public class MainFragment extends PreferenceFragment {
 
     SwitchPreference wadbSwitchPreference;
+    EditTextPreference portPreference;
     Listener listener = new Listener();
 
     @Override
@@ -30,7 +33,16 @@ public class MainFragment extends PreferenceFragment {
         Commander.addFailureListener(listener);
         PreferenceManager.setDefaultValues(getActivity(), R.xml.preferences, false);
         wadbSwitchPreference = (SwitchPreference) findPreference("pref_key_wadb_switch");
+        portPreference = (EditTextPreference) findPreference("pref_key_wadb_port");
+        init();
         Commander.checkWadbState();
+    }
+
+    private void init() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication());
+        String port = sharedPreferences.getString("pref_key_wadb_port", "5555");
+        portPreference.setSummary(port);
+        portPreference.setText(port);
     }
 
     @Override
@@ -122,6 +134,21 @@ public class MainFragment extends PreferenceFragment {
                     } else {
                         ScreenKeeper.releaseWakeLock();
                     }
+                    break;
+                case "pref_key_wadb_port":
+                    String port = sharedPreferences.getString("pref_key_wadb_port", "5555");
+                    try {
+                        int p = Integer.parseInt(port);
+                        if (p < 1025 || p > 65535) {
+                            throw new NumberFormatException(getText(R.string.bad_port_number).toString());
+                        }
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(StandardUtils.getApplication(), R.string.bad_port_number, Toast.LENGTH_SHORT).show();
+                        port = "5555";
+                        e.printStackTrace();
+                    }
+                    portPreference.setText(port);
+                    portPreference.setSummary(port);
                     break;
             }
         }

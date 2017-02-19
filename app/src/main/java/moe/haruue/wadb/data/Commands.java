@@ -51,11 +51,9 @@ public class Commands {
                         listener.onGetAdbStateFailure();
                     }
                     if (port <= 0) {
-                        final int finalPort = port;
-                        listener.onGetAdbState(false, finalPort);
+                        listener.onGetAdbState(false, port);
                     } else {
-                        final int finalPort1 = port;
-                        listener.onGetAdbState(true, finalPort1);
+                        listener.onGetAdbState(true, port);
                     }
                 }
             }
@@ -66,13 +64,15 @@ public class Commands {
         ThreadUtils.runOnNewThread(checkWadbStateRunnable(listener));
     }
 
-    private static String[] startWadbCommands = new String[]{
-            "setprop service.adb.tcp.port 5555",
-            "stop adbd",
-            "start adbd"
-    };
+    private static String[] commandFromPort(String port) {
+        return new String[]{
+                "setprop service.adb.tcp.port " + port,
+                "stop adbd",
+                "start adbd"
+        };
+    }
 
-    private static Runnable startWadbRunnable(final CommandsListener listener) {
+    private static Runnable startWadbRunnable(final CommandsListener listener, String port) {
         return new Runnable() {
             @Override
             public void run() {
@@ -80,7 +80,7 @@ public class Commands {
                     listener.onGetSUAvailable(false);
                     return;
                 }
-                List<String> shellResult = Shell.SU.run(startWadbCommands);
+                List<String> shellResult = Shell.SU.run(commandFromPort(port));
                 if (shellResult != null) {
                     listener.onWadbStartListener(true);
                 } else {
@@ -90,8 +90,8 @@ public class Commands {
         };
     }
 
-    public static void startWadb(final CommandsListener listener) {
-        ThreadUtils.runOnNewThread(startWadbRunnable(listener));
+    public static void startWadb(final CommandsListener listener, String port) {
+        ThreadUtils.runOnNewThread(startWadbRunnable(listener, port));
     }
 
     private static String[] stopWadbCommands = new String[]{

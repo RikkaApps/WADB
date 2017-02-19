@@ -34,4 +34,7 @@
     <string name="wake_lock">Keep Screen On</string>
     <string name="wake_lock_on">Keep screen on when adb is enabling</string>
     <string name="wake_lock_off">Don\'t keep screen on when adb is enabling</string>
+    <string name="port">Port</string>
+    <string name="default_port" translatable="false">5555</string>
+    <string name="bad_port_number">Port number can only be 1025–65535\nReset to 5555</string>
 </resources>

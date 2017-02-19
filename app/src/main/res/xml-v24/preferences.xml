@@ -6,11 +6,17 @@
         android:title="@string/switch_">
 
         <SwitchPreference
-            android:key="pref_key_wadb_switch"
-            android:title="@string/wadb"
             android:defaultValue="false"
+            android:key="pref_key_wadb_switch"
+            android:summaryOff="@string/disabled"
             android:summaryOn="@string/enabled"
-            android:summaryOff="@string/disabled"/>
+            android:title="@string/wadb"/>
+
+        <EditTextPreference
+            android:inputType="numberDecimal|numberSigned"
+            android:key="pref_key_wadb_port"
+            android:title="@string/port"
+            />
 
     </PreferenceCategory>
 
@@ -19,32 +25,32 @@
         android:title="@string/behavior">
 
         <CheckBoxPreference
-            android:key="pref_key_notification"
-            android:title="@string/notification"
             android:defaultValue="true"
+            android:key="pref_key_notification"
+            android:summaryOff="@string/dont_show_notification_when_wadb_on"
             android:summaryOn="@string/show_notification_when_wadb_on"
-            android:summaryOff="@string/dont_show_notification_when_wadb_on"/>
+            android:title="@string/notification"/>
 
         <CheckBoxPreference
+            android:defaultValue="false"
             android:key="pref_key_wake_lock"
-            android:title="@string/wake_lock"
-            android:defaultValue="false"
+            android:summaryOff="@string/wake_lock_off"
             android:summaryOn="@string/wake_lock_on"
-            android:summaryOff="@string/wake_lock_off"/>
+            android:title="@string/wake_lock"/>
 
         <CheckBoxPreference
+            android:defaultValue="false"
             android:key="pref_key_screen_lock_switch"
-            android:title="@string/allow_switch_when_screen_locked"
-            android:defaultValue="false"
+            android:summaryOff="@string/you_have_to_unlock_before_switch"
             android:summaryOn="@string/you_can_switch_when_screen_is_locked"
-            android:summaryOff="@string/you_have_to_unlock_before_switch"/>
+            android:title="@string/allow_switch_when_screen_locked"/>
 
         <CheckBoxPreference
-            android:key="pref_key_hide_launcher_icon"
-            android:title="@string/hide_the_icon_in_launcher"
             android:defaultValue="false"
+            android:key="pref_key_hide_launcher_icon"
+            android:summaryOff="@string/summary_off_hide_launcher_icon"
             android:summaryOn="@string/summary_on_hide_launcher_icon"
-            android:summaryOff="@string/summary_off_hide_launcher_icon"/>
+            android:title="@string/hide_the_icon_in_launcher"/>
 
     </PreferenceCategory>
 
@@ -53,19 +59,21 @@
         android:title="@string/about">
 
         <Preference
-            android:title="@string/app_name"
-            android:summary="@string/about_text">
+            android:summary="@string/about_text"
+            android:title="@string/app_name">
 
-            <intent android:action="android.intent.action.VIEW"
-                    android:data="https://github.com/haruue/WADB" />
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/haruue/WADB"/>
 
         </Preference>
 
         <Preference
-            android:title="@string/license"
-            android:summary="@string/license_apache_2_0">
+            android:summary="@string/license_apache_2_0"
+            android:title="@string/license">
 
-            <intent android:targetClass="moe.haruue.wadb.ui.activity.LicenseActivity"
+            <intent
+                android:targetClass="moe.haruue.wadb.ui.activity.LicenseActivity"
                 android:targetPackage="moe.haruue.wadb"/>
 
         </Preference>
