@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.R;
+import moe.haruue.wadb.data.Commands;
 import moe.haruue.wadb.presenter.Commander;
 import moe.haruue.wadb.ui.activity.LaunchActivity;
 import moe.haruue.wadb.ui.service.NotificationService;
@@ -34,15 +35,10 @@ public class MainFragment extends PreferenceFragment {
         PreferenceManager.setDefaultValues(getActivity(), R.xml.preferences, false);
         wadbSwitchPreference = (SwitchPreference) findPreference("pref_key_wadb_switch");
         portPreference = (EditTextPreference) findPreference("pref_key_wadb_port");
-        init();
         Commander.checkWadbState();
     }
 
     private void init() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication());
-        String port = sharedPreferences.getString("pref_key_wadb_port", "5555");
-        portPreference.setSummary(port);
-        portPreference.setText(port);
     }
 
     @Override
@@ -83,15 +79,25 @@ public class MainFragment extends PreferenceFragment {
 
         @Override
         public void onWadbStart(String ip, int port) {
+            // refresh switch
             wadbSwitchPreference.setChecked(true);
             wadbSwitchPreference.setSummaryOn(ip + ":" + port);
+            // refresh port
+            portPreference.setText(port + "");
+            portPreference.setSummary(port + "");
             wadbSwitchPreference.setEnabled(true);
         }
 
         @Override
         public void onWadbStop() {
+            // refresh switch
             wadbSwitchPreference.setChecked(false);
             wadbSwitchPreference.getEditor().putBoolean("pref_key_wadb_switch", false).commit();
+            // refresh port
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication());
+            String port = sharedPreferences.getString("pref_key_wadb_port", "5555");
+            portPreference.setSummary(port);
+            portPreference.setText(port);
             wadbSwitchPreference.setEnabled(true);
         }
 
@@ -149,6 +155,14 @@ public class MainFragment extends PreferenceFragment {
                     }
                     portPreference.setText(port);
                     portPreference.setSummary(port);
+                    Commands.getWadbState(new Commands.AbstractCommandsListener() {
+                        @Override
+                        public void onGetAdbState(boolean isWadb, int port) {
+                            if (isWadb) {
+                                Commander.startWadb();
+                            }
+                        }
+                    });
                     break;
             }
         }

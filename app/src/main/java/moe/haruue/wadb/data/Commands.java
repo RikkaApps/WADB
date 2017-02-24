@@ -24,6 +24,24 @@ public class Commands {
         void onWadbStopListener(boolean isSuccess);
     }
 
+    public static abstract class AbstractCommandsListener implements CommandsListener {
+
+        @Override
+        public void onGetSUAvailable(boolean isAvailable) {}
+
+        @Override
+        public void onGetAdbState(boolean isWadb, int port) {}
+
+        @Override
+        public void onGetAdbStateFailure() {}
+
+        @Override
+        public void onWadbStartListener(boolean isSuccess) {}
+
+        @Override
+        public void onWadbStopListener(boolean isSuccess) {}
+    }
+
     private static boolean isSUAvailable() {
         return Shell.SU.available();
     }

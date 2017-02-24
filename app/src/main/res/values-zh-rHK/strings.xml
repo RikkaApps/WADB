@@ -34,6 +34,6 @@
     <string name="wake_lock">屏幕常亮</string>
     <string name="wake_lock_on">啟用調試時屏幕常亮</string>
     <string name="wake_lock_off">不啟用調試時屏幕常亮</string>
-    <string name="port">端口</string>
-    <string name="bad_port_number">端口只能在1025–65535之間 \n已重置為5555</string>
+    <string name="port">埠</string>
+    <string name="bad_port_number">埠只能在1025–65535之間 \n已重置為5555</string>
 </resources>
