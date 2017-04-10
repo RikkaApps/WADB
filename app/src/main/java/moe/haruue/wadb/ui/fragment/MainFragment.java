@@ -1,6 +1,8 @@
 package moe.haruue.wadb.ui.fragment;
 
+import android.annotation.TargetApi;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceFragment;
@@ -14,7 +16,6 @@ import moe.haruue.wadb.data.Commands;
 import moe.haruue.wadb.presenter.Commander;
 import moe.haruue.wadb.ui.activity.LaunchActivity;
 import moe.haruue.wadb.ui.service.NotificationService;
-import moe.haruue.wadb.util.ScreenKeeper;
 
 /**
  * @author Haruue Icymoon haruue@caoyue.com.cn
@@ -101,6 +102,8 @@ public class MainFragment extends PreferenceFragment {
             wadbSwitchPreference.setEnabled(true);
         }
 
+        //TODO replace with compat fragment
+        @TargetApi(Build.VERSION_CODES.M)
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
             switch (s) {
@@ -132,13 +135,6 @@ public class MainFragment extends PreferenceFragment {
                         LaunchActivity.hideLaunchIcon(getContext());
                     } else {
                         LaunchActivity.showLaunchIcon(getContext());
-                    }
-                    break;
-                case "pref_key_wake_lock":
-                    if (sharedPreferences.getBoolean("pref_key_wake_lock", false)) {
-                        ScreenKeeper.acquireWakeLock();
-                    } else {
-                        ScreenKeeper.releaseWakeLock();
                     }
                     break;
                 case "pref_key_wadb_port":
