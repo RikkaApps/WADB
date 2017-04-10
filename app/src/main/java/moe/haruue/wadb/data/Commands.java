@@ -90,7 +90,7 @@ public class Commands {
         };
     }
 
-    private static Runnable startWadbRunnable(final CommandsListener listener, String port) {
+    private static Runnable startWadbRunnable(final CommandsListener listener, final String port) {
         return new Runnable() {
             @Override
             public void run() {
