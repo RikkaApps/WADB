@@ -15,7 +15,7 @@ import moe.haruue.wadb.R;
 import moe.haruue.wadb.data.Commands;
 import moe.haruue.wadb.presenter.Commander;
 import moe.haruue.wadb.ui.activity.LaunchActivity;
-import moe.haruue.wadb.ui.service.NotificationService;
+import moe.haruue.wadb.ui.service.NotificationHelper;
 
 /**
  * @author Haruue Icymoon haruue@caoyue.com.cn
@@ -118,16 +118,10 @@ public class MainFragment extends PreferenceFragment {
                     }
                     break;
                 case "pref_key_notification":
-                    if (sharedPreferences.getBoolean("pref_key_notification", true)) {
-                        if (sharedPreferences.getBoolean("pref_key_wadb_switch", false)) {
-                            NotificationService.start(StandardUtils.getApplication());
-                        }
+                    if (sharedPreferences.getBoolean("pref_key_wadb_switch", false)) {
+                        NotificationHelper.start(StandardUtils.getApplication());
                     } else {
-                        try {
-                            NotificationService.stop(StandardUtils.getApplication());
-                        } catch (Throwable t) {
-                            StandardUtils.printStack(t);
-                        }
+                        NotificationHelper.stop(StandardUtils.getApplication());
                     }
                     break;
                 case "pref_key_hide_launcher_icon":

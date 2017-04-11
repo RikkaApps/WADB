@@ -9,7 +9,7 @@ import moe.haruue.util.abstracts.HaruueActivity;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.ui.fragment.MainFragment;
 
-public class MainActivity extends HaruueActivity {
+public class MainActivity extends RikkaActivity {
 
     Toolbar toolbar;
 

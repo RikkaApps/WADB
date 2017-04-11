@@ -15,7 +15,7 @@ import moe.haruue.wadb.R;
  * @author Haruue Icymoon haruue@caoyue.com.cn
  */
 
-public class LaunchActivity extends HaruueActivity {
+public class LaunchActivity extends RikkaActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -11,7 +11,7 @@ import java.util.HashSet;
 import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.data.Commands;
 import moe.haruue.wadb.ui.activity.RootPermissionErrorDialogShadowActivity;
-import moe.haruue.wadb.ui.service.NotificationService;
+import moe.haruue.wadb.ui.service.NotificationHelper;
 import moe.haruue.wadb.util.IPUtils;
 
 /**
@@ -44,9 +44,7 @@ public class Commander {
                     Commands.getWadbState(commandsListener);
                     break;
                 case STATE_START_WADB:
-                    if (PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication()).getBoolean("pref_key_notification", true)) {
-                        NotificationService.start(StandardUtils.getApplication());
-                    }
+                    NotificationHelper.start(StandardUtils.getApplication());
                     notifyWadbStateChange(new WadbStateChange() {
                         @Override
                         public void change(WadbStateChangeListener listener) {
@@ -55,7 +53,7 @@ public class Commander {
                     });
                     break;
                 case STATE_STOP_WADB:
-                    NotificationService.stop(StandardUtils.getApplication());
+                    NotificationHelper.stop(StandardUtils.getApplication());
                     notifyWadbStateChange(new WadbStateChange() {
                         @Override
                         public void change(WadbStateChangeListener listener) {

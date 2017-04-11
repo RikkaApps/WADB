@@ -11,7 +11,7 @@ import moe.haruue.util.ActivityCollector;
 import moe.haruue.util.StandardUtils;
 import moe.haruue.util.abstracts.HaruueActivity;
 import moe.haruue.wadb.R;
-import moe.haruue.wadb.ui.service.NotificationService;
+import moe.haruue.wadb.ui.service.NotificationHelper;
 
 /**
  * @author Haruue Icymoon haruue@caoyue.com.cn
@@ -29,7 +29,7 @@ public class RootPermissionErrorDialogShadowActivity extends HaruueActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
-                        NotificationService.stop(getApplication());
+                        NotificationHelper.stop(getApplication());
                         ActivityCollector.finishAllActivity();
                         android.os.Process.killProcess(android.os.Process.myPid());
                     }
