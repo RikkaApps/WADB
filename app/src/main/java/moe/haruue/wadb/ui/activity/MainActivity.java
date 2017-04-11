@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import moe.haruue.util.abstracts.HaruueActivity;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.ui.fragment.MainFragment;
 

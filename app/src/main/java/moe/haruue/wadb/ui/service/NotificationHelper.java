@@ -34,12 +34,12 @@ public class NotificationHelper {
                 .build();
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notification);
+        notificationManager.notify(R.string.app_name, notification);
     }
 
     private static void cancelNotification(Context context) {
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.cancel(0);
+        mNotificationManager.cancel(R.string.app_name);
     }
 
     private static class Listener implements Commander.WadbStateChangeListener {

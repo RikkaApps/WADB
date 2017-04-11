@@ -16,6 +16,7 @@ import moe.haruue.wadb.data.Commands;
 import moe.haruue.wadb.presenter.Commander;
 import moe.haruue.wadb.ui.activity.LaunchActivity;
 import moe.haruue.wadb.ui.service.NotificationHelper;
+import moe.haruue.wadb.util.ScreenKeeper;
 
 /**
  * @author Haruue Icymoon haruue@caoyue.com.cn
@@ -129,6 +130,13 @@ public class MainFragment extends PreferenceFragment {
                         LaunchActivity.hideLaunchIcon(getContext());
                     } else {
                         LaunchActivity.showLaunchIcon(getContext());
+                    }
+                    break;
+                case "pref_key_wake_lock":
+                    if (sharedPreferences.getBoolean("pref_key_wake_lock", false) && sharedPreferences.getBoolean("pref_key_wadb_switch", false)) {
+                        ScreenKeeper.acquireWakeLock();
+                    } else {
+                        ScreenKeeper.releaseWakeLock();
                     }
                     break;
                 case "pref_key_wadb_port":

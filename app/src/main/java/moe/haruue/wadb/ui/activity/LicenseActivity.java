@@ -15,7 +15,6 @@ import java.io.InputStreamReader;
 
 import moe.haruue.util.StandardUtils;
 import moe.haruue.util.ThreadUtils;
-import moe.haruue.util.abstracts.HaruueActivity;
 import moe.haruue.wadb.R;
 
 /**
