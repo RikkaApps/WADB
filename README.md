@@ -31,6 +31,10 @@ Support us in Play Store：
 
 ... or directly download the APK file by click [here](app/app-release.apk?raw=true).    
 
+## Translation
+Translate ADB over Network into your language on 
+https://haruue.oneskyapp.com/collaboration/project/231158
+
 ## License
 Apache License 2.0
 
@@ -48,5 +52,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 ```

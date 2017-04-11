@@ -29,6 +29,10 @@ start adbd
 
 或者 [戳这里直接下载 APK](app/app-release.apk?raw=true)    
 
+## 翻译
+协助我们把「网络 adb」应用翻译成您熟悉的语言 
+https://haruue.oneskyapp.com/collaboration/project/231158
+
 ## License
 Apache License 2.0
 
@@ -46,5 +50,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 ```
