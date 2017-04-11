@@ -1,8 +1,6 @@
 package moe.haruue.wadb.ui.fragment;
 
-import android.annotation.TargetApi;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceFragment;
@@ -102,8 +100,6 @@ public class MainFragment extends PreferenceFragment {
             wadbSwitchPreference.setEnabled(true);
         }
 
-        //TODO replace with compat fragment
-        @TargetApi(Build.VERSION_CODES.M)
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
             switch (s) {
@@ -117,18 +113,20 @@ public class MainFragment extends PreferenceFragment {
                         }
                     }
                     break;
+                // refresh notification when notification preferences are changed
                 case "pref_key_notification":
+                case "pref_key_notification_low_priority":
                     if (sharedPreferences.getBoolean("pref_key_wadb_switch", false)) {
-                        NotificationHelper.start(StandardUtils.getApplication());
+                        NotificationHelper.refresh(StandardUtils.getApplication());
                     } else {
                         NotificationHelper.stop(StandardUtils.getApplication());
                     }
                     break;
                 case "pref_key_hide_launcher_icon":
                     if (sharedPreferences.getBoolean("pref_key_hide_launcher_icon", false)) {
-                        LaunchActivity.hideLaunchIcon(getContext());
+                        LaunchActivity.hideLaunchIcon(getActivity());
                     } else {
-                        LaunchActivity.showLaunchIcon(getContext());
+                        LaunchActivity.showLaunchIcon(getActivity());
                     }
                     break;
                 case "pref_key_wadb_port":

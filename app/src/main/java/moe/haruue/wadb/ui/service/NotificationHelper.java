@@ -16,6 +16,8 @@ import moe.haruue.wadb.util.ScreenKeeper;
 
 public class NotificationHelper {
 
+    private static final String TAG = NotificationHelper.class.getSimpleName();
+
     private static Listener listener;
 
     private static void showNotification(Context context, String ip, int port) {
@@ -64,15 +66,23 @@ public class NotificationHelper {
 
         if (listener == null) {
             listener = new Listener();
-
-            Commander.addChangeListener(listener);
-            Commander.checkWadbState();
         }
+        Commander.addChangeListener(listener);
+        Commander.checkWadbState();
     }
 
     public static void stop(Context context) {
         Commander.removeChangeListener(listener);
         cancelNotification(context);
+    }
+
+    public static void refresh(Context context) {
+        if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean("pref_key_notification", true)) {
+            start(context);
+        } else {
+            stop(context);
+        }
+
     }
 
 }

@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import moe.haruue.util.abstracts.HaruueActivity;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.ui.fragment.MainFragment;
+import moe.haruue.wadb.ui.service.NotificationHelper;
 
 public class MainActivity extends RikkaActivity {
 
@@ -42,6 +42,7 @@ public class MainActivity extends RikkaActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        NotificationHelper.start(MainActivity.this);
     }
 
     public static void start(Context context) {

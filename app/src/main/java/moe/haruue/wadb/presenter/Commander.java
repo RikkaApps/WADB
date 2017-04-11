@@ -11,7 +11,6 @@ import java.util.HashSet;
 import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.data.Commands;
 import moe.haruue.wadb.ui.activity.RootPermissionErrorDialogShadowActivity;
-import moe.haruue.wadb.ui.service.NotificationHelper;
 import moe.haruue.wadb.util.IPUtils;
 
 /**
@@ -19,6 +18,8 @@ import moe.haruue.wadb.util.IPUtils;
  */
 
 public class Commander {
+
+    private static final String TAG = Commander.class.getSimpleName();
 
     public final static int ACTION_START_WADB = 1;
     public final static int ACTION_STOP_WADB = 2;
@@ -44,7 +45,6 @@ public class Commander {
                     Commands.getWadbState(commandsListener);
                     break;
                 case STATE_START_WADB:
-                    NotificationHelper.start(StandardUtils.getApplication());
                     notifyWadbStateChange(new WadbStateChange() {
                         @Override
                         public void change(WadbStateChangeListener listener) {
@@ -53,7 +53,6 @@ public class Commander {
                     });
                     break;
                 case STATE_STOP_WADB:
-                    NotificationHelper.stop(StandardUtils.getApplication());
                     notifyWadbStateChange(new WadbStateChange() {
                         @Override
                         public void change(WadbStateChangeListener listener) {
@@ -103,7 +102,7 @@ public class Commander {
         void onWadbStop();
     }
 
-    private static HashSet<WadbStateChangeListener> wadbStateChangeListeners = new HashSet<>(0);
+    private static final HashSet<WadbStateChangeListener> wadbStateChangeListeners = new HashSet<>(0);
 
     public interface WadbFailureListener {
         void onRootPermissionFailure();
@@ -113,7 +112,7 @@ public class Commander {
         void onOperateFailure();
     }
 
-    private static HashSet<WadbFailureListener> wadbFailureListeners = new HashSet<>(0);
+    private static final HashSet<WadbFailureListener> wadbFailureListeners = new HashSet<>(0);
 
     public static void startWadb() {
         Message message = Message.obtain();
@@ -147,15 +146,17 @@ public class Commander {
 
     private static synchronized void notifyWadbStateChange(WadbStateChange change) {
         ArrayList<WadbStateChangeListener> uselessListener = new ArrayList<>(0);
-        for (WadbStateChangeListener l : wadbStateChangeListeners) {
-            try {
-                change.change(l);
-            } catch (Throwable t) {
-                StandardUtils.printStack(t);
-                uselessListener.add(l);
+        synchronized (wadbStateChangeListeners) {
+            for (WadbStateChangeListener l : wadbStateChangeListeners) {
+                try {
+                    change.change(l);
+                } catch (Throwable t) {
+                    StandardUtils.printStack(t);
+                    uselessListener.add(l);
+                }
             }
+            wadbStateChangeListeners.removeAll(uselessListener);
         }
-        wadbStateChangeListeners.removeAll(uselessListener);
     }
 
     public interface WadbFailure {
@@ -172,15 +173,17 @@ public class Commander {
 
     private static synchronized void notifyWadbFailure(WadbFailure failure) {
         ArrayList<WadbFailureListener> uselessListener = new ArrayList<>(0);
-        for (WadbFailureListener l : wadbFailureListeners) {
-            try {
-                failure.failure(l);
-            } catch (Throwable t) {
-                StandardUtils.printStack(t);
-                uselessListener.add(l);
+        synchronized (wadbFailureListeners) {
+            for (WadbFailureListener l : wadbFailureListeners) {
+                try {
+                    failure.failure(l);
+                } catch (Throwable t) {
+                    StandardUtils.printStack(t);
+                    uselessListener.add(l);
+                }
             }
+            wadbFailureListeners.removeAll(uselessListener);
         }
-        wadbFailureListeners.removeAll(uselessListener);
     }
 
     private static CommandsListener commandsListener = new CommandsListener();

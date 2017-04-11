@@ -36,6 +36,7 @@ public class WadbTileService extends TileService {
     public void onStartListening() {
         super.onStartListening();
         Commander.checkWadbState();
+        NotificationHelper.start(getApplicationContext());
     }
 
     Runnable startWadbRunnable = new Runnable() {
