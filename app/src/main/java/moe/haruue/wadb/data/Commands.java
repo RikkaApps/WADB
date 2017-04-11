@@ -5,6 +5,7 @@ import java.util.List;
 import eu.chainfire.libsuperuser.Shell;
 import moe.haruue.util.StandardUtils;
 import moe.haruue.util.ThreadUtils;
+import moe.haruue.wadb.BuildConfig;
 
 /**
  * @author Haruue Icymoon haruue@caoyue.com.cn
@@ -83,6 +84,12 @@ public class Commands {
     }
 
     private static String[] commandFromPort(String port) {
+        if (BuildConfig.FAKE_OPERATE_MODE && BuildConfig.DEBUG) {
+            return new String[]{
+                    // don't restart adbd for debug
+                    "setprop service.adb.tcp.port " + port
+            };
+        }
         return new String[]{
                 "setprop service.adb.tcp.port " + port,
                 "stop adbd",
@@ -112,11 +119,22 @@ public class Commands {
         ThreadUtils.runOnNewThread(startWadbRunnable(listener, port));
     }
 
-    private static String[] stopWadbCommands = new String[]{
-            "setprop service.adb.tcp.port -1",
-            "stop adbd",
-            "start adbd"
-    };
+    private static String[] stopWadbCommands;
+
+    static {
+        if (BuildConfig.FAKE_OPERATE_MODE && BuildConfig.DEBUG) {
+            stopWadbCommands = new String[]{
+                    // don't restart adbd for debug
+                    "setprop service.adb.tcp.port -1"
+            };
+        } else {
+            stopWadbCommands = new String[]{
+                    "setprop service.adb.tcp.port -1",
+                    "stop adbd",
+                    "start adbd"
+            };
+        }
+    }
 
     private static Runnable stopWadbRunnable(final CommandsListener listener) {
         return new Runnable() {
