@@ -1,5 +1,7 @@
 package moe.haruue.wadb.data;
 
+import android.util.Log;
+
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
@@ -12,6 +14,8 @@ import moe.haruue.wadb.BuildConfig;
  */
 
 public class Commands {
+
+    public static final String TAG = Commands.class.getSimpleName();
 
     public interface CommandsListener {
         void onGetSUAvailable(boolean isAvailable);
@@ -55,6 +59,7 @@ public class Commands {
             public void run() {
                 List<String> shellResult;
                 shellResult = Shell.SH.run(checkWadbStateCommand);
+                log("Check Wadb state", shellResult != null);
                 if (shellResult == null) {
                     listener.onGetAdbStateFailure();
                 } else {
@@ -102,15 +107,13 @@ public class Commands {
             @Override
             public void run() {
                 if (!isSUAvailable()) {
+                    log("Check SU", false);
                     listener.onGetSUAvailable(false);
                     return;
                 }
                 List<String> shellResult = Shell.SU.run(commandFromPort(port));
-                if (shellResult != null) {
-                    listener.onWadbStartListener(true);
-                } else {
-                    listener.onWadbStartListener(false);
-                }
+                log("Wadb start", shellResult != null);
+                listener.onWadbStartListener(shellResult != null);
             }
         };
     }
@@ -141,21 +144,29 @@ public class Commands {
             @Override
             public void run() {
                 if (!isSUAvailable()) {
+                    log("Check SU", false);
                     listener.onGetSUAvailable(false);
                     return;
                 }
                 List<String> shellResult = Shell.SU.run(stopWadbCommands);
-                if (shellResult != null) {
-                    listener.onWadbStopListener(true);
-                } else {
-                    listener.onWadbStopListener(false);
-                }
+                log("Wadb stop", shellResult != null);
+                listener.onWadbStopListener(shellResult != null);
             }
         };
     }
 
     public static void stopWadb(final CommandsListener listener) {
         ThreadUtils.runOnNewThread(stopWadbRunnable(listener));
+    }
+
+    private static void log(String message, boolean isSuccess) {
+        if (BuildConfig.DEBUG) {
+            if (isSuccess) {
+                Log.d(TAG, message + ", succeed");
+            } else {
+                Log.e(TAG, message + ", failed");
+            }
+        }
     }
 
 }
