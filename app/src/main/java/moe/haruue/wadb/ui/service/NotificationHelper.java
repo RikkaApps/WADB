@@ -54,7 +54,7 @@ public class NotificationHelper {
 
         @Override
         public void onWadbStop() {
-            Commander.removeChangeListener(listener);
+            cancelNotification(StandardUtils.getApplication());
             ScreenKeeper.releaseWakeLock();
         }
     }

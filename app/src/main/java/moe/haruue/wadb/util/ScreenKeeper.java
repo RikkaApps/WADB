@@ -19,6 +19,7 @@ public class ScreenKeeper {
         if (wakeLock == null) {
             PowerManager powerManager = (PowerManager) StandardUtils.getApplication().getSystemService(POWER_SERVICE);
             wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, StandardUtils.getApplication().getText(R.string.app_name).toString());
+            wakeLock.setReferenceCounted(false);
         }
         if (!wakeLock.isHeld() && PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication()).getBoolean("pref_key_wake_lock", false)) {
             wakeLock.acquire();
