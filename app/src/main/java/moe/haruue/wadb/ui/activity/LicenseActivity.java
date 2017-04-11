@@ -22,7 +22,7 @@ import moe.haruue.wadb.R;
  * @author Haruue Icymoon haruue@caoyue.com.cn
  */
 
-public class LicenseActivity extends HaruueActivity {
+public class LicenseActivity extends RikkaActivity {
 
     private WebView licenseView;
 
