@@ -16,8 +16,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:allowBackup">
-        <activity android:name=".ui.activity.MainActivity"
+        tools:replace="android:allowBackup"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".ui.activity.MainActivity"
             android:theme="@style/AppTheme"
             android:launchMode="singleTask">
             <intent-filter>
