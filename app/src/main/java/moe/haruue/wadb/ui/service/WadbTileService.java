@@ -10,6 +10,7 @@ import android.support.annotation.RequiresApi;
 import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.presenter.Commander;
+import moe.haruue.wadb.util.NotificationHelper;
 
 /**
  * @author Haruue Icymoon haruue@caoyue.com.cn

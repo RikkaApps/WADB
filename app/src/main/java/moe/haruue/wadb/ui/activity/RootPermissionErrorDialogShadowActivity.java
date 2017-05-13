@@ -9,15 +9,14 @@ import android.support.v7.app.AlertDialog;
 
 import moe.haruue.util.ActivityCollector;
 import moe.haruue.util.StandardUtils;
-import moe.haruue.util.abstracts.HaruueActivity;
 import moe.haruue.wadb.R;
-import moe.haruue.wadb.ui.service.NotificationHelper;
+import moe.haruue.wadb.util.NotificationHelper;
 
 /**
  * @author Haruue Icymoon haruue@caoyue.com.cn
  */
 
-public class RootPermissionErrorDialogShadowActivity extends HaruueActivity {
+public class RootPermissionErrorDialogShadowActivity extends RikkaActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

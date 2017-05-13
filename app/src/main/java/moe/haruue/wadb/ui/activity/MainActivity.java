@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.ui.fragment.MainFragment;
-import moe.haruue.wadb.ui.service.NotificationHelper;
+import moe.haruue.wadb.util.NotificationHelper;
 
 public class MainActivity extends RikkaActivity {
 

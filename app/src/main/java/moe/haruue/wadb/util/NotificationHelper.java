@@ -1,4 +1,4 @@
-package moe.haruue.wadb.ui.service;
+package moe.haruue.wadb.util;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -6,13 +6,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.NotificationCompat;
 
 import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.presenter.Commander;
 import moe.haruue.wadb.ui.activity.MainActivity;
-import moe.haruue.wadb.util.ScreenKeeper;
 
 public class NotificationHelper {
 
@@ -30,6 +30,7 @@ public class NotificationHelper {
                 .setSmallIcon(R.drawable.ic_qs_network_adb_on)
                 .setContentIntent(contentPendingIntent)
                 .addAction(R.drawable.ic_close_white_24dp, context.getString(R.string.turn_off), turnOffPendingIntent)
+                .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
                 .setOngoing(true)
                 .setPriority(PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication()).getBoolean("pref_key_notification_low_priority", true) ?
                         NotificationCompat.PRIORITY_MIN : NotificationCompat.PRIORITY_DEFAULT)
@@ -40,8 +41,8 @@ public class NotificationHelper {
     }
 
     private static void cancelNotification(Context context) {
-        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.cancel(R.string.app_name);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(R.string.app_name);
     }
 
     private static class Listener implements Commander.WadbStateChangeListener {

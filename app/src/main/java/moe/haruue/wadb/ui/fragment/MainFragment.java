@@ -13,7 +13,7 @@ import moe.haruue.wadb.R;
 import moe.haruue.wadb.data.Commands;
 import moe.haruue.wadb.presenter.Commander;
 import moe.haruue.wadb.ui.activity.LaunchActivity;
-import moe.haruue.wadb.ui.service.NotificationHelper;
+import moe.haruue.wadb.util.NotificationHelper;
 import moe.haruue.wadb.util.ScreenKeeper;
 
 /**
