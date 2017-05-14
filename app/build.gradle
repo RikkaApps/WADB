@@ -7,8 +7,8 @@ android {
         applicationId "moe.haruue.wadb"
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 14
-        versionName "2.4.0"
+        versionCode 15
+        versionName "2.4.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "boolean", "FAKE_OPERATE_MODE", "false" // set it true to prevent restart adbd for DEBUG
     }
