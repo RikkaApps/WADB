@@ -39,7 +39,7 @@ https://haruue.oneskyapp.com/collaboration/project/231158
 Apache License 2.0
 
 ```License
-Copyright 2016 Haruue Icymoon, PinkD
+Copyright 2017 Haruue Icymoon, PinkD, Rikka
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
