@@ -32,8 +32,7 @@ Support us in Play Store：
 ... or directly download the APK file by click [here](app/app-release.apk?raw=true).    
 
 ## Translation
-Translate ADB over Network into your language on 
-https://haruue.oneskyapp.com/collaboration/project/231158
+If you want to translate ADB over Network into your language, just open a Pull Request.
 
 ## License
 Apache License 2.0

@@ -30,8 +30,7 @@ start adbd
 或者 [戳这里直接下载 APK](app/app-release.apk?raw=true)    
 
 ## 翻译
-协助我们把「网络 adb」应用翻译成您熟悉的语言 
-https://haruue.oneskyapp.com/collaboration/project/231158
+您可以通过 Pull Requst 协助我们把「网络 adb」应用翻译成您熟悉的语言
 
 ## License
 Apache License 2.0
