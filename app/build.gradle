@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.3'
     defaultConfig {
         applicationId "moe.haruue.wadb"
         minSdkVersion 14
@@ -28,6 +27,7 @@ android {
 
 repositories {
     jcenter()
+    google()
     maven {
         url 'https://dl.bintray.com/haruue/maven/'
     }
@@ -35,11 +35,7 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support:support-annotations:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.4.0'
     compile 'eu.chainfire:libsuperuser:1.0.0.201608240809'
     compile 'moe.haruue:haruueutils:1.1.1-preview'
 }
