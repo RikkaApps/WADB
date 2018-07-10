@@ -2,12 +2,14 @@ package moe.haruue.wadb.data;
 
 import android.util.Log;
 
+import com.topjohnwu.superuser.Shell;
+
 import java.util.List;
 
-import eu.chainfire.libsuperuser.Shell;
 import moe.haruue.util.StandardUtils;
 import moe.haruue.util.ThreadUtils;
 import moe.haruue.wadb.BuildConfig;
+import moe.haruue.wadb.util.SuShell;
 
 /**
  * @author Haruue Icymoon haruue@caoyue.com.cn
@@ -48,19 +50,19 @@ public class Commands {
     }
 
     private static boolean isSUAvailable() {
-        return Shell.SU.available();
+        return SuShell.available();
     }
 
-    private static String checkWadbStateCommand = "getprop service.adb.tcp.port";
+    private static final String CHECK_WADB_STATE_COMMAND = "getprop service.adb.tcp.port";
 
     private static Runnable checkWadbStateRunnable(final CommandsListener listener) {
         return new Runnable() {
             @Override
             public void run() {
                 List<String> shellResult;
-                shellResult = Shell.SH.run(checkWadbStateCommand);
-                log("Check Wadb state", shellResult != null);
-                if (shellResult == null) {
+                shellResult = Shell.Sync.sh(CHECK_WADB_STATE_COMMAND);
+                log("Check Wadb state", !shellResult.isEmpty());
+                if (shellResult.isEmpty()) {
                     listener.onGetAdbStateFailure();
                 } else {
                     String shellStringResult = "";
@@ -111,9 +113,9 @@ public class Commands {
                     listener.onGetSUAvailable(false);
                     return;
                 }
-                List<String> shellResult = Shell.SU.run(commandFromPort(port));
-                log("Wadb start", shellResult != null);
-                listener.onWadbStartListener(shellResult != null);
+                SuShell.Result shellResult = SuShell.run(commandFromPort(port));
+                log("Wadb start", shellResult.exitCode == 0);
+                listener.onWadbStartListener(shellResult.exitCode == 0);
             }
         };
     }
@@ -122,16 +124,16 @@ public class Commands {
         ThreadUtils.runOnNewThread(startWadbRunnable(listener, port));
     }
 
-    private static String[] stopWadbCommands;
+    private final static String[] STOP_WADB_COMMANDS;
 
     static {
         if (BuildConfig.FAKE_OPERATE_MODE && BuildConfig.DEBUG) {
-            stopWadbCommands = new String[]{
+            STOP_WADB_COMMANDS = new String[]{
                     // don't restart adbd for debug
                     "setprop service.adb.tcp.port -1"
             };
         } else {
-            stopWadbCommands = new String[]{
+            STOP_WADB_COMMANDS = new String[]{
                     "setprop service.adb.tcp.port -1",
                     "stop adbd",
                     "start adbd"
@@ -148,9 +150,9 @@ public class Commands {
                     listener.onGetSUAvailable(false);
                     return;
                 }
-                List<String> shellResult = Shell.SU.run(stopWadbCommands);
-                log("Wadb stop", shellResult != null);
-                listener.onWadbStopListener(shellResult != null);
+                SuShell.Result shellResult = SuShell.run(STOP_WADB_COMMANDS);
+                log("Wadb stop", shellResult.exitCode == 0);
+                listener.onWadbStopListener(shellResult.exitCode == 0);
             }
         };
     }

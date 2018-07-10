@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 28
     defaultConfig {
         applicationId "moe.haruue.wadb"
         minSdkVersion 14
-        targetSdkVersion 25
-        versionCode 15
-        versionName "2.4.1"
+        targetSdkVersion 28
+        versionCode 16
+        versionName "2.4.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "boolean", "FAKE_OPERATE_MODE", "false" // set it true to prevent restart adbd for DEBUG
     }
@@ -34,8 +34,8 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.4.0'
-    compile 'eu.chainfire:libsuperuser:1.0.0.201608240809'
-    compile 'moe.haruue:haruueutils:1.1.1-preview'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
+    implementation 'moe.haruue:haruueutils:1.1.1-preview'
+	implementation 'com.github.topjohnwu:libsu:1.1.1'
 }

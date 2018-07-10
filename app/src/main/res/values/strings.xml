@@ -40,4 +40,5 @@
     <string name="low_priority_notification">Low priority notification</string>
     <string name="use_low_priority_notification">Use low priority notification to hide the notification icon</string>
     <string name="use_default_priority_notification">Use default priority notification</string>
+    <string name="notification_channel_state">Running status</string>
 </resources>

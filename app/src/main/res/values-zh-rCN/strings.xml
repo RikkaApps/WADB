@@ -39,4 +39,5 @@
     <string name="low_priority_notification">低优先级通知</string>
     <string name="use_low_priority_notification">使用低优先级通知来隐藏通知图标</string>
     <string name="use_default_priority_notification">使用默认优先级通知</string>
+    <string name="notification_channel_state">运行状态</string>
 </resources>
