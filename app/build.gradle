@@ -11,14 +11,21 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "boolean", "FAKE_OPERATE_MODE", "false" // set it true to prevent restart adbd for DEBUG
     }
+    signingConfigs {
+        sign
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.sign
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.sign
         }
     }
     productFlavors {
@@ -39,3 +46,21 @@ dependencies {
     implementation 'moe.haruue:haruueutils:1.1.1-preview'
 	implementation 'com.github.topjohnwu:libsu:1.1.1'
 }
+
+
+def signFile = rootProject.file('signing.properties')
+def signProps = new Properties()
+if (signFile.canRead()) {
+    signProps.load(new FileInputStream(signFile))
+    if (signProps != null) {
+        android.signingConfigs.sign.storeFile file(signProps['KEYSTORE_FILE'])
+        android.signingConfigs.sign.storePassword signProps['KEYSTORE_PASSWORD']
+        android.signingConfigs.sign.keyAlias signProps['KEYSTORE_ALIAS']
+        android.signingConfigs.sign.keyPassword signProps['KEYSTORE_ALIAS_PASSWORD']
+    } else {
+        println 'some entries in \'signing.properties\' not found!'
+    }
+} else {
+    println '\'signing.properties\' not found!'
+}
+

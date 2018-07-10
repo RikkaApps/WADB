@@ -1,8 +1,16 @@
+# Jetbrains IDE
 *.iml
-*.log
+/.idea
+
+# Gradle
 .gradle
 /local.properties
-/.idea/
 .DS_Store
+
+# Android
 /build
 /captures
+.externalNativeBuild
+signing.properties
+*.apk
+/.release
