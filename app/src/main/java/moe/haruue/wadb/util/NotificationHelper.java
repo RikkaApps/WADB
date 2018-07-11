@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -15,6 +16,7 @@ import moe.haruue.util.StandardUtils;
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.presenter.Commander;
 import moe.haruue.wadb.ui.activity.MainActivity;
+import moe.haruue.wadb.ui.receiver.TurnOffReceiver;
 
 public class NotificationHelper {
 
@@ -22,7 +24,9 @@ public class NotificationHelper {
 
     private static void showNotification(Context context, String ip, int port) {
         PendingIntent contentPendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0);
-        PendingIntent turnOffPendingIntent = PendingIntent.getBroadcast(context, 0, new Intent("moe.haruue.wadb.action.TURN_OFF_WADB"), 0);
+        Intent turnOffIntent = new Intent("moe.haruue.wadb.action.TURN_OFF_WADB");
+        turnOffIntent.setComponent(new ComponentName(context, TurnOffReceiver.class));
+        PendingIntent turnOffPendingIntent = PendingIntent.getBroadcast(context, 0, turnOffIntent, 0);
 
         // Notification
         Notification notification = new NotificationCompat.Builder(context, "state")

@@ -40,4 +40,6 @@
     <string name="use_low_priority_notification">使用低優先順序通知來隱藏通知圖示</string>
     <string name="use_default_priority_notification">使用默認優先順序通知</string>
     <string name="notification_channel_state">執行狀態</string>
+    <string name="notification_settings">通知設置</string>
+    <string name="notification_settings_summary">訪問系統設置中的更多通知設置（例如聲音、震動和重要性）</string>
 </resources>

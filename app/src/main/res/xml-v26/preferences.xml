@@ -30,6 +30,20 @@
             android:summaryOn="@string/show_notification_when_wadb_on"
             android:title="@string/notification"/>
 
+        <Preference
+            android:title="@string/notification_settings"
+            android:summary="@string/notification_settings_summary">
+            <intent
+                android:action="android.settings.CHANNEL_NOTIFICATION_SETTINGS">
+                <extra
+                    android:name="android.provider.extra.APP_PACKAGE"
+                    android:value="moe.haruue.wadb"/>
+                <extra
+                    android:name="android.provider.extra.CHANNEL_ID"
+                    android:value="state"/>
+            </intent>
+        </Preference>
+
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="pref_key_wake_lock"

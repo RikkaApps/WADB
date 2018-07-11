@@ -41,4 +41,6 @@
     <string name="use_low_priority_notification">Use low priority notification to hide the notification icon</string>
     <string name="use_default_priority_notification">Use default priority notification</string>
     <string name="notification_channel_state">Running status</string>
+    <string name="notification_settings">Notification Settings</string>
+    <string name="notification_settings_summary">More notification preferences (such as sound, vibrate and importance) in system settings</string>
 </resources>
