@@ -24,9 +24,7 @@
     <string name="permission_error">Permesso negato</string>
     <string name="port">Porta</string>
     <string name="refresh_state_failure">Aggiornamento dello stato non riuscito</string>
-    <string name="search_menu_title">Ricerca</string>
     <string name="show_notification_when_wadb_on">Mostra notifica quando ADB via rete è abilitato</string>
-    <string name="status_bar_notification_info_overflow">999+</string>
     <string name="summary_off_hide_launcher_icon">Non nascondere l\'icona nel launcher</string>
     <string name="summary_on_hide_launcher_icon">Nascondi l\'icona nel launcher, puoi avviare quest\'app tenendo premuta l\'icona nelle impostazioni rapide</string>
     <string name="supersu_tip">Hai bisogno del root!</string>
