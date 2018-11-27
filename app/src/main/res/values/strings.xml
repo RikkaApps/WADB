@@ -20,7 +20,7 @@
     <string name="disabled">Deaktiviert</string>
     <string name="notification">Benachrichtigung</string>
     <string name="allow_switch_when_screen_locked">Erlaube umschalten wenn der Bildschirm gesperrt ist</string>
-    <string name="you_have_to_unlock_before_switch">Du musst den Bildschirm entsperren, wenn du über die Schnelleinstellungen etwas ändern willst</string>
+    <string name="you_have_to_unlock_before_switch">Du musst den Bildschirm entsperren, wenn du den Modus über die Schnelleinstellungen ändern willst</string>
     <string name="you_can_switch_when_screen_is_locked">Du kannst in den Schnelleinstellungen etwas ändern, wenn der Bildschirm gesperrt ist</string>
     <string name="about">Über</string>
     <string name="about_text">Copyright © Haruue Icymoon\nKlick hier um das Repository auf Github zu besuchen</string>
