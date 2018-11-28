@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">ADB Over Network</string>
+    <string name="permission_error">Zugriff verweigert</string>
+    <string name="supersu_tip">Du benötigst Root!</string>
+    <string name="ok">OK</string>
+    <string name="exit">Beenden</string>
+    <string name="refresh_state_failure">Refresh state failed.</string>
+    <string name="failed">Fehlgeschlagen</string>
+    <string name="wadb_on">Network adb ist an</string>
+    <string name="turn_off">Ausschalten</string>
+    <string name="switch_">Schalter</string>
+    <string name="enable_wadb">Aktiviere adb over network</string>
+    <string name="wadb">ADB Over Network</string>
+    <string name="behavior">Verhaltensweise</string>
+    <string name="show_notification_when_wadb_on">Zeige eine Nachricht an, wenn adb over network aktiviert ist</string>
+    <string name="dont_show_notification_when_wadb_on">Zeige keine Nachricht an, wenn adb over network aktiviert ist</string>
+    <string name="wadb_enabled">ADB over network ist aktiviert</string>
+    <string name="wadb_disabled">ADB over network ist deaktiviert</string>
+    <string name="enabled">Aktiviert</string>
+    <string name="disabled">Deaktiviert</string>
+    <string name="notification">Benachrichtigung</string>
+    <string name="allow_switch_when_screen_locked">Erlaube umschalten wenn der Bildschirm gesperrt ist</string>
+    <string name="you_have_to_unlock_before_switch">Du musst den Bildschirm entsperren, wenn du den Modus über die Schnelleinstellungen ändern willst</string>
+    <string name="you_can_switch_when_screen_is_locked">Du kannst in den Schnelleinstellungen etwas ändern, wenn der Bildschirm gesperrt ist</string>
+    <string name="about">Über</string>
+    <string name="about_text">Copyright © Haruue Icymoon\nKlick hier um das Repository auf Github zu besuchen</string>
+    <string name="license">Lizenz</string>
+    <string name="license_apache_2_0" translatable="false">Apache License 2.0</string>
+    <string name="summary_off_hide_launcher_icon">Verstecke das Appsymbol im Launcher nicht</string>
+    <string name="summary_on_hide_launcher_icon">Verstecke das Appsymbol im Launcher, du kannst die App beim gedrückt halten in den Schnelleinstellungen öffnen</string>
+    <string name="hide_the_icon_in_launcher">Verstecke das Appsymbol im Launcher</string>
+    <string name="tip_on_hide_launch_icon">Es könnte etwas dauern, bis das System das Appsymbol versteckt</string>
+    <string name="tip_on_show_launch_icon">Es könnte etwas dauern, bis das System das Appsymbol wieder anzeigt</string>
+    <string name="wake_lock">Lasse den Bildschirm an</string>
+    <string name="wake_lock_on">Lasse den Bildschirm an, wenn adb aktiviert ist</string>
+    <string name="wake_lock_off">Lasse den Bildschirm nicht an, wenn adb aktiviert ist</string>
+    <string name="port">Port</string>
+    <string name="default_port" translatable="false">5555</string>
+    <string name="bad_port_number">Port kann nur 1025–65535 sein\nSetzte zurück zu 5555</string>
+    <string name="low_priority_notification">Niedrige Priorität Benachrichtigung</string>
+    <string name="use_low_priority_notification">Nutze Benachrichtigungen mit niedriger Priorität zum verstecken des Benachrichtigungssymbol</string>
+    <string name="use_default_priority_notification">Nutze Benachrichtigungen mit wenig Priorität</string>
+    <string name="notification_channel_state">Aktivitätsstatus</string>
+    <string name="notification_settings">Benachrichtigungseinstellungen</string>
+    <string name="notification_settings_summary">Mehr Benachrichtigungseinstellungen (Bspw. Laut, Vibration und Wichtige) in den Systemeinstellungen</string>
+</resources>
