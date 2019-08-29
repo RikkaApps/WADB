@@ -23,20 +23,20 @@
     <string name="you_have_to_unlock_before_switch">You have to unlock screen to switch with quick setting tile</string>
     <string name="you_can_switch_when_screen_is_locked">You can switch with quick setting tile when screen is locked</string>
     <string name="about">About</string>
-    <string name="about_text">Copyright © Haruue Icymoon\nTouch to visit the repository on GitHub</string>
+    <string name="about_text">Copyright © Haruue Icymoon, Rikka\nTouch to visit the repository on GitHub</string>
     <string name="license">License</string>
     <string name="license_apache_2_0" translatable="false">Apache License 2.0</string>
-    <string name="summary_off_hide_launcher_icon">don\'t hide the icon in launcher</string>
-    <string name="summary_on_hide_launcher_icon">hide the icon in launcher, you can launch this app by long pressing our quick setting tile</string>
+    <string name="summary_off_hide_launcher_icon">Don\'t hide the icon in launcher</string>
+    <string name="summary_on_hide_launcher_icon">Hide the icon in launcher, you can launch this app by long pressing our quick setting tile</string>
     <string name="hide_the_icon_in_launcher">Hide the icon in launcher</string>
-    <string name="tip_on_hide_launch_icon">It may take a while before system hides the launcher icon</string>
-    <string name="tip_on_show_launch_icon">It may take a while before system unhides the launcher icon</string>
+    <string name="tip_on_hide_launch_icon">It may take a while before system hiding the launcher icon</string>
+    <string name="tip_on_show_launch_icon">It may take a while before system showing the launcher icon</string>
     <string name="wake_lock">Keep Screen On</string>
     <string name="wake_lock_on">Keep screen on when adb is enabling</string>
     <string name="wake_lock_off">Don\'t keep screen on when adb is enabling</string>
     <string name="port">Port</string>
     <string name="default_port" translatable="false">5555</string>
-    <string name="bad_port_number">Port number can only be 1025–65535\nReset to 5555</string>
+    <string name="bad_port_number">Port number must only be 1025–65535</string>
     <string name="low_priority_notification">Low priority notification</string>
     <string name="use_low_priority_notification">Use low priority notification to hide the notification icon</string>
     <string name="use_default_priority_notification">Use default priority notification</string>

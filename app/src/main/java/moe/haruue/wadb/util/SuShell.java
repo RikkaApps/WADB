@@ -3,14 +3,22 @@ package moe.haruue.wadb.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.topjohnwu.superuser.CallbackList;
 import com.topjohnwu.superuser.Shell;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import moe.haruue.wadb.BuildConfig;
+
 public class SuShell {
+
+    static {
+        Shell.Config.setFlags(Shell.FLAG_REDIRECT_STDERR);
+        Shell.Config.verboseLogging(BuildConfig.DEBUG);
+        Shell.Config.setTimeout(10);
+    }
 
     /**
      * Result class.
@@ -77,14 +85,25 @@ public class SuShell {
                 e.printStackTrace();
             }
             Shell.newInstance();
-            Shell.Sync.su("echo test");
+            Shell.su("echo test").exec();
         }
         return Shell.rootAccess();
     }
 
+    public synchronized static void close() {
+        Shell cached = Shell.getCachedShell();
+        if (cached != null) {
+            try {
+                cached.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static synchronized String version(boolean internal) {
-        List<String> ret = Shell.Sync.su("su -v");
-        return ret.size() > 0 ? ret.get(0) : "unknown";
+        Result result = run(internal ? "su -V" : "su -v");
+        return result.output.size() > 0 ? result.output.get(0) : "unknown";
     }
 
     public synchronized static Result run(String command) {
@@ -92,29 +111,47 @@ public class SuShell {
     }
 
     public synchronized static Result run(List<String> commands) {
-        return run(commands.toArray(new String[commands.size()]));
+        return run(commands.toArray(new String[0]));
     }
 
-    public synchronized static Result run(String[] commands) {
+    public synchronized static Result run(String... commands) {
+        Shell.Result result = Shell.su(commands).exec();
+        return new Result(result.getCode(), result.getOut());
+    }
 
-        String newCommands[] = Arrays.copyOf(commands, commands.length + 1);
-        newCommands[commands.length] = "echo $?";
+    public static class Interactive {
 
-        int exitCode = Integer.MIN_VALUE;
-        List<String> stdout = new ArrayList<>();
-        Shell.Sync.su(stdout, newCommands);
+        public interface Callback {
+            void onLine(String line);
 
-        if (stdout.size() > 0) {
-            try {
-                exitCode = Integer.valueOf(stdout.get(stdout.size() - 1));
-            } catch (NumberFormatException e) {
-                // should not happen
-                e.printStackTrace();
-            }
-
-            stdout.remove(stdout.size() - 1);
+            void onResult(Result result);
         }
 
-        return new Result(exitCode, stdout);
+        public static void run(String command, Callback callback) {
+            run(new String[]{command}, callback);
+        }
+
+        public static void run(List<String> commands, Callback callback) {
+            run(commands.toArray(new String[0]), callback);
+        }
+
+        public static void run(String[] commands, Callback callback) {
+            Shell.su(commands).to(new CallbackList<String>() {
+                @Override
+                public void onAddElement(String s) {
+                    if (callback != null) {
+                        callback.onLine(s);
+                    }
+                }
+            }).submit(result -> {
+                if (callback != null) {
+                    callback.onResult(new Result(result.getCode(), result.getOut()));
+                }
+            });
+        }
+
+        public static void close() {
+            SuShell.close();
+        }
     }
 }

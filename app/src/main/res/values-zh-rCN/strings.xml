@@ -24,7 +24,7 @@
     <string name="you_have_to_unlock_before_switch">使用快速设置开关时必须解锁屏幕</string>
     <string name="you_can_switch_when_screen_is_locked">屏幕锁定时允许使用快速设置开关直接更改状态</string>
     <string name="about">关于</string>
-    <string name="about_text">Copyright © Haruue Icymoon\n点击这里访问 GitHub 上的开源仓库</string>
+    <string name="about_text">Copyright © Haruue Icymoon, Rikka\n点击这里访问 GitHub 上的开源仓库</string>
     <string name="license">开源许可</string>
     <string name="hide_the_icon_in_launcher">隐藏启动器图标</string>
     <string name="summary_off_hide_launcher_icon">不隐藏图标</string>
@@ -35,7 +35,7 @@
     <string name="wake_lock_on">启用调试时屏幕常亮</string>
     <string name="wake_lock_off">不启用调试时屏幕常亮</string>
     <string name="port">端口</string>
-    <string name="bad_port_number">端口只能在1025–65535之间\n已重置为5555</string>
+    <string name="bad_port_number">端口只能在 1025–65535 之间</string>
     <string name="low_priority_notification">低优先级通知</string>
     <string name="use_low_priority_notification">使用低优先级通知来隐藏通知图标</string>
     <string name="use_default_priority_notification">使用默认优先级通知</string>

@@ -1,10 +1,11 @@
 package moe.haruue.wadb.util;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.PowerManager;
-import android.preference.PreferenceManager;
 
-import moe.haruue.util.StandardUtils;
-import moe.haruue.wadb.R;
+import moe.haruue.wadb.BuildConfig;
+import moe.haruue.wadb.WadbApplication;
 
 import static android.content.Context.POWER_SERVICE;
 
@@ -13,15 +14,18 @@ import static android.content.Context.POWER_SERVICE;
  */
 
 public class ScreenKeeper {
+
     private static PowerManager.WakeLock wakeLock;
 
-    public static void acquireWakeLock() {
+    @SuppressWarnings("deprecation")
+    @SuppressLint("WakelockTimeout")
+    public static void acquireWakeLock(Context context) {
         if (wakeLock == null) {
-            PowerManager powerManager = (PowerManager) StandardUtils.getApplication().getSystemService(POWER_SERVICE);
-            wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, StandardUtils.getApplication().getText(R.string.app_name).toString());
+            PowerManager powerManager = (PowerManager) context.getSystemService(POWER_SERVICE);
+            wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, BuildConfig.APPLICATION_ID + ":ScreenKeeper");
             wakeLock.setReferenceCounted(false);
         }
-        if (!wakeLock.isHeld() && PreferenceManager.getDefaultSharedPreferences(StandardUtils.getApplication()).getBoolean("pref_key_wake_lock", false)) {
+        if (!wakeLock.isHeld()) {
             wakeLock.acquire();
         }
     }

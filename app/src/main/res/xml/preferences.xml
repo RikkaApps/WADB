@@ -57,7 +57,7 @@
 
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/haruue/WADB"/>
+                android:data="@string/github_url"/>
 
         </Preference>
 
@@ -66,7 +66,7 @@
             android:title="@string/license">
 
             <intent
-                android:targetClass="moe.haruue.wadb.ui.activity.LicenseActivity"
+                android:action="moe.haruue.wadb.action.LICENSE"
                 android:targetPackage="moe.haruue.wadb"/>
 
         </Preference>

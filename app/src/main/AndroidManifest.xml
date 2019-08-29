@@ -1,51 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="moe.haruue.wadb">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="moe.haruue.wadb">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name=".App"
+        android:name=".WadbApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
-        <activity
-            android:name=".ui.activity.MainActivity"
-            android:launchMode="singleTask"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
-            </intent-filter>
-        </activity>
-        <activity
+        <activity-alias
             android:name=".ui.activity.LaunchActivity"
-            android:launchMode="singleTask"
-            android:theme="@style/Transparent">
+            android:targetActivity=".component.home.HomeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity
+            android:name=".component.home.HomeActivity"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.RootPermissionErrorDialogShadowActivity"
-            android:launchMode="singleTask"
-            android:theme="@style/Transparent"/>
-        <activity
-            android:name=".ui.activity.LicenseActivity"
-            android:launchMode="singleTask"
-            android:theme="@style/Transparent">
+            android:name=".component.license.LicenseActivity"
+            android:label="@string/license">
             <intent-filter>
-                <action android:name="moe.haruue.wadb.action.LICENSE"/>
+                <action android:name="moe.haruue.wadb.action.LICENSE" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
@@ -57,27 +50,27 @@
             android:label="@string/app_name"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
 
         <receiver
-            android:name=".ui.receiver.TurnOffReceiver"
+            android:name=".receiver.TurnOffReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="moe.haruue.wadb.action.TURN_OFF_WADB"/>
+                <action android:name="moe.haruue.wadb.action.TURN_OFF_WADB" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".ui.receiver.SecretCodeReceiver"
+            android:name=".receiver.SecretCodeReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.provider.Telephony.SECRET_CODE"/>
+                <action android:name="android.provider.Telephony.SECRET_CODE" />
                 <data
                     android:host="9232"
-                    android:scheme="android_secret_code"/>
+                    android:scheme="android_secret_code" />
             </intent-filter>
         </receiver>
     </application>

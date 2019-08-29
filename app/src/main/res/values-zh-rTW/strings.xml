@@ -24,7 +24,7 @@
     <string name="you_have_to_unlock_before_switch">使用快速設置開關時必須解鎖屏幕</string>
     <string name="you_can_switch_when_screen_is_locked">屏幕鎖定時允許使用快速設置開關直接更改狀態</string>
     <string name="about">關於</string>
-    <string name="about_text">Copyright © Haruue Icymoon\n點按這裡來訪問 GitHub 上的開源倉庫</string>
+    <string name="about_text">Copyright © Haruue Icymoon, Rikka\n點按這裡來訪問 GitHub 上的開源倉庫</string>
     <string name="license">開放原始碼許可</string>
     <string name="hide_the_icon_in_launcher">在啟動器中隱藏圖標</string>
     <string name="summary_off_hide_launcher_icon">不在啟動器中的圖標</string>
@@ -35,7 +35,7 @@
     <string name="wake_lock_on">啟用調試時屏幕常亮</string>
     <string name="wake_lock_off">不啟用調試時屏幕常亮</string>
     <string name="port">埠</string>
-    <string name="bad_port_number">埠只能在1025–65535之間 \n已重置為5555</string>
+    <string name="bad_port_number">埠只能在1025–65535之間</string>
     <string name="low_priority_notification">低優先順序通知</string>
     <string name="use_low_priority_notification">使用低優先順序通知來隱藏通知圖示</string>
     <string name="use_default_priority_notification">使用默認優先順序通知</string>

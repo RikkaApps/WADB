@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/teal_600</color>
-    <color name="colorPrimaryDark">@color/teal_800</color>
-    <color name="colorAccent">@color/teal_600</color>
+    <color name="primary_color_light">@color/material_teal_600</color>
+    <color name="primary_dark_color_light">@color/material_teal_800</color>
 </resources>
