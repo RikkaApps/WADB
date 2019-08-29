@@ -144,6 +144,8 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
             }
             return false;
         });
+
+        switchPreference.setChecked(GlobalRequestHandler.getWadbPort() != -1);
     }
 
     @Override

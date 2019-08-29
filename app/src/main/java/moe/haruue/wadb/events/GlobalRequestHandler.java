@@ -46,7 +46,7 @@ public class GlobalRequestHandler {
         }
     }
 
-    private static int getWadbPort() {
+    public static int getWadbPort() {
         String port = SystemProperties.get("service.adb.tcp.port");
         if (!TextUtils.isEmpty(port)) {
             try {
@@ -113,9 +113,8 @@ public class GlobalRequestHandler {
             }
 
             if (exitCode == 0) {
-                GlobalRequestHandler.checkWadbState();
+                Events.postWadbStateChangedEvent(event -> event.onWadbStarted(Integer.parseInt(port)));
             } else {
-                GlobalRequestHandler.checkWadbState();
                 Events.postWadbFailureEvent(WadbFailureEvent::onOperateFailure);
             }
         });
@@ -138,9 +137,8 @@ public class GlobalRequestHandler {
             }
 
             if (exitCode == 0) {
-                GlobalRequestHandler.checkWadbState();
+                Events.postWadbStateChangedEvent(WadbStateChangedEvent::onWadbStopped);
             } else {
-                GlobalRequestHandler.checkWadbState();
                 Events.postWadbFailureEvent(WadbFailureEvent::onOperateFailure);
             }
         });
