@@ -23,7 +23,7 @@
     <string name="you_have_to_unlock_before_switch">Du musst den Bildschirm entsperren, wenn du den Modus über die Schnelleinstellungen ändern willst</string>
     <string name="you_can_switch_when_screen_is_locked">Du kannst in den Schnelleinstellungen etwas ändern, wenn der Bildschirm gesperrt ist</string>
     <string name="about">Über</string>
-    <string name="about_text">Copyright © Haruue Icymoon, Rikka\nKlick hier um das Repository auf Github zu besuchen</string>
+    <string name="about_text">Klick hier um das Repository auf Github zu besuchen</string>
     <string name="license">Lizenz</string>
     <string name="license_apache_2_0" translatable="false">Apache License 2.0</string>
     <string name="summary_off_hide_launcher_icon">Verstecke das Appsymbol im Launcher nicht</string>

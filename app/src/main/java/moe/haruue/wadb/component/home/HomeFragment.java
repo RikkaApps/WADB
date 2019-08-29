@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.WadbApplication;
-import moe.haruue.wadb.WadbPreferences;
 import moe.haruue.wadb.events.Events;
 import moe.haruue.wadb.events.GlobalRequestHandler;
 import moe.haruue.wadb.events.WadbFailureEvent;
@@ -28,12 +27,19 @@ import moe.haruue.wadb.util.NotificationHelper;
 import moe.haruue.wadb.util.ScreenKeeper;
 import moe.shizuku.preference.EditTextPreference;
 import moe.shizuku.preference.PreferenceFragment;
-import moe.shizuku.preference.PreferenceManager;
 import moe.shizuku.preference.TwoStatePreference;
+
+import static moe.haruue.wadb.WadbPreferences.KEY_ABOUT;
+import static moe.haruue.wadb.WadbPreferences.KEY_LAUNCHER_ICONS;
+import static moe.haruue.wadb.WadbPreferences.KEY_NOTIFICATION;
+import static moe.haruue.wadb.WadbPreferences.KEY_NOTIFICATION_LOW_PRIORITY;
+import static moe.haruue.wadb.WadbPreferences.KEY_WADB_SWITCH;
+import static moe.haruue.wadb.WadbPreferences.KEY_WAKE_LOCK;
+import static moe.haruue.wadb.WadbPreferences.KEY_WAKE_PORT;
 
 public class HomeFragment extends PreferenceFragment implements WadbStateChangedEvent, WadbFailureEvent, SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private TwoStatePreference wadbSwitchPreference;
+    private TwoStatePreference switchPreference;
     private EditTextPreference portPreference;
 
     @Override
@@ -88,12 +94,13 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
         getPreferenceManager().setSharedPreferencesName(WadbApplication.getDefaultSharedPreferenceName());
 
         final Context context = requireContext();
-        PreferenceManager.setDefaultValues(requireActivity(), R.xml.preferences, false);
-        wadbSwitchPreference = (TwoStatePreference) findPreference("pref_key_wadb_switch");
-        portPreference = (EditTextPreference) findPreference("pref_key_wadb_port");
+        switchPreference = (TwoStatePreference) findPreference(KEY_WADB_SWITCH);
+        portPreference = (EditTextPreference) findPreference(KEY_WAKE_PORT);
 
-        TwoStatePreference launcherIconPreference = (TwoStatePreference) findPreference("pref_key_hide_launcher_icon");
-        launcherIconPreference.setChecked(WadbApplication.isLauncherActivity(context));
+        TwoStatePreference launcherIconPreference = (TwoStatePreference) findPreference(KEY_LAUNCHER_ICONS);
+        launcherIconPreference.setChecked(!WadbApplication.isLauncherActivityEnabled(context));
+
+        findPreference(KEY_ABOUT).setSummary(getString(R.string.copyright) + "\n" + getString(R.string.about_text));
 
         portPreference.setOnPreferenceChangeListener((preference, newValue) -> {
             String port;
@@ -110,8 +117,19 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
                 return false;
             }
 
-            if (getPreferenceManager().getSharedPreferences().getBoolean("pref_key_wadb_switch", false)) {
+            if (getPreferenceManager().getSharedPreferences().getBoolean(KEY_WADB_SWITCH, false)) {
                 GlobalRequestHandler.startWadb(port);
+            }
+            return true;
+        });
+
+        launcherIconPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+            if ((boolean) newValue) {
+                WadbApplication.disableLauncherActivity(context);
+                Toast.makeText(context, R.string.tip_on_hide_launch_icon, Toast.LENGTH_SHORT).show();
+            } else {
+                WadbApplication.enableLauncherActivity(context);
+                Toast.makeText(context, R.string.tip_on_show_launch_icon, Toast.LENGTH_SHORT).show();
             }
             return true;
         });
@@ -138,22 +156,22 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
 
         String ip = NetworksUtils.getLocalIPAddress(context);
         // refresh switch
-        wadbSwitchPreference.setChecked(true);
-        wadbSwitchPreference.setSummaryOn(ip + ":" + port);
+        switchPreference.setChecked(true);
+        switchPreference.setSummaryOn(ip + ":" + port);
         // refresh port
         portPreference.setText(Integer.toString(port));
         portPreference.setSummary(Integer.toString(port));
-        wadbSwitchPreference.setEnabled(true);
+        switchPreference.setEnabled(true);
         portPreference.setEnabled(true);
     }
 
     @Override
     public void onWadbStopped() {
         // refresh switch
-        wadbSwitchPreference.setChecked(false);
-        getPreferenceManager().getSharedPreferences().edit().putBoolean("pref_key_wadb_switch", false).apply();
+        switchPreference.setChecked(false);
+        getPreferenceManager().getSharedPreferences().edit().putBoolean(KEY_WADB_SWITCH, false).apply();
 
-        wadbSwitchPreference.setEnabled(true);
+        switchPreference.setEnabled(true);
         portPreference.setEnabled(true);
     }
 
@@ -187,39 +205,30 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
     public void onSharedPreferenceChanged(SharedPreferences preferences, String key) {
         final Context context = requireContext();
         switch (key) {
-            case "pref_key_wadb_switch":
-                if (wadbSwitchPreference.isEnabled()) {
-                    wadbSwitchPreference.setEnabled(false);
+            case KEY_WADB_SWITCH:
+                if (switchPreference.isEnabled()) {
+                    switchPreference.setEnabled(false);
                     portPreference.setEnabled(false);
                     if (preferences.getBoolean(key, false)) {
-                        GlobalRequestHandler.startWadb(preferences.getString("pref_key_wadb_port", "5555"));
+                        GlobalRequestHandler.startWadb(WadbApplication.getWadbPort(context));
                     } else {
                         GlobalRequestHandler.stopWadb();
                     }
                 }
                 break;
             // refresh notification when notification preferences are changed
-            case "pref_key_notification":
-            case "pref_key_notification_low_priority":
-                if (preferences.getBoolean("pref_key_wadb_switch", false)) {
-                    if (preferences.getBoolean("pref_key_notification", true)) {
+            case KEY_NOTIFICATION:
+            case KEY_NOTIFICATION_LOW_PRIORITY:
+                if (preferences.getBoolean(KEY_WADB_SWITCH, false)) {
+                    if (preferences.getBoolean(KEY_NOTIFICATION, true)) {
                         GlobalRequestHandler.checkWadbState();
                     }
                 } else {
                     NotificationHelper.cancelNotification(context);
                 }
                 break;
-            case "pref_key_hide_launcher_icon":
-                if (preferences.getBoolean(key, false)) {
-                    WadbApplication.hideLauncherActivity(context);
-                    Toast.makeText(context, R.string.tip_on_hide_launch_icon, Toast.LENGTH_SHORT).show();
-                } else {
-                    WadbApplication.showLauncherActivity(context);
-                    Toast.makeText(context, R.string.tip_on_show_launch_icon, Toast.LENGTH_SHORT).show();
-                }
-                break;
-            case WadbPreferences.KEY_WAKE_LOCK:
-                if (preferences.getBoolean(key, false) && preferences.getBoolean("pref_key_wadb_switch", false)) {
+            case KEY_WAKE_LOCK:
+                if (preferences.getBoolean(key, false) && preferences.getBoolean(KEY_WADB_SWITCH, false)) {
                     ScreenKeeper.acquireWakeLock(context);
                 } else {
                     ScreenKeeper.releaseWakeLock();

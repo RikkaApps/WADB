@@ -23,7 +23,7 @@
     <string name="you_have_to_unlock_before_switch">You have to unlock screen to switch with quick setting tile</string>
     <string name="you_can_switch_when_screen_is_locked">You can switch with quick setting tile when screen is locked</string>
     <string name="about">About</string>
-    <string name="about_text">Copyright © Haruue Icymoon, Rikka\nTouch to visit the repository on GitHub</string>
+    <string name="about_text">Touch to visit the repository on GitHub</string>
     <string name="license">License</string>
     <string name="license_apache_2_0" translatable="false">Apache License 2.0</string>
     <string name="summary_off_hide_launcher_icon">Don\'t hide the icon in launcher</string>

@@ -9,6 +9,7 @@ import androidx.annotation.RequiresApi;
 
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.WadbApplication;
+import moe.haruue.wadb.WadbPreferences;
 import moe.haruue.wadb.events.Events;
 import moe.haruue.wadb.events.GlobalRequestHandler;
 import moe.haruue.wadb.events.WadbFailureEvent;
@@ -23,7 +24,7 @@ import moe.haruue.wadb.util.NetworksUtils;
 public abstract class WadbTileService extends TileService implements WadbStateChangedEvent, WadbFailureEvent {
 
     private final Runnable mStartWadbRunnable = () -> {
-        GlobalRequestHandler.startWadb(WadbApplication.getDefaultSharedPreferences(WadbTileService.this).getString("pref_key_wadb_port", "5555"));
+        GlobalRequestHandler.startWadb(WadbApplication.getWadbPort(this));
     };
 
     private static final Runnable STOP_WADB = GlobalRequestHandler::stopWadb;

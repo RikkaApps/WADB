@@ -12,6 +12,7 @@ import android.os.Build;
 
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.WadbApplication;
+import moe.haruue.wadb.WadbPreferences;
 import moe.haruue.wadb.component.home.HomeActivity;
 import moe.haruue.wadb.receiver.TurnOffReceiver;
 
@@ -54,12 +55,12 @@ public class NotificationHelper {
                 .setOngoing(true);
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            builder.setPriority(WadbApplication.getDefaultSharedPreferences(context).getBoolean("pref_key_notification_low_priority", true) ?
+            builder.setPriority(WadbApplication.getDefaultSharedPreferences(context).getBoolean(WadbPreferences.KEY_NOTIFICATION_LOW_PRIORITY, true) ?
                     Notification.PRIORITY_MIN : Notification.PRIORITY_DEFAULT);
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("state", context.getString(R.string.notification_channel_state), NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL, context.getString(R.string.notification_channel_state), NotificationManager.IMPORTANCE_DEFAULT);
             channel.setSound(null, null);
             channel.setShowBadge(false);
             channel.setBypassDnd(false);

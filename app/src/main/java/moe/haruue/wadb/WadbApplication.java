@@ -19,12 +19,12 @@ public class WadbApplication extends Application implements WadbStateChangedEven
 
     private static final ComponentName LAUNCHER_ACTIVITY = ComponentName.createRelative(BuildConfig.APPLICATION_ID, ".ui.activity.LaunchActivity");
 
-    public static boolean isLauncherActivity(Context context) {
+    public static boolean isLauncherActivityEnabled(Context context) {
         int state = context.getPackageManager().getComponentEnabledSetting(LAUNCHER_ACTIVITY);
         return state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT || state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
     }
 
-    public static void hideLauncherActivity(Context context) {
+    public static void disableLauncherActivity(Context context) {
         context.getPackageManager().setComponentEnabledSetting(
                 LAUNCHER_ACTIVITY,
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
@@ -32,7 +32,7 @@ public class WadbApplication extends Application implements WadbStateChangedEven
         );
     }
 
-    public static void showLauncherActivity(Context context) {
+    public static void enableLauncherActivity(Context context) {
         context.getPackageManager().setComponentEnabledSetting(
                 LAUNCHER_ACTIVITY,
                 PackageManager.COMPONENT_ENABLED_STATE_DEFAULT,
@@ -48,6 +48,10 @@ public class WadbApplication extends Application implements WadbStateChangedEven
         return context.getApplicationContext().getSharedPreferences(getDefaultSharedPreferenceName(), Context.MODE_PRIVATE);
     }
 
+    public static String getWadbPort(Context context) {
+        return getDefaultSharedPreferences(context).getString(WadbPreferences.KEY_WAKE_PORT, "5555");
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -60,7 +64,9 @@ public class WadbApplication extends Application implements WadbStateChangedEven
         preferences.edit().putString(WadbPreferences.KEY_WAKE_PORT, Integer.toString(port)).apply();
 
         String ip = NetworksUtils.getLocalIPAddress(this);
-        NotificationHelper.showNotification(this, ip, port);
+        if (preferences.getBoolean(WadbPreferences.KEY_NOTIFICATION, true)) {
+            NotificationHelper.showNotification(this, ip, port);
+        }
         if (preferences.getBoolean(WadbPreferences.KEY_WAKE_LOCK, false)) {
             ScreenKeeper.acquireWakeLock(this);
         }

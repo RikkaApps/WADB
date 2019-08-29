@@ -52,6 +52,7 @@
         android:title="@string/about">
 
         <Preference
+            android:key="pref_key_about"
             android:summary="@string/about_text"
             android:title="@string/app_name">
 
