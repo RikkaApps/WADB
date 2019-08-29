@@ -12,7 +12,7 @@ android {
         resValue "string", "github_url", "https://github.com/RikkaApps/WADB"
         resValue "string", "copyright", "Copyright © Haruue Icymoon, PinkD, Rikka"
 
-        buildConfigField "boolean", "DONOT_RESTART_ADBD", "true" // set it true to prevent restart adbd for DEBUG
+        buildConfigField "boolean", "DONOT_RESTART_ADBD", "false" // set it true to prevent restart adbd for DEBUG
     }
     signingConfigs {
         sign
@@ -60,6 +60,7 @@ repositories {
     google()
     maven { url 'https://dl.bintray.com/haruue/maven/' }
     maven { url 'https://dl.bintray.com/rikkaw/Libraries' }
+    maven { url 'https://dl.bintray.com/rikkaw/Shizuku' }
     mavenLocal()
 }
 
@@ -83,6 +84,8 @@ dependencies {
     implementation "moe.shizuku.preference:preference-simplemenu:$preferenceVersion"
 
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
+
+    implementation 'moe.shizuku.privilege:api:3.0.0-alpha10'
 }
 
 

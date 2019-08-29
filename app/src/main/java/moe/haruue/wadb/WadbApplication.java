@@ -77,14 +77,4 @@ public class WadbApplication extends Application implements WadbStateChangedEven
         NotificationHelper.cancelNotification(this);
         ScreenKeeper.releaseWakeLock();
     }
-
-    @Override
-    public void onRootPermissionFailure() {
-        onWadbStopped();
-    }
-
-    @Override
-    public void onOperateFailure() {
-        onWadbStopped();
-    }
 }

@@ -117,7 +117,7 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
                 return false;
             }
 
-            if (getPreferenceManager().getSharedPreferences().getBoolean(KEY_WADB_SWITCH, false)) {
+            if (switchPreference.isChecked()) {
                 GlobalRequestHandler.startWadb(port);
             }
             return true;
@@ -132,6 +132,17 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
                 Toast.makeText(context, R.string.tip_on_show_launch_icon, Toast.LENGTH_SHORT).show();
             }
             return true;
+        });
+
+        switchPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+            switchPreference.setEnabled(false);
+            portPreference.setEnabled(false);
+            if ((boolean) newValue) {
+                GlobalRequestHandler.startWadb(WadbApplication.getWadbPort(context));
+            } else {
+                GlobalRequestHandler.stopWadb();
+            }
+            return false;
         });
     }
 
@@ -169,7 +180,6 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
     public void onWadbStopped() {
         // refresh switch
         switchPreference.setChecked(false);
-        getPreferenceManager().getSharedPreferences().edit().putBoolean(KEY_WADB_SWITCH, false).apply();
 
         switchPreference.setEnabled(true);
         portPreference.setEnabled(true);
@@ -177,8 +187,6 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
 
     @Override
     public void onRootPermissionFailure() {
-        onWadbStopped();
-
         Activity activity = getActivity();
         if (activity == null || activity.isFinishing()) {
             return;
@@ -197,29 +205,13 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
     }
 
     @Override
-    public void onOperateFailure() {
-        onWadbStopped();
-    }
-
-    @Override
     public void onSharedPreferenceChanged(SharedPreferences preferences, String key) {
         final Context context = requireContext();
         switch (key) {
-            case KEY_WADB_SWITCH:
-                if (switchPreference.isEnabled()) {
-                    switchPreference.setEnabled(false);
-                    portPreference.setEnabled(false);
-                    if (preferences.getBoolean(key, false)) {
-                        GlobalRequestHandler.startWadb(WadbApplication.getWadbPort(context));
-                    } else {
-                        GlobalRequestHandler.stopWadb();
-                    }
-                }
-                break;
             // refresh notification when notification preferences are changed
             case KEY_NOTIFICATION:
             case KEY_NOTIFICATION_LOW_PRIORITY:
-                if (preferences.getBoolean(KEY_WADB_SWITCH, false)) {
+                if (switchPreference.isChecked()) {
                     if (preferences.getBoolean(KEY_NOTIFICATION, true)) {
                         GlobalRequestHandler.checkWadbState();
                     }
@@ -228,7 +220,7 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
                 }
                 break;
             case KEY_WAKE_LOCK:
-                if (preferences.getBoolean(key, false) && preferences.getBoolean(KEY_WADB_SWITCH, false)) {
+                if (preferences.getBoolean(key, false) && switchPreference.isChecked()) {
                     ScreenKeeper.acquireWakeLock(context);
                 } else {
                     ScreenKeeper.releaseWakeLock();

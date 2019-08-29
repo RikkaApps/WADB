@@ -100,14 +100,4 @@ public abstract class WadbTileService extends TileService implements WadbStateCh
     public void onWadbStopped() {
         showStateOff();
     }
-
-    @Override
-    public void onRootPermissionFailure() {
-        onWadbStopped();
-    }
-
-    @Override
-    public void onOperateFailure() {
-        onWadbStopped();
-    }
 }
