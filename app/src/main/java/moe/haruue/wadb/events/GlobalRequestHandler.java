@@ -1,6 +1,7 @@
 package moe.haruue.wadb.events;
 
 import android.os.SystemProperties;
+import android.service.quicksettings.TileService;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -79,21 +80,18 @@ public class GlobalRequestHandler {
     }
 
     private static int runShizukuRemoteCommands(String[] cmds) {
+        int res = 0;
         for (String line : cmds) {
             try {
                 String[] cmd = line.split(" ");
                 RemoteProcess remoteProcess = ShizukuService.newProcess(cmd, null, null);
-                int res = remoteProcess.waitFor();
+                res = remoteProcess.waitFor();
                 remoteProcess.destroy();
-
-                if (res != 0) {
-                    return res;
-                }
             } catch (Throwable tr) {
                 tr.printStackTrace();
             }
         }
-        return -1;
+        return res;
     }
 
     public static void startWadb(String port) {
@@ -115,6 +113,8 @@ public class GlobalRequestHandler {
             if (exitCode == 0) {
                 Events.postWadbStateChangedEvent(event -> event.onWadbStarted(Integer.parseInt(port)));
             } else {
+                Events.postWadbFailureEvent(WadbFailureEvent::onRootPermissionFailure);
+
                 Events.postWadbFailureEvent(WadbFailureEvent::onOperateFailure);
             }
         });

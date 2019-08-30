@@ -1,5 +1,6 @@
 package moe.haruue.wadb.service;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.graphics.drawable.Icon;
 import android.os.Build;
@@ -21,7 +22,7 @@ import moe.haruue.wadb.util.NetworksUtils;
  */
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-public abstract class WadbTileService extends TileService implements WadbStateChangedEvent, WadbFailureEvent {
+public abstract class WadbTileService extends TileService {
 
     private final Runnable mStartWadbRunnable = () -> {
         GlobalRequestHandler.startWadb(WadbApplication.getWadbPort(this));
@@ -29,22 +30,22 @@ public abstract class WadbTileService extends TileService implements WadbStateCh
 
     private static final Runnable STOP_WADB = GlobalRequestHandler::stopWadb;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Events.registerAll(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Events.unregisterAll(this);
+    public static void requestListening(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            TileService.requestListeningState(context, ComponentName.createRelative(context, moe.haruue.wadb.ui.service.WadbTileService.class.getName()));
+        }
     }
 
     @Override
     public void onStartListening() {
         super.onStartListening();
-        GlobalRequestHandler.checkWadbState();
+
+        int port;
+        if ((port = GlobalRequestHandler.getWadbPort()) != -1) {
+            showStateOn(NetworksUtils.getLocalIPAddress(this), port);
+        } else {
+            showStateOff();
+        }
     }
 
     @Override
@@ -88,16 +89,5 @@ public abstract class WadbTileService extends TileService implements WadbStateCh
         Tile tile = getQsTile();
         tile.setState(Tile.STATE_UNAVAILABLE);
         tile.updateTile();
-    }
-
-    @Override
-    public void onWadbStarted(int port) {
-        String ip = NetworksUtils.getLocalIPAddress(this);
-        showStateOn(ip, port);
-    }
-
-    @Override
-    public void onWadbStopped() {
-        showStateOff();
     }
 }

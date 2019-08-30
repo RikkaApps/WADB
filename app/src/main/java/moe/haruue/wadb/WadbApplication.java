@@ -5,12 +5,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
 
 import moe.haruue.wadb.events.Events;
 import moe.haruue.wadb.events.WadbFailureEvent;
 import moe.haruue.wadb.events.WadbStateChangedEvent;
+import moe.haruue.wadb.service.WadbTileService;
 import moe.haruue.wadb.util.NetworksUtils;
 import moe.haruue.wadb.util.NotificationHelper;
 import moe.haruue.wadb.util.ScreenKeeper;
@@ -60,6 +59,8 @@ public class WadbApplication extends Application implements WadbStateChangedEven
 
     @Override
     public void onWadbStarted(int port) {
+        WadbTileService.requestListening(this);
+
         SharedPreferences preferences = getDefaultSharedPreferences(this);
         preferences.edit().putString(WadbPreferences.KEY_WAKE_PORT, Integer.toString(port)).apply();
 
@@ -74,6 +75,8 @@ public class WadbApplication extends Application implements WadbStateChangedEven
 
     @Override
     public void onWadbStopped() {
+        WadbTileService.requestListening(this);
+
         NotificationHelper.cancelNotification(this);
         ScreenKeeper.releaseWakeLock();
     }
