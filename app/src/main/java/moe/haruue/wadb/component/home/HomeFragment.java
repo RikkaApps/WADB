@@ -138,7 +138,7 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
             switchPreference.setEnabled(false);
             portPreference.setEnabled(false);
             if ((boolean) newValue) {
-                GlobalRequestHandler.startWadb(WadbApplication.getWadbPort(context));
+                GlobalRequestHandler.startWadb(WadbApplication.getWadbPort());
             } else {
                 GlobalRequestHandler.stopWadb();
             }

@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import moe.haruue.wadb.events.Events;
 import moe.haruue.wadb.events.WadbFailureEvent;
 import moe.haruue.wadb.events.WadbStateChangedEvent;
-import moe.haruue.wadb.service.WadbTileService;
 import moe.haruue.wadb.util.NetworksUtils;
 import moe.haruue.wadb.util.NotificationHelper;
 import moe.haruue.wadb.util.ScreenKeeper;
@@ -43,12 +42,18 @@ public class WadbApplication extends Application implements WadbStateChangedEven
         return BuildConfig.APPLICATION_ID + "_preferences";
     }
 
-    public static SharedPreferences getDefaultSharedPreferences(Context context) {
-        return context.getApplicationContext().getSharedPreferences(getDefaultSharedPreferenceName(), Context.MODE_PRIVATE);
+    public static SharedPreferences getDefaultSharedPreferences() {
+        return getInstance().getSharedPreferences(getDefaultSharedPreferenceName(), Context.MODE_PRIVATE);
     }
 
-    public static String getWadbPort(Context context) {
-        return getDefaultSharedPreferences(context).getString(WadbPreferences.KEY_WAKE_PORT, "5555");
+    public static String getWadbPort() {
+        return getDefaultSharedPreferences().getString(WadbPreferences.KEY_WAKE_PORT, "5555");
+    }
+
+    public static WadbApplication sApplication;
+
+    public static WadbApplication getInstance() {
+        return sApplication;
     }
 
     @Override
@@ -59,9 +64,7 @@ public class WadbApplication extends Application implements WadbStateChangedEven
 
     @Override
     public void onWadbStarted(int port) {
-        WadbTileService.requestListening(this);
-
-        SharedPreferences preferences = getDefaultSharedPreferences(this);
+        SharedPreferences preferences = getDefaultSharedPreferences();
         preferences.edit().putString(WadbPreferences.KEY_WAKE_PORT, Integer.toString(port)).apply();
 
         String ip = NetworksUtils.getLocalIPAddress(this);
@@ -75,9 +78,13 @@ public class WadbApplication extends Application implements WadbStateChangedEven
 
     @Override
     public void onWadbStopped() {
-        WadbTileService.requestListening(this);
-
         NotificationHelper.cancelNotification(this);
         ScreenKeeper.releaseWakeLock();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        sApplication = this;
     }
 }

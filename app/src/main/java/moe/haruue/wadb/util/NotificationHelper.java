@@ -55,7 +55,7 @@ public class NotificationHelper {
                 .setOngoing(true);
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            builder.setPriority(WadbApplication.getDefaultSharedPreferences(context).getBoolean(WadbPreferences.KEY_NOTIFICATION_LOW_PRIORITY, true) ?
+            builder.setPriority(WadbApplication.getDefaultSharedPreferences().getBoolean(WadbPreferences.KEY_NOTIFICATION_LOW_PRIORITY, true) ?
                     Notification.PRIORITY_MIN : Notification.PRIORITY_DEFAULT);
         }
 

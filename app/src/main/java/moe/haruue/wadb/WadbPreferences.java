@@ -9,4 +9,5 @@ public class WadbPreferences {
     public static final String KEY_LAUNCHER_ICONS = "pref_key_hide_launcher_icon";
     public static final String KEY_WADB_SWITCH = "pref_key_wadb_switch";
     public static final String KEY_ABOUT = "pref_key_about";
+    public static final String KEY_SHIZUKU = "pref_key_shizuku";
 }

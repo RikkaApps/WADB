@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+def localProps = new Properties()
+localProps.load(new FileInputStream(rootProject.file('local.properties')))
+
 android {
     compileSdkVersion rootProject.ext.targetSdkVersion
     defaultConfig {
@@ -12,7 +15,7 @@ android {
         resValue "string", "github_url", "https://github.com/RikkaApps/WADB"
         resValue "string", "copyright", "Copyright © Haruue Icymoon, PinkD, Rikka"
 
-        buildConfigField "boolean", "DONOT_RESTART_ADBD", "false" // set it true to prevent restart adbd for DEBUG
+        buildConfigField "boolean", "DONOT_RESTART_ADBD", "${localProps.get("debug.dontRestartAdbd", false)}" // set it true to prevent restart adbd for DEBUG
     }
     signingConfigs {
         sign
@@ -85,7 +88,7 @@ dependencies {
 
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
 
-    implementation 'moe.shizuku.privilege:api:3.0.0-alpha10'
+    implementation 'moe.shizuku.privilege:api:3.1.0-alpha1'
 }
 
 

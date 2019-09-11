@@ -43,4 +43,5 @@
     <string name="notification_channel_state">Running status</string>
     <string name="notification_settings">Notification Settings</string>
     <string name="notification_settings_summary">More notification preferences (such as sound, vibrate and importance) in system settings</string>
+    <string name="use_shizuku">Use Shizuku</string>
 </resources>
