@@ -22,4 +22,9 @@ public class LicenseActivity extends BaseActivity {
         WebView licenseView = findViewById(R.id.webview_license);
         licenseView.loadUrl("file:///android_asset/license.html");
     }
+
+    @Override
+    public boolean shouldApplyTranslucentSystemBars() {
+        return false;
+    }
 }
