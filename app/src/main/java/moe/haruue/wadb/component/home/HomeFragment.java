@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,9 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
         super.onCreate(savedInstanceState);
         Events.registerAll(this);
         GlobalRequestHandler.checkWadbState();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationHelper.createNotificationChannel(requireContext());
+        }
     }
 
     @Override
