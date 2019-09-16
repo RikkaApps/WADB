@@ -32,6 +32,14 @@
             android:summaryOn="@string/show_notification_when_wadb_on"
             android:title="@string/notification" />
 
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_key_notification_low_priority"
+            android:dependency="pref_key_notification"
+            android:summaryOff="@string/use_default_priority_notification"
+            android:summaryOn="@string/use_low_priority_notification"
+            android:title="@string/low_priority_notification"/>
+
         <Preference
             android:summary="@string/notification_settings_summary"
             android:title="@string/notification_settings">

@@ -26,6 +26,7 @@ import moe.haruue.wadb.events.WadbStateChangedEvent;
 import moe.haruue.wadb.util.NetworksUtils;
 import moe.haruue.wadb.util.NotificationHelper;
 import moe.haruue.wadb.util.ScreenKeeper;
+import moe.shizuku.preference.CheckBoxPreference;
 import moe.shizuku.preference.EditTextPreference;
 import moe.shizuku.preference.PreferenceFragment;
 import moe.shizuku.preference.TwoStatePreference;
@@ -94,13 +95,18 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.preferences);
         getPreferenceManager().setStorageDeviceProtected();
+        addPreferencesFromResource(R.xml.preferences);
         getPreferenceManager().setSharedPreferencesName(WadbApplication.getDefaultSharedPreferenceName());
 
         final Context context = requireContext();
         switchPreference = (TwoStatePreference) findPreference(KEY_WADB_SWITCH);
         portPreference = (EditTextPreference) findPreference(KEY_WAKE_PORT);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CheckBoxPreference checkBoxPreference = (CheckBoxPreference) findPreference(KEY_NOTIFICATION_LOW_PRIORITY);
+            checkBoxPreference.setVisible(false);
+        }
 
         TwoStatePreference launcherIconPreference = (TwoStatePreference) findPreference(KEY_LAUNCHER_ICONS);
         launcherIconPreference.setChecked(!WadbApplication.isLauncherActivityEnabled(context));
