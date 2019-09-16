@@ -21,10 +21,10 @@ start adbd
 
 主要还是想试一下 Android N 上新加的 [Tile API](https://developer.android.com/preview/api-overview.html#tile_api) ，所以这些效果需要 Android N 才能看到。
 
-<img src="readme.res/zh_rCN/01.png" width="30%" heigth="30%">
-<img src="readme.res/zh_rCN/02.png" width="30%" heigth="30%">
-<img src="readme.res/zh_rCN/03.png" width="30%" heigth="30%">
-<img src="readme.res/zh_rCN/04.png" width="30%" heigth="30%">
+<img src="readme.res/zh_rCN/01.png" width="30%" height="30%">
+<img src="readme.res/zh_rCN/02.png" width="30%" height="30%">
+<img src="readme.res/zh_rCN/03.png" width="30%" height="30%">
+<img src="readme.res/zh_rCN/04.png" width="30%" height="30%">
 
 ## 下载
 

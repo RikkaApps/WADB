@@ -23,10 +23,10 @@ Support the new [Tile API](https://developer.android.com/preview/api-overview.ht
 
 ## Screenshot
 
-<img src="readme.res/01.png" width="30%" heigth="30%">
-<img src="readme.res/02.png" width="30%" heigth="30%">
-<img src="readme.res/03.png" width="30%" heigth="30%">
-<img src="readme.res/04.png" width="30%" heigth="30%">
+<img src="readme.res/01.png" width="30%" height="30%">
+<img src="readme.res/02.png" width="30%" height="30%">
+<img src="readme.res/03.png" width="30%" height="30%">
+<img src="readme.res/04.png" width="30%" height="30%">
 
 ## Download
 

@@ -4,12 +4,11 @@ import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
-import static android.content.Context.WIFI_SERVICE;
-
 public class NetworksUtils {
 
     public static String getLocalIPAddress(Context context) {
-        WifiManager wifiManger = (WifiManager) context.getApplicationContext().getSystemService(WIFI_SERVICE);
+        WifiManager wifiManger = context.getApplicationContext().getSystemService(WifiManager.class);
+        if (wifiManger == null) return intToIp(0);
         WifiInfo wifiInfo = wifiManger.getConnectionInfo();
         return intToIp(wifiInfo.getIpAddress());
     }

@@ -43,7 +43,12 @@ public class WadbApplication extends Application implements WadbStateChangedEven
     }
 
     public static SharedPreferences getDefaultSharedPreferences() {
-        return getInstance().getSharedPreferences(getDefaultSharedPreferenceName(), Context.MODE_PRIVATE);
+        Context context= getInstance();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            context = getInstance().createDeviceProtectedStorageContext();
+            context.moveSharedPreferencesFrom(getInstance(),getDefaultSharedPreferenceName());
+        }
+        return context.getSharedPreferences(getDefaultSharedPreferenceName(), Context.MODE_PRIVATE);
     }
 
     public static String getWadbPort() {
