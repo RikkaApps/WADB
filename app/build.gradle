@@ -88,7 +88,6 @@ dependencies {
     implementation "moe.shizuku.support:design:3.1.11"
     implementation "moe.shizuku.support:support-utils:3.0.6"
     implementation "moe.shizuku.preference:preference-android:$preferenceVersion"
-    implementation "moe.shizuku.preference:preference-simplemenu-android:$preferenceVersion"
 
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
 
