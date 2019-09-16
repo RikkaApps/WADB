@@ -5,9 +5,6 @@ import android.content.Context;
 import android.os.PowerManager;
 
 import moe.haruue.wadb.BuildConfig;
-import moe.haruue.wadb.WadbApplication;
-
-import static android.content.Context.POWER_SERVICE;
 
 /**
  * @author PinkD
@@ -21,7 +18,8 @@ public class ScreenKeeper {
     @SuppressLint("WakelockTimeout")
     public static void acquireWakeLock(Context context) {
         if (wakeLock == null) {
-            PowerManager powerManager = (PowerManager) context.getSystemService(POWER_SERVICE);
+            PowerManager powerManager = context.getSystemService(PowerManager.class);
+            if (powerManager == null) return;
             wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, BuildConfig.APPLICATION_ID + ":ScreenKeeper");
             wakeLock.setReferenceCounted(false);
         }

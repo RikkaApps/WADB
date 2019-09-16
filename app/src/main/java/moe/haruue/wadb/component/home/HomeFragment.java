@@ -95,6 +95,7 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.preferences);
+        getPreferenceManager().setStorageDeviceProtected();
         getPreferenceManager().setSharedPreferencesName(WadbApplication.getDefaultSharedPreferenceName());
 
         final Context context = requireContext();
@@ -108,15 +109,9 @@ public class HomeFragment extends PreferenceFragment implements WadbStateChanged
 
         portPreference.setOnPreferenceChangeListener((preference, newValue) -> {
             String port;
-            try {
-                port = (String) newValue;
-                int p = Integer.parseInt(port);
-                if (p < 1025 || p > 65535) {
-                    throw new NumberFormatException("Port must be 1025-65535");
-                }
-            } catch (Throwable e) {
-                e.printStackTrace();
-
+            port = (String) newValue;
+            int p = Integer.parseInt(port);
+            if (p < 1025 || p > 65535) {
                 Toast.makeText(context, R.string.bad_port_number, Toast.LENGTH_SHORT).show();
                 return false;
             }
