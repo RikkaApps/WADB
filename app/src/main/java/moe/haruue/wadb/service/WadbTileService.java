@@ -80,13 +80,15 @@ public abstract class WadbTileService extends TileService implements WadbStateCh
         Log.d(TAG, "showStateOn");
 
         final Tile tile = getQsTile();
-        if (tile.getState() == Tile.STATE_ACTIVE) {
+        final String label = ip + ":" + port;
+        if (tile.getState() == Tile.STATE_ACTIVE
+                && label.equals(tile.getLabel().toString())) {
             return;
         }
         final Context context = this;
         tile.setState(Tile.STATE_ACTIVE);
         tile.setIcon(Icon.createWithResource(context, R.drawable.ic_qs_network_adb_on));
-        tile.setLabel(ip + ":" + port);
+        tile.setLabel(label);
         tile.updateTile();
     }
 
