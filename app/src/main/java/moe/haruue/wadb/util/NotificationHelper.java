@@ -35,6 +35,8 @@ public class NotificationHelper {
         turnOffIntent.setComponent(new ComponentName(context, TurnOffReceiver.class));
         PendingIntent turnOffPendingIntent = PendingIntent.getBroadcast(context, 0, turnOffIntent, 0);
         Notification.Action turnOffAction = new Notification.Action.Builder(Icon.createWithResource(context, R.drawable.ic_close_white_24dp), context.getString(R.string.turn_off), turnOffPendingIntent).build();
+        int visibility = WadbApplication.getDefaultSharedPreferences().getBoolean(WadbPreferences.KEY_SCREEN_LOCK_SWITCH, false) ?
+                Notification.VISIBILITY_PUBLIC : Notification.VISIBILITY_PRIVATE;
 
         // Android Q supports dark status bar, but still uses color restriction algorithm of light background,
         // so we still have to use light color here
@@ -53,6 +55,7 @@ public class NotificationHelper {
                 .setSmallIcon(R.drawable.ic_qs_network_adb_on)
                 .setContentIntent(contentPendingIntent)
                 .addAction(turnOffAction)
+                .setVisibility(visibility)
                 .setColor(color)
                 .setOngoing(true);
 

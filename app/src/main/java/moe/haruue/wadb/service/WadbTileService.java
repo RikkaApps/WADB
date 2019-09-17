@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi;
 
 import moe.haruue.wadb.R;
 import moe.haruue.wadb.WadbApplication;
+import moe.haruue.wadb.WadbPreferences;
 import moe.haruue.wadb.events.Events;
 import moe.haruue.wadb.events.GlobalRequestHandler;
 import moe.haruue.wadb.events.WadbStateChangedEvent;
@@ -60,7 +61,7 @@ public abstract class WadbTileService extends TileService implements WadbStateCh
         super.onClick();
 
         Log.d(TAG, "onClick");
-        boolean enableScreenLockSwitch = WadbApplication.getDefaultSharedPreferences().getBoolean("pref_key_screen_lock_switch", false);
+        boolean enableScreenLockSwitch = WadbApplication.getDefaultSharedPreferences().getBoolean(WadbPreferences.KEY_SCREEN_LOCK_SWITCH, false);
         if (getQsTile().getState() == Tile.STATE_ACTIVE) {
             if (enableScreenLockSwitch) {
                 STOP_WADB.run();
