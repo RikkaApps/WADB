@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rikka.design.widget.RaisedAppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:colorPrimary"
+    android:elevation="0dp"
+    android:fitsSystemWindows="true"
+    android:stateListAnimator="@animator/appbar_animator"
+    android:theme="?android:actionBarTheme">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        style="?android:actionBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="0dp"
+        android:background="@null"
+        android:elevation="0dp"
+        android:gravity="center_vertical"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:subtitleTextAppearance="@android:style/TextAppearance.Material.Widget.Toolbar.Subtitle"
+        android:titleTextAppearance="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
+        tools:text="Title" />
+
+</rikka.design.widget.RaisedAppBarLayout>

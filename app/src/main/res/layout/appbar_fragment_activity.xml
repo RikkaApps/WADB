@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rikka.design.widget.FitsSystemWindowsFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include layout="@layout/appbar"/>
+
+</rikka.design.widget.FitsSystemWindowsFrameLayout>

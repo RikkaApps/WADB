@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--suppress DeprecatedClassUsageInspection, AndroidElementNotAllowed -->
+<?xml version="1.0" encoding="utf-8"?><!--suppress DeprecatedClassUsageInspection, AndroidElementNotAllowed -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
@@ -14,6 +13,7 @@
             android:title="@string/wadb" />
 
         <EditTextPreference
+            android:defaultValue="5555"
             android:inputType="numberDecimal|numberSigned"
             android:key="pref_key_wadb_port"
             android:summary="%s"
@@ -34,11 +34,11 @@
 
         <CheckBoxPreference
             android:defaultValue="false"
-            android:key="pref_key_notification_low_priority"
             android:dependency="pref_key_notification"
+            android:key="pref_key_notification_low_priority"
             android:summaryOff="@string/use_default_priority_notification"
             android:summaryOn="@string/use_low_priority_notification"
-            android:title="@string/low_priority_notification"/>
+            android:title="@string/low_priority_notification" />
 
         <Preference
             android:summary="@string/notification_settings_summary"

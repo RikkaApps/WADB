@@ -1,10 +1,15 @@
 <resources>
     <style name="AppTheme" parent="Theme.Light"/>
 
-    <style name="AppTheme.Transparent" parent="AppTheme">
+    <style name="AppTheme.Transparent">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
     </style>
 
 </resources>

@@ -52,7 +52,20 @@ public class WadbApplication extends Application implements WadbStateChangedEven
     }
 
     public static String getWadbPort() {
-        return getDefaultSharedPreferences().getString(WadbPreferences.KEY_WAKE_PORT, "5555");
+        String port = getDefaultSharedPreferences().getString(WadbPreferences.KEY_WAKE_PORT, "5555");
+        int p;
+        try {
+            p = Integer.parseInt(port);
+            if (p < 1025 || p > 65535) {
+                p = 5555;
+                getDefaultSharedPreferences().edit().putString(WadbPreferences.KEY_WAKE_PORT, "5555").apply();
+            }
+        } catch (NumberFormatException e) {
+            p = 5555;
+            getDefaultSharedPreferences().edit().putString(WadbPreferences.KEY_WAKE_PORT, "5555").apply();
+        }
+
+        return Integer.toString(p);
     }
 
     public static WadbApplication sApplication;

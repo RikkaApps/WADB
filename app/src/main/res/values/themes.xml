@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Light" parent="Theme.Design.Light.DarkActionBar">
+    <!--<style name="Theme.Light" parent="Theme.Design.Light.DarkActionBar">
         <item name="android:colorPrimary">@color/primary_color_light</item>
         <item name="android:colorPrimaryDark">@color/primary_dark_color_light</item>
         <item name="android:colorAccent">@color/primary_color_light</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+    </style>-->
+
+    <style name="Theme.Light" parent="Theme.Design">
+        <item name="android:colorPrimary">@color/primary_color_light</item>
+        <item name="android:colorPrimaryDark">?android:colorPrimary</item>
+        <item name="android:colorAccent">@color/accent_color_light</item>
+        <item name="android:colorBackground">?android:colorPrimary</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
     </style>
 

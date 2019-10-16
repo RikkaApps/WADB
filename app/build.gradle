@@ -1,14 +1,20 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
+def localFile = rootProject.file('local.properties')
 def localProps = new Properties()
-localProps.load(new FileInputStream(rootProject.file('local.properties')))
+def dontRestartAdbd
+if (localFile.canRead()) {
+    localProps.load(localFile.newDataInputStream())
+    dontRestartAdbd = localProps.get("debug.dontRestartAdbd", false)
+}
 
 android {
-    compileSdkVersion rootProject.ext.targetSdkVersion
+    compileSdkVersion target_sdk
     defaultConfig {
         applicationId "moe.haruue.wadb"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion min_sdk
+        targetSdkVersion target_sdk
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -16,7 +22,7 @@ android {
         resValue "string", "copyright", "Copyright © Haruue Icymoon, PinkD, Rikka"
         resConfigs 'de', 'it', 'zh-rCN', 'zh-rHK', 'zh-rTW'
 
-        buildConfigField "boolean", "DONOT_RESTART_ADBD", "${localProps.get("debug.dontRestartAdbd", false)}" // set it true to prevent restart adbd for DEBUG
+        buildConfigField "boolean", "DONOT_RESTART_ADBD", "${dontRestartAdbd}" // set it true to prevent restart adbd for DEBUG
     }
     signingConfigs {
         sign
@@ -75,17 +81,18 @@ dependencies {
     def preferenceVersion = '4.0.0'
     def libsuVersion = '2.5.0'
 
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     compileOnly project(':hidden')
 
-    implementation "androidx.core:core:1.2.0-beta01"
-    implementation "androidx.fragment:fragment:1.2.0-beta01"
-    implementation "androidx.recyclerview:recyclerview:1.1.0-beta05"
-    implementation 'androidx.browser:browser:1.2.0-alpha08'
+    implementation "androidx.core:core:$androidx_core_version"
+    implementation "androidx.fragment:fragment:$androidx_fragment_version"
+    implementation "androidx.recyclerview:recyclerview:$androidx_recyclerview_version"
+    implementation "androidx.browser:browser:$androidx_browser_version"
 
-    implementation "moe.shizuku.support:design:3.2.0"
-    implementation "moe.shizuku.support:support-utils:3.0.6"
+    implementation "rikka.core:core:$rikka_core_version"
+    implementation "rikka.design:design:$rikka_design_version"
+
     implementation "moe.shizuku.preference:preference-android:$preferenceVersion"
 
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
