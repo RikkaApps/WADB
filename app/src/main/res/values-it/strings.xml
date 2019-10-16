@@ -20,7 +20,6 @@
     <string name="notification_channel_state">Stato esecuzione</string>
     <string name="notification_settings">Impostazioni notifica</string>
     <string name="notification_settings_summary">Ulteriori preferenze per la notifica (come suono, vibrazione e importanza) nelle impostazioni di sistema</string>
-    <string name="ok">OK</string>
     <string name="permission_error">Permesso negato</string>
     <string name="port">Porta</string>
     <string name="refresh_state_failure">Aggiornamento dello stato non riuscito</string>

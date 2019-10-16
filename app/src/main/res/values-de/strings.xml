@@ -2,7 +2,6 @@
     <string name="app_name">ADB Over Network</string>
     <string name="permission_error">Zugriff verweigert</string>
     <string name="supersu_tip">Du benötigst Root!</string>
-    <string name="ok">OK</string>
     <string name="exit">Beenden</string>
     <string name="refresh_state_failure">Refresh state failed.</string>
     <string name="failed">Fehlgeschlagen</string>

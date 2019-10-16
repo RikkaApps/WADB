@@ -2,7 +2,6 @@
     <string name="app_name">ADB Over Network</string>
     <string name="permission_error">Permission denied</string>
     <string name="supersu_tip">Need root!</string>
-    <string name="ok">OK</string>
     <string name="exit">Exit</string>
     <string name="refresh_state_failure">Refresh state failed.</string>
     <string name="failed">Failed</string>

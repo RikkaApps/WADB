@@ -139,6 +139,8 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         }
 
         switchPreference!!.isChecked = GlobalRequestHandler.getWadbPort() != -1
+
+        findPreference(KEY_NOTIFICATION_SETTINGS).isVisible = Build.VERSION.SDK_INT >= 28
     }
 
     override fun onPause() {
@@ -179,14 +181,16 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
             return
         }
 
+        onWadbStopped()
+
         AlertDialog.Builder(activity)
                 .setTitle(activity.getString(R.string.permission_error))
                 .setMessage(activity.getString(R.string.supersu_tip))
-                .setPositiveButton(activity.getString(R.string.exit)) { _, _ ->
+                .setPositiveButton(android.R.string.ok, null)
+                .setNeutralButton(activity.getString(R.string.exit)) { _, _ ->
                     NotificationHelper.cancelNotification(activity)
                     activity.finishAffinity()
                 }
-                .setCancelable(false)
                 .create()
                 .show()
     }

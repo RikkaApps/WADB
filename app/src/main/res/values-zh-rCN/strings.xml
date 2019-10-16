@@ -3,7 +3,6 @@
     <string name="app_name">网络 adb</string>
     <string name="permission_error">权限故障</string>
     <string name="supersu_tip">此程序需要超级用户权限，请确保您的设备已经破解 ROOT 授权。</string>
-    <string name="ok">确定</string>
     <string name="exit">退出程序</string>
     <string name="refresh_state_failure">状态更新失败</string>
     <string name="failed">操作失败</string>

@@ -6,6 +6,7 @@ ext {
     target_sdk = 29
 
     androidx_annotation_version = "1.1.0"
+    androidx_browser_version = "1.2.0-alpha08"
     androidx_core_version = "1.2.0-beta01"
     androidx_fragment_version = "1.2.0-beta02"
     androidx_recyclerview_version = "1.1.0-beta05"

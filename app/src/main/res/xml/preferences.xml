@@ -41,6 +41,7 @@
             android:title="@string/low_priority_notification" />
 
         <Preference
+            android:key="pref_key_notification_settings"
             android:summary="@string/notification_settings_summary"
             android:title="@string/notification_settings">
             <intent android:action="android.settings.CHANNEL_NOTIFICATION_SETTINGS">
