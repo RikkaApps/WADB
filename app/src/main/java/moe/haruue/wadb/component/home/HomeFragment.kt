@@ -140,7 +140,8 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
 
         switchPreference!!.isChecked = GlobalRequestHandler.getWadbPort() != -1
 
-        findPreference(KEY_NOTIFICATION_SETTINGS).isVisible = Build.VERSION.SDK_INT >= 28
+        findPreference(KEY_NOTIFICATION_SETTINGS).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+        findPreference(KEY_SCREEN_LOCK_SWITCH).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
     }
 
     override fun onPause() {
