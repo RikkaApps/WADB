@@ -78,7 +78,7 @@ repositories {
 }
 
 dependencies {
-    def preferenceVersion = '4.0.0'
+    def preferenceVersion = '4.1.0-alpha01'
     def libsuVersion = '2.5.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
