@@ -6,15 +6,41 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 
+import java.lang.reflect.Method;
+
 import moe.haruue.wadb.events.Events;
 import moe.haruue.wadb.events.WadbFailureEvent;
 import moe.haruue.wadb.events.WadbStateChangedEvent;
 import moe.haruue.wadb.util.NetworksUtils;
 import moe.haruue.wadb.util.NotificationHelper;
 import moe.haruue.wadb.util.ScreenKeeper;
+import moe.shizuku.preference.SimpleMenuPreference;
 import rikka.core.app.DayNightDelegate;
 
+import static android.os.Build.VERSION.SDK_INT;
+
 public class WadbApplication extends Application implements WadbStateChangedEvent, WadbFailureEvent {
+
+    static {
+        if (SDK_INT >= 28) {
+            try {
+                Method forName = Class.class.getDeclaredMethod("forName", String.class);
+                Method getDeclaredMethod = Class.class.getDeclaredMethod("getDeclaredMethod", String.class, Class[].class);
+
+                Class<?> vmRuntimeClass = (Class<?>) forName.invoke(null, "dalvik.system.VMRuntime");
+                Method getRuntime = (Method) getDeclaredMethod.invoke(vmRuntimeClass, "getRuntime", null);
+                Method setHiddenApiExemptions = (Method) getDeclaredMethod.invoke(vmRuntimeClass, "setHiddenApiExemptions", new Class[]{String[].class});
+                //noinspection ConstantConditions
+                Object vmRuntime = getRuntime.invoke(null);
+                //noinspection ConstantConditions
+                setHiddenApiExemptions.invoke(vmRuntime, new Object[]{new String[]{"L"}});
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
+        }
+
+        SimpleMenuPreference.setLightFixEnabled(true);
+    }
 
     private static final ComponentName LAUNCHER_ACTIVITY = ComponentName.createRelative(BuildConfig.APPLICATION_ID, ".ui.activity.LaunchActivity");
 
