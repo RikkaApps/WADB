@@ -43,5 +43,7 @@
     <string name="notification_settings">Notification Settings</string>
     <string name="notification_settings_summary">More notification preferences (such as sound, vibrate and importance) in system settings</string>
     <string name="use_shizuku">Use Shizuku</string>
-    <string name="theme_light">Theme (when dark theme off)</string>
+    <string name="theme_light">Theme</string>
+    <string name="user_interface">User interface</string>
+
 </resources>

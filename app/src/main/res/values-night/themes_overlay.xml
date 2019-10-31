@@ -7,7 +7,12 @@
 
     <style name="ThemeOverlay.Teal" />
 
-    <style name="ThemeOverlay.Pink" />
+    <style name="ThemeOverlay.Pink">
+        <item name="android:colorAccent">#FFE6F1</item>
+    </style>
 
-    <style name="ThemeOverlay.Blue" />
+    <style name="ThemeOverlay.Blue">
+        <item name="android:colorAccent">#D5F1FF</item>
+    </style>
+
 </resources>

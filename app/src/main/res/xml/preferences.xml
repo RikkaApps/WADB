@@ -69,6 +69,12 @@
             android:summaryOn="@string/summary_on_hide_launcher_icon"
             android:title="@string/hide_the_icon_in_launcher" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_key_category_behavior"
+        android:title="@string/user_interface">
+
         <moe.shizuku.preference.SimpleMenuPreference
             android:defaultValue="classic"
             android:entries="@array/theme_light"
