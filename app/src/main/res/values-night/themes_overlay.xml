@@ -8,11 +8,11 @@
     <style name="ThemeOverlay.Teal" />
 
     <style name="ThemeOverlay.Pink">
-        <item name="android:colorAccent">#FFE6F1</item>
+        <item name="android:colorAccent">@color/pink_accent_dark</item>
     </style>
 
     <style name="ThemeOverlay.Blue">
-        <item name="android:colorAccent">#D5F1FF</item>
+        <item name="android:colorAccent">@color/blue_accent_dark</item>
     </style>
 
 </resources>
