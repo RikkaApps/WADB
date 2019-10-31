@@ -41,4 +41,5 @@
     <string name="notification_channel_state">运行状态</string>
     <string name="notification_settings">通知设置</string>
     <string name="notification_settings_summary">访问系统设置中的更多通知设置（例如声音、震动和重要性）</string>
+    <string name="theme_light">主题（当深色主题关闭）</string>
 </resources>

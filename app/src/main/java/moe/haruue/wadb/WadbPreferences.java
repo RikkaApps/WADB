@@ -1,5 +1,7 @@
 package moe.haruue.wadb;
 
+import moe.haruue.wadb.util.ThemeHelper;
+
 public class WadbPreferences {
 
     public static final String KEY_WAKE_PORT = "pref_key_wadb_port";
@@ -12,4 +14,5 @@ public class WadbPreferences {
     public static final String KEY_WADB_SWITCH = "pref_key_wadb_switch";
     public static final String KEY_ABOUT = "pref_key_about";
     public static final String KEY_SHIZUKU = "pref_key_shizuku";
+    public static final String KEY_LIGHT_THEME = ThemeHelper.KEY_LIGHT_THEME;
 }

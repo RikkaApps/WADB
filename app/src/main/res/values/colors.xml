@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_color_light">@color/material_teal_600</color>
-    <color name="primary_dark_color_light">@color/material_teal_800</color>
-    <color name="accent_color_light">#EFFBFC</color>
+    <!--<color name="primary_color_light">@color/material_teal_600</color>
+    <color name="accent_color_light">#EFFBFC</color>-->
+
+    <color name="primary_color">@color/material_teal_600</color>
 </resources>

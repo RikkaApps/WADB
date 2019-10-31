@@ -78,7 +78,6 @@ repositories {
 }
 
 dependencies {
-    def preferenceVersion = '4.1.0-alpha01'
     def libsuVersion = '2.5.1'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -93,7 +92,8 @@ dependencies {
     implementation "rikka.core:core:$rikka_core_version"
     implementation "rikka.design:design:$rikka_design_version"
 
-    implementation "moe.shizuku.preference:preference-android:$preferenceVersion"
+    implementation "moe.shizuku.preference:preference-android:$rikka_preference_version"
+    implementation "moe.shizuku.preference:preference-simplemenu-android:$rikka_preference_version"
 
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
 

@@ -1,6 +1,7 @@
 package moe.haruue.wadb.app
 
 import android.app.ActivityManager
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Build
@@ -8,6 +9,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import moe.haruue.wadb.R
+import moe.haruue.wadb.util.ThemeHelper
 import rikka.design.app.MaterialActivity
 
 abstract class BaseActivity : MaterialActivity() {
@@ -17,8 +19,16 @@ abstract class BaseActivity : MaterialActivity() {
         updateTaskDescription()
     }
 
+    override fun computeUserThemeKey(): String? {
+        return ThemeHelper.getTheme(this)
+    }
+
+    override fun onApplyUserThemeResource(theme: Resources.Theme, isDecorView: Boolean) {
+        theme.applyStyle(ThemeHelper.getThemeStyleRes(this), true)
+    }
+
     private fun updateTaskDescription() {
-        val color = getColor(R.color.primary_color_light)
+        val color = getColor(R.color.primary_color)
 
         if (Build.VERSION.SDK_INT >= 28) {
             setTaskDescription(ActivityManager.TaskDescription(null, R.drawable.ic_task_icon, color))

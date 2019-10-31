@@ -12,6 +12,7 @@ import moe.haruue.wadb.events.WadbStateChangedEvent;
 import moe.haruue.wadb.util.NetworksUtils;
 import moe.haruue.wadb.util.NotificationHelper;
 import moe.haruue.wadb.util.ScreenKeeper;
+import rikka.core.app.DayNightDelegate;
 
 public class WadbApplication extends Application implements WadbStateChangedEvent, WadbFailureEvent {
 
@@ -78,6 +79,9 @@ public class WadbApplication extends Application implements WadbStateChangedEven
     public void onCreate() {
         super.onCreate();
         Events.registerAll(this);
+
+        DayNightDelegate.setApplicationContext(this);
+        DayNightDelegate.setDefaultNightMode(DayNightDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
     }
 
     @Override

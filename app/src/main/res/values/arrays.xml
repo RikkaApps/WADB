@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="theme_light" translatable="false">
+        <item>White</item>
+        <item>Teal</item>
+        <item>Pink</item>
+        <item>Blue</item>
+        <item>Classic</item>
+    </string-array>
+    <string-array name="theme_light_value" translatable="false">
+        <item>white</item>
+        <item>teal</item>
+        <item>pink</item>
+        <item>blue</item>
+        <item>classic</item>
+    </string-array>
+</resources>

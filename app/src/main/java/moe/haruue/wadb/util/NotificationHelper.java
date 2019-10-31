@@ -40,7 +40,7 @@ public class NotificationHelper {
 
         // Android Q supports dark status bar, but still uses color restriction algorithm of light background,
         // so we still have to use light color here
-        int color = context.getColor(R.color.primary_color_light);
+        int color = context.getColor(R.color.primary_color);
         // int color = ResourceUtils.resolveColor(context.getTheme(), android.R.attr.colorAccent);
 
         // Notification

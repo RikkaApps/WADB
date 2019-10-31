@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ThemeOverlay.Classic" />
+
+    <style name="ThemeOverlay.White" />
+
+    <style name="ThemeOverlay.Teal" />
+
+    <style name="ThemeOverlay.Pink" />
+
+    <style name="ThemeOverlay.Blue" />
+</resources>

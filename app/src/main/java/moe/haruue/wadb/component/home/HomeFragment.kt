@@ -19,13 +19,8 @@ import moe.haruue.wadb.events.Events
 import moe.haruue.wadb.events.GlobalRequestHandler
 import moe.haruue.wadb.events.WadbFailureEvent
 import moe.haruue.wadb.events.WadbStateChangedEvent
-import moe.haruue.wadb.util.NetworksUtils
-import moe.haruue.wadb.util.NotificationHelper
-import moe.haruue.wadb.util.ScreenKeeper
-import moe.shizuku.preference.CheckBoxPreference
-import moe.shizuku.preference.EditTextPreference
-import moe.shizuku.preference.PreferenceFragment
-import moe.shizuku.preference.TwoStatePreference
+import moe.haruue.wadb.util.*
+import moe.shizuku.preference.*
 import rikka.design.widget.BorderRecyclerView
 import rikka.design.widget.BorderView
 import kotlin.math.roundToInt
@@ -34,6 +29,7 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
 
     private var switchPreference: TwoStatePreference? = null
     private var portPreference: EditTextPreference? = null
+    private var lightThemePreference: SimpleMenuPreference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,19 +51,8 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
 
     override fun onCreateRecyclerView(inflater: LayoutInflater, parent: ViewGroup, savedInstanceState: Bundle?): RecyclerView {
         val recyclerView = super.onCreateRecyclerView(inflater, parent, savedInstanceState) as BorderRecyclerView
-        val itemDecoration = object : RecyclerView.ItemDecoration() {
 
-            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                if (parent.adapter == null) {
-                    return
-                }
-
-                if (parent.getChildAdapterPosition(view) == parent.adapter!!.itemCount - 1) {
-                    outRect.bottom = (8 * parent.context.resources.displayMetrics.density).roundToInt()
-                }
-            }
-        }
-        recyclerView.addItemDecoration(itemDecoration)
+        recyclerView.addItemDecoration(VerticalPaddingDecoration(recyclerView.context))
 
         val lp = recyclerView.layoutParams
         if (lp is FrameLayout.LayoutParams) {
@@ -142,6 +127,20 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
 
         findPreference(KEY_NOTIFICATION_SETTINGS).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
         findPreference(KEY_SCREEN_LOCK_SWITCH).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+
+        lightThemePreference = findPreference(KEY_LIGHT_THEME) as SimpleMenuPreference
+
+        lightThemePreference!!.setOnPreferenceChangeListener { _, o ->
+            if (o is String) {
+                val theme = o.toString()
+                if (ThemeHelper.getTheme(requireContext()) != theme) {
+                    ThemeHelper.setLightTheme(theme)
+                    activity?.recreate()
+                }
+            }
+            true
+        }
+
     }
 
     override fun onPause() {

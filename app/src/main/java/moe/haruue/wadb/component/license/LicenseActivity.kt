@@ -22,4 +22,8 @@ class LicenseActivity : AppBarActivity() {
         val licenseView = findViewById<WebView>(R.id.webview_license)
         licenseView.loadUrl("file:///android_asset/license.html")
     }
+
+    override fun onApplyTranslucentSystemBars() {
+        window.statusBarColor = theme.resolveColor(android.R.attr.colorPrimary)
+    }
 }

@@ -13,4 +13,6 @@ ext {
 
     rikka_core_version = "1.0.1"
     rikka_design_version = "1.1.2"
+
+    rikka_preference_version = '4.1.0-alpha01'
 }

@@ -2,10 +2,10 @@
 <rikka.design.widget.RaisedAppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar_container"
+    style="?appBarStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:colorPrimary"
-    android:elevation="0dp"
     android:fitsSystemWindows="true"
     android:stateListAnimator="@animator/appbar_animator"
     android:theme="?android:actionBarTheme">
