@@ -5,9 +5,7 @@
     style="?appBarStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:colorPrimary"
     android:fitsSystemWindows="true"
-    android:stateListAnimator="@animator/appbar_animator"
     android:theme="?android:actionBarTheme">
 
     <Toolbar

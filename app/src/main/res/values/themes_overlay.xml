@@ -4,7 +4,7 @@
 
     <style name="ThemeOverlay.AppBar.Colored" parent="Widget.AppBar.Light">
         <item name="android:background">?android:colorPrimary</item>
-        <item name="android:stateListAnimator">@animator/alpha_animator</item>
+        <item name="android:stateListAnimator">@null</item>
         <item name="android:elevation">@dimen/app_bar_elevation</item>
     </style>
 
