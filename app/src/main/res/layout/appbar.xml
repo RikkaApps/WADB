@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rikka.design.widget.RaisedAppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<rikka.material.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar_container"
     style="?appBarStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"
-    android:theme="?android:actionBarTheme">
+    android:fitsSystemWindows="true">
 
-    <Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="?android:actionBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
+        android:layout_height="?actionBarSize"
         android:layout_gravity="bottom"
         android:layout_marginTop="0dp"
         android:background="@null"
@@ -24,4 +23,4 @@
         android:titleTextAppearance="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
         tools:text="Title" />
 
-</rikka.design.widget.RaisedAppBarLayout>
+</rikka.material.widget.AppBarLayout>

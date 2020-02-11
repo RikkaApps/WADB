@@ -1,14 +1,11 @@
 package moe.haruue.wadb.component.home
 
 import android.os.Bundle
-
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-
 import moe.haruue.wadb.R
-import moe.haruue.wadb.app.AppBarActivity
+import moe.haruue.wadb.app.AppBarFragmentActivity
 
-class HomeActivity : AppBarActivity() {
+class HomeActivity : AppBarFragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

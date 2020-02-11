@@ -77,6 +77,12 @@ repositories {
     maven { url 'https://dl.bintray.com/rikkaw/Shizuku' }
 }
 
+configurations.all {
+    exclude group: 'androidx.appcompat', module: 'appcompat'
+    exclude group: 'moe.shizuku.preference', module: 'preference-android'
+    exclude group: 'moe.shizuku.preference', module: 'preference-simplemenu-android'
+}
+
 dependencies {
     def libsuVersion = '2.5.1'
 
@@ -84,16 +90,20 @@ dependencies {
 
     compileOnly project(':hidden')
 
+    implementation 'com.google.android.material:material:1.2.0-alpha04'
+
     implementation "androidx.core:core:$androidx_core_version"
     implementation "androidx.fragment:fragment:$androidx_fragment_version"
     implementation "androidx.recyclerview:recyclerview:$androidx_recyclerview_version"
     implementation "androidx.browser:browser:$androidx_browser_version"
 
+    implementation "rikka.annotation:annotation:$rikka_annotation_version"
+    implementation "rikka.appcompat:appcompat:$rikka_appcompat_version"
     implementation "rikka.core:core:$rikka_core_version"
-    implementation "rikka.design:design:$rikka_design_version"
+    implementation "rikka.material:material:$rikka_material_version"
 
-    implementation "moe.shizuku.preference:preference-android:$rikka_preference_version"
-    implementation "moe.shizuku.preference:preference-simplemenu-android:$rikka_preference_version"
+    implementation "moe.shizuku.preference:preference-appcompat:$rikka_preference_version"
+    implementation "moe.shizuku.preference:preference-simplemenu-appcompat:$rikka_preference_version"
 
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
 

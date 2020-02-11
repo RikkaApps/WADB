@@ -1,44 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ThemeOverlay"/>
 
-    <style name="ThemeOverlay.AppBar.Colored" parent="Widget.AppBar.Light">
-        <item name="android:background">?android:colorPrimary</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:elevation">@dimen/app_bar_elevation</item>
-    </style>
+    <style name="ThemeOverlay" />
 
     <style name="ThemeOverlay.Classic">
-        <item name="android:colorPrimary">@color/primary_color</item>
-        <item name="android:colorPrimaryDark">@color/primary_color</item>
-        <item name="android:windowBackground">@android:color/white</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:actionBarTheme">@android:style/ThemeOverlay.Material.Dark.ActionBar</item>
-        <item name="android:popupTheme">@android:style/ThemeOverlay.Material.Light</item>
-        <item name="appBarStyle">@style/ThemeOverlay.AppBar.Colored</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
     <style name="ThemeOverlay.White">
-        <item name="android:colorPrimary">@android:color/white</item>
-        <item name="android:colorAccent">@color/material_teal_500</item>
-        <item name="android:colorBackground">@android:color/white</item>
-    </style>
+        <item name="appBarColor">@android:color/white</item>
 
-    <style name="ThemeOverlay.Teal">
-        <item name="android:colorPrimary">@color/teal_background_light</item>
-        <item name="android:colorBackground">?android:colorPrimary</item>
+        <item name="colorSecondary">@color/material_teal_500</item>
+        <item name="colorSecondaryVariant">@color/material_teal_500</item>
     </style>
 
     <style name="ThemeOverlay.Pink">
-        <item name="android:colorPrimary">@color/pink_background_light</item>
-        <item name="android:colorAccent">@color/pink_accent_light</item>
-        <item name="android:colorBackground">?android:colorPrimary</item>
-    </style>
+        <item name="appBarColor">@color/pink_appbar_light</item>
 
-    <style name="ThemeOverlay.Blue">
-        <item name="android:colorPrimary">@color/blue_background_light</item>
-        <item name="android:colorAccent">@color/blue_accent_light</item>
-        <item name="android:colorBackground">?android:colorPrimary</item>
-
+        <item name="colorPrimary">@color/pink_primary_light</item>
+        <item name="colorPrimaryVariant">@color/pink_primary_light</item>
+        <item name="colorSecondary">@color/pink_secondary_light</item>
+        <item name="colorSecondaryVariant">@color/pink_secondary_light</item>
     </style>
 </resources>

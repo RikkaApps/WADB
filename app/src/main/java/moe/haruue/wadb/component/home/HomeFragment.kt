@@ -2,11 +2,9 @@ package moe.haruue.wadb.component.home
 
 import android.app.AlertDialog
 import android.content.SharedPreferences
-import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -21,9 +19,8 @@ import moe.haruue.wadb.events.WadbFailureEvent
 import moe.haruue.wadb.events.WadbStateChangedEvent
 import moe.haruue.wadb.util.*
 import moe.shizuku.preference.*
-import rikka.design.widget.BorderRecyclerView
-import rikka.design.widget.BorderView
-import kotlin.math.roundToInt
+import rikka.material.widget.BorderRecyclerView
+import rikka.material.widget.BorderView
 
 class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEvent, SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -56,12 +53,12 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
 
         val lp = recyclerView.layoutParams
         if (lp is FrameLayout.LayoutParams) {
-            lp.rightMargin = recyclerView.context.resources.getDimension(R.dimen.design_activity_horizontal_margin).toInt()
+            lp.rightMargin = recyclerView.context.resources.getDimension(R.dimen.rd_activity_horizontal_margin).toInt()
             lp.leftMargin = lp.rightMargin
         }
         recyclerView.borderVisibilityChangedListener = BorderView.OnBorderVisibilityChangedListener { top, _, _, _ ->
             if (activity != null) {
-                (activity as AppBarActivity).appBar?.isRaised = !top
+                (activity as AppBarActivity).appBar?.setRaised(!top)
             }
         }
 

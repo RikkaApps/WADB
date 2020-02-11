@@ -1,54 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<style name="Theme.Light" parent="Theme.Design.Light.DarkActionBar">
-        <item name="android:colorPrimary">@color/primary_color_light</item>
-        <item name="android:colorPrimaryDark">@color/primary_dark_color_light</item>
-        <item name="android:colorAccent">@color/primary_color_light</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
-    </style>-->
+    <style name="Theme.Light" parent="Theme.Material.Light.LightStatusBar">
+        <item name="android:colorPrimary">?appBarColor</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:colorBackground">@android:color/white</item>
 
-    <style name="Theme.Light" parent="Theme.Design.Light.LightStatusBar">
-        <item name="android:colorPrimary">@android:color/white</item>
-        <item name="android:colorPrimaryDark">?android:colorBackground</item>
-        <item name="android:colorAccent">@color/primary_color</item>
         <item name="preferenceTheme">@style/ThemeOverlay.Preference</item>
-        <item name="appBarStyle">@style/Widget.AppBar.Light</item>
+        <item name="appBarStyle">@style/Widget.AppBar.Solid</item>
+        <item name="appBarColor">@color/material_teal_600</item>
+
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/primary_color</item>
+        <item name="colorSecondary">@color/primary_color</item>
+        <item name="colorSecondaryVariant">@color/primary_color</item>
     </style>
 
-    <style name="Theme" parent="Theme.Design">
-        <item name="android:colorPrimary">@android:color/black</item>
-        <item name="android:colorPrimaryDark">@android:color/black</item>
-        <item name="android:colorAccent">@color/material_teal_200</item>
-        <item name="android:windowBackground">@android:color/black</item>
+    <style name="Theme" parent="Theme.Material">
+        <item name="android:colorPrimary">?appBarColor</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:colorBackground">@android:color/black</item>
         <item name="android:navigationBarColor">@android:color/black</item>
-        <item name="android:popupTheme">@android:style/ThemeOverlay.Material.Dark.ActionBar</item>
+
         <item name="preferenceTheme">@style/ThemeOverlay.Preference</item>
-        <item name="appBarStyle">@style/Widget.AppBar</item>
+        <item name="appBarStyle">@style/Widget.AppBar.Solid</item>
+        <item name="appBarColor">@android:color/black</item>
+
+        <item name="colorPrimary">@color/material_teal_200</item>
+        <item name="colorPrimaryVariant">@color/material_teal_200</item>
+        <item name="colorSecondary">@color/material_teal_200</item>
+        <item name="colorSecondaryVariant">@color/material_teal_200</item>
     </style>
 
-    <style name="ThemeOverlay.Preference" parent="PreferenceThemeOverlay">
-        <item name="simpleMenuPreferenceStyle">@style/ThemeOverlay.Preference.SimpleMenu</item>
-    </style>
+    <style name="ThemeOverlay.Preference" parent="PreferenceThemeOverlay" />
 
-    <style name="ThemeOverlay.Preference.SimpleMenu" parent="Preference.SimpleMenuPreference">
-        <item name="popupStyle">@style/ThemeOverlay.Preference.SimpleMenu.Popup</item>
-    </style>
-
-    <style name="ThemeOverlay.Preference.SimpleMenu.Popup" parent="Preference.SimpleMenuPreference.Popup">
-        <item name="android:popupBackground">@drawable/simplemenu_background</item>
-        <item name="listElevation">8dp</item>
-    </style>
-
-    <style name="Widget.AppBar" parent="Widget.Design.ActionBar">
-        <item name="android:background">@color/material_blue_grey_700</item>
-        <item name="android:theme">?android:actionBarTheme</item>
-        <item name="android:stateListAnimator">@animator/alpha_animator</item>
+    <style name="Widget.AppBar.Solid" parent="Widget.Material.ActionBar.Solid">
+        <item name="android:background">?appBarColor</item>
+        <item name="android:stateListAnimator">@null</item>
         <item name="android:elevation">@dimen/app_bar_elevation</item>
+        <item name="android:theme">?actionBarTheme</item>
     </style>
 
-    <style name="Widget.AppBar.Light">
-        <item name="android:background">?android:colorBackground</item>
-        <item name="android:stateListAnimator">@animator/appbar_animator</item>
-        <item name="android:elevation">0dp</item>
-    </style>
 </resources>

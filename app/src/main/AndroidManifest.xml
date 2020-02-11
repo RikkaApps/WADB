@@ -42,6 +42,7 @@
         </activity>
         <activity
             android:name=".component.license.LicenseActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/license">
             <intent-filter>
                 <action android:name="moe.haruue.wadb.action.LICENSE" />

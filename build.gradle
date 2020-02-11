@@ -1,12 +1,21 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'idea'
+
+idea {
+    module {
+        excludeDirs += file('out')
+        excludeDirs += file('app/release')
+    }
+}
 
 buildscript {
     apply from: 'manifest.gradle'
     repositories {
         jcenter()
 		google()
+        maven { url 'http://storage.googleapis.com/r8-releases/raw' }
     }
     dependencies {
+        classpath 'com.android.tools:r8:2.0.23'
         classpath "com.android.tools.build:gradle:$gradle_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
@@ -31,7 +40,7 @@ task clean(type: Delete) {
 ext {
     gitCommitId = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
     gitCommitCount = Integer.parseInt('git rev-list --count HEAD'.execute([], project.rootDir).text.trim())
-    baseVersionName = '3.2.0'
+    baseVersionName = '3.3.0'
 
     versionCode = gitCommitCount
     versionName = "${baseVersionName}.r${gitCommitCount}.${gitCommitId}"

@@ -5,14 +5,11 @@
 
     <style name="ThemeOverlay.White" />
 
-    <style name="ThemeOverlay.Teal" />
-
     <style name="ThemeOverlay.Pink">
-        <item name="android:colorAccent">@color/pink_accent_dark</item>
-    </style>
-
-    <style name="ThemeOverlay.Blue">
-        <item name="android:colorAccent">@color/blue_accent_dark</item>
+        <item name="colorPrimary">@color/pink_primary_dark</item>
+        <item name="colorPrimaryVariant">@color/pink_primary_dark</item>
+        <item name="colorSecondary">@color/pink_primary_dark</item>
+        <item name="colorSecondaryVariant">@color/pink_primary_dark</item>
     </style>
 
 </resources>

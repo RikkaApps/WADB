@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<color name="primary_color_light">@color/material_teal_600</color>
-    <color name="accent_color_light">#EFFBFC</color>-->
-
     <color name="primary_color">@color/material_teal_600</color>
 
-    <color name="teal_background_light">#e0f2f2</color>
+    <color name="pink_appbar_light">#f5aab9</color>
+    <color name="pink_primary_light">#bd6678</color>
+    <color name="pink_secondary_light">#ae5d6d</color>
 
-    <color name="pink_background_light">#ffcde2</color>
-    <color name="pink_accent_light">#7c5065</color>
-    <color name="pink_accent_dark">#ffe6f1</color>
-
-    <color name="blue_background_light">#e1f5ff</color>
-    <color name="blue_accent_light">#007ebd</color>
-    <color name="blue_accent_dark">#d5f1ff</color>
+    <color name="pink_primary_dark">#ffe6f1</color>
 </resources>

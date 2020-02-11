@@ -15,7 +15,7 @@ import moe.haruue.wadb.util.NetworksUtils;
 import moe.haruue.wadb.util.NotificationHelper;
 import moe.haruue.wadb.util.ScreenKeeper;
 import moe.shizuku.preference.SimpleMenuPreference;
-import rikka.core.app.DayNightDelegate;
+import rikka.material.app.DayNightDelegate;
 
 import static android.os.Build.VERSION.SDK_INT;
 

@@ -30,7 +30,7 @@
     <string name="hide_the_icon_in_launcher">Hide the icon in launcher</string>
     <string name="tip_on_hide_launch_icon">It may take a while before system hiding the launcher icon</string>
     <string name="tip_on_show_launch_icon">It may take a while before system showing the launcher icon</string>
-    <string name="wake_lock">Keep Screen On</string>
+    <string name="wake_lock">Keep screen on</string>
     <string name="wake_lock_on">Keep screen on when adb is enabling</string>
     <string name="wake_lock_off">Don\'t keep screen on when adb is enabling</string>
     <string name="port">Port</string>
@@ -40,7 +40,7 @@
     <string name="use_low_priority_notification">Use low priority notification to hide the notification icon</string>
     <string name="use_default_priority_notification">Use default priority notification</string>
     <string name="notification_channel_state">Running status</string>
-    <string name="notification_settings">Notification Settings</string>
+    <string name="notification_settings">Notification settings</string>
     <string name="notification_settings_summary">More notification preferences (such as sound, vibrate and importance) in system settings</string>
     <string name="use_shizuku">Use Shizuku</string>
     <string name="theme_light">Theme</string>

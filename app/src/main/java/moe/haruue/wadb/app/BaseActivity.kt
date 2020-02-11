@@ -9,8 +9,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import moe.haruue.wadb.R
-import moe.haruue.wadb.util.ThemeHelper
-import rikka.design.app.MaterialActivity
+import moe.haruue.wadb.util.ThemeHelper.*
+import rikka.core.res.resolveColor
+import rikka.material.app.MaterialActivity
 
 abstract class BaseActivity : MaterialActivity() {
 
@@ -20,20 +21,34 @@ abstract class BaseActivity : MaterialActivity() {
     }
 
     override fun computeUserThemeKey(): String? {
-        return ThemeHelper.getTheme(this)
+        return getTheme(this)
     }
 
     override fun onApplyUserThemeResource(theme: Resources.Theme, isDecorView: Boolean) {
-        theme.applyStyle(ThemeHelper.getThemeStyleRes(this), true)
+        theme.applyStyle(getThemeStyleRes(this), true)
     }
 
     private fun updateTaskDescription() {
-        val color = getColor(R.color.primary_color)
+        val color: Int = theme.resolveColor(R.attr.appBarColor)
+        val icon: Int = when (getTheme(this)) {
+            THEME_WHITE -> {
+                R.drawable.ic_task_icon_black
+            }
+            THEME_PINK -> {
+                R.drawable.ic_task_icon_black
+            }
+            THEME_CLASSIC -> {
+                R.drawable.ic_task_icon_white
+            }
+            else -> {
+                R.drawable.ic_task_icon_white
+            }
+        }
 
         if (Build.VERSION.SDK_INT >= 28) {
-            setTaskDescription(ActivityManager.TaskDescription(null, R.drawable.ic_task_icon, color))
+            setTaskDescription(ActivityManager.TaskDescription(null, icon, color))
         } else {
-            val drawable = ContextCompat.getDrawable(this, R.drawable.ic_task_icon)
+            val drawable = ContextCompat.getDrawable(this, icon)
 
             val bitmap = Bitmap.createBitmap(drawable!!.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bitmap)
