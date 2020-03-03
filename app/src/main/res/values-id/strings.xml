@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">ADB melalui jaringan</string>
+    <string name="permission_error">Izin ditolak</string>
+    <string name="supersu_tip">Membutuhkan root!</string>
+    <string name="exit">Keluar</string>
+    <string name="refresh_state_failure">Status perbaruan gagal.</string>
+    <string name="failed">Gagal</string>
+    <string name="wadb_on">Jaringan adb aktif</string>
+    <string name="turn_off">Nonaktifkan</string>
+    <string name="switch_">Beralih</string>
+    <string name="enable_wadb">Aktifkan adb melalui jaringan</string>
+    <string name="wadb">ADB melalui jaringan</string>
+    <string name="behavior">Aksi</string>
+    <string name="show_notification_when_wadb_on">Tampilkan notifikasi saat adb melalui jaringan aktif</string>
+    <string name="dont_show_notification_when_wadb_on">Jangan tampilkan notifikasi saat adb melalui jaringan aktif</string>
+    <string name="wadb_enabled">ADB melalui jaringan diaktifkan</string>
+    <string name="wadb_disabled">ADB melalui jaringan dinonaktifkan</string>
+    <string name="enabled">Diaktifkan</string>
+    <string name="disabled">Dinonaktifkan</string>
+    <string name="notification">Notifikasi</string>
+    <string name="allow_switch_when_screen_locked">Izinkan beralih ketika layar terkunci</string>
+    <string name="you_have_to_unlock_before_switch">Anda harus membuka kunci layar untuk beralih dengan pengaturan cepat</string>
+    <string name="you_can_switch_when_screen_is_locked">Anda dapat beralih dengan pengaturan cepat ketika layar terkunci</string>
+    <string name="about">Tentang</string>
+    <string name="about_text">Klik untuk mengunjungi repositori di GitHub</string>
+    <string name="license">Lisensi</string>
+    <string name="license_apache_2_0" translatable="false">Apache License 2.0</string>
+    <string name="summary_off_hide_launcher_icon">Jangan sembunyikan ikon di peluncur</string>
+    <string name="summary_on_hide_launcher_icon">Sembunyikan ikon di peluncur, anda bisa memulai aplikasi dengan menekan lama pengaturan cepat kami</string>
+    <string name="hide_the_icon_in_launcher">Sembunyikan ikon di peluncur</string>
+    <string name="tip_on_hide_launch_icon">Membutuhkan waktu sebelum sistem menyenbunyikan ikon</string>
+    <string name="tip_on_show_launch_icon">Membutuhkan waktu sebelum sistem menampilkan ikon</string>
+    <string name="wake_lock">Jaga layar tetap menyala</string>
+    <string name="wake_lock_on">Jaga layar tetap menyala ketika adb sedang diaktifkan</string>
+    <string name="wake_lock_off">Jangan jaga layar tetap menyalas ketika adb sedang diaktifkan</string>
+    <string name="port">Port</string>
+    <string name="default_port" translatable="false">5555</string>
+    <string name="bad_port_number">Nomor port hanya boleh 1025–65535</string>
+    <string name="low_priority_notification">Prioritas notifikasi rendah</string>
+    <string name="use_low_priority_notification">Gunakan prioritas notifikasi rendah untuk menyembunyikan ikon notifikasi</string>
+    <string name="use_default_priority_notification">Gunakan prioritas notifikasi standard</string>
+    <string name="notification_channel_state">Status aktivitas</string>
+    <string name="notification_settings">Pengaturan notifikasi</string>
+    <string name="notification_settings_summary">Preferensi pemberitahuan lebih lanjut (seperti suara, getaran dan prioritas) di pengaturan sistem</string>
+    <string name="use_shizuku">Gunakan Shizuku</string>
+    <string name="theme_light">Tema</string>
+    <string name="user_interface">Antarmuka pengguna</string>
+
+</resources>
