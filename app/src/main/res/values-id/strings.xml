@@ -32,7 +32,7 @@
     <string name="tip_on_show_launch_icon">Membutuhkan waktu sebelum sistem menampilkan ikon</string>
     <string name="wake_lock">Jaga layar tetap menyala</string>
     <string name="wake_lock_on">Jaga layar tetap menyala ketika adb sedang diaktifkan</string>
-    <string name="wake_lock_off">Jangan jaga layar tetap menyalas ketika adb sedang diaktifkan</string>
+    <string name="wake_lock_off">Jangan jaga layar tetap menyala ketika adb sedang diaktifkan</string>
     <string name="port">Port</string>
     <string name="default_port" translatable="false">5555</string>
     <string name="bad_port_number">Nomor port hanya boleh 1025–65535</string>
