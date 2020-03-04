@@ -20,7 +20,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resValue "string", "github_url", "https://github.com/RikkaApps/WADB"
         resValue "string", "copyright", "Copyright © Haruue Icymoon, PinkD, Rikka"
-        resConfigs 'de', 'it', 'zh-rCN', 'zh-rHK', 'zh-rTW', 'ja'
+        resConfigs 'de', 'it', 'zh-rCN', 'zh-rHK', 'zh-rTW', 'ja', 'id'
 
         buildConfigField "boolean", "DONOT_RESTART_ADBD", "${dontRestartAdbd}" // set it true to prevent restart adbd for DEBUG
     }
