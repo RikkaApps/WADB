@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import moe.haruue.wadb.BuildConfig
 import moe.haruue.wadb.R
 import moe.haruue.wadb.WadbApplication
 import moe.haruue.wadb.WadbPreferences.*
@@ -82,7 +83,7 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         val launcherIconPreference = findPreference(KEY_LAUNCHER_ICONS) as TwoStatePreference
         launcherIconPreference.isChecked = !WadbApplication.isLauncherActivityEnabled(context)
 
-        findPreference(KEY_ABOUT).summary = getString(R.string.copyright) + "\n" + getString(R.string.about_text)
+        findPreference(KEY_ABOUT).summary = BuildConfig.VERSION_NAME + '\n' + getString(R.string.copyright)
 
         portPreference!!.setOnPreferenceChangeListener { _, newValue ->
             val port: String = newValue as String
