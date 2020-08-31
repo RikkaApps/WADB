@@ -12,10 +12,8 @@ buildscript {
     repositories {
         jcenter()
 		google()
-        maven { url 'http://storage.googleapis.com/r8-releases/raw' }
     }
     dependencies {
-        classpath 'com.android.tools:r8:2.0.23'
         classpath "com.android.tools.build:gradle:$gradle_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
@@ -29,6 +27,7 @@ allprojects {
         jcenter()
 		google()
         maven { url 'https://jitpack.io' }
+        maven { url 'https://dl.bintray.com/rikkaw/MaterialPreference' }
     }
 }
 
