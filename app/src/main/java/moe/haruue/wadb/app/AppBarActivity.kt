@@ -53,6 +53,8 @@ abstract class AppBarActivity : BaseActivity() {
     }
 
     override fun onApplyTranslucentSystemBars() {
+        super.onApplyTranslucentSystemBars()
+
         val window = window
         val theme = theme
 
@@ -62,11 +64,8 @@ abstract class AppBarActivity : BaseActivity() {
                     val alpha = -0x20000000
                     window.navigationBarColor = theme.resolveColor(android.R.attr.navigationBarColor) and 0x00ffffff or alpha
                 }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    window.navigationBarDividerColor = theme.resolveColor(android.R.attr.navigationBarDividerColor)
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                        window.isNavigationBarContrastEnforced = false
-                    }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    window.isNavigationBarContrastEnforced = false
                 }
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

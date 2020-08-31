@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import moe.haruue.wadb.BuildConfig
 import moe.haruue.wadb.R
@@ -22,6 +23,8 @@ import moe.haruue.wadb.util.*
 import moe.shizuku.preference.*
 import rikka.material.widget.BorderRecyclerView
 import rikka.material.widget.BorderView
+import rikka.recyclerview.addVerticalPadding
+import rikka.recyclerview.fixEdgeEffect
 
 class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEvent, SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -50,7 +53,8 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
     override fun onCreateRecyclerView(inflater: LayoutInflater, parent: ViewGroup, savedInstanceState: Bundle?): RecyclerView {
         val recyclerView = super.onCreateRecyclerView(inflater, parent, savedInstanceState) as BorderRecyclerView
 
-        recyclerView.addItemDecoration(VerticalPaddingDecoration(recyclerView.context))
+        recyclerView.addVerticalPadding()
+        recyclerView.fixEdgeEffect()
 
         val lp = recyclerView.layoutParams
         if (lp is FrameLayout.LayoutParams) {
