@@ -22,7 +22,7 @@ android {
         resValue "string", "copyright", "Copyright © Haruue Icymoon, PinkD, Rikka"
         resConfigs 'de', 'it', 'zh-rCN', 'zh-rHK', 'zh-rTW', 'ja', 'id'
 
-        buildConfigField "boolean", "DONOT_RESTART_ADBD", "${dontRestartAdbd}" // set it true to prevent restart adbd for DEBUG
+        buildConfigField "boolean", "DONOT_RESTART_ADBD", "${dontRestartAdbd}" // set it true to prevent restart adbd (for debugging)
     }
     signingConfigs {
         sign
@@ -100,6 +100,7 @@ dependencies {
     implementation "rikka.appcompat:appcompat:$rikka_appcompat_version"
     implementation "rikka.core:core:$rikka_core_version"
     implementation "rikka.material:material:$rikka_material_version"
+    implementation "rikka.recyclerview:recyclerview-utils:$rikka_recyclerview_utils_version"
 
     implementation "moe.shizuku.preference:preference-appcompat:$rikka_preference_version"
     implementation "moe.shizuku.preference:preference-simplemenu-appcompat:$rikka_preference_version"

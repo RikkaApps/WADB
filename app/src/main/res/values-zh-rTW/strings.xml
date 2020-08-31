@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">網路 adb</string>
-    <string name="permission_error">權限問題</string>
     <string name="supersu_tip">此程序需要超級用戶授權，請確保您的設備已破解 ROOT 授權。</string>
-    <string name="exit">退出應用程式</string>
-    <string name="refresh_state_failure">狀態更新失敗</string>
-    <string name="failed">操作失敗</string>
     <string name="wadb_on">網路 adb 已經啟動</string>
     <string name="turn_off">關閉網路 adb</string>
-    <string name="switch_">開關</string>
-    <string name="enable_wadb">啟用基於網路的 adb</string>
     <string name="wadb">基於網路的 adb</string>
     <string name="behavior">行為</string>
     <string name="show_notification_when_wadb_on">網路 adb 開啟時顯示通知</string>
     <string name="dont_show_notification_when_wadb_on">網路 adb 開啟時不顯示通知</string>
-    <string name="wadb_disabled">基於網路的 adb 已禁用</string>
-    <string name="wadb_enabled">基于网络的 adb 已啟用</string>
     <string name="disabled">已禁用</string>
     <string name="enabled">已啟用</string>
     <string name="notification">通知</string>

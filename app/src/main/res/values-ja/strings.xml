@@ -1,20 +1,12 @@
 <resources>
     <string name="app_name">ネットワーク経由のADB</string>
-    <string name="permission_error">アクセスが拒否されました</string>
     <string name="supersu_tip">このアプリを使用するには、デバイスをROOT化する必要があります</string>
-    <string name="exit">終了します</string>
-    <string name="refresh_state_failure">ステータスを更新できません。</string>
-    <string name="failed">失敗しました</string>
     <string name="wadb_on">ネットワーク経由のADBは有効です</string>
     <string name="turn_off">無効にする</string>
-    <string name="switch_">スイッチ</string>
-    <string name="enable_wadb">ネットワーク経由のADBを有効にする</string>
     <string name="wadb">ネットワーク経由のADB</string>
     <string name="behavior">動作</string>
     <string name="show_notification_when_wadb_on">ネットワーク経由のADBが有効の時、通知を表示します</string>
     <string name="dont_show_notification_when_wadb_on">ネットワーク経由のADBが有効の時、通知を表示しません</string>
-    <string name="wadb_enabled">ネットワーク経由のADBは有効です</string>
-    <string name="wadb_disabled">ネットワーク経由のADBは無効です</string>
     <string name="enabled">有効</string>
     <string name="disabled">無効</string>
     <string name="notification">通知</string>
@@ -40,7 +32,6 @@
     <string name="notification_channel_state">ステータス</string>
     <string name="notification_settings">通知設定</string>
     <string name="notification_settings_summary">もっと通知設定（音、バイブレーション、重要度など）はシステム設定に移動します</string>
-    <string name="use_shizuku">Shizukuを使う</string>
     <string name="theme_light">テーマ</string>
     <string name="user_interface">画面</string>
 </resources>

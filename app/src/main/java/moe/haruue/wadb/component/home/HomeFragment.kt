@@ -1,6 +1,5 @@
 package moe.haruue.wadb.component.home
 
-import android.app.AlertDialog
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
@@ -186,13 +185,8 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         onWadbStopped()
 
         AlertDialog.Builder(activity)
-                .setTitle(activity.getString(R.string.permission_error))
                 .setMessage(activity.getString(R.string.supersu_tip))
                 .setPositiveButton(android.R.string.ok, null)
-                .setNeutralButton(activity.getString(R.string.exit)) { _, _ ->
-                    NotificationHelper.cancelNotification(activity)
-                    activity.finishAffinity()
-                }
                 .create()
                 .show()
     }

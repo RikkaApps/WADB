@@ -1,20 +1,12 @@
 <resources>
     <string name="app_name">ADB Over Network</string>
-    <string name="permission_error">Zugriff verweigert</string>
     <string name="supersu_tip">Du benötigst Root!</string>
-    <string name="exit">Beenden</string>
-    <string name="refresh_state_failure">Refresh state failed.</string>
-    <string name="failed">Fehlgeschlagen</string>
     <string name="wadb_on">Network adb ist an</string>
     <string name="turn_off">Ausschalten</string>
-    <string name="switch_">Schalter</string>
-    <string name="enable_wadb">Aktiviere adb over network</string>
     <string name="wadb">ADB Over Network</string>
     <string name="behavior">Verhaltensweise</string>
     <string name="show_notification_when_wadb_on">Zeige eine Nachricht an, wenn adb over network aktiviert ist</string>
     <string name="dont_show_notification_when_wadb_on">Zeige keine Nachricht an, wenn adb over network aktiviert ist</string>
-    <string name="wadb_enabled">ADB over network ist aktiviert</string>
-    <string name="wadb_disabled">ADB over network ist deaktiviert</string>
     <string name="enabled">Aktiviert</string>
     <string name="disabled">Deaktiviert</string>
     <string name="notification">Benachrichtigung</string>
@@ -34,7 +26,6 @@
     <string name="wake_lock_on">Lasse den Bildschirm an, wenn adb aktiviert ist</string>
     <string name="wake_lock_off">Lasse den Bildschirm nicht an, wenn adb aktiviert ist</string>
     <string name="port">Port</string>
-    <string name="default_port" translatable="false">5555</string>
     <string name="bad_port_number">Port kann nur 1025–65535 sein</string>
     <string name="low_priority_notification">Niedrige Priorität Benachrichtigung</string>
     <string name="use_low_priority_notification">Nutze Benachrichtigungen mit niedriger Priorität zum verstecken des Benachrichtigungssymbol</string>

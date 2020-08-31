@@ -1,20 +1,12 @@
 <resources>
     <string name="app_name">ADB Over Network</string>
-    <string name="permission_error">Permission denied</string>
-    <string name="supersu_tip">Need root!</string>
-    <string name="exit">Exit</string>
-    <string name="refresh_state_failure">Refresh state failed.</string>
-    <string name="failed">Failed</string>
+    <string name="supersu_tip">This device is not rooted or the request was denied by the root manager app.</string>
     <string name="wadb_on">Network adb is on</string>
     <string name="turn_off">Turn off</string>
-    <string name="switch_">Switch</string>
-    <string name="enable_wadb">Enable adb over network</string>
     <string name="wadb">ADB Over Network</string>
     <string name="behavior">Behavior</string>
     <string name="show_notification_when_wadb_on">Show notification when adb over network is on</string>
     <string name="dont_show_notification_when_wadb_on">Don\'t show notification when adb over network is on</string>
-    <string name="wadb_enabled">ADB over network is enabled</string>
-    <string name="wadb_disabled">ADB over network is disabled</string>
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
     <string name="notification">Notification</string>
@@ -34,7 +26,6 @@
     <string name="wake_lock_on">Keep screen on when adb is enabling</string>
     <string name="wake_lock_off">Don\'t keep screen on when adb is enabling</string>
     <string name="port">Port</string>
-    <string name="default_port" translatable="false">5555</string>
     <string name="bad_port_number">Port number must only be 1025–65535</string>
     <string name="low_priority_notification">Low priority notification</string>
     <string name="use_low_priority_notification">Use low priority notification to hide the notification icon</string>
