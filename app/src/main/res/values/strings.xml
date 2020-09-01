@@ -1,8 +1,15 @@
 <resources>
+    <!-- Translator names -->
+    <string name="translators" />
+    <string name="contribute_translation">Contribute translation</string>
+    <string name="translation_contributors">The translation is contributed by %s.</string>
+
     <string name="wireless_adb_short" translatable="false">WADB</string>
     <string name="wireless_adb">Wireless adb</string>
-    <string name="contribute_translation">Contribute translation</string>
     <string name="about">About</string>
+    <string name="open_source_info"><![CDATA[
+This software is open source (%1$s) under %2$s.
+    ]]></string>
     <string name="dialog_not_rooted_message">This device is not rooted or the request was denied by the root manager.</string>
     <string name="notification_wadb_enabled_title">%s is enabled</string>
     <string name="notification_wadb_enabled_button_disable">Disable %s</string>

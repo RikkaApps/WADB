@@ -18,12 +18,11 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        resValue "string", "translation_url", "https://rikka.app/contribute_translation.html"
-        resValue "string", "open_source_info", "This software is open source (<b><a href=\"https://github.com/RikkaApps/WADB\">GitHub</a></b>) under Apache License 2.0"
-        resValue "string", "copyright", "Copyright © Haruue Icymoon, PinkD, Rikka"
         resConfigs 'de', 'it', 'zh-rCN', 'zh-rHK', 'zh-rTW', 'ja', 'id'
-
+        buildConfigField "String", "GITHUB_URL", "\"https://github.com/RikkaApps/WADB\""
+        buildConfigField "String", "LICENSE", "\"Apache License 2.0\""
+        buildConfigField "String", "TRANSLATION_URL", "\"https://rikka.app/contribute_translation.html\""
+        buildConfigField "String", "COPYRIGHT", "\"Copyright © Haruue Icymoon, PinkD, Rikka\""
         buildConfigField "boolean", "DONOT_RESTART_ADBD", "${dontRestartAdbd}" // set it true to prevent restart adbd (for debugging)
     }
     signingConfigs {
