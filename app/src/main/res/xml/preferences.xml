@@ -5,32 +5,30 @@
     <SwitchPreference
         android:defaultValue="false"
         android:key="pref_key_wadb_switch"
-        android:summaryOff="@string/disabled"
-        android:summaryOn="@string/enabled"
-        android:title="@string/wadb" />
+        android:summaryOff="@string/settings_toggle_summary_off"
+        android:summaryOn="@string/settings_toggle_summary_on"
+        android:title="@string/app_name" />
 
     <EditTextPreference
         android:defaultValue="5555"
         android:inputType="numberDecimal|numberSigned"
         android:key="pref_key_wadb_port"
         android:summary="%s"
-        android:title="@string/port"
+        android:title="@string/settings_port"
         app:dividerBelowVisibility="enforced" />
 
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="pref_key_notification"
-        android:summaryOff="@string/dont_show_notification_when_wadb_on"
-        android:summaryOn="@string/show_notification_when_wadb_on"
-        android:title="@string/notification" />
+        android:summary="@string/settings_show_notification_summary"
+        android:title="@string/settings_show_notification" />
 
     <CheckBoxPreference
         android:defaultValue="false"
         android:dependency="pref_key_notification"
         android:key="pref_key_notification_low_priority"
-        android:summaryOff="@string/use_default_priority_notification"
-        android:summaryOn="@string/use_low_priority_notification"
-        android:title="@string/low_priority_notification" />
+        android:summary="@string/settings_use_low_priority_notification"
+        android:title="@string/settings_low_priority_notification" />
 
     <Preference
         android:key="pref_key_notification_settings"
@@ -49,23 +47,20 @@
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="pref_key_wake_lock"
-        android:summaryOff="@string/wake_lock_off"
-        android:summaryOn="@string/wake_lock_on"
-        android:title="@string/wake_lock" />
+        android:summary="@string/settings_keep_screen_on_summary"
+        android:title="@string/settings_keep_screen_on" />
 
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="pref_key_screen_lock_switch"
-        android:summaryOff="@string/you_have_to_unlock_before_switch"
-        android:summaryOn="@string/you_can_switch_when_screen_is_locked"
-        android:title="@string/allow_switch_when_screen_locked" />
+        android:summary="@string/settings_allow_toggle_lock_screen_summary"
+        android:title="@string/settings_allow_toggle_lock_screen" />
 
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="pref_key_hide_launcher_icon"
-        android:summaryOff="@string/summary_off_hide_launcher_icon"
-        android:summaryOn="@string/summary_on_hide_launcher_icon"
-        android:title="@string/hide_the_icon_in_launcher"
+        android:summary="@string/settings_hide_icon_summary"
+        android:title="@string/settings_hide_icon"
         app:dividerBelowVisibility="enforced" />
 
     <moe.shizuku.preference.SimpleMenuPreference
@@ -74,7 +69,7 @@
         android:entryValues="@array/theme_light_value"
         android:key="pref_light_theme"
         android:summary="%s"
-        android:title="@string/theme_light" />
+        android:title="@string/settings_theme" />
 
     <!--<PreferenceCategory
         android:key="pref_key_category_shizuku"

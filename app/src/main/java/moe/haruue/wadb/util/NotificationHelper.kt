@@ -28,7 +28,7 @@ object NotificationHelper {
         val turnOffIntent = Intent("moe.haruue.wadb.action.TURN_OFF_WADB").apply { component = ComponentName(context, TurnOffReceiver::class.java) }
 
         val turnOffPendingIntent = PendingIntent.getBroadcast(context, 0, turnOffIntent, 0)
-        val turnOffAction = Notification.Action.Builder(Icon.createWithResource(context, R.drawable.ic_close_white_24dp), context.getString(R.string.turn_off), turnOffPendingIntent).build()
+        val turnOffAction = Notification.Action.Builder(Icon.createWithResource(context, R.drawable.ic_close_white_24dp), context.getString(R.string.notification_wadb_enabled_button_disable), turnOffPendingIntent).build()
         val visibility = if (WadbApplication.getDefaultSharedPreferences().getBoolean(WadbPreferences.KEY_SCREEN_LOCK_SWITCH, false)) Notification.VISIBILITY_PUBLIC else Notification.VISIBILITY_PRIVATE
 
         // Android Q supports dark status bar, but still uses color restriction algorithm of light background,
@@ -56,7 +56,7 @@ object NotificationHelper {
             Notification.Builder(context)
         }
 
-        builder.setContentTitle(context.getString(R.string.wadb_on))
+        builder.setContentTitle(context.getString(R.string.notification_wadb_enabled_title))
                 .setContentText("$ip:$port")
                 .setSmallIcon(R.drawable.ic_qs_network_adb_on)
                 .setContentIntent(contentPendingIntent)

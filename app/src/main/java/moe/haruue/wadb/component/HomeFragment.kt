@@ -36,9 +36,8 @@ import rikka.recyclerview.fixEdgeEffect
 
 class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEvent, SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private var switchPreference: TwoStatePreference? = null
-    private var portPreference: EditTextPreference? = null
-    private var lightThemePreference: SimpleMenuPreference? = null
+    private lateinit var togglePreference: TwoStatePreference
+    private lateinit var portPreference: EditTextPreference
 
     init {
         setHasOptionsMenu(true)
@@ -88,7 +87,7 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         preferenceManager.sharedPreferencesName = WadbApplication.getDefaultSharedPreferenceName()
 
         val context = requireContext()
-        switchPreference = findPreference(KEY_WADB_SWITCH) as TwoStatePreference
+        togglePreference = findPreference(KEY_WADB_SWITCH) as TwoStatePreference
         portPreference = findPreference(KEY_WAKE_PORT) as EditTextPreference
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -99,15 +98,19 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         val launcherIconPreference = findPreference(KEY_LAUNCHER_ICONS) as TwoStatePreference
         launcherIconPreference.isChecked = !WadbApplication.isLauncherActivityEnabled(context)
 
-        portPreference!!.setOnPreferenceChangeListener { _, newValue ->
+        portPreference.setOnPreferenceChangeListener { _, newValue ->
             val port: String = newValue as String
-            val p = Integer.parseInt(port)
+            val p = try {
+                Integer.parseInt(port)
+            } catch (e: Throwable) {
+                -1
+            }
             if (p < 1025 || p > 65535) {
-                Toast.makeText(context, R.string.bad_port_number, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.toast_bad_port_number, Toast.LENGTH_SHORT).show()
                 return@setOnPreferenceChangeListener false
             }
 
-            if (switchPreference!!.isChecked) {
+            if (togglePreference.isChecked) {
                 GlobalRequestHandler.startWadb(port)
             }
             true
@@ -116,17 +119,17 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         launcherIconPreference.setOnPreferenceChangeListener { _, newValue ->
             if (newValue as Boolean) {
                 WadbApplication.disableLauncherActivity(context)
-                Toast.makeText(context, R.string.tip_on_hide_launch_icon, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.toast_hide_icon, Toast.LENGTH_SHORT).show()
             } else {
                 WadbApplication.enableLauncherActivity(context)
-                Toast.makeText(context, R.string.tip_on_show_launch_icon, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.toast_show_icon, Toast.LENGTH_SHORT).show()
             }
             true
         }
 
-        switchPreference!!.setOnPreferenceChangeListener { _, newValue ->
-            switchPreference!!.isEnabled = false
-            portPreference!!.isEnabled = false
+        togglePreference.setOnPreferenceChangeListener { _, newValue ->
+            togglePreference.isEnabled = false
+            portPreference.isEnabled = false
             if (newValue as Boolean) {
                 GlobalRequestHandler.startWadb(WadbApplication.getWadbPort())
             } else {
@@ -135,14 +138,13 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
             false
         }
 
-        switchPreference!!.isChecked = GlobalRequestHandler.getWadbPort() != -1
+        togglePreference.isChecked = GlobalRequestHandler.getWadbPort() != -1
 
         findPreference(KEY_NOTIFICATION_SETTINGS).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
         findPreference(KEY_SCREEN_LOCK_SWITCH).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
-        lightThemePreference = findPreference(KEY_LIGHT_THEME) as SimpleMenuPreference
-
-        lightThemePreference!!.setOnPreferenceChangeListener { _, o ->
+        val lightThemePreference = findPreference(KEY_LIGHT_THEME) as SimpleMenuPreference
+        lightThemePreference.setOnPreferenceChangeListener { _, o ->
             if (o is String) {
                 val theme = o.toString()
                 if (ThemeHelper.getTheme(requireContext()) != theme) {
@@ -170,21 +172,21 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
 
         val ip = NetworksUtils.getLocalIPAddress(context)
         // refresh switch
-        switchPreference!!.isChecked = true
-        switchPreference!!.summaryOn = "$ip:$port"
+        togglePreference.isChecked = true
+        togglePreference.summaryOn = "$ip:$port"
         // refresh port
-        portPreference!!.text = port.toString()
-        portPreference!!.summary = port.toString()
-        switchPreference!!.isEnabled = true
-        portPreference!!.isEnabled = true
+        portPreference.text = port.toString()
+        portPreference.summary = port.toString()
+        togglePreference.isEnabled = true
+        portPreference.isEnabled = true
     }
 
     override fun onWadbStopped() {
         // refresh switch
-        switchPreference!!.isChecked = false
+        togglePreference.isChecked = false
 
-        switchPreference!!.isEnabled = true
-        portPreference!!.isEnabled = true
+        togglePreference.isEnabled = true
+        portPreference.isEnabled = true
     }
 
     override fun onRootPermissionFailure() {
@@ -196,7 +198,7 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         onWadbStopped()
 
         AlertDialog.Builder(activity)
-                .setMessage(activity.getString(R.string.supersu_tip))
+                .setMessage(activity.getString(R.string.dialog_not_rooted_message))
                 .setPositiveButton(android.R.string.ok, null)
                 .create()
                 .show()
@@ -206,14 +208,14 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         val context = requireContext()
         when (key) {
             // refresh notification when notification preferences are changed
-            KEY_NOTIFICATION, KEY_NOTIFICATION_LOW_PRIORITY -> if (switchPreference!!.isChecked) {
+            KEY_NOTIFICATION, KEY_NOTIFICATION_LOW_PRIORITY -> if (togglePreference.isChecked) {
                 if (preferences.getBoolean(KEY_NOTIFICATION, true)) {
                     GlobalRequestHandler.checkWadbState()
                 }
             } else {
                 NotificationHelper.cancelNotification(context)
             }
-            KEY_WAKE_LOCK -> if (preferences.getBoolean(key, false) && switchPreference!!.isChecked) {
+            KEY_WAKE_LOCK -> if (preferences.getBoolean(key, false) && togglePreference.isChecked) {
                 ScreenKeeper.acquireWakeLock(context)
             } else {
                 ScreenKeeper.releaseWakeLock()

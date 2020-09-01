@@ -1,40 +1,27 @@
 <resources>
     <string name="app_name">ADB Over Network</string>
-    <string name="supersu_tip">This device is not rooted or the request was denied by the root manager app.</string>
-    <string name="wadb_on">Network adb is on</string>
-    <string name="turn_off">Turn off</string>
-    <string name="wadb">ADB Over Network</string>
-    <string name="behavior">Behavior</string>
-    <string name="show_notification_when_wadb_on">Show notification when adb over network is on</string>
-    <string name="dont_show_notification_when_wadb_on">Don\'t show notification when adb over network is on</string>
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
-    <string name="notification">Notification</string>
-    <string name="allow_switch_when_screen_locked">Allow switch when screen is locked</string>
-    <string name="you_have_to_unlock_before_switch">You have to unlock screen to switch with quick setting tile</string>
-    <string name="you_can_switch_when_screen_is_locked">You can switch with quick setting tile when screen is locked</string>
     <string name="about">About</string>
-    <string name="about_text">Touch to visit the repository on GitHub</string>
-    <string name="license">License</string>
-    <string name="license_apache_2_0" translatable="false">Apache License 2.0</string>
-    <string name="summary_off_hide_launcher_icon">Don\'t hide the icon in launcher</string>
-    <string name="summary_on_hide_launcher_icon">Hide the icon in launcher, you can launch this app by long pressing our quick setting tile</string>
-    <string name="hide_the_icon_in_launcher">Hide the icon in launcher</string>
-    <string name="tip_on_hide_launch_icon">It may take a while before system hiding the launcher icon</string>
-    <string name="tip_on_show_launch_icon">It may take a while before system showing the launcher icon</string>
-    <string name="wake_lock">Keep screen on</string>
-    <string name="wake_lock_on">Keep screen on when adb is enabling</string>
-    <string name="wake_lock_off">Don\'t keep screen on when adb is enabling</string>
-    <string name="port">Port</string>
-    <string name="bad_port_number">Port number must only be 1025–65535</string>
-    <string name="low_priority_notification">Low priority notification</string>
-    <string name="use_low_priority_notification">Use low priority notification to hide the notification icon</string>
-    <string name="use_default_priority_notification">Use default priority notification</string>
+    <string name="dialog_not_rooted_message">This device is not rooted or the request was denied by the root manager.</string>
+    <string name="notification_wadb_enabled_title">Network adb is on</string>
+    <string name="notification_wadb_enabled_button_disable">Turn off</string>
+    <string name="settings_toggle_summary_on">Enabled</string>
+    <string name="settings_toggle_summary_off">Disabled</string>
+    <string name="settings_show_notification">Show notification</string>
+    <string name="settings_show_notification_summary">Show a notification when adb over network is on</string>
+    <string name="settings_allow_toggle_lock_screen">Allow switching when locked</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Allow switching from quick settings when screen is locked</string>
+    <string name="settings_hide_icon">Hide from home screen</string>
+    <string name="settings_hide_icon_summary">Hide this app from the home screen\n\nYou can launch this app by long pressing the quick settings tile or entering *#*#9232#*#* in the dialer</string>
+    <string name="toast_hide_icon">It may take a while before system hiding the launcher icon</string>
+    <string name="toast_show_icon">It may take a while before system showing the launcher icon</string><string name="settings_keep_screen_on">Keep screen on</string>
+    <string name="settings_keep_screen_on_summary">Keep the screen on when network adb is enabled</string>
+    <string name="settings_port">Port</string>
+    <string name="toast_bad_port_number">Port number must be 1025–65535</string>
+    <string name="settings_low_priority_notification">Low priority notification</string>
+    <string name="settings_use_low_priority_notification">Use low priority notification to hide the icon from the status bar</string>
+    <string name="settings_theme">Theme</string>
     <string name="notification_channel_state">Running status</string>
     <string name="notification_settings">Notification settings</string>
-    <string name="notification_settings_summary">More notification preferences (such as sound, vibrate and importance) in system settings</string>
-    <string name="use_shizuku">Use Shizuku</string>
-    <string name="theme_light">Theme</string>
-    <string name="user_interface">User interface</string>
+    <string name="notification_settings_summary">Change notification settings (such as sound, vibrate) from system</string>
 
 </resources>
