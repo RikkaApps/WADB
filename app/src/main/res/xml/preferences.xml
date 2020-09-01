@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--suppress DeprecatedClassUsageInspection, AndroidElementNotAllowed -->
+<?xml version="1.0" encoding="utf-8"?><!--suppress DeprecatedClassUsageInspection, AndroidElementNotAllowed, AndroidUnknownAttribute -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -7,7 +7,7 @@
         android:key="pref_key_wadb_switch"
         android:summaryOff="@string/settings_toggle_summary_off"
         android:summaryOn="@string/settings_toggle_summary_on"
-        android:title="@string/app_name" />
+        android:title="@string/wireless_adb" />
 
     <EditTextPreference
         android:defaultValue="5555"
@@ -20,15 +20,14 @@
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="pref_key_notification"
-        android:summary="@string/settings_show_notification_summary"
         android:title="@string/settings_show_notification" />
 
     <CheckBoxPreference
         android:defaultValue="false"
         android:dependency="pref_key_notification"
         android:key="pref_key_notification_low_priority"
-        android:summary="@string/settings_use_low_priority_notification"
-        android:title="@string/settings_low_priority_notification" />
+        android:summary="@string/settings_use_low_priority_notification_summary"
+        android:title="@string/settings_use_low_priority_notification" />
 
     <Preference
         android:key="pref_key_notification_settings"
@@ -47,7 +46,6 @@
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="pref_key_wake_lock"
-        android:summary="@string/settings_keep_screen_on_summary"
         android:title="@string/settings_keep_screen_on" />
 
     <CheckBoxPreference

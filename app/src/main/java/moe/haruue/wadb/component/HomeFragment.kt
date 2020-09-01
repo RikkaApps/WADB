@@ -1,18 +1,13 @@
 package moe.haruue.wadb.component
 
-import android.app.Dialog
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
-import android.view.*
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import moe.haruue.wadb.R
 import moe.haruue.wadb.WadbApplication
@@ -27,8 +22,6 @@ import moe.haruue.wadb.util.NotificationHelper
 import moe.haruue.wadb.util.ScreenKeeper
 import moe.haruue.wadb.util.ThemeHelper
 import moe.shizuku.preference.*
-import rikka.html.text.HtmlCompat
-import rikka.html.text.toHtml
 import rikka.material.widget.BorderRecyclerView
 import rikka.material.widget.BorderView
 import rikka.recyclerview.addVerticalPadding
@@ -38,10 +31,6 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
 
     private lateinit var togglePreference: TwoStatePreference
     private lateinit var portPreference: EditTextPreference
-
-    init {
-        setHasOptionsMenu(true)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,9 +84,6 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
             checkBoxPreference.isVisible = false
         }
 
-        val launcherIconPreference = findPreference(KEY_LAUNCHER_ICONS) as TwoStatePreference
-        launcherIconPreference.isChecked = !WadbApplication.isLauncherActivityEnabled(context)
-
         portPreference.setOnPreferenceChangeListener { _, newValue ->
             val port: String = newValue as String
             val p = try {
@@ -112,17 +98,6 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
 
             if (togglePreference.isChecked) {
                 GlobalRequestHandler.startWadb(port)
-            }
-            true
-        }
-
-        launcherIconPreference.setOnPreferenceChangeListener { _, newValue ->
-            if (newValue as Boolean) {
-                WadbApplication.disableLauncherActivity(context)
-                Toast.makeText(context, R.string.toast_hide_icon, Toast.LENGTH_SHORT).show()
-            } else {
-                WadbApplication.enableLauncherActivity(context)
-                Toast.makeText(context, R.string.toast_show_icon, Toast.LENGTH_SHORT).show()
             }
             true
         }
@@ -155,6 +130,28 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
             true
         }
 
+        val launcherIconPreference = findPreference(KEY_LAUNCHER_ICONS) as TwoStatePreference
+        val launcherActivityEnabled = WadbApplication.isLauncherActivityEnabled(context)
+
+        launcherIconPreference.isChecked = !launcherActivityEnabled
+        launcherIconPreference.setOnPreferenceChangeListener { _, newValue ->
+            if (newValue as Boolean) {
+                WadbApplication.disableLauncherActivity(context)
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    AlertDialog.Builder(requireContext())
+                            .setMessage(R.string.dialog_hide_icon_message_q)
+                            .setPositiveButton(android.R.string.ok, null)
+                            .show()
+                }
+            } else {
+                WadbApplication.enableLauncherActivity(context)
+            }
+            true
+        }
+
+        findPreference(KEY_NOTIFICATION).summary = getString(R.string.settings_show_notification_summary, getString(R.string.wireless_adb))
+        findPreference(KEY_WAKE_LOCK).summary = getString(R.string.settings_keep_screen_on_summary, getString(R.string.wireless_adb))
     }
 
     override fun onPause() {
@@ -221,33 +218,5 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
                 ScreenKeeper.releaseWakeLock()
             }
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.home, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (item.itemId == R.id.menu_about) {
-            val context = requireContext()
-            val versionName: String
-            try {
-                versionName = context.packageManager.getPackageInfo(context.packageName, 0).versionName
-            } catch (ignored: PackageManager.NameNotFoundException) {
-                return true
-            }
-            val text = "$versionName<p>${getString(R.string.open_source_info)}<p>${getString(R.string.copyright)}".toHtml(HtmlCompat.FROM_HTML_OPTION_TRIM_WHITESPACE)
-            val dialog: Dialog = AlertDialog.Builder(context)
-                    .setView(R.layout.dialog_about)
-                    .show()
-            (dialog.findViewById<View>(R.id.design_about_icon) as ImageView).setImageDrawable(context.getDrawable(R.drawable.ic_launcher))
-            (dialog.findViewById<View>(R.id.design_about_title) as TextView).text = getString(R.string.app_name)
-            (dialog.findViewById<View>(R.id.design_about_version) as TextView).apply {
-                movementMethod = LinkMovementMethod.getInstance()
-                this.text = text
-            }
-            (dialog.findViewById<View>(R.id.design_about_info) as TextView).isVisible = false
-            true
-        } else super.onOptionsItemSelected(item)
     }
 }

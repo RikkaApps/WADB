@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">网络 adb</string>
+    <string name="wireless_adb">无线 adb</string>
+    <string name="about">关于</string>
     <string name="dialog_not_rooted_message">此设备没有 root 或是请求被 root 管理器拒绝。</string>
-    <string name="notification_wadb_enabled_title">网络 adb 已经启动</string>
-    <string name="notification_wadb_enabled_button_disable">关闭网络 adb</string>
-    <string name="settings_show_notification_summary">网络 adb 开启时显示通知</string>
+    <string name="notification_wadb_enabled_title">%s 已启用</string>
+    <string name="notification_wadb_enabled_button_disable">禁用 %s</string>
     <string name="settings_toggle_summary_off">已禁用</string>
     <string name="settings_toggle_summary_on">已启用</string>
-    <string name="settings_show_notification">通知</string>
-    <string name="settings_allow_toggle_lock_screen">锁屏时允许切换状态</string>
-    <string name="settings_allow_toggle_lock_screen_summary">屏幕锁定时允许使用快速设置开关直接更改状态</string>
-    <string name="about">关于</string>
-    <string name="settings_hide_icon">隐藏启动器图标</string>
-    <string name="settings_hide_icon_summary">隐藏图标，你可以通过长按我们的快速设置瓷贴打开此应用</string>
-    <string name="toast_hide_icon">图标隐藏可能需要几分钟的时间才能生效</string>
-    <string name="toast_show_icon">取消图标隐藏可能需要几分钟的时间才能生效</string>
-    <string name="settings_keep_screen_on">屏幕常亮</string>
-    <string name="settings_keep_screen_on_summary">启用调试时屏幕常亮</string>
+    <string name="settings_show_notification">显示通知</string>
+    <string name="settings_show_notification_summary">启用“%s”时显示一条通知</string>
+    <string name="settings_allow_toggle_lock_screen">锁定时允许切换</string>
+    <string name="settings_allow_toggle_lock_screen_summary">允许屏幕锁定时从快速设置切换</string>
+    <string name="settings_hide_icon">从主屏幕隐藏</string>
+    <string name="settings_hide_icon_summary">从主屏幕隐藏此应用</string>
+    <string name="dialog_hide_icon_message_q">请注意，从 Android 10 开始，系统可能会强制所有应用显示在主屏幕上。</string>
+    <string name="settings_keep_screen_on">保持屏幕开启</string>
+    <string name="settings_keep_screen_on_summary">启用“%s”时保持屏幕开启</string>
     <string name="settings_port">端口</string>
-    <string name="toast_bad_port_number">端口只能在 1025–65535 之间</string>
-    <string name="settings_low_priority_notification">低优先级通知</string>
-    <string name="settings_use_low_priority_notification">使用低优先级通知来隐藏通知图标</string>
+    <string name="toast_bad_port_number">端口号只能在 1025–65535 之间</string>
+    <string name="settings_use_low_priority_notification">使用低优先级通知</string>
+    <string name="settings_use_low_priority_notification_summary">通知将显示在其他通知的底部，通知图标将从状态栏中隐藏</string>
+    <string name="settings_theme">主题</string>
     <string name="notification_channel_state">运行状态</string>
     <string name="notification_settings">通知设置</string>
-    <string name="notification_settings_summary">访问系统设置中的更多通知设置（例如声音、震动和重要性）</string>
-    <string name="settings_theme">主题</string>
+    <string name="notification_settings_summary">从系统更改通知设置</string>
 </resources>

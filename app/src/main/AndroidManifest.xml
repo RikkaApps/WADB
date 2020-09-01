@@ -16,13 +16,14 @@
         android:allowBackup="false"
         android:directBootAware="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/wireless_adb"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
         <activity-alias
             android:name=".ui.activity.LaunchActivity"
+            android:label="@string/wireless_adb_short"
             android:targetActivity=".component.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +33,7 @@
 
         <activity
             android:name=".component.HomeActivity"
+            android:label="@string/wireless_adb_short"
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -53,7 +55,7 @@
             android:enabled="true"
             android:exported="true"
             android:icon="@drawable/ic_qs_network_adb_on"
-            android:label="@string/app_name"
+            android:label="@string/wireless_adb"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
             tools:targetApi="n">
             <intent-filter>

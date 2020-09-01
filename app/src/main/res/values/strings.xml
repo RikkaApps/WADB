@@ -1,27 +1,27 @@
 <resources>
-    <string name="app_name">ADB Over Network</string>
+    <string name="wireless_adb_short" translatable="false">WADB</string>
+    <string name="wireless_adb">Wireless adb</string>
     <string name="about">About</string>
     <string name="dialog_not_rooted_message">This device is not rooted or the request was denied by the root manager.</string>
-    <string name="notification_wadb_enabled_title">Network adb is on</string>
-    <string name="notification_wadb_enabled_button_disable">Turn off</string>
+    <string name="notification_wadb_enabled_title">%s is enabled</string>
+    <string name="notification_wadb_enabled_button_disable">Disable %s</string>
     <string name="settings_toggle_summary_on">Enabled</string>
     <string name="settings_toggle_summary_off">Disabled</string>
     <string name="settings_show_notification">Show notification</string>
-    <string name="settings_show_notification_summary">Show a notification when adb over network is on</string>
+    <string name="settings_show_notification_summary">Show a notification when \"%s\" is enabled</string>
     <string name="settings_allow_toggle_lock_screen">Allow switching when locked</string>
-    <string name="settings_allow_toggle_lock_screen_summary">Allow switching from quick settings when screen is locked</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Allow switching from quick settings when the screen is locked</string>
     <string name="settings_hide_icon">Hide from home screen</string>
-    <string name="settings_hide_icon_summary">Hide this app from the home screen\n\nYou can launch this app by long pressing the quick settings tile or entering *#*#9232#*#* in the dialer</string>
-    <string name="toast_hide_icon">It may take a while before system hiding the launcher icon</string>
-    <string name="toast_show_icon">It may take a while before system showing the launcher icon</string><string name="settings_keep_screen_on">Keep screen on</string>
-    <string name="settings_keep_screen_on_summary">Keep the screen on when network adb is enabled</string>
+    <string name="settings_hide_icon_summary">Hide this app from the home screen</string>
+    <string name="dialog_hide_icon_message_q">Note, starting from Android 10, the system may enforce all apps to be shown on the home screen.</string>
+    <string name="settings_keep_screen_on">Keep screen on</string>
+    <string name="settings_keep_screen_on_summary">Keep the screen on when \"%s\" is enabled</string>
     <string name="settings_port">Port</string>
     <string name="toast_bad_port_number">Port number must be 1025–65535</string>
-    <string name="settings_low_priority_notification">Low priority notification</string>
-    <string name="settings_use_low_priority_notification">Use low priority notification to hide the icon from the status bar</string>
+    <string name="settings_use_low_priority_notification">Use low priority notification</string>
+    <string name="settings_use_low_priority_notification_summary">The notification will be shown at the bottom from others and the notification icon will be hidden from the status bar</string>
     <string name="settings_theme">Theme</string>
     <string name="notification_channel_state">Running status</string>
     <string name="notification_settings">Notification settings</string>
-    <string name="notification_settings_summary">Change notification settings (such as sound, vibrate) from system</string>
-
+    <string name="notification_settings_summary">Change notification settings from the system</string>
 </resources>

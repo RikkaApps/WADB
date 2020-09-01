@@ -103,7 +103,7 @@ public abstract class WadbTileService extends TileService implements WadbStateCh
         final Context context = this;
         tile.setState(Tile.STATE_INACTIVE);
         tile.setIcon(Icon.createWithResource(context, R.drawable.ic_qs_network_adb_off));
-        tile.setLabel(context.getString(R.string.app_name));
+        tile.setLabel(context.getString(R.string.wireless_adb));
         tile.updateTile();
     }
 

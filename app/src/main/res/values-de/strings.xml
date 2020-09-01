@@ -1,25 +1,11 @@
 <resources>
-    <string name="app_name">ADB Over Network</string>
-    <string name="notification_wadb_enabled_title">Network adb ist an</string>
-    <string name="notification_wadb_enabled_button_disable">Ausschalten</string>
-    <string name="settings_show_notification_summary">Zeige eine Nachricht an, wenn adb over network aktiviert ist</string>
     <string name="settings_toggle_summary_on">Aktiviert</string>
     <string name="settings_toggle_summary_off">Deaktiviert</string>
-    <string name="settings_show_notification">Benachrichtigung</string>
     <string name="settings_allow_toggle_lock_screen">Erlaube umschalten wenn der Bildschirm gesperrt ist</string>
-    <string name="settings_allow_toggle_lock_screen_summary">Du kannst in den Schnelleinstellungen etwas ändern, wenn der Bildschirm gesperrt ist</string>
     <string name="about">Über</string>
-    <string name="settings_hide_icon_summary">Verstecke das Appsymbol im Launcher, du kannst die App beim gedrückt halten in den Schnelleinstellungen öffnen</string>
-    <string name="settings_hide_icon">Verstecke das Appsymbol im Launcher</string>
-    <string name="toast_hide_icon">Es könnte etwas dauern, bis das System das Appsymbol versteckt</string>
-    <string name="toast_show_icon">Es könnte etwas dauern, bis das System das Appsymbol wieder anzeigt</string>
     <string name="settings_keep_screen_on">Lasse den Bildschirm an</string>
-    <string name="settings_keep_screen_on_summary">Lasse den Bildschirm an, wenn adb aktiviert ist</string>
     <string name="settings_port">Port</string>
     <string name="toast_bad_port_number">Port kann nur 1025–65535 sein</string>
-    <string name="settings_low_priority_notification">Niedrige Priorität Benachrichtigung</string>
-    <string name="settings_use_low_priority_notification">Nutze Benachrichtigungen mit niedriger Priorität zum verstecken des Benachrichtigungssymbol</string>
     <string name="notification_channel_state">Aktivitätsstatus</string>
     <string name="notification_settings">Benachrichtigungseinstellungen</string>
-    <string name="notification_settings_summary">Mehr Benachrichtigungseinstellungen (Bspw. Laut, Vibration und Wichtige) in den Systemeinstellungen</string>
 </resources>

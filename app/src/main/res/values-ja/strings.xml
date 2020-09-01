@@ -1,26 +1,12 @@
 <resources>
-    <string name="app_name">ネットワーク経由のADB</string>
-    <string name="notification_wadb_enabled_title">ネットワーク経由のADBは有効です</string>
-    <string name="notification_wadb_enabled_button_disable">無効にする</string>
-    <string name="settings_show_notification_summary">ネットワーク経由のADBが有効の時、通知を表示します</string>
     <string name="settings_toggle_summary_on">有効</string>
     <string name="settings_toggle_summary_off">無効</string>
-    <string name="settings_show_notification">通知</string>
     <string name="settings_allow_toggle_lock_screen">ロック画面でスイッチの切り替えを許可する</string>
-    <string name="settings_allow_toggle_lock_screen_summary">画面ロックを解除しない時、クイック設定タイルでスイッチを切り替える可能</string>
     <string name="about">このアプリについて</string>
-    <string name="settings_hide_icon_summary">このアプリのアイコンが非表示している。クイック設定タイルを長押しすると、このアプリを起動できます</string>
-    <string name="settings_hide_icon">ランチャーでランチャーアイコンを隠す</string>
-    <string name="toast_hide_icon">ランチャーアイコンの非表示には数分かかる場合があります</string>
-    <string name="toast_show_icon">ランチャーアイコンの表示には数分かかる場合があります</string>
     <string name="settings_keep_screen_on">スリープモードにしない</string>
-    <string name="settings_keep_screen_on_summary">ネットワーク経由のADBが有効の時に、画面をスリープしない</string>
     <string name="settings_port">ポート番号</string>
     <string name="toast_bad_port_number">ポート番号は1025〜65535のみにできる</string>
-    <string name="settings_low_priority_notification">低い重要度の通知</string>
-    <string name="settings_use_low_priority_notification">低い重要度の通知を使って、通知のアイコンを隠す</string>
     <string name="notification_channel_state">ステータス</string>
     <string name="notification_settings">通知設定</string>
-    <string name="notification_settings_summary">もっと通知設定（音、バイブレーション、重要度など）はシステム設定に移動します</string>
     <string name="settings_theme">テーマ</string>
 </resources>
