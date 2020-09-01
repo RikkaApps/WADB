@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about">Informazioni</string>
-    <string name="settings_allow_toggle_lock_screen">Consenti abilitazione con schermo bloccato</string>
-    <string name="toast_bad_port_number">Il numero della porta può essere soltanto tra 1025 e 65535</string>
-    <string name="settings_toggle_summary_off">Disabilitato</string>
-    <string name="settings_toggle_summary_on">Abilitato</string>
-    <string name="notification_channel_state">Stato esecuzione</string>
     <string name="notification_settings">Impostazioni notifica</string>
+    <string name="notification_channel_state">Stato esecuzione</string>
+    <string name="toast_bad_port_number">Il numero della porta può essere soltanto tra 1025 e 65535</string>
     <string name="settings_port">Porta</string>
     <string name="settings_keep_screen_on">Lascia lo schermo acceso</string>
+    <string name="settings_allow_toggle_lock_screen">Consenti abilitazione con schermo bloccato</string>
+    <string name="settings_toggle_summary_off">Disabilitato</string>
+    <string name="settings_toggle_summary_on">Abilitato</string>
+    <string name="about">Informazioni</string>
 </resources>

@@ -1,12 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings_toggle_summary_on">有効</string>
-    <string name="settings_toggle_summary_off">無効</string>
-    <string name="settings_allow_toggle_lock_screen">ロック画面でスイッチの切り替えを許可する</string>
-    <string name="about">このアプリについて</string>
-    <string name="settings_keep_screen_on">スリープモードにしない</string>
-    <string name="settings_port">ポート番号</string>
-    <string name="toast_bad_port_number">ポート番号は1025〜65535のみにできる</string>
-    <string name="notification_channel_state">ステータス</string>
     <string name="notification_settings">通知設定</string>
+    <string name="notification_channel_state">実行ステータス</string>
     <string name="theme">テーマ</string>
+    <string name="toast_bad_port_number">ポート番号は1025〜65535のみにできる</string>
+    <string name="settings_port">ポート番号</string>
+    <string name="settings_keep_screen_on">スリープモードにしない</string>
+    <string name="settings_allow_toggle_lock_screen">ロック画面でスイッチの切り替えを許可する</string>
+    <string name="settings_toggle_summary_off">無効</string>
+    <string name="settings_toggle_summary_on">有効</string>
+    <string name="about">このアプリについて</string>
+    <string name="contribute_translation">翻訳にご協力</string>
+    <string name="notification_settings_summary">システムで通知設定を変更します</string>
+    <string name="settings_start_on_boot_summary">デバイス起動の時に、「%s」を自動的に有効にします</string>
+    <string name="settings_start_on_boot">自動起動</string>
+    <string name="theme_pink">ピンク</string>
+    <string name="theme_white">白</string>
+    <string name="theme_default">デフォルト</string>
+    <string name="settings_use_low_priority_notification_summary">通知は他の通知の下に表示し、通知アイコンはステータスバーに非表示にします</string>
+    <string name="settings_use_low_priority_notification">低い重要度の通知を使う</string>
+    <string name="settings_keep_screen_on_summary">「%s」が有効の間に、画面をスリープにしない</string>
+    <string name="dialog_hide_icon_message_q">Android 10以降、システムはすべてのアプリのアイコンがランチャーに表示を強制される場合があります。</string>
+    <string name="settings_hide_icon">ランチャーにアイコンを隠す</string>
+    <string name="settings_hide_icon_summary">このアプリをランチャーに隠す</string>
+    <string name="settings_allow_toggle_lock_screen_summary">画面ロックを解除しない時、スイッチもクイック設定タイルで切り替えられます</string>
+    <string name="settings_show_notification_summary">「%s」が有効の時に、通知を表示する</string>
+    <string name="settings_show_notification">通知を表示</string>
+    <string name="notification_wadb_enabled_title">%sが有効されています</string>
+    <string name="notification_wadb_enabled_button_disable">%sを無効にする</string>
+    <string name="dialog_not_rooted_message">このデバイスはROOT化されていません。もしくはこのアプリはROOTを拒否されています。</string>
+    <string name="open_source_info">このアプリは、%2$s によってオープンソース（%1$s）されていました。</string>
+    <string name="wireless_adb">無線 ADB</string>
 </resources>

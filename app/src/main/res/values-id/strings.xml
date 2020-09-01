@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings_toggle_summary_on">Diaktifkan</string>
-    <string name="settings_toggle_summary_off">Dinonaktifkan</string>
-    <string name="settings_allow_toggle_lock_screen">Izinkan beralih ketika layar terkunci</string>
-    <string name="about">Tentang</string>
-    <string name="settings_keep_screen_on">Jaga layar tetap menyala</string>
-    <string name="settings_port">Port</string>
-    <string name="toast_bad_port_number">Nomor port hanya boleh 1025–65535</string>
-    <string name="notification_channel_state">Status aktivitas</string>
     <string name="notification_settings">Pengaturan notifikasi</string>
+    <string name="notification_channel_state">Status aktivitas</string>
     <string name="theme">Tema</string>
+    <string name="toast_bad_port_number">Nomor port hanya boleh 1025–65535</string>
+    <string name="settings_port">Port</string>
+    <string name="settings_keep_screen_on">Jaga layar tetap menyala</string>
+    <string name="settings_allow_toggle_lock_screen">Izinkan beralih ketika layar terkunci</string>
+    <string name="settings_toggle_summary_off">Dinonaktifkan</string>
+    <string name="settings_toggle_summary_on">Diaktifkan</string>
+    <string name="about">Tentang</string>
 </resources>

@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings_toggle_summary_on">Aktiviert</string>
-    <string name="settings_toggle_summary_off">Deaktiviert</string>
-    <string name="settings_allow_toggle_lock_screen">Erlaube umschalten wenn der Bildschirm gesperrt ist</string>
-    <string name="about">Über</string>
-    <string name="settings_keep_screen_on">Lasse den Bildschirm an</string>
-    <string name="settings_port">Port</string>
-    <string name="toast_bad_port_number">Port kann nur 1025–65535 sein</string>
-    <string name="notification_channel_state">Aktivitätsstatus</string>
     <string name="notification_settings">Benachrichtigungseinstellungen</string>
+    <string name="notification_channel_state">Aktivitätsstatus</string>
+    <string name="toast_bad_port_number">Port kann nur 1025–65535 sein</string>
+    <string name="settings_port">Port</string>
+    <string name="settings_keep_screen_on">Lasse den Bildschirm an</string>
+    <string name="settings_allow_toggle_lock_screen">Erlaube umschalten wenn der Bildschirm gesperrt ist</string>
+    <string name="settings_toggle_summary_off">Deaktiviert</string>
+    <string name="settings_toggle_summary_on">Aktiviert</string>
+    <string name="about">Über</string>
 </resources>
