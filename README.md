@@ -1,41 +1,29 @@
-# WADB - a simple switch for ADB over network
-
-[简体中文](README-zh_rCN.md) | [English](README.md)
+# WADB - A simple switch for wireless ADB
 
 ## Feature
 
-switch the state of ADB over network by the following command，**Need root !!!**
+* Optimized to respond as quickly as possible
+* Support quick settings tile (requires Android 7.0+)
+* Option to start on boot
+* And more…
 
-```shell
-// Start ADB over network
-setprop service.adb.tcp.port 5555
-stop adbd
-start adbd
-
-// Stop ADB over network
-setprop service.adb.tcp.port -1
-stop adbd
-start adbd
-
-```
-
-Support the new [Tile API](https://developer.android.com/preview/api-overview.html#tile_api) which add in Android N, so you need a Android N device to use the tile. But other functions also work well in Android 6.0.
-
-## Screenshot
-
-<img src="readme.res/01.png" width="30%" height="30%">
-<img src="readme.res/02.png" width="30%" height="30%">
-<img src="readme.res/03.png" width="30%" height="30%">
-<img src="readme.res/04.png" width="30%" height="30%">
+Note, to enable wireless ADB directly on from the device, **root is a must**.
 
 ## Download
 
-Support us in Play Store：
+[Google Play](https://play.google.com/store/apps/details?id=moe.haruue.wadb)
 
-<a href='https://play.google.com/store/apps/details?id=moe.haruue.wadb&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="250"/></a>
+[GitHub release](https://github.com/RikkaApps/WADB/releases/latest)
 
-... or directly download the APK file [here](https://github.com/RikkaApps/WADB/releases/latest).
+## Contribute translation
 
-## Translation
+<https://rikka.app/contribute_translation.html> or pull request.
 
-If you want to translate ADB over Network into your language, just open a Pull Request.
+## Screenshots
+
+<table>
+  <tr>
+    <td valign="top"><img src="readme.res/01.png"></td>
+    <td valign="top"><img src="readme.res/02.png"></td>
+  </tr>
+ </table>
