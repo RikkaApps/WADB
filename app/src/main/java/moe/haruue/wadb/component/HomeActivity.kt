@@ -43,7 +43,7 @@ class HomeActivity : AppBarFragmentActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.home, menu)
         menu.findItem(R.id.menu_theme).subMenu.apply {
-            val currentTheme = ThemeHelper.getTheme(this@HomeActivity)
+            val currentTheme = ThemeHelper.getTheme()
             for ((index, theme) in themes.withIndex()) {
                 add(R.id.menu_theme_group, themesId[index].hashCode(), index, theme).apply {
                     isCheckable = true
@@ -95,7 +95,7 @@ class HomeActivity : AppBarFragmentActivity() {
                 val index = themesId.indexOf(item.itemId)
                 if (index == -1) return super.onOptionsItemSelected(item)
 
-                if (ThemeHelper.getTheme(this) != themesValue[index]) {
+                if (ThemeHelper.getTheme() != themesValue[index]) {
                     ThemeHelper.setLightTheme(themesValue[index])
                     recreate()
                 }

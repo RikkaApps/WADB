@@ -31,6 +31,8 @@
     <string name="theme_default">默认</string>
     <string name="theme_white">白色</string>
     <string name="theme_pink">粉色</string>
+    <string name="settings_start_on_boot">开机启动</string>
+    <string name="settings_start_on_boot_summary">设备启动时启用“%s”</string>
     <string name="notification_channel_state">运行状态</string>
     <string name="notification_settings">通知设置</string>
     <string name="notification_settings_summary">从系统更改通知设置</string>

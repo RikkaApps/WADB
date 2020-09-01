@@ -29,11 +29,11 @@ object NotificationHelper {
 
         val turnOffPendingIntent = PendingIntent.getBroadcast(context, 0, turnOffIntent, 0)
         val turnOffAction = Notification.Action.Builder(Icon.createWithResource(context, R.drawable.ic_close_white_24dp), context.getString(R.string.notification_wadb_enabled_button_disable, context.getString(R.string.wireless_adb)), turnOffPendingIntent).build()
-        val visibility = if (WadbApplication.getDefaultSharedPreferences().getBoolean(WadbPreferences.KEY_SCREEN_LOCK_SWITCH, false)) Notification.VISIBILITY_PUBLIC else Notification.VISIBILITY_PRIVATE
+        val visibility = if (WadbApplication.defaultSharedPreferences.getBoolean(WadbPreferences.KEY_SCREEN_LOCK_SWITCH, false)) Notification.VISIBILITY_PUBLIC else Notification.VISIBILITY_PRIVATE
 
         // Android Q supports dark status bar, but still uses color restriction algorithm of light background,
         // so we still have to use light color here
-        val color: Int = when (ThemeHelper.getTheme(context)) {
+        val color: Int = when (ThemeHelper.getTheme()) {
             ThemeHelper.THEME_WHITE -> {
                 context.getColor(R.color.primary_color)
             }
@@ -67,7 +67,7 @@ object NotificationHelper {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             @Suppress("DEPRECATION")
-            builder.setPriority(if (WadbApplication.getDefaultSharedPreferences().getBoolean(WadbPreferences.KEY_NOTIFICATION_LOW_PRIORITY, true)) Notification.PRIORITY_MIN else Notification.PRIORITY_DEFAULT)
+            builder.setPriority(if (WadbApplication.defaultSharedPreferences.getBoolean(WadbPreferences.KEY_NOTIFICATION_LOW_PRIORITY, true)) Notification.PRIORITY_MIN else Notification.PRIORITY_DEFAULT)
         } else {
             createNotificationChannel(context)
         }

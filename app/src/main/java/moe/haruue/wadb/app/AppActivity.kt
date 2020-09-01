@@ -13,7 +13,7 @@ import moe.haruue.wadb.util.ThemeHelper.*
 import rikka.core.res.resolveColor
 import rikka.material.app.MaterialActivity
 
-abstract class BaseActivity : MaterialActivity() {
+abstract class AppActivity : MaterialActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,16 +21,16 @@ abstract class BaseActivity : MaterialActivity() {
     }
 
     override fun computeUserThemeKey(): String? {
-        return getTheme(this)
+        return getTheme()
     }
 
     override fun onApplyUserThemeResource(theme: Resources.Theme, isDecorView: Boolean) {
-        theme.applyStyle(getThemeStyleRes(this), true)
+        theme.applyStyle(getThemeStyleRes(), true)
     }
 
     private fun updateTaskDescription() {
         val color: Int = theme.resolveColor(R.attr.appBarColor)
-        val icon: Int = when (getTheme(this)) {
+        val icon: Int = when (getTheme()) {
             THEME_WHITE -> {
                 R.drawable.ic_task_icon_black
             }

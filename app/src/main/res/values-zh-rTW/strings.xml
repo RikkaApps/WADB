@@ -31,6 +31,8 @@
     <string name="theme_default">預設</string>
     <string name="theme_white">白色</string>
     <string name="theme_pink">粉色</string>
+    <string name="settings_start_on_boot">開機啟動</string>
+    <string name="settings_start_on_boot_summary">裝置啟動時啟用“%s”</string>
     <string name="notification_channel_state">執行狀態</string>
     <string name="notification_settings">通知設定</string>
     <string name="notification_settings_summary">從系統更改通知設定</string>

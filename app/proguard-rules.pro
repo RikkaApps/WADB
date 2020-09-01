@@ -15,9 +15,12 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-repackageclasses 'moe.haruue.wadb'
+
 -assumenosideeffects class android.util.Log {
     public static int d(...);
 }
 -repackageclasses
 -allowaccessmodification
 -overloadaggressively
+-keepattributes SourceFile,LineNumberTable

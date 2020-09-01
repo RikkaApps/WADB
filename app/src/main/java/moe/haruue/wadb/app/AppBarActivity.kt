@@ -13,7 +13,7 @@ import moe.haruue.wadb.R
 import rikka.core.res.resolveColor
 import rikka.material.widget.AppBarLayout
 
-abstract class AppBarActivity : BaseActivity() {
+abstract class AppBarActivity : AppActivity() {
 
     private val rootView: ViewGroup by lazy {
         findViewById<ViewGroup>(R.id.root)

@@ -20,7 +20,7 @@ import moe.haruue.wadb.events.WadbStateChangedEvent
 import moe.haruue.wadb.util.NetworksUtils
 import moe.haruue.wadb.util.NotificationHelper
 import moe.haruue.wadb.util.ScreenKeeper
-import moe.haruue.wadb.util.ThemeHelper
+import moe.haruue.wadb.wadbApplication
 import moe.shizuku.preference.*
 import rikka.material.widget.BorderRecyclerView
 import rikka.material.widget.BorderView
@@ -73,7 +73,7 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.setStorageDeviceProtected()
         addPreferencesFromResource(R.xml.preferences)
-        preferenceManager.sharedPreferencesName = WadbApplication.getDefaultSharedPreferenceName()
+        preferenceManager.sharedPreferencesName = WadbApplication.defaultSharedPreferenceName
 
         val context = requireContext()
         togglePreference = findPreference(KEY_WADB_SWITCH) as TwoStatePreference
@@ -106,7 +106,7 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
             togglePreference.isEnabled = false
             portPreference.isEnabled = false
             if (newValue as Boolean) {
-                GlobalRequestHandler.startWadb(WadbApplication.getWadbPort())
+                GlobalRequestHandler.startWadb(WadbApplication.wadbPort)
             } else {
                 GlobalRequestHandler.stopWadb()
             }
@@ -119,12 +119,12 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         findPreference(KEY_SCREEN_LOCK_SWITCH).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
         val launcherIconPreference = findPreference(KEY_LAUNCHER_ICONS) as TwoStatePreference
-        val launcherActivityEnabled = WadbApplication.isLauncherActivityEnabled(context)
+        val launcherActivityEnabled = wadbApplication.isLauncherActivityEnabled()
 
         launcherIconPreference.isChecked = !launcherActivityEnabled
         launcherIconPreference.setOnPreferenceChangeListener { _, newValue ->
             if (newValue as Boolean) {
-                WadbApplication.disableLauncherActivity(context)
+                wadbApplication.disableLauncherActivity()
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     AlertDialog.Builder(requireContext())
@@ -133,7 +133,19 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
                             .show()
                 }
             } else {
-                WadbApplication.enableLauncherActivity(context)
+                wadbApplication.enableLauncherActivity()
+            }
+            true
+        }
+
+        val bootCompletedReceiverPreference = findPreference("start_on_boot") as TwoStatePreference
+        bootCompletedReceiverPreference.summary = getString(R.string.settings_start_on_boot_summary, getString(R.string.wireless_adb))
+        bootCompletedReceiverPreference.isChecked = wadbApplication.isBootCompletedReceiverEnabled()
+        bootCompletedReceiverPreference.setOnPreferenceChangeListener { _, newValue ->
+            if (newValue as Boolean) {
+                wadbApplication.enableBootCompletedReceiver()
+            } else {
+                wadbApplication.disableBootCompletedReceiver()
             }
             true
         }

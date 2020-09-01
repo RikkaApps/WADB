@@ -1,7 +1,5 @@
 package moe.haruue.wadb.util;
 
-import android.content.Context;
-
 import androidx.annotation.StyleRes;
 
 import moe.haruue.wadb.R;
@@ -21,13 +19,13 @@ public class ThemeHelper {
         WadbApplication.getDefaultSharedPreferences().edit().putString(KEY_LIGHT_THEME, theme).apply();
     }
 
-    public static String getTheme(Context context) {
+    public static String getTheme() {
         return WadbApplication.getDefaultSharedPreferences().getString(KEY_LIGHT_THEME, THEME_CLASSIC);
     }
 
     @StyleRes
-    public static int getThemeStyleRes(Context context) {
-        switch (getTheme(context)) {
+    public static int getThemeStyleRes() {
+        switch (getTheme()) {
             case THEME_CLASSIC:
                 return R.style.ThemeOverlay_Classic;
 

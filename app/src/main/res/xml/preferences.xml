@@ -56,25 +56,13 @@
 
     <CheckBoxPreference
         android:defaultValue="false"
+        android:key="start_on_boot"
+        android:title="@string/settings_start_on_boot" />
+
+    <CheckBoxPreference
+        android:defaultValue="false"
         android:key="pref_key_hide_launcher_icon"
         android:summary="@string/settings_hide_icon_summary"
         android:title="@string/settings_hide_icon" />
-
-    <!--<PreferenceCategory
-        android:key="pref_key_category_shizuku"
-        android:title="Shizuku">
-
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="pref_key_shizuku"
-            android:title="@string/use_shizuku">
-
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="@string/github_url" />
-
-        </CheckBoxPreference>
-
-    </PreferenceCategory>-->
 
 </PreferenceScreen>
