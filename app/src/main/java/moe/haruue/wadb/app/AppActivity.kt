@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import moe.haruue.wadb.R
-import moe.haruue.wadb.util.ThemeHelper.*
+import moe.haruue.wadb.util.ThemeHelper
 import rikka.core.res.resolveColor
 import rikka.material.app.MaterialActivity
 
@@ -21,23 +21,23 @@ abstract class AppActivity : MaterialActivity() {
     }
 
     override fun computeUserThemeKey(): String? {
-        return getTheme()
+        return ThemeHelper.getTheme()
     }
 
     override fun onApplyUserThemeResource(theme: Resources.Theme, isDecorView: Boolean) {
-        theme.applyStyle(getThemeStyleRes(), true)
+        theme.applyStyle(ThemeHelper.getThemeStyleRes(), true)
     }
 
     private fun updateTaskDescription() {
         val color: Int = theme.resolveColor(R.attr.appBarColor)
-        val icon: Int = when (getTheme()) {
-            THEME_WHITE -> {
+        val icon: Int = when (ThemeHelper.getTheme()) {
+            ThemeHelper.THEME_WHITE -> {
                 R.drawable.ic_task_icon_black
             }
-            THEME_PINK -> {
+            ThemeHelper.THEME_PINK -> {
                 R.drawable.ic_task_icon_black
             }
-            THEME_CLASSIC -> {
+            ThemeHelper.THEME_CLASSIC -> {
                 R.drawable.ic_task_icon_white
             }
             else -> {
