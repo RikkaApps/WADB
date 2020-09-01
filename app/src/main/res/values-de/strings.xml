@@ -15,8 +15,6 @@
     <string name="you_can_switch_when_screen_is_locked">Du kannst in den Schnelleinstellungen etwas ändern, wenn der Bildschirm gesperrt ist</string>
     <string name="about">Über</string>
     <string name="about_text">Klick hier um das Repository auf Github zu besuchen</string>
-    <string name="license">Lizenz</string>
-    <string name="license_apache_2_0" translatable="false">Apache License 2.0</string>
     <string name="summary_off_hide_launcher_icon">Verstecke das Appsymbol im Launcher nicht</string>
     <string name="summary_on_hide_launcher_icon">Verstecke das Appsymbol im Launcher, du kannst die App beim gedrückt halten in den Schnelleinstellungen öffnen</string>
     <string name="hide_the_icon_in_launcher">Verstecke das Appsymbol im Launcher</string>

@@ -18,7 +18,7 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        resValue "string", "github_url", "https://github.com/RikkaApps/WADB"
+        resValue "string", "open_source_info", "This software is open source (<b><a href=\"https://github.com/RikkaApps/WADB\">GitHub</a></b>) under Apache License 2.0"
         resValue "string", "copyright", "Copyright © Haruue Icymoon, PinkD, Rikka"
         resConfigs 'de', 'it', 'zh-rCN', 'zh-rHK', 'zh-rTW', 'ja', 'id'
 
@@ -28,8 +28,11 @@ android {
         sign
     }
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
     buildTypes {
         debug {
@@ -99,6 +102,7 @@ dependencies {
     implementation "rikka.annotation:annotation:$rikka_annotation_version"
     implementation "rikka.appcompat:appcompat:$rikka_appcompat_version"
     implementation "rikka.core:core:$rikka_core_version"
+    implementation "rikka.html:html-ktx:$rikka_html_version"
     implementation "rikka.material:material:$rikka_material_version"
     implementation "rikka.recyclerview:recyclerview-utils:$rikka_recyclerview_utils_version"
 

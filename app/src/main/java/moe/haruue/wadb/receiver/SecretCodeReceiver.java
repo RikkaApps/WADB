@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.provider.Telephony;
 
-import moe.haruue.wadb.component.home.HomeActivity;
+import moe.haruue.wadb.component.HomeActivity;
 
 public class SecretCodeReceiver extends BroadcastReceiver {
 

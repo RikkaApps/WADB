@@ -1,4 +1,4 @@
-package moe.haruue.wadb.component.home
+package moe.haruue.wadb.component
 
 import android.os.Bundle
 import androidx.lifecycle.Lifecycle

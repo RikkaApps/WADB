@@ -13,7 +13,7 @@ import androidx.annotation.RequiresApi
 import moe.haruue.wadb.R
 import moe.haruue.wadb.WadbApplication
 import moe.haruue.wadb.WadbPreferences
-import moe.haruue.wadb.component.home.HomeActivity
+import moe.haruue.wadb.component.HomeActivity
 import moe.haruue.wadb.receiver.TurnOffReceiver
 
 object NotificationHelper {

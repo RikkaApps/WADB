@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--suppress DeprecatedClassUsageInspection, AndroidElementNotAllowed -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreference
         android:defaultValue="false"
@@ -13,77 +14,67 @@
         android:inputType="numberDecimal|numberSigned"
         android:key="pref_key_wadb_port"
         android:summary="%s"
-        android:title="@string/port" />
+        android:title="@string/port"
+        app:dividerBelowVisibility="enforced" />
 
-    <PreferenceCategory
-        android:key="pref_key_category_behavior"
-        android:title="@string/behavior">
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="pref_key_notification"
+        android:summaryOff="@string/dont_show_notification_when_wadb_on"
+        android:summaryOn="@string/show_notification_when_wadb_on"
+        android:title="@string/notification" />
 
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="pref_key_notification"
-            android:summaryOff="@string/dont_show_notification_when_wadb_on"
-            android:summaryOn="@string/show_notification_when_wadb_on"
-            android:title="@string/notification" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:dependency="pref_key_notification"
+        android:key="pref_key_notification_low_priority"
+        android:summaryOff="@string/use_default_priority_notification"
+        android:summaryOn="@string/use_low_priority_notification"
+        android:title="@string/low_priority_notification" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:dependency="pref_key_notification"
-            android:key="pref_key_notification_low_priority"
-            android:summaryOff="@string/use_default_priority_notification"
-            android:summaryOn="@string/use_low_priority_notification"
-            android:title="@string/low_priority_notification" />
+    <Preference
+        android:key="pref_key_notification_settings"
+        android:summary="@string/notification_settings_summary"
+        android:title="@string/notification_settings">
+        <intent android:action="android.settings.CHANNEL_NOTIFICATION_SETTINGS">
+            <extra
+                android:name="android.provider.extra.APP_PACKAGE"
+                android:value="moe.haruue.wadb" />
+            <extra
+                android:name="android.provider.extra.CHANNEL_ID"
+                android:value="state" />
+        </intent>
+    </Preference>
 
-        <Preference
-            android:key="pref_key_notification_settings"
-            android:summary="@string/notification_settings_summary"
-            android:title="@string/notification_settings">
-            <intent android:action="android.settings.CHANNEL_NOTIFICATION_SETTINGS">
-                <extra
-                    android:name="android.provider.extra.APP_PACKAGE"
-                    android:value="moe.haruue.wadb" />
-                <extra
-                    android:name="android.provider.extra.CHANNEL_ID"
-                    android:value="state" />
-            </intent>
-        </Preference>
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="pref_key_wake_lock"
+        android:summaryOff="@string/wake_lock_off"
+        android:summaryOn="@string/wake_lock_on"
+        android:title="@string/wake_lock" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="pref_key_wake_lock"
-            android:summaryOff="@string/wake_lock_off"
-            android:summaryOn="@string/wake_lock_on"
-            android:title="@string/wake_lock" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="pref_key_screen_lock_switch"
+        android:summaryOff="@string/you_have_to_unlock_before_switch"
+        android:summaryOn="@string/you_can_switch_when_screen_is_locked"
+        android:title="@string/allow_switch_when_screen_locked" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="pref_key_screen_lock_switch"
-            android:summaryOff="@string/you_have_to_unlock_before_switch"
-            android:summaryOn="@string/you_can_switch_when_screen_is_locked"
-            android:title="@string/allow_switch_when_screen_locked" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="pref_key_hide_launcher_icon"
+        android:summaryOff="@string/summary_off_hide_launcher_icon"
+        android:summaryOn="@string/summary_on_hide_launcher_icon"
+        android:title="@string/hide_the_icon_in_launcher"
+        app:dividerBelowVisibility="enforced" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="pref_key_hide_launcher_icon"
-            android:summaryOff="@string/summary_off_hide_launcher_icon"
-            android:summaryOn="@string/summary_on_hide_launcher_icon"
-            android:title="@string/hide_the_icon_in_launcher" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="pref_key_category_behavior"
-        android:title="@string/user_interface">
-
-        <moe.shizuku.preference.SimpleMenuPreference
-            android:defaultValue="classic"
-            android:entries="@array/theme_light"
-            android:entryValues="@array/theme_light_value"
-            android:key="pref_light_theme"
-            android:summary="%s"
-            android:title="@string/theme_light" />
-
-    </PreferenceCategory>
+    <moe.shizuku.preference.SimpleMenuPreference
+        android:defaultValue="classic"
+        android:entries="@array/theme_light"
+        android:entryValues="@array/theme_light_value"
+        android:key="pref_light_theme"
+        android:summary="%s"
+        android:title="@string/theme_light" />
 
     <!--<PreferenceCategory
         android:key="pref_key_category_shizuku"
@@ -101,32 +92,5 @@
         </CheckBoxPreference>
 
     </PreferenceCategory>-->
-
-    <PreferenceCategory
-        android:key="pref_key_category_about"
-        android:title="@string/about">
-
-        <Preference
-            android:key="pref_key_about"
-            android:summary="@string/about_text"
-            android:title="@string/app_name">
-
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="@string/github_url" />
-
-        </Preference>
-
-        <Preference
-            android:summary="@string/license_apache_2_0"
-            android:title="@string/license">
-
-            <intent
-                android:action="moe.haruue.wadb.action.LICENSE"
-                android:targetPackage="moe.haruue.wadb" />
-
-        </Preference>
-
-    </PreferenceCategory>
 
 </PreferenceScreen>

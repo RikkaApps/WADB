@@ -9,8 +9,6 @@
     <string name="dont_show_notification_when_wadb_on">Non mostrare notifica quando ADB via rete è abilitato</string>
     <string name="enabled">Abilitato</string>
     <string name="hide_the_icon_in_launcher">Nascondi l\'icona nel launcher</string>
-    <string name="license">Licenza</string>
-    <string name="license_apache_2_0">Apache License 2.0</string>
     <string name="low_priority_notification">Notifica a priorità bassa</string>
     <string name="notification">Notifica</string>
     <string name="notification_channel_state">Stato esecuzione</string>

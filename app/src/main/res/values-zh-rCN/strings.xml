@@ -16,7 +16,6 @@
     <string name="you_can_switch_when_screen_is_locked">屏幕锁定时允许使用快速设置开关直接更改状态</string>
     <string name="about">关于</string>
     <string name="about_text">点击这里访问 GitHub 上的开源仓库</string>
-    <string name="license">开源许可</string>
     <string name="hide_the_icon_in_launcher">隐藏启动器图标</string>
     <string name="summary_off_hide_launcher_icon">不隐藏图标</string>
     <string name="summary_on_hide_launcher_icon">隐藏图标，你可以通过长按我们的快速设置瓷贴打开此应用</string>

@@ -14,14 +14,16 @@
     <application
         android:name=".WadbApplication"
         android:allowBackup="false"
+        android:directBootAware="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="n">
         <activity-alias
             android:name=".ui.activity.LaunchActivity"
-            android:targetActivity=".component.home.HomeActivity">
+            android:targetActivity=".component.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,23 +31,14 @@
         </activity-alias>
 
         <activity
-            android:name=".component.home.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:launchMode="singleInstance">
+            android:name=".component.HomeActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".component.license.LicenseActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/license">
-            <intent-filter>
-                <action android:name="moe.haruue.wadb.action.LICENSE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -92,6 +85,7 @@
             android:enabled="true"
             android:exported="true"
             android:multiprocess="false"
+            android:directBootAware="true"
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
 
         <meta-data
