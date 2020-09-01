@@ -1,7 +1,9 @@
 package moe.haruue.wadb.component
 
 import android.app.Dialog
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.Menu
@@ -53,35 +55,42 @@ class HomeActivity : AppBarFragmentActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (item.itemId == R.id.menu_about) {
-            val context = this
-            val versionName: String
-            try {
-                versionName = context.packageManager.getPackageInfo(context.packageName, 0).versionName
-            } catch (ignored: PackageManager.NameNotFoundException) {
+        return when (item.itemId) {
+            R.id.menu_about -> {
+                val context = this
+                val versionName: String
+                try {
+                    versionName = context.packageManager.getPackageInfo(context.packageName, 0).versionName
+                } catch (ignored: PackageManager.NameNotFoundException) {
+                    return true
+                }
+                val text = "$versionName<p>${getString(R.string.open_source_info)}<p>${getString(R.string.copyright)}".toHtml(HtmlCompat.FROM_HTML_OPTION_TRIM_WHITESPACE)
+                val dialog: Dialog = AlertDialog.Builder(context)
+                        .setView(R.layout.dialog_about)
+                        .show()
+                (dialog.findViewById<View>(R.id.design_about_icon) as ImageView).setImageDrawable(context.getDrawable(R.drawable.ic_launcher))
+                (dialog.findViewById<View>(R.id.design_about_title) as TextView).text = getString(R.string.wireless_adb_short)
+                (dialog.findViewById<View>(R.id.design_about_version) as TextView).apply {
+                    movementMethod = LinkMovementMethod.getInstance()
+                    this.text = text
+                }
+                (dialog.findViewById<View>(R.id.design_about_info) as TextView).isVisible = false
+                true
+            }
+            R.id.menu_translate -> {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.translation_url))))
+                true
+            }
+            else -> {
+                val index = themesId.indexOf(item.itemId)
+                if (index == -1) return super.onOptionsItemSelected(item)
+
+                if (ThemeHelper.getTheme(this) != themesValue[index]) {
+                    ThemeHelper.setLightTheme(themesValue[index])
+                    recreate()
+                }
                 return true
             }
-            val text = "$versionName<p>${getString(R.string.open_source_info)}<p>${getString(R.string.copyright)}".toHtml(HtmlCompat.FROM_HTML_OPTION_TRIM_WHITESPACE)
-            val dialog: Dialog = AlertDialog.Builder(context)
-                    .setView(R.layout.dialog_about)
-                    .show()
-            (dialog.findViewById<View>(R.id.design_about_icon) as ImageView).setImageDrawable(context.getDrawable(R.drawable.ic_launcher))
-            (dialog.findViewById<View>(R.id.design_about_title) as TextView).text = getString(R.string.wireless_adb_short)
-            (dialog.findViewById<View>(R.id.design_about_version) as TextView).apply {
-                movementMethod = LinkMovementMethod.getInstance()
-                this.text = text
-            }
-            (dialog.findViewById<View>(R.id.design_about_info) as TextView).isVisible = false
-            true
-        } else {
-            val index = themesId.indexOf(item.itemId)
-            if (index == -1) return super.onOptionsItemSelected(item)
-
-            if (ThemeHelper.getTheme(this) != themesValue[index]) {
-                ThemeHelper.setLightTheme(themesValue[index])
-                recreate()
-            }
-            return true
         }
     }
 }

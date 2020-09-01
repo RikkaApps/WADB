@@ -1,6 +1,7 @@
 <resources>
     <string name="wireless_adb_short" translatable="false">WADB</string>
     <string name="wireless_adb">Wireless adb</string>
+    <string name="contribute_translation">Contribute translation</string>
     <string name="about">About</string>
     <string name="dialog_not_rooted_message">This device is not rooted or the request was denied by the root manager.</string>
     <string name="notification_wadb_enabled_title">%s is enabled</string>

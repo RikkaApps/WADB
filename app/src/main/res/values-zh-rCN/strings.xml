@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="wireless_adb">无线 adb</string>
+    <string name="contribute_translation">协助翻译</string>
     <string name="about">关于</string>
     <string name="dialog_not_rooted_message">此设备没有 root 或是请求被 root 管理器拒绝。</string>
     <string name="notification_wadb_enabled_title">%s 已启用</string>
