@@ -41,6 +41,10 @@
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.INFO" />
+            </intent-filter>
         </activity>
 
         <service
@@ -82,10 +86,10 @@
         <provider
             android:name="moe.shizuku.api.ShizukuBinderReceiveProvider"
             android:authorities="${applicationId}.shizuku"
+            android:directBootAware="true"
             android:enabled="true"
             android:exported="true"
             android:multiprocess="false"
-            android:directBootAware="true"
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
 
         <meta-data
