@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="theme_light" translatable="false">
-        <item>Default</item>
-        <item>White</item>
-        <item>Pink</item>
+        <item>@string/theme_default</item>
+        <item>@string/theme_white</item>
+        <item>@string/theme_pink</item>
     </string-array>
     <string-array name="theme_light_value" translatable="false">
         <item>classic</item>
