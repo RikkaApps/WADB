@@ -58,16 +58,7 @@
         android:defaultValue="false"
         android:key="pref_key_hide_launcher_icon"
         android:summary="@string/settings_hide_icon_summary"
-        android:title="@string/settings_hide_icon"
-        app:dividerBelowVisibility="enforced" />
-
-    <moe.shizuku.preference.SimpleMenuPreference
-        android:defaultValue="classic"
-        android:entries="@array/theme_light"
-        android:entryValues="@array/theme_light_value"
-        android:key="pref_light_theme"
-        android:summary="%s"
-        android:title="@string/settings_theme" />
+        android:title="@string/settings_hide_icon" />
 
     <!--<PreferenceCategory
         android:key="pref_key_category_shizuku"

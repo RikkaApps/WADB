@@ -20,7 +20,7 @@
     <string name="toast_bad_port_number">端口号只能在 1025–65535 之间</string>
     <string name="settings_use_low_priority_notification">使用低优先级通知</string>
     <string name="settings_use_low_priority_notification_summary">通知将显示在其他通知的底部，通知图标将从状态栏中隐藏</string>
-    <string name="settings_theme">主题</string>
+    <string name="theme">主题</string>
     <string name="notification_channel_state">运行状态</string>
     <string name="notification_settings">通知设置</string>
     <string name="notification_settings_summary">从系统更改通知设置</string>

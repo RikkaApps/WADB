@@ -14,10 +14,16 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import moe.haruue.wadb.R
 import moe.haruue.wadb.app.AppBarFragmentActivity
+import moe.haruue.wadb.util.ThemeHelper
+import rikka.core.ktx.unsafeLazy
 import rikka.html.text.HtmlCompat
 import rikka.html.text.toHtml
 
 class HomeActivity : AppBarFragmentActivity() {
+
+    private val themes by unsafeLazy { resources.getStringArray(R.array.theme_light) }
+    private val themesValue by unsafeLazy { resources.getStringArray(R.array.theme_light_value) }
+    private val themesId by unsafeLazy { themesValue.map { it.hashCode() } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +39,16 @@ class HomeActivity : AppBarFragmentActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.home, menu)
+        menu.findItem(R.id.menu_theme).subMenu.apply {
+            val currentTheme = ThemeHelper.getTheme(this@HomeActivity)
+            for ((index, theme) in themes.withIndex()) {
+                add(R.id.menu_theme_group, themesId[index].hashCode(), index, theme).apply {
+                    isCheckable = true
+                    isChecked = currentTheme == themesValue[index]
+                }
+            }
+            setGroupCheckable(R.id.menu_theme_group, true, true)
+        }
         return true
     }
 
@@ -57,6 +73,15 @@ class HomeActivity : AppBarFragmentActivity() {
             }
             (dialog.findViewById<View>(R.id.design_about_info) as TextView).isVisible = false
             true
-        } else super.onOptionsItemSelected(item)
+        } else {
+            val index = themesId.indexOf(item.itemId)
+            if (index == -1) return super.onOptionsItemSelected(item)
+
+            if (ThemeHelper.getTheme(this) != themesValue[index]) {
+                ThemeHelper.setLightTheme(themesValue[index])
+                recreate()
+            }
+            return true
+        }
     }
 }

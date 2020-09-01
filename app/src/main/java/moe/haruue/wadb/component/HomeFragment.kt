@@ -118,18 +118,6 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         findPreference(KEY_NOTIFICATION_SETTINGS).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
         findPreference(KEY_SCREEN_LOCK_SWITCH).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
-        val lightThemePreference = findPreference(KEY_LIGHT_THEME) as SimpleMenuPreference
-        lightThemePreference.setOnPreferenceChangeListener { _, o ->
-            if (o is String) {
-                val theme = o.toString()
-                if (ThemeHelper.getTheme(requireContext()) != theme) {
-                    ThemeHelper.setLightTheme(theme)
-                    activity?.recreate()
-                }
-            }
-            true
-        }
-
         val launcherIconPreference = findPreference(KEY_LAUNCHER_ICONS) as TwoStatePreference
         val launcherActivityEnabled = WadbApplication.isLauncherActivityEnabled(context)
 

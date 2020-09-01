@@ -8,5 +8,5 @@
     <string name="toast_bad_port_number">Nomor port hanya boleh 1025–65535</string>
     <string name="notification_channel_state">Status aktivitas</string>
     <string name="notification_settings">Pengaturan notifikasi</string>
-    <string name="settings_theme">Tema</string>
+    <string name="theme">Tema</string>
 </resources>
