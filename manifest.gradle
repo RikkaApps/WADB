@@ -1,5 +1,5 @@
 ext {
-    gradle_plugin_version = '4.0.1'
+    gradle_plugin_version = '4.2.0-alpha08'
     kotlin_version = '1.4.0'
 
     min_sdk = 23
