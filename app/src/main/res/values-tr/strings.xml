@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_settings_summary">Bildirim ayarlarını sistem üzerinden değiştir</string>
+    <string name="notification_settings">Bildirim ayarları</string>
+    <string name="notification_channel_state">Çalışma durumu</string>
+    <string name="settings_start_on_boot_summary">\"%s\"\'ı cihaz başladığında aktif et</string>
+    <string name="settings_start_on_boot">Cihaz ile başlat</string>
+    <string name="theme_pink">Pembe</string>
+    <string name="theme_white">Aydınlık</string>
+    <string name="theme_default">Varsayılan</string>
+    <string name="theme">Tema</string>
+    <string name="settings_use_low_priority_notification_summary">Bu bildirim tüm bildirimlerin altında gösterilecek ve durum çubuğunda gösterilmeyecek</string>
+    <string name="settings_use_low_priority_notification">Düşük öncelik bildirim kullan</string>
+    <string name="toast_bad_port_number">Port numarası 1025 ile 65535 arasında olmalıdır</string>
+    <string name="settings_port">Port</string>
+    <string name="settings_keep_screen_on_summary">\"%s\" açık iken ekranı açık tut</string>
+    <string name="settings_keep_screen_on">Ekranı açık tut</string>
+    <string name="dialog_hide_icon_message_q">Not, Android 10 ve sonrasında, sistem tüm uygulamaların ana ekranda gösterilmesini zorunlu tutabilir.</string>
+    <string name="settings_hide_icon_summary">Bu uygulamayı ana ekrandan gizle</string>
+    <string name="settings_hide_icon">Ana ekrandan gizle</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Kilitli iken hızlı ayarlar kullanarak değiştirmeye izin ver</string>
+    <string name="settings_allow_toggle_lock_screen">Kilitli iken değiştirmeye izin ver</string>
+    <string name="settings_show_notification_summary">\"%s\" aktif olduğunda bildirim göster</string>
+    <string name="settings_show_notification">Bildirimi göster</string>
+    <string name="settings_toggle_summary_off">Devre Dışı</string>
+    <string name="settings_toggle_summary_on">Aktif</string>
+    <string name="notification_wadb_enabled_button_disable">%s\'ı devre dışı bırak</string>
+    <string name="notification_wadb_enabled_title">%s aktif</string>
+    <string name="dialog_not_rooted_message">Bu cihazda kök kullanıcı (root) izni yok veya izin kök kullanıcı yönetimi uygulaması tarafından engellendi.</string>
+    <string name="open_source_info">Bu yazılım %2$s altında açık kaynak (%1$s) lisanslıdır.</string>
+    <string name="about">Hakkında</string>
+    <string name="wireless_adb">Kablosuz adb</string>
+    <string name="translation_contributors">Bu çeviri %s tarafından yapılmıştır.</string>
+    <string name="contribute_translation">Çeviriye katkıda bulun</string>
+    <string name="translators">Çevirmen isimleri</string>
+</resources>
