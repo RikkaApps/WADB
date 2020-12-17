@@ -101,6 +101,7 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.2.0'
 
+    implementation "androidx.core:core:$androidx_core_version"
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.fragment:fragment-ktx:$androidx_fragment_version"
     implementation "androidx.recyclerview:recyclerview:$androidx_recyclerview_version"
