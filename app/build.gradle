@@ -18,7 +18,7 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        resConfigs 'de', 'id', 'it', 'ja', 'tr', 'zh-rCN', 'zh-rTW'
+        resConfigs 'de', 'id', 'it', 'ja', 'pt-rBR', 'tr', 'zh-rCN', 'zh-rTW'
         buildConfigField "String", "GITHUB_URL", "\"https://github.com/RikkaApps/WADB\""
         buildConfigField "String", "LICENSE", "\"Apache License 2.0\""
         buildConfigField "String", "TRANSLATION_URL", "\"https://rikka.app/contribute_translation.html\""
