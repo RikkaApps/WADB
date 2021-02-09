@@ -124,18 +124,24 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         launcherIconPreference.isChecked = !launcherActivityEnabled
         launcherIconPreference.setOnPreferenceChangeListener { _, newValue ->
             if (newValue as Boolean) {
-                wadbApplication.disableLauncherActivity()
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     AlertDialog.Builder(requireContext())
                             .setMessage(R.string.dialog_hide_icon_message_q)
-                            .setPositiveButton(android.R.string.ok, null)
+                            .setNegativeButton(android.R.string.cancel, null)
+                            .setPositiveButton(android.R.string.ok) { _, _ ->
+                                wadbApplication.disableLauncherActivity()
+                                launcherIconPreference.isChecked = true
+                            }
                             .show()
+                    false
+                } else {
+                    wadbApplication.disableLauncherActivity()
+                    true
                 }
             } else {
                 wadbApplication.enableLauncherActivity()
+                true
             }
-            true
         }
 
         val bootCompletedReceiverPreference = findPreference("start_on_boot") as TwoStatePreference
