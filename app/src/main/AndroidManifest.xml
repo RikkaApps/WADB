@@ -3,11 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="moe.haruue.wadb">
 
-    <!-- Current Shizuku use shell context, so it can't restart adbd -->
-    <uses-permission-sdk-23
-        android:name="moe.shizuku.manager.permission.API_V23"
-        tools:node="remove" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -96,19 +91,6 @@
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
-        <provider
-            android:name="moe.shizuku.api.ShizukuBinderReceiveProvider"
-            android:authorities="${applicationId}.shizuku"
-            android:directBootAware="true"
-            android:enabled="true"
-            android:exported="true"
-            android:multiprocess="false"
-            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
-
-        <meta-data
-            android:name="moe.shizuku.client.V3_REQUIRES_ROOT"
-            android:value="true" />
 
     </application>
 

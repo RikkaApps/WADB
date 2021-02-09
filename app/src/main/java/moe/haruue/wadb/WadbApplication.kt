@@ -16,6 +16,7 @@ import moe.haruue.wadb.util.NotificationHelper.cancelNotification
 import moe.haruue.wadb.util.NotificationHelper.showNotification
 import moe.haruue.wadb.util.ScreenKeeper
 import rikka.material.app.DayNightDelegate
+import rikka.sui.Sui
 
 lateinit var wadbApplication: WadbApplication
 
@@ -84,6 +85,7 @@ class WadbApplication : Application(), WadbStateChangedEvent, WadbFailureEvent {
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
         wadbApplication = this
+        Sui.init(base.packageName)
     }
 
     private inline val launcherActivity get() = ComponentName.createRelative(packageName, ".ui.activity.LaunchActivity")
