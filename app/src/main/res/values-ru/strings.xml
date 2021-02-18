@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="translation_contributors">Перевод выполнен: %s.</string>
+    <string name="settings_toggle_summary_off">Отключено</string>
+    <string name="settings_toggle_summary_on">Включено</string>
+    <string name="notification_settings_summary">Изменение настроек уведомления из системы</string>
+    <string name="notification_settings">Настройки уведомления</string>
+    <string name="notification_channel_state">Текущий статус</string>
+    <string name="settings_start_on_boot_summary">Включать «%s» по окончанию загрузки системы</string>
+    <string name="settings_start_on_boot">Автозагрузка</string>
+    <string name="theme_pink">Розовая</string>
+    <string name="theme_white">Белая</string>
+    <string name="theme_default">По умолчанию</string>
+    <string name="theme">Тема</string>
+    <string name="settings_use_low_priority_notification_summary">Уведомление будет показываться внизу, отдельно от остальных, а значок уведомления будет скрыт из строки состояния</string>
+    <string name="settings_use_low_priority_notification">Исп. уведомления с низким приоритетом</string>
+    <string name="toast_bad_port_number">Номер порта должен быть от 1025 до 65535</string>
+    <string name="settings_port">Порт</string>
+    <string name="settings_keep_screen_on_summary">Не отключать экран, пока работает «%s»</string>
+    <string name="settings_keep_screen_on">Не отключать экран</string>
+    <string name="settings_hide_icon_summary">Убрать это приложение с главного экрана</string>
+    <string name="dialog_hide_icon_message_q">Обратите внимание, что, начиная с Android 10, система может принудительно отображать все приложения на главном экране.</string>
+    <string name="settings_hide_icon">Скрыть с рабочего стола</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Позволять переключать состояние из быстрых настроек на экране блокировки</string>
+    <string name="settings_allow_toggle_lock_screen">Разрешить переключение из-под блокировки</string>
+    <string name="settings_show_notification_summary">Выводить уведомление в шторке, когда «%s» включен</string>
+    <string name="settings_show_notification">Показывать уведомление</string>
+    <string name="notification_wadb_enabled_button_disable">Отключить %s</string>
+    <string name="notification_wadb_enabled_title">%s включен</string>
+    <string name="dialog_not_rooted_message">На этом устройстве заблокирован root или запрос был отклонен root-менеджером.</string>
+    <string name="open_source_info">Это приложение с открытым исходным кодом (%1$s) по лицензии %2$s.</string>
+    <string name="about">О приложении</string>
+    <string name="wireless_adb">Беспроводной adb</string>
+    <string name="contribute_translation">Предложить перевод</string>
+    <string name="translators">ruvlad</string>
+</resources>
