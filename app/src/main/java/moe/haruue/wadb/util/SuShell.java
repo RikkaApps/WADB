@@ -15,9 +15,10 @@ import moe.haruue.wadb.BuildConfig;
 public class SuShell {
 
     static {
-        Shell.Config.setFlags(Shell.FLAG_REDIRECT_STDERR);
-        Shell.Config.verboseLogging(BuildConfig.DEBUG);
-        Shell.Config.setTimeout(10);
+        Shell.enableVerboseLogging = BuildConfig.DEBUG;
+        Shell.setDefaultBuilder(Shell.Builder.create()
+                .setFlags(Shell.FLAG_REDIRECT_STDERR)
+                .setTimeout(10));
     }
 
     /**
@@ -84,7 +85,7 @@ public class SuShell {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Shell.newInstance();
+            Shell.getShell();
             Shell.su("echo test").exec();
         }
         return Shell.rootAccess();
@@ -117,41 +118,5 @@ public class SuShell {
     public synchronized static Result run(String... commands) {
         Shell.Result result = Shell.su(commands).exec();
         return new Result(result.getCode(), result.getOut());
-    }
-
-    public static class Interactive {
-
-        public interface Callback {
-            void onLine(String line);
-
-            void onResult(Result result);
-        }
-
-        public static void run(String command, Callback callback) {
-            run(new String[]{command}, callback);
-        }
-
-        public static void run(List<String> commands, Callback callback) {
-            run(commands.toArray(new String[0]), callback);
-        }
-
-        public static void run(String[] commands, Callback callback) {
-            Shell.su(commands).to(new CallbackList<String>() {
-                @Override
-                public void onAddElement(String s) {
-                    if (callback != null) {
-                        callback.onLine(s);
-                    }
-                }
-            }).submit(result -> {
-                if (callback != null) {
-                    callback.onResult(new Result(result.getCode(), result.getOut()));
-                }
-            });
-        }
-
-        public static void close() {
-            SuShell.close();
-        }
     }
 }

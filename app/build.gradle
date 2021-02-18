@@ -79,9 +79,26 @@ android.applicationVariants.all { variant ->
 }
 
 repositories {
+    maven {
+        url 'https://jitpack.io'
+        content {
+            includeGroup("com.github.topjohnwu.libsu")
+        }
+    }
+    maven {
+        url 'https://dl.bintray.com/rikkaw/MaterialPreference'
+        content {
+            includeGroup("moe.shizuku.preference")
+        }
+    }
+    maven {
+        url 'https://dl.bintray.com/rikkaw/Libraries'
+        content {
+            includeGroupByRegex("rikka.*")
+        }
+    }
     jcenter()
     google()
-    maven { url 'https://dl.bintray.com/rikkaw/Libraries' }
 }
 
 configurations.all {
@@ -105,10 +122,11 @@ dependencies {
     implementation "rikka.html:html-ktx:$rikka_html_version"
     implementation "rikka.material:material:$rikka_material_version"
     implementation "rikka.recyclerview:recyclerview-utils:$rikka_recyclerview_utils_version"
+    implementation "rikka.widget:borderview:1.0.0"
     implementation "moe.shizuku.preference:preference-appcompat:$rikka_preference_version"
     implementation "moe.shizuku.preference:preference-simplemenu-appcompat:$rikka_preference_version"
 
-    def libsuVersion = '3.0.2'
+    def libsuVersion = '3.1.1'
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
 
     def shizuku_version = '11.0.2'

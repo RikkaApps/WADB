@@ -22,10 +22,10 @@ import moe.haruue.wadb.util.NotificationHelper
 import moe.haruue.wadb.util.ScreenKeeper
 import moe.haruue.wadb.wadbApplication
 import moe.shizuku.preference.*
-import rikka.material.widget.BorderRecyclerView
-import rikka.material.widget.BorderView
 import rikka.recyclerview.addVerticalPadding
 import rikka.recyclerview.fixEdgeEffect
+import rikka.widget.borderview.BorderRecyclerView
+import rikka.widget.borderview.BorderView
 
 class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEvent, SharedPreferences.OnSharedPreferenceChangeListener {
 
