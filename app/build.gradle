@@ -91,14 +91,6 @@ repositories {
             includeGroup("moe.shizuku.preference")
         }
     }
-    maven {
-        url 'https://dl.bintray.com/rikkaw/Libraries'
-        content {
-            includeGroupByRegex("rikka.*")
-        }
-    }
-    jcenter()
-    google()
 }
 
 configurations.all {
@@ -116,13 +108,13 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:$androidx_fragment_version"
     implementation "androidx.recyclerview:recyclerview:$androidx_recyclerview_version"
 
-    implementation "rikka.annotation:annotation:$rikka_annotation_version"
-    implementation "rikka.appcompat:appcompat:$rikka_appcompat_version"
-    implementation "rikka.core:core:$rikka_core_version"
-    implementation "rikka.html:html-ktx:$rikka_html_version"
-    implementation "rikka.material:material:$rikka_material_version"
-    implementation "rikka.recyclerview:recyclerview-utils:$rikka_recyclerview_utils_version"
-    implementation "rikka.widget:borderview:1.0.0"
+    implementation "dev.rikka.rikkax.annotation:annotation:$rikka_annotation_version"
+    implementation "dev.rikka.rikkax.appcompat:appcompat:$rikka_appcompat_version"
+    implementation "dev.rikka.rikkax.core:core:$rikka_core_version"
+    implementation "dev.rikka.rikkax.html:html-ktx:$rikka_html_version"
+    implementation "dev.rikka.rikkax.material:material:$rikka_material_version"
+    implementation "dev.rikka.rikkax.recyclerview:recyclerview-ktx:$rikka_recyclerview_version"
+    implementation "dev.rikka.rikkax.widget:borderview:1.0.0"
     implementation "moe.shizuku.preference:preference-appcompat:$rikka_preference_version"
     implementation "moe.shizuku.preference:preference-simplemenu-appcompat:$rikka_preference_version"
 
@@ -130,7 +122,7 @@ dependencies {
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
 
     def shizuku_version = '11.0.2'
-    implementation "rikka.shizuku:api:${shizuku_version}"
+    implementation "dev.rikka.shizuku:api:${shizuku_version}"
 }
 
 

@@ -10,8 +10,9 @@ idea {
 buildscript {
     apply from: 'manifest.gradle'
     repositories {
+        mavenCentral()
+        google()
         jcenter()
-		google()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_plugin_version"
@@ -24,8 +25,9 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenCentral()
+        google()
         jcenter()
-		google()
     }
 }
 
