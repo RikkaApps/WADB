@@ -11,6 +11,7 @@
         android:name=".WadbApplication"
         android:allowBackup="false"
         android:directBootAware="true"
+        android:hasFragileUserData="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/wireless_adb"
         android:supportsRtl="true"
