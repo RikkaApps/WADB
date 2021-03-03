@@ -7,32 +7,39 @@
         android:key="pref_key_wadb_switch"
         android:summaryOff="@string/settings_toggle_summary_off"
         android:summaryOn="@string/settings_toggle_summary_on"
-        android:title="@string/wireless_adb" />
+        android:title="@string/wireless_adb"
+        app:icon="@drawable/ic_wadb_24"
+        app:iconSpaceReserved="true" />
 
     <EditTextPreference
         android:defaultValue="5555"
-        android:inputType="numberDecimal|numberSigned"
         android:key="pref_key_wadb_port"
-        android:summary="%s"
         android:title="@string/settings_port"
-        app:dividerBelowVisibility="enforced" />
+        app:allowDividerBelow="true"
+        app:iconSpaceReserved="true"
+        app:useSimpleSummaryProvider="true" />
 
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="pref_key_notification"
-        android:title="@string/settings_show_notification" />
+        android:title="@string/settings_show_notification"
+        app:allowDividerAbove="true"
+        app:icon="@drawable/ic_outline_notifications_24"
+        app:iconSpaceReserved="true" />
 
     <CheckBoxPreference
         android:defaultValue="false"
         android:dependency="pref_key_notification"
         android:key="pref_key_notification_low_priority"
         android:summary="@string/settings_use_low_priority_notification_summary"
-        android:title="@string/settings_use_low_priority_notification" />
+        android:title="@string/settings_use_low_priority_notification"
+        app:iconSpaceReserved="true" />
 
     <Preference
         android:key="pref_key_notification_settings"
         android:summary="@string/notification_settings_summary"
-        android:title="@string/notification_settings">
+        android:title="@string/notification_settings"
+        app:iconSpaceReserved="true">
         <intent android:action="android.settings.CHANNEL_NOTIFICATION_SETTINGS">
             <extra
                 android:name="android.provider.extra.APP_PACKAGE"
@@ -46,23 +53,28 @@
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="pref_key_wake_lock"
-        android:title="@string/settings_keep_screen_on" />
+        android:title="@string/settings_keep_screen_on"
+        app:icon="@drawable/ic_outline_wb_sunny_24"
+        app:iconSpaceReserved="true" />
 
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="pref_key_screen_lock_switch"
         android:summary="@string/settings_allow_toggle_lock_screen_summary"
-        android:title="@string/settings_allow_toggle_lock_screen" />
+        android:title="@string/settings_allow_toggle_lock_screen"
+        app:iconSpaceReserved="true" />
 
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="start_on_boot"
-        android:title="@string/settings_start_on_boot" />
+        android:title="@string/settings_start_on_boot"
+        app:iconSpaceReserved="true" />
 
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="pref_key_hide_launcher_icon"
         android:summary="@string/settings_hide_icon_summary"
-        android:title="@string/settings_hide_icon" />
+        android:title="@string/settings_hide_icon"
+        app:iconSpaceReserved="true" />
 
 </PreferenceScreen>

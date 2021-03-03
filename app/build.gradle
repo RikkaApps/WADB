@@ -85,12 +85,6 @@ repositories {
             includeGroup("com.github.topjohnwu.libsu")
         }
     }
-    maven {
-        url 'https://dl.bintray.com/rikkaw/MaterialPreference'
-        content {
-            includeGroup("moe.shizuku.preference")
-        }
-    }
 }
 
 configurations.all {
@@ -107,6 +101,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.fragment:fragment-ktx:$androidx_fragment_version"
     implementation "androidx.recyclerview:recyclerview:$androidx_recyclerview_version"
+    implementation 'androidx.preference:preference-ktx:1.1.1'
 
     implementation "dev.rikka.rikkax.annotation:annotation:$rikka_annotation_version"
     implementation "dev.rikka.rikkax.appcompat:appcompat:$rikka_appcompat_version"
@@ -115,8 +110,6 @@ dependencies {
     implementation "dev.rikka.rikkax.material:material:$rikka_material_version"
     implementation "dev.rikka.rikkax.recyclerview:recyclerview-ktx:$rikka_recyclerview_version"
     implementation "dev.rikka.rikkax.widget:borderview:1.0.0"
-    implementation "moe.shizuku.preference:preference-appcompat:$rikka_preference_version"
-    implementation "moe.shizuku.preference:preference-simplemenu-appcompat:$rikka_preference_version"
 
     def libsuVersion = '3.1.1'
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"

@@ -3,11 +3,13 @@ package moe.haruue.wadb.component
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.preference.*
 import androidx.recyclerview.widget.RecyclerView
 import moe.haruue.wadb.R
 import moe.haruue.wadb.WadbApplication
@@ -21,13 +23,12 @@ import moe.haruue.wadb.util.NetworksUtils
 import moe.haruue.wadb.util.NotificationHelper
 import moe.haruue.wadb.util.ScreenKeeper
 import moe.haruue.wadb.wadbApplication
-import moe.shizuku.preference.*
 import rikka.recyclerview.addVerticalPadding
 import rikka.recyclerview.fixEdgeEffect
 import rikka.widget.borderview.BorderRecyclerView
 import rikka.widget.borderview.BorderView
 
-class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEvent, SharedPreferences.OnSharedPreferenceChangeListener {
+class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFailureEvent, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var togglePreference: TwoStatePreference
     private lateinit var portPreference: EditTextPreference
@@ -44,10 +45,6 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
     override fun onDestroy() {
         super.onDestroy()
         Events.unregisterAll(this)
-    }
-
-    override fun onCreateItemDecoration(): DividerDecoration {
-        return CategoryDivideDividerDecoration()
     }
 
     override fun onCreateRecyclerView(inflater: LayoutInflater, parent: ViewGroup, savedInstanceState: Bundle?): RecyclerView {
@@ -76,14 +73,17 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         preferenceManager.sharedPreferencesName = WadbApplication.defaultSharedPreferenceName
 
         val context = requireContext()
-        togglePreference = findPreference(KEY_WADB_SWITCH) as TwoStatePreference
-        portPreference = findPreference(KEY_WAKE_PORT) as EditTextPreference
+        togglePreference = findPreference(KEY_WADB_SWITCH)!!
+        portPreference = findPreference(KEY_WAKE_PORT)!!
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val checkBoxPreference = findPreference(KEY_NOTIFICATION_LOW_PRIORITY) as CheckBoxPreference
+            val checkBoxPreference: CheckBoxPreference = findPreference(KEY_NOTIFICATION_LOW_PRIORITY)!!
             checkBoxPreference.isVisible = false
         }
 
+        portPreference.setOnBindEditTextListener {
+            it.inputType = InputType.TYPE_CLASS_NUMBER
+        }
         portPreference.setOnPreferenceChangeListener { _, newValue ->
             val port: String = newValue as String
             val p = try {
@@ -115,10 +115,10 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
 
         togglePreference.isChecked = GlobalRequestHandler.getWadbPort() != -1
 
-        findPreference(KEY_NOTIFICATION_SETTINGS).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-        findPreference(KEY_SCREEN_LOCK_SWITCH).isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+        findPreference<Preference>(KEY_NOTIFICATION_SETTINGS)!!.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+        findPreference<Preference>(KEY_SCREEN_LOCK_SWITCH)!!.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
-        val launcherIconPreference = findPreference(KEY_LAUNCHER_ICONS) as TwoStatePreference
+        val launcherIconPreference: TwoStatePreference = findPreference(KEY_LAUNCHER_ICONS)!!
         val launcherActivityEnabled = wadbApplication.isLauncherActivityEnabled()
 
         launcherIconPreference.isChecked = !launcherActivityEnabled
@@ -144,7 +144,7 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
             }
         }
 
-        val bootCompletedReceiverPreference = findPreference("start_on_boot") as TwoStatePreference
+        val bootCompletedReceiverPreference: TwoStatePreference = findPreference("start_on_boot")!!
         bootCompletedReceiverPreference.summary = getString(R.string.settings_start_on_boot_summary, getString(R.string.wireless_adb))
         bootCompletedReceiverPreference.isChecked = wadbApplication.isBootCompletedReceiverEnabled()
         bootCompletedReceiverPreference.setOnPreferenceChangeListener { _, newValue ->
@@ -156,8 +156,8 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
             true
         }
 
-        findPreference(KEY_NOTIFICATION).summary = getString(R.string.settings_show_notification_summary, getString(R.string.wireless_adb))
-        findPreference(KEY_WAKE_LOCK).summary = getString(R.string.settings_keep_screen_on_summary, getString(R.string.wireless_adb))
+        findPreference<Preference>(KEY_NOTIFICATION)!!.summary = getString(R.string.settings_show_notification_summary, getString(R.string.wireless_adb))
+        findPreference<Preference>(KEY_WAKE_LOCK)!!.summary = getString(R.string.settings_keep_screen_on_summary, getString(R.string.wireless_adb))
     }
 
     override fun onPause() {
@@ -179,7 +179,6 @@ class HomeFragment : PreferenceFragment(), WadbStateChangedEvent, WadbFailureEve
         togglePreference.summaryOn = "$ip:$port"
         // refresh port
         portPreference.text = port.toString()
-        portPreference.summary = port.toString()
         togglePreference.isEnabled = true
         portPreference.isEnabled = true
     }
