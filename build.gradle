@@ -39,7 +39,7 @@ task clean(type: Delete) {
 ext {
     gitCommitId = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
     gitCommitCount = Integer.parseInt('git rev-list --count HEAD'.execute([], project.rootDir).text.trim())
-    baseVersionName = '5.0.1'
+    baseVersionName = '5.0.2'
 
     versionCode = gitCommitCount
     versionName = "${baseVersionName}.r${gitCommitCount}.${gitCommitId}"
