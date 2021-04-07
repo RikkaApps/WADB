@@ -1,3 +1,5 @@
+import java.nio.file.Paths
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
@@ -11,6 +13,7 @@ if (localFile.canRead()) {
 
 android {
     compileSdkVersion target_sdk
+    buildToolsVersion build_tool_version
     defaultConfig {
         applicationId "moe.haruue.wadb"
         minSdkVersion min_sdk
@@ -54,6 +57,29 @@ android {
     }
     lintOptions.checkReleaseBuilds false
     dependenciesInfo.includeInApk false
+}
+
+def optimizeReleaseResources = task('optimizeReleaseResources').doLast {
+    def aapt2 = Paths.get(project.android.sdkDirectory.path, 'build-tools', project.android.buildToolsVersion, 'aapt2')
+    def zip = Paths.get(project.buildDir.path, 'intermediates',
+            'processed_res', 'release', 'out', "resources-release.ap_")
+    def optimized = new File("${zip}.opt")
+    def cmd = exec {
+        commandLine aapt2, 'optimize', '--collapse-resource-names',
+                '--shorten-resource-paths',
+                '-o', optimized, zip
+        ignoreExitValue false
+    }
+    if (cmd.exitValue == 0) {
+        delete(zip)
+        optimized.renameTo("$zip")
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'processReleaseResources') {
+        task.finalizedBy optimizeReleaseResources
+    }
 }
 
 android.applicationVariants.all { variant ->
