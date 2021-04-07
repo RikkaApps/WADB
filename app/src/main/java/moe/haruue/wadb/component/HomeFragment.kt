@@ -50,7 +50,6 @@ class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFail
     override fun onCreateRecyclerView(inflater: LayoutInflater, parent: ViewGroup, savedInstanceState: Bundle?): RecyclerView {
         val recyclerView = super.onCreateRecyclerView(inflater, parent, savedInstanceState) as BorderRecyclerView
 
-        recyclerView.addVerticalPadding()
         recyclerView.fixEdgeEffect()
 
         val lp = recyclerView.layoutParams
