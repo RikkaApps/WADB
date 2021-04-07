@@ -3,7 +3,7 @@
     <string name="translation_contributors">Перевод выполнен: %s.</string>
     <string name="settings_toggle_summary_off">Отключено</string>
     <string name="settings_toggle_summary_on">Включено</string>
-    <string name="notification_settings_summary">Изменение настроек уведомления из системы</string>
+    <string name="notification_settings_summary">Изменение настроек уведомления в самой системе</string>
     <string name="notification_settings">Настройки уведомления</string>
     <string name="notification_channel_state">Текущий статус</string>
     <string name="settings_start_on_boot_summary">Включать «%s» по окончанию загрузки системы</string>
@@ -31,6 +31,6 @@
     <string name="open_source_info">Это приложение с открытым исходным кодом (%1$s) по лицензии %2$s.</string>
     <string name="about">О приложении</string>
     <string name="wireless_adb">Беспроводной adb</string>
-    <string name="contribute_translation">Предложить перевод</string>
+    <string name="contribute_translation">Помочь с переводом</string>
     <string name="translators">ruvlad</string>
 </resources>
