@@ -21,7 +21,7 @@ android {
         resConfigs 'de', 'id', 'it', 'ja', 'pt-rBR', 'ru', 'tr', 'zh-rCN', 'zh-rTW'
         buildConfigField "String", "GITHUB_URL", "\"https://github.com/RikkaApps/WADB\""
         buildConfigField "String", "LICENSE", "\"Apache License 2.0\""
-        buildConfigField "String", "TRANSLATION_URL", "\"https://rikka.app/contribute_translation.html\""
+        buildConfigField "String", "TRANSLATION_URL", "\"https://rikka.app/contribute_translation/\""
         buildConfigField "String", "COPYRIGHT", "\"Copyright © Haruue Icymoon, PinkD, Rikka\""
         buildConfigField "boolean", "DONOT_RESTART_ADBD", "${dontRestartAdbd}" // set it true to prevent restart adbd (for debugging)
     }
