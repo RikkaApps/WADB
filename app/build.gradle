@@ -89,8 +89,6 @@ repositories {
 
 configurations.all {
     exclude group: 'androidx.appcompat', module: 'appcompat'
-    exclude group: 'moe.shizuku.preference', module: 'preference-android'
-    exclude group: 'moe.shizuku.preference', module: 'preference-simplemenu-android'
 }
 
 dependencies {
@@ -109,7 +107,7 @@ dependencies {
     implementation "dev.rikka.rikkax.html:html-ktx:$rikka_html_version"
     implementation "dev.rikka.rikkax.material:material:$rikka_material_version"
     implementation "dev.rikka.rikkax.recyclerview:recyclerview-ktx:$rikka_recyclerview_version"
-    implementation "dev.rikka.rikkax.widget:borderview:1.0.0"
+    implementation "dev.rikka.rikkax.widget:borderview:1.0.1"
 
     def libsuVersion = '3.1.1'
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
