@@ -111,6 +111,11 @@ repositories {
             includeGroup("com.github.topjohnwu.libsu")
         }
     }
+    jcenter({
+        content {
+            includeGroup("me.zhanghai.android.fastscroll")
+        }
+    })
 }
 
 configurations.all {
@@ -127,15 +132,14 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$androidx_recyclerview_version"
     implementation 'androidx.preference:preference-ktx:1.1.1'
 
-    implementation "dev.rikka.rikkax.annotation:annotation:$rikka_annotation_version"
-    implementation "dev.rikka.rikkax.appcompat:appcompat:$rikka_appcompat_version"
-    implementation "dev.rikka.rikkax.core:core:$rikka_core_version"
-    implementation "dev.rikka.rikkax.html:html-ktx:$rikka_html_version"
-    implementation "dev.rikka.rikkax.material:material:$rikka_material_version"
-    implementation "dev.rikka.rikkax.recyclerview:recyclerview-ktx:$rikka_recyclerview_version"
-    implementation "dev.rikka.rikkax.widget:borderview:1.0.1"
+    implementation "dev.rikka.rikkax.appcompat:appcompat:1.2.0-rc01"
+    implementation "dev.rikka.rikkax.core:core:1.3.2"
+    implementation 'dev.rikka.rikkax.html:html-ktx:1.1.2'
+    implementation 'dev.rikka.rikkax.material:material:1.6.5'
+    implementation 'dev.rikka.rikkax.recyclerview:recyclerview-ktx:1.2.1'
+    implementation 'dev.rikka.rikkax.widget:borderview:1.0.1'
 
-    def libsuVersion = '3.1.1'
+    def libsuVersion = '3.1.2'
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
 
     def shizuku_version = '11.0.2'

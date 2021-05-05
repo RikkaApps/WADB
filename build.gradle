@@ -12,10 +12,9 @@ buildscript {
     repositories {
         mavenCentral()
         google()
-        jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$gradle_plugin_version"
+        classpath 'com.android.tools.build:gradle:4.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -27,14 +26,12 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-        jcenter()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
 
 ext {
     gitCommitId = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
