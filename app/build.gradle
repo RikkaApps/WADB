@@ -27,6 +27,7 @@ android {
         buildConfigField "String", "TRANSLATION_URL", "\"https://rikka.app/contribute_translation/\""
         buildConfigField "String", "COPYRIGHT", "\"Copyright © Haruue Icymoon, PinkD, Rikka\""
         buildConfigField "boolean", "DONOT_RESTART_ADBD", "${dontRestartAdbd}" // set it true to prevent restart adbd (for debugging)
+        setProperty("archivesBaseName", "wadb-v${versionName}")
     }
     signingConfigs {
         sign
@@ -84,8 +85,6 @@ tasks.whenTaskAdded { task ->
 
 android.applicationVariants.all { variant ->
     variant.outputs.all {
-        outputFileName = "wadb-v${variant.versionName}.apk"
-
         if (variant.getBuildType().isMinifyEnabled()) {
             variant.assembleProvider.get().doLast {
                 copy {
