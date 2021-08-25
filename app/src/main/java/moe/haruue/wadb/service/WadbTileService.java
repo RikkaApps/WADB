@@ -81,15 +81,19 @@ public abstract class WadbTileService extends TileService implements WadbStateCh
         Log.d(TAG, "showStateOn");
 
         final Tile tile = getQsTile();
-        final String label = ip + ":" + port;
-        if (tile.getState() == Tile.STATE_ACTIVE
-                && label.equals(tile.getLabel().toString())) {
-            return;
-        }
+        final String address = ip + ":" + port;
         final Context context = this;
+
         tile.setState(Tile.STATE_ACTIVE);
         tile.setIcon(Icon.createWithResource(context, R.drawable.ic_qs_network_adb_on));
-        tile.setLabel(label);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            tile.setLabel(context.getString(R.string.wireless_adb));
+            tile.setSubtitle(address);
+        } else {
+            tile.setLabel(address);
+        }
+
         tile.updateTile();
     }
 
@@ -97,13 +101,18 @@ public abstract class WadbTileService extends TileService implements WadbStateCh
         Log.d(TAG, "showStateOff");
 
         final Tile tile = getQsTile();
-        if (tile.getState() == Tile.STATE_INACTIVE) {
-            return;
-        }
         final Context context = this;
+
         tile.setState(Tile.STATE_INACTIVE);
         tile.setIcon(Icon.createWithResource(context, R.drawable.ic_qs_network_adb_off));
-        tile.setLabel(context.getString(R.string.wireless_adb));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            tile.setLabel(context.getString(R.string.wireless_adb));
+            tile.setSubtitle(context.getString(R.string.tile_off));
+        } else {
+            tile.setLabel(context.getString(R.string.wireless_adb));
+        }
+
         tile.updateTile();
     }
 

@@ -37,4 +37,5 @@ This software is open source (%1$s) under %2$s.
     <string name="notification_channel_state">Running status</string>
     <string name="notification_settings">Notification settings</string>
     <string name="notification_settings_summary">Change notification settings from the system</string>
+    <string name="tile_off">Off</string>
 </resources>

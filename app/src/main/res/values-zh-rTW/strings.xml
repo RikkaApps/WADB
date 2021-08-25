@@ -36,4 +36,5 @@
     <string name="notification_channel_state">執行狀態</string>
     <string name="notification_settings">通知設定</string>
     <string name="notification_settings_summary">從系統更改通知設定</string>
+    <string name="tile_off">關閉</string>
 </resources>
