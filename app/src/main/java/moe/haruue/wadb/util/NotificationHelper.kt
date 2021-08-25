@@ -24,10 +24,10 @@ object NotificationHelper {
     @JvmStatic
     fun showNotification(context: Context, ip: String, port: Int) {
         val notificationManager = context.getSystemService(NotificationManager::class.java) ?: return
-        val contentPendingIntent = PendingIntent.getActivity(context, 0, Intent(context, HomeActivity::class.java), 0)
+        val contentPendingIntent = PendingIntent.getActivity(context, 0, Intent(context, HomeActivity::class.java), PendingIntent.FLAG_IMMUTABLE)
         val turnOffIntent = Intent("moe.haruue.wadb.action.TURN_OFF_WADB").apply { component = ComponentName(context, TurnOffReceiver::class.java) }
 
-        val turnOffPendingIntent = PendingIntent.getBroadcast(context, 0, turnOffIntent, 0)
+        val turnOffPendingIntent = PendingIntent.getBroadcast(context, 0, turnOffIntent, PendingIntent.FLAG_IMMUTABLE)
         val turnOffAction = Notification.Action.Builder(Icon.createWithResource(context, R.drawable.ic_close_white_24dp), context.getString(R.string.notification_wadb_enabled_button_disable, context.getString(R.string.wireless_adb)), turnOffPendingIntent).build()
         val visibility = if (WadbApplication.defaultSharedPreferences.getBoolean(WadbPreferences.KEY_SCREEN_LOCK_SWITCH, false)) Notification.VISIBILITY_PUBLIC else Notification.VISIBILITY_PRIVATE
 

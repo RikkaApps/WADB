@@ -9,17 +9,20 @@
 
     <application
         android:name=".WadbApplication"
-        android:allowBackup="false"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:directBootAware="true"
+        android:fullBackupContent="@xml/full_backup_content"
         android:hasFragileUserData="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/wireless_adb"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="n">
+        tools:targetApi="s">
         <activity-alias
             android:name=".ui.activity.LaunchActivity"
+            android:exported="true"
             android:label="@string/wireless_adb_short"
             android:targetActivity=".component.HomeActivity">
             <intent-filter>
@@ -30,6 +33,7 @@
 
         <activity
             android:name=".component.HomeActivity"
+            android:exported="true"
             android:label="@string/wireless_adb_short"
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme.NoActionBar">

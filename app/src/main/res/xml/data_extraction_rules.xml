@@ -1,0 +1,12 @@
+<data-extraction-rules>
+    <cloud-backup>
+        <include
+            domain="sharedpref"
+            path="moe.haruue.wadb_preferences.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <include
+            domain="sharedpref"
+            path="moe.haruue.wadb_preferences.xml" />
+    </device-transfer>
+</data-extraction-rules>

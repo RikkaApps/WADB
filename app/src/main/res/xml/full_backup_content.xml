@@ -1,0 +1,5 @@
+<full-backup-content>
+    <include
+        domain="sharedpref"
+        path="moe.haruue.wadb_preferences.xml" />
+</full-backup-content>
