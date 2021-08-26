@@ -13,7 +13,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:directBootAware="true"
         android:fullBackupContent="@xml/full_backup_content"
-        android:hasFragileUserData="true"
+        android:hasFragileUserData="@bool/config_hasFragileUserData"
         android:icon="@drawable/ic_launcher"
         android:label="@string/wireless_adb"
         android:supportsRtl="true"
