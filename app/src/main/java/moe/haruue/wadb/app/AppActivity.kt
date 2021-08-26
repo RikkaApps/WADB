@@ -17,15 +17,21 @@ abstract class AppActivity : MaterialActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        updateTaskDescription()
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            updateTaskDescription()
+        }
     }
 
     override fun computeUserThemeKey(): String? {
-        return ThemeHelper.getTheme()
+        return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            ThemeHelper.getTheme()
+        } else null
     }
 
     override fun onApplyUserThemeResource(theme: Resources.Theme, isDecorView: Boolean) {
-        theme.applyStyle(ThemeHelper.getThemeStyleRes(), true)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            theme.applyStyle(ThemeHelper.getThemeStyleRes(), true)
+        }
     }
 
     private fun updateTaskDescription() {

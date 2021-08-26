@@ -35,16 +35,16 @@ object NotificationHelper {
         // so we still have to use light color here
         val color: Int = when (ThemeHelper.getTheme()) {
             ThemeHelper.THEME_WHITE -> {
-                context.getColor(R.color.primary_color)
+                context.getColor(R.color.color_primary_light)
             }
             ThemeHelper.THEME_PINK -> {
                 context.getColor(R.color.pink_primary_light)
             }
             ThemeHelper.THEME_CLASSIC -> {
-                context.getColor(R.color.primary_color)
+                context.getColor(R.color.color_primary_light)
             }
             else -> {
-                context.getColor(R.color.primary_color)
+                context.getColor(R.color.color_primary_light)
             }
         }
 

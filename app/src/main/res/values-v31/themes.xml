@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.AppBar" parent="Widget.Material.ActionBar.Solid">
+        <item name="android:background">?android:colorBackground</item>
+        <item name="android:stateListAnimator">@animator/appbar_animator</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:theme">?actionBarTheme</item>
+    </style>
+
+</resources>

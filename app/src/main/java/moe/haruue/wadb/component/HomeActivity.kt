@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.Menu
@@ -42,15 +43,19 @@ class HomeActivity : AppBarFragmentActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.home, menu)
-        menu.findItem(R.id.menu_theme).subMenu.apply {
-            val currentTheme = ThemeHelper.getTheme()
-            for ((index, theme) in themes.withIndex()) {
-                add(R.id.menu_theme_group, themesId[index].hashCode(), index, theme).apply {
-                    isCheckable = true
-                    isChecked = currentTheme == themesValue[index]
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            menu.findItem(R.id.menu_theme).subMenu.apply {
+                val currentTheme = ThemeHelper.getTheme()
+                for ((index, theme) in themes.withIndex()) {
+                    add(R.id.menu_theme_group, themesId[index].hashCode(), index, theme).apply {
+                        isCheckable = true
+                        isChecked = currentTheme == themesValue[index]
+                    }
                 }
+                setGroupCheckable(R.id.menu_theme_group, true, true)
             }
-            setGroupCheckable(R.id.menu_theme_group, true, true)
+        } else {
+            menu.findItem(R.id.menu_theme).isVisible = false
         }
         return true
     }
@@ -92,14 +97,17 @@ class HomeActivity : AppBarFragmentActivity() {
                 true
             }
             else -> {
-                val index = themesId.indexOf(item.itemId)
-                if (index == -1) return super.onOptionsItemSelected(item)
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                    val index = themesId.indexOf(item.itemId)
+                    if (index == -1) return super.onOptionsItemSelected(item)
 
-                if (ThemeHelper.getTheme() != themesValue[index]) {
-                    ThemeHelper.setLightTheme(themesValue[index])
-                    recreate()
+                    if (ThemeHelper.getTheme() != themesValue[index]) {
+                        ThemeHelper.setLightTheme(themesValue[index])
+                        recreate()
+                    }
+                    return true
                 }
-                return true
+                return super.onOptionsItemSelected(item)
             }
         }
     }

@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_color">@color/material_teal_600</color>
-
     <color name="pink_appbar_light">#f5aab9</color>
     <color name="pink_primary_light">#bd6678</color>
     <color name="pink_secondary_light">#ae5d6d</color>
 
     <color name="pink_primary_dark">#ffe6f1</color>
+
+    <color name="color_primary_light">@color/material_teal_500</color>
+    <color name="color_primary_variant_light">@color/material_teal_600</color>
+    <color name="color_secondary_light">@color/material_teal_700</color>
+    <color name="color_secondary_variant_light">@color/material_teal_700</color>
+    <color name="color_surface_light">#f5f5f5</color>
+    <color name="color_background_floating_md3_light">@android:color/white</color>
+
+    <color name="color_primary_dark">@color/material_teal_100</color>
+    <color name="color_primary_variant_dark">@color/material_teal_200</color>
+    <color name="color_secondary_dark">@color/material_teal_300</color>
+    <color name="color_secondary_variant_dark">@color/material_teal_300</color>
+    <color name="color_surface_dark">#1b1b1b</color>
+    <color name="color_background_floating_dark">@color/material_grey_800</color>
 
     <color name="launcher_icon_background">#00897B</color>
     <color name="launcher_icon">#FFFFFF</color>
