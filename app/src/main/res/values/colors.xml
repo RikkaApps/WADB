@@ -7,4 +7,7 @@
     <color name="pink_secondary_light">#ae5d6d</color>
 
     <color name="pink_primary_dark">#ffe6f1</color>
+
+    <color name="launcher_icon_background">#00897B</color>
+    <color name="launcher_icon">#FFFFFF</color>
 </resources>
