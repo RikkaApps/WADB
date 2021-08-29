@@ -17,10 +17,14 @@
 #}
 -repackageclasses 'moe.haruue.wadb'
 
+-assumenosideeffects class kotlin.jvm.internal.Intrinsics {
+    public static void check*(...);
+    public static void throw*(...);
+}
+
 -assumenosideeffects class android.util.Log {
     public static int d(...);
 }
--repackageclasses
 -allowaccessmodification
 -overloadaggressively
 -keepattributes SourceFile,LineNumberTable
