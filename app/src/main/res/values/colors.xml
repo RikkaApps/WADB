@@ -11,7 +11,7 @@
     <color name="color_secondary_light">@color/material_teal_700</color>
     <color name="color_secondary_variant_light">@color/material_teal_700</color>
     <color name="color_surface_light">#f5f5f5</color>
-    <color name="color_background_floating_md3_light">@android:color/white</color>
+    <color name="color_background_floating_light">@android:color/white</color>
 
     <color name="color_primary_dark">@color/material_teal_100</color>
     <color name="color_primary_variant_dark">@color/material_teal_200</color>
