@@ -23,7 +23,8 @@ Note, to enable wireless ADB directly on from the device, **root is a must**.
 
 <table>
   <tr>
-    <td valign="top"><img src="readme.res/01.png"></td>
+    <td valign="top"><img src="readme.res/01a.png"></td>
+    <td valign="top"><img src="readme.res/01b.png"></td>
     <td valign="top"><img src="readme.res/02.png"></td>
   </tr>
  </table>
