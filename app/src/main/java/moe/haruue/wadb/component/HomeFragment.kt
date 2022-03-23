@@ -172,10 +172,15 @@ class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFail
     override fun onWadbStarted(port: Int) {
         val context = context ?: return
 
-        val ip = NetworksUtils.getLocalIPAddress(context)
+        val ip = NetworksUtils.getLocalIPAddresses(context)
+
         // refresh switch
         togglePreference.isChecked = true
-        togglePreference.summaryOn = "$ip:$port"
+        if (ip.size > 1){
+            togglePreference.summaryOn = "[WLAN]\t${ip[0]}:$port\n[\t\tAP\t\t]\t${ip[1]}:$port"
+        } else {
+            togglePreference.summaryOn = "${ip[0]}:$port"
+        }
         // refresh port
         portPreference.text = port.toString()
         togglePreference.isEnabled = true

@@ -3,23 +3,41 @@ package moe.haruue.wadb.util;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import java.util.ArrayList;
+
 import moe.haruue.wadb.events.GlobalRequestHandler;
 
 public class NetworksUtils {
 
     public static String getLocalIPAddress(Context context) {
-        WifiManager wifiManger = context.getApplicationContext().getSystemService(WifiManager.class);
-        if (wifiManger == null) return intToIp(0);
-        WifiInfo wifiInfo = wifiManger.getConnectionInfo();
+        return getLocalIPAddresses(context).get(0);
+    }
 
-        // WLAN unavailable; if possible retrieve hotspot ip
-        if (wifiInfo.getIpAddress() == 0) {
-            String result = GlobalRequestHandler.getRetrieveIP("wlan0");
-            if (!result.isEmpty()) return result;
-            result = GlobalRequestHandler.getRetrieveIP("wlan1");
-            if (!result.isEmpty()) return result;
+    public static ArrayList<String> getLocalIPAddresses(Context context) {
+        ArrayList<String> result = new ArrayList<String>();
+
+        WifiManager wifiManger = context.getApplicationContext().getSystemService(WifiManager.class);
+        if (wifiManger == null) {
+            result.add(intToIp(0));
+            return result;
         }
-        return intToIp(wifiInfo.getIpAddress());
+        WifiInfo wifiInfo = wifiManger.getConnectionInfo();
+        // WLAN
+        if (wifiInfo.getIpAddress() != 0) {
+            result.add(intToIp(wifiInfo.getIpAddress()));
+        }
+        // AP
+        String apIp = GlobalRequestHandler.getRetrieveIP("wlan0");
+        if (!apIp.isEmpty() && !result.isEmpty() && !result.get(0).equals(apIp))
+            result.add(apIp);
+        else {
+            apIp = GlobalRequestHandler.getRetrieveIP("wlan1");
+            if (!apIp.isEmpty())
+                result.add(apIp);
+            else if (result.isEmpty())
+                result.add(intToIp(0));
+        }
+        return result;
     }
 
 
