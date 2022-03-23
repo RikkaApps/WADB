@@ -34,10 +34,13 @@ task clean(type: Delete) {
 }
 
 ext {
-    gitCommitId = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
-    gitCommitCount = Integer.parseInt('git rev-list --count HEAD'.execute([], project.rootDir).text.trim())
-    baseVersionName = '5.1.1'
+//    gitCommitId = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+//    gitCommitCount = Integer.parseInt('git rev-list --count HEAD'.execute([], project.rootDir).text.trim())
+//    baseVersionName = '5.1.1'
+//
+//    versionCode = gitCommitCount
+//    versionName = "${baseVersionName}.r${gitCommitCount}.${gitCommitId}"
 
-    versionCode = gitCommitCount
-    versionName = "${baseVersionName}.r${gitCommitCount}.${gitCommitId}"
+    versionCode = 1
+    versionName = "1"
 }

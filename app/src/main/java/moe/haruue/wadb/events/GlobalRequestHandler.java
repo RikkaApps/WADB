@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -49,6 +50,23 @@ public class GlobalRequestHandler {
                     "setprop ctl.restart adbd"
             };
         }
+    }
+
+    public static String getRetrieveIP(String device) {
+        if (!SuShell.available()) {
+            Events.postWadbFailureEvent(WadbFailureEvent::onRootPermissionFailure);
+            return "-1";
+        }
+
+        String[] cmd = new String[]{
+                "ifconfig "+ device + "|sed -n 's/^.*inet addr:\\(.*\\) .*$/\\1/p'",
+        };
+        List<String> output = SuShell.run(cmd).output;
+
+        if (!output.isEmpty())
+            return output.get(0).split(" ")[0];
+        else
+            return "";
     }
 
     public static int getWadbPort() {
