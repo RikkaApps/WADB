@@ -4,12 +4,14 @@ import android.os.SystemProperties;
 import android.text.TextUtils;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import moe.haruue.wadb.BuildConfig;
+import moe.haruue.wadb.util.LibWADB;
 import moe.haruue.wadb.util.SuShell;
 import rikka.shizuku.Shizuku;
 import rikka.shizuku.ShizukuSystemProperties;
@@ -53,20 +55,12 @@ public class GlobalRequestHandler {
     }
 
     public static String getRetrieveIP(String device) {
-        if (!SuShell.available()) {
-            Events.postWadbFailureEvent(WadbFailureEvent::onRootPermissionFailure);
-            return "-1";
-        }
-
-        String[] cmd = new String[]{
-                "ifconfig "+ device + "|sed -n 's/^.*inet addr:\\(.*\\) .*$/\\1/p'",
-        };
-        List<String> output = SuShell.run(cmd).output;
-
-        if (!output.isEmpty())
-            return output.get(0).split(" ")[0];
-        else
+        List<String> results = new ArrayList<>();
+        LibWADB.INSTANCE.getInterfaceIps(device, results);
+        if (results.isEmpty()) {
             return "";
+        }
+        return results.get(0);
     }
 
     public static int getWadbPort() {

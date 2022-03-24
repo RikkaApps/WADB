@@ -14,6 +14,7 @@ if (localFile.canRead()) {
 android {
     compileSdkVersion target_sdk
     buildToolsVersion build_tool_version
+    ndkVersion "23.1.7779620"
     defaultConfig {
         applicationId "moe.haruue.wadb"
         minSdkVersion min_sdk
@@ -28,6 +29,11 @@ android {
         buildConfigField "String", "COPYRIGHT", "\"Copyright © Haruue Icymoon, PinkD, Rikka\""
         buildConfigField "boolean", "DONOT_RESTART_ADBD", "${dontRestartAdbd}" // set it true to prevent restart adbd (for debugging)
         setProperty("archivesBaseName", "wadb-v${versionName}")
+        externalNativeBuild {
+            cmake {
+                abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            }
+        }
     }
     signingConfigs {
         sign
@@ -48,6 +54,11 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.sign
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
         }
     }
     packagingOptions {
