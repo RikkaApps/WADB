@@ -23,7 +23,6 @@ import moe.haruue.wadb.util.NetworksUtils
 import moe.haruue.wadb.util.NotificationHelper
 import moe.haruue.wadb.util.ScreenKeeper
 import moe.haruue.wadb.wadbApplication
-import rikka.recyclerview.addVerticalPadding
 import rikka.recyclerview.fixEdgeEffect
 import rikka.widget.borderview.BorderRecyclerView
 import rikka.widget.borderview.BorderView
@@ -172,14 +171,14 @@ class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFail
     override fun onWadbStarted(port: Int) {
         val context = context ?: return
 
-        val ip = NetworksUtils.getLocalIPAddresses(context)
+        val ips = NetworksUtils.getLocalIPAddresses(context)
 
         // refresh switch
         togglePreference.isChecked = true
-        if (ip.size > 1){
-            togglePreference.summaryOn = "[WLAN]\t${ip[0]}:$port\n[\t\tAP\t\t]\t${ip[1]}:$port"
+        if (ips.size > 1){
+            togglePreference.summaryOn = "[WLAN]\t${ips[0]}:$port\n[\t\tAP\t\t]\t${ips[1]}:$port"
         } else {
-            togglePreference.summaryOn = "${ip[0]}:$port"
+            togglePreference.summaryOn = "${ips[0]}:$port"
         }
         // refresh port
         portPreference.text = port.toString()
