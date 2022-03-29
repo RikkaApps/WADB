@@ -11,6 +11,20 @@ if (localFile.canRead()) {
     dontRestartAdbd = localProps.get("debug.dontRestartAdbd", false)
 }
 
+def signFile = rootProject.file('signing.properties')
+def signProps = new Properties()
+def hasSignConfig = false
+if (signFile.canRead()) {
+    signProps.load(new FileInputStream(signFile))
+    if (signProps != null) {
+        android.signingConfigs.sign.storeFile file(signProps['KEYSTORE_FILE'])
+        android.signingConfigs.sign.storePassword signProps['KEYSTORE_PASSWORD']
+        android.signingConfigs.sign.keyAlias signProps['KEYSTORE_ALIAS']
+        android.signingConfigs.sign.keyPassword signProps['KEYSTORE_ALIAS_PASSWORD']
+        hasSignConfig = true
+    }
+}
+
 android {
     compileSdkVersion target_sdk
     buildToolsVersion build_tool_version
@@ -47,13 +61,17 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.sign
+            if (hasSignConfig) {
+                signingConfig signingConfigs.sign
+            }
         }
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.sign
+            if (hasSignConfig) {
+                signingConfig signingConfigs.sign
+            }
         }
     }
     externalNativeBuild {
@@ -150,21 +168,3 @@ dependencies {
     def shizuku_version = '11.0.3'
     implementation "dev.rikka.shizuku:api:${shizuku_version}"
 }
-
-
-def signFile = rootProject.file('signing.properties')
-def signProps = new Properties()
-if (signFile.canRead()) {
-    signProps.load(new FileInputStream(signFile))
-    if (signProps != null) {
-        android.signingConfigs.sign.storeFile file(signProps['KEYSTORE_FILE'])
-        android.signingConfigs.sign.storePassword signProps['KEYSTORE_PASSWORD']
-        android.signingConfigs.sign.keyAlias signProps['KEYSTORE_ALIAS']
-        android.signingConfigs.sign.keyPassword signProps['KEYSTORE_ALIAS_PASSWORD']
-    } else {
-        println 'some entries in \'signing.properties\' not found!'
-    }
-} else {
-    println '\'signing.properties\' not found!'
-}
-
