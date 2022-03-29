@@ -16,13 +16,7 @@ def signProps = new Properties()
 def hasSignConfig = false
 if (signFile.canRead()) {
     signProps.load(new FileInputStream(signFile))
-    if (signProps != null) {
-        android.signingConfigs.sign.storeFile file(signProps['KEYSTORE_FILE'])
-        android.signingConfigs.sign.storePassword signProps['KEYSTORE_PASSWORD']
-        android.signingConfigs.sign.keyAlias signProps['KEYSTORE_ALIAS']
-        android.signingConfigs.sign.keyPassword signProps['KEYSTORE_ALIAS_PASSWORD']
-        hasSignConfig = true
-    }
+    hasSignConfig = true
 }
 
 android {
@@ -49,7 +43,14 @@ android {
         }
     }
     signingConfigs {
-        sign
+        if (hasSignConfig) {
+            sign {
+                storeFile signProps.getProperty("KEYSTORE_FILE") != null ? file(signProps.getProperty("KEYSTORE_FILE")) : android.signingConfigs.debug.storeFile
+                storePassword signProps.getProperty("KEYSTORE_PASSWORD", android.signingConfigs.debug.storePassword)
+                keyAlias signProps.getProperty("KEYSTORE_ALIAS", android.signingConfigs.debug.keyAlias)
+                keyPassword signProps.getProperty("KEYSTORE_ALIAS_PASSWORD", android.signingConfigs.debug.keyPassword)
+            }
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
