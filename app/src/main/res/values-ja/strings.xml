@@ -15,7 +15,6 @@
     <string name="settings_start_on_boot_summary">デバイス起動の時に、「%s」を自動的に有効にします</string>
     <string name="settings_start_on_boot">自動起動</string>
     <string name="theme_pink">ピンク</string>
-    <string name="theme_white">白</string>
     <string name="theme_default">デフォルト</string>
     <string name="settings_use_low_priority_notification_summary">通知は他の通知の下に表示し、通知アイコンはステータスバーに非表示にします</string>
     <string name="settings_use_low_priority_notification">低い重要度の通知を使う</string>

@@ -56,11 +56,6 @@ class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFail
             lp.rightMargin = recyclerView.context.resources.getDimension(R.dimen.rd_activity_horizontal_margin).toInt()
             lp.leftMargin = lp.rightMargin
         }
-        recyclerView.borderVisibilityChangedListener = BorderView.OnBorderVisibilityChangedListener { top, _, _, _ ->
-            if (activity != null) {
-                (activity as AppBarActivity).appBar?.setRaised(!top)
-            }
-        }
 
         return recyclerView
     }
@@ -160,12 +155,12 @@ class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFail
 
     override fun onPause() {
         super.onPause()
-        preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        preferenceScreen.sharedPreferences!!.unregisterOnSharedPreferenceChangeListener(this)
     }
 
     override fun onResume() {
         super.onResume()
-        preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+        preferenceScreen.sharedPreferences!!.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onWadbStarted(port: Int) {

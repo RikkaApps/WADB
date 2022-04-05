@@ -7,7 +7,6 @@
                 android:duration="@android:integer/config_mediumAnimTime"
                 android:interpolator="@android:interpolator/fast_out_slow_in"
                 android:propertyName="translationZ"
-                android:valueTo="@dimen/app_bar_elevation"
                 android:valueType="floatType" />
         </set>
     </item>

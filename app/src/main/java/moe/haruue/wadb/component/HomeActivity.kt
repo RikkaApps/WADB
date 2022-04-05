@@ -25,9 +25,31 @@ import rikka.html.text.toHtml
 
 class HomeActivity : AppBarFragmentActivity() {
 
-    private val themes by unsafeLazy { resources.getStringArray(R.array.theme_light) }
-    private val themesValue by unsafeLazy { resources.getStringArray(R.array.theme_light_value) }
-    private val themesId by unsafeLazy { themesValue.map { it.hashCode() } }
+    private val themes by unsafeLazy {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S)
+            arrayOf(
+                getString(R.string.theme_default),
+                getString(R.string.theme_pink),
+            ) else
+            arrayOf(
+                getString(R.string.theme_default),
+                getString(R.string.theme_teal),
+                getString(R.string.theme_pink),
+            )
+    }
+
+    private val themesValue = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S)
+        arrayOf(
+            ThemeHelper.THEME_DEFAULT,
+            ThemeHelper.THEME_PINK
+        ) else
+        arrayOf(
+            ThemeHelper.THEME_DEFAULT,
+            ThemeHelper.THEME_TEAL,
+            ThemeHelper.THEME_PINK
+        )
+
+    private val themesId = themesValue.map { it.hashCode() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,27 +57,23 @@ class HomeActivity : AppBarFragmentActivity() {
         if (savedInstanceState == null) {
             val fragment = HomeFragment()
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
-                    .commit()
+                .replace(R.id.fragment_container, fragment)
+                .setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
+                .commit()
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.home, menu)
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-            menu.findItem(R.id.menu_theme).subMenu.apply {
-                val currentTheme = ThemeHelper.getTheme()
-                for ((index, theme) in themes.withIndex()) {
-                    add(R.id.menu_theme_group, themesId[index].hashCode(), index, theme).apply {
-                        isCheckable = true
-                        isChecked = currentTheme == themesValue[index]
-                    }
+        menu.findItem(R.id.menu_theme).subMenu.apply {
+            val currentTheme = ThemeHelper.getTheme()
+            for ((index, theme) in themes.withIndex()) {
+                add(R.id.menu_theme_group, themesId[index].hashCode(), index, theme).apply {
+                    isCheckable = true
+                    isChecked = currentTheme == themesValue[index]
                 }
-                setGroupCheckable(R.id.menu_theme_group, true, true)
             }
-        } else {
-            menu.findItem(R.id.menu_theme).isVisible = false
+            setGroupCheckable(R.id.menu_theme_group, true, true)
         }
         return true
     }
@@ -72,8 +90,14 @@ class HomeActivity : AppBarFragmentActivity() {
                 }
                 val text = StringBuilder()
                 text.append(versionName)
-                        .append("<p>")
-                        .append(getString(R.string.open_source_info, "<b><a href=\"${BuildConfig.GITHUB_URL}\">GitHub</a></b>", BuildConfig.LICENSE))
+                    .append("<p>")
+                    .append(
+                        getString(
+                            R.string.open_source_info,
+                            "<b><a href=\"${BuildConfig.GITHUB_URL}\">GitHub</a></b>",
+                            BuildConfig.LICENSE
+                        )
+                    )
                 val translators = getString(R.string.translators)
                 if (translators.isNotBlank()) {
                     text.append("<p>").append(getString(R.string.translation_contributors, translators))
@@ -81,10 +105,11 @@ class HomeActivity : AppBarFragmentActivity() {
                 text.append("<p>").append(BuildConfig.COPYRIGHT)
 
                 val dialog: Dialog = AlertDialog.Builder(context)
-                        .setView(R.layout.dialog_about)
-                        .show()
+                    .setView(R.layout.dialog_about)
+                    .show()
                 (dialog.findViewById<View>(R.id.design_about_icon) as ImageView).setImageDrawable(context.getDrawable(R.drawable.ic_launcher))
-                (dialog.findViewById<View>(R.id.design_about_title) as TextView).text = getString(R.string.wireless_adb_short)
+                (dialog.findViewById<View>(R.id.design_about_title) as TextView).text =
+                    getString(R.string.wireless_adb_short)
                 (dialog.findViewById<View>(R.id.design_about_version) as TextView).apply {
                     movementMethod = LinkMovementMethod.getInstance()
                     this.text = text.toHtml(HtmlCompat.FROM_HTML_OPTION_TRIM_WHITESPACE)
@@ -97,17 +122,14 @@ class HomeActivity : AppBarFragmentActivity() {
                 true
             }
             else -> {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-                    val index = themesId.indexOf(item.itemId)
-                    if (index == -1) return super.onOptionsItemSelected(item)
+                val index = themesId.indexOf(item.itemId)
+                if (index == -1) return super.onOptionsItemSelected(item)
 
-                    if (ThemeHelper.getTheme() != themesValue[index]) {
-                        ThemeHelper.setLightTheme(themesValue[index])
-                        recreate()
-                    }
-                    return true
+                if (ThemeHelper.getTheme() != themesValue[index]) {
+                    ThemeHelper.setLightTheme(themesValue[index])
+                    recreate()
                 }
-                return super.onOptionsItemSelected(item)
+                return true
             }
         }
     }

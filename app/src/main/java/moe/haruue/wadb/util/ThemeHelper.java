@@ -9,8 +9,8 @@ public class ThemeHelper {
 
     private static final String TAG = "ThemeHelper";
 
-    public static final String THEME_CLASSIC = "classic";
-    public static final String THEME_WHITE = "white";
+    public static final String THEME_DEFAULT = "default";
+    public static final String THEME_TEAL = "teal";
     public static final String THEME_PINK = "pink";
 
     public static final String KEY_LIGHT_THEME = "pref_light_theme";
@@ -20,20 +20,18 @@ public class ThemeHelper {
     }
 
     public static String getTheme() {
-        return WadbApplication.getDefaultSharedPreferences().getString(KEY_LIGHT_THEME, THEME_CLASSIC);
+        return WadbApplication.getDefaultSharedPreferences().getString(KEY_LIGHT_THEME, THEME_DEFAULT);
     }
 
     @StyleRes
     public static int getThemeStyleRes() {
         switch (getTheme()) {
-            case THEME_CLASSIC:
-                return R.style.ThemeOverlay_Classic;
-
-            case THEME_WHITE:
-                return R.style.ThemeOverlay_White;
+            case THEME_TEAL:
+                return R.style.ThemeOverlay_Teal;
             case THEME_PINK:
                 return R.style.ThemeOverlay_Pink;
 
+            case THEME_DEFAULT:
             default:
                 return R.style.ThemeOverlay;
         }

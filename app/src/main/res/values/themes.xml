@@ -1,49 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Light" parent="Theme.Material.Light.LightStatusBar">
-        <item name="android:colorPrimary">?appBarColor</item>
+    <style name="Theme.Light" parent="Theme.Material3.Light.Wadb">
         <item name="android:statusBarColor">@android:color/transparent</item>
-
-        <item name="preferenceTheme">@style/ThemeOverlay.Preference</item>
-        <item name="appBarStyle">@style/Widget.AppBar</item>
-        <item name="appBarColor">@color/color_primary_light</item>
-
-        <item name="colorPrimary">@color/color_primary_light</item>
-        <item name="colorPrimaryVariant">@color/color_primary_variant_light</item>
-        <item name="colorSecondary">@color/color_secondary_light</item>
-        <item name="colorSecondaryVariant">@color/color_secondary_variant_light</item>
-        <item name="colorOnSecondary">@android:color/white</item>
-        <item name="colorSurface">@color/color_surface_light</item>
-        <item name="colorBackgroundFloating">@color/color_background_floating_light</item>
-        <item name="android:colorBackground">?colorSurface</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="Theme" parent="Theme.Material">
-        <item name="android:colorPrimary">?appBarColor</item>
+    <style name="Theme" parent="Theme.Material3.Dark.Wadb">
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/black</item>
-
-        <item name="preferenceTheme">@style/ThemeOverlay.Preference</item>
-        <item name="appBarStyle">@style/Widget.AppBar</item>
-        <item name="appBarColor">@android:color/black</item>
-
-        <item name="colorPrimary">@color/color_primary_dark</item>
-        <item name="colorPrimaryVariant">@color/color_primary_variant_dark</item>
-        <item name="colorSecondary">@color/color_secondary_dark</item>
-        <item name="colorSecondaryVariant">@color/color_secondary_variant_dark</item>
-        <item name="colorOnSecondary">@android:color/white</item>
-        <item name="colorSurface">@color/color_surface_dark</item>
-        <item name="colorBackgroundFloating">@color/color_background_floating_dark</item>
-        <item name="android:colorBackground">?colorSurface</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
     <style name="ThemeOverlay.Preference" parent="PreferenceThemeOverlay" />
-
-    <style name="Widget.AppBar" parent="Widget.Material.ActionBar.Solid">
-        <item name="android:background">?appBarColor</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:elevation">@dimen/app_bar_elevation</item>
-        <item name="android:theme">?actionBarTheme</item>
-    </style>
 
 </resources>

@@ -19,6 +19,8 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'dev.rikka.tools.autoresconfig:gradle-plugin:1.1.1'
+        classpath 'dev.rikka.tools.materialthemebuilder:gradle-plugin:1.1.0'
     }
 }
 
@@ -26,6 +28,7 @@ allprojects {
     repositories {
         mavenCentral()
         google()
+        mavenLocal()
     }
 }
 

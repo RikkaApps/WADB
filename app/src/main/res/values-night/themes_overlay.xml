@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ThemeOverlay.Classic" />
+    <style name="ThemeOverlay.Teal" parent="ThemeOverlay.Teal.Dark"/>
 
-    <style name="ThemeOverlay.White" />
-
-    <style name="ThemeOverlay.Pink">
-        <item name="colorPrimary">@color/pink_primary_dark</item>
-        <item name="colorPrimaryVariant">@color/pink_primary_dark</item>
-        <item name="colorSecondary">@color/pink_primary_dark</item>
-        <item name="colorSecondaryVariant">@color/pink_primary_dark</item>
-    </style>
+    <style name="ThemeOverlay.Pink" parent="ThemeOverlay.Pink.Dark"/>
 
 </resources>

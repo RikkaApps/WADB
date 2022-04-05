@@ -6,7 +6,6 @@
     <string name="settings_start_on_boot_summary">\"%s\"\'ı cihaz başladığında aktif et</string>
     <string name="settings_start_on_boot">Cihaz ile başlat</string>
     <string name="theme_pink">Pembe</string>
-    <string name="theme_white">Aydınlık</string>
     <string name="theme_default">Varsayılan</string>
     <string name="theme">Tema</string>
     <string name="settings_use_low_priority_notification_summary">Bu bildirim tüm bildirimlerin altında gösterilecek ve durum çubuğunda gösterilmeyecek</string>

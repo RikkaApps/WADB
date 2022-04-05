@@ -1,10 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Widget.AppBar" parent="Widget.Material.ActionBar.Solid">
-        <item name="android:background">?android:colorBackground</item>
-        <item name="android:stateListAnimator">@animator/appbar_animator</item>
-        <item name="android:elevation">0dp</item>
-        <item name="android:theme">?actionBarTheme</item>
+    <!-- TODO: https://github.com/RikkaApps/MaterialThemeBuilder/issues/3 -->
+
+    <style name="Theme.Light" parent="Theme.Material3.Light.Wadb">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="colorPrimary">@color/m3_sys_color_dynamic_light_primary</item>
+        <item name="colorOnPrimary">@color/m3_sys_color_dynamic_light_on_primary</item>
+        <item name="colorPrimaryInverse">@color/m3_sys_color_dynamic_light_inverse_primary</item>
+        <item name="colorPrimaryContainer">@color/m3_sys_color_dynamic_light_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/m3_sys_color_dynamic_light_on_primary_container</item>
+        <item name="colorSecondary">@color/m3_sys_color_dynamic_light_secondary</item>
+        <item name="colorOnSecondary">@color/m3_sys_color_dynamic_light_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/m3_sys_color_dynamic_light_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/m3_sys_color_dynamic_light_on_secondary_container</item>
+        <item name="colorTertiary">@color/m3_sys_color_dynamic_light_tertiary</item>
+        <item name="colorOnTertiary">@color/m3_sys_color_dynamic_light_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/m3_sys_color_dynamic_light_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/m3_sys_color_dynamic_light_on_tertiary_container</item>
+        <item name="android:colorBackground">@color/m3_sys_color_dynamic_light_background</item>
+        <item name="colorOnBackground">@color/m3_sys_color_dynamic_light_on_background</item>
+        <item name="colorSurface">@color/m3_sys_color_dynamic_light_surface</item>
+        <item name="colorOnSurface">@color/m3_sys_color_dynamic_light_on_surface</item>
+        <item name="colorSurfaceVariant">@color/m3_sys_color_dynamic_light_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/m3_sys_color_dynamic_light_on_surface_variant</item>
+        <item name="colorSurfaceInverse">@color/m3_sys_color_dynamic_light_inverse_surface</item>
+        <item name="colorOnSurfaceInverse">@color/m3_sys_color_dynamic_light_inverse_on_surface</item>
+        <item name="colorOutline">@color/m3_sys_color_dynamic_light_outline</item>
+        <item name="colorError">@color/m3_sys_color_light_error</item>
+        <item name="colorOnError">@color/m3_sys_color_light_on_error</item>
+        <item name="colorErrorContainer">@color/m3_sys_color_light_error_container</item>
+        <item name="colorOnErrorContainer">@color/m3_sys_color_light_on_error_container</item>
+
+        <!-- Default Framework Text Colors. -->
+        <item name="android:textColorPrimary">@color/m3_dynamic_default_color_primary_text</item>
+        <item name="android:textColorPrimaryInverse">@color/m3_dynamic_dark_default_color_primary_text</item>
+        <item name="android:textColorSecondary">@color/m3_dynamic_default_color_secondary_text</item>
+        <item name="android:textColorSecondaryInverse">@color/m3_dynamic_dark_default_color_secondary_text</item>
+        <item name="android:textColorTertiary">@color/m3_dynamic_default_color_secondary_text</item>
+        <item name="android:textColorTertiaryInverse">@color/m3_dynamic_dark_default_color_secondary_text</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/m3_dynamic_primary_text_disable_only</item>
+        <item name="android:textColorPrimaryInverseDisableOnly">@color/m3_dynamic_dark_primary_text_disable_only</item>
+        <item name="android:textColorHint">@color/m3_dynamic_hint_foreground</item>
+        <item name="android:textColorHintInverse">@color/m3_dynamic_dark_hint_foreground</item>
+        <item name="android:textColorHighlight">@color/m3_dynamic_highlighted_text</item>
+        <item name="android:textColorHighlightInverse">@color/m3_dynamic_dark_highlighted_text</item>
+        <item name="android:textColorAlertDialogListItem">@color/m3_dynamic_default_color_primary_text</item>
+
+
+        <!-- MaterialColorTokens -->
+        <item name="palettePrimary100">@android:color/system_accent1_0</item>
+        <item name="palettePrimary99">@android:color/system_accent1_10</item>
+        <item name="palettePrimary95">@android:color/system_accent1_50</item>
+        <item name="palettePrimary90">@android:color/system_accent1_100</item>
+        <item name="palettePrimary80">@android:color/system_accent1_200</item>
+        <item name="palettePrimary70">@android:color/system_accent1_300</item>
+        <item name="palettePrimary60">@android:color/system_accent1_400</item>
+        <item name="palettePrimary50">@android:color/system_accent1_500</item>
+        <item name="palettePrimary40">@android:color/system_accent1_600</item>
+        <item name="palettePrimary30">@android:color/system_accent1_700</item>
+        <item name="palettePrimary20">@android:color/system_accent1_800</item>
+        <item name="palettePrimary10">@android:color/system_accent1_900</item>
+        <item name="palettePrimary0">@android:color/system_accent1_1000</item>
+
+        <item name="paletteSecondary100">@android:color/system_accent2_0</item>
+        <item name="paletteSecondary99">@android:color/system_accent2_10</item>
+        <item name="paletteSecondary95">@android:color/system_accent2_50</item>
+        <item name="paletteSecondary90">@android:color/system_accent2_100</item>
+        <item name="paletteSecondary80">@android:color/system_accent2_200</item>
+        <item name="paletteSecondary70">@android:color/system_accent2_300</item>
+        <item name="paletteSecondary60">@android:color/system_accent2_400</item>
+        <item name="paletteSecondary50">@android:color/system_accent2_500</item>
+        <item name="paletteSecondary40">@android:color/system_accent2_600</item>
+        <item name="paletteSecondary30">@android:color/system_accent2_700</item>
+        <item name="paletteSecondary20">@android:color/system_accent2_800</item>
+        <item name="paletteSecondary10">@android:color/system_accent2_900</item>
+        <item name="paletteSecondary0">@android:color/system_accent2_1000</item>
+
+        <item name="paletteTertiary100">@android:color/system_accent3_0</item>
+        <item name="paletteTertiary99">@android:color/system_accent3_10</item>
+        <item name="paletteTertiary95">@android:color/system_accent3_50</item>
+        <item name="paletteTertiary90">@android:color/system_accent3_100</item>
+        <item name="paletteTertiary80">@android:color/system_accent3_200</item>
+        <item name="paletteTertiary70">@android:color/system_accent3_300</item>
+        <item name="paletteTertiary60">@android:color/system_accent3_400</item>
+        <item name="paletteTertiary50">@android:color/system_accent3_500</item>
+        <item name="paletteTertiary40">@android:color/system_accent3_600</item>
+        <item name="paletteTertiary30">@android:color/system_accent3_700</item>
+        <item name="paletteTertiary20">@android:color/system_accent3_800</item>
+        <item name="paletteTertiary10">@android:color/system_accent3_900</item>
+        <item name="paletteTertiary0">@android:color/system_accent3_1000</item>
+
+        <item name="paletteNeutral100">@android:color/system_neutral1_0</item>
+        <item name="paletteNeutral99">@android:color/system_neutral1_10</item>
+        <item name="paletteNeutral95">@android:color/system_neutral1_50</item>
+        <item name="paletteNeutral90">@android:color/system_neutral1_100</item>
+        <item name="paletteNeutral80">@android:color/system_neutral1_200</item>
+        <item name="paletteNeutral70">@android:color/system_neutral1_300</item>
+        <item name="paletteNeutral60">@android:color/system_neutral1_400</item>
+        <item name="paletteNeutral50">@android:color/system_neutral1_500</item>
+        <item name="paletteNeutral40">@android:color/system_neutral1_600</item>
+        <item name="paletteNeutral30">@android:color/system_neutral1_700</item>
+        <item name="paletteNeutral20">@android:color/system_neutral1_800</item>
+        <item name="paletteNeutral10">@android:color/system_neutral1_900</item>
+        <item name="paletteNeutral0">@android:color/system_neutral1_1000</item>
+
+        <item name="paletteNeutralVariant100">@android:color/system_neutral2_0</item>
+        <item name="paletteNeutralVariant99">@android:color/system_neutral2_10</item>
+        <item name="paletteNeutralVariant95">@android:color/system_neutral2_50</item>
+        <item name="paletteNeutralVariant90">@android:color/system_neutral2_100</item>
+        <item name="paletteNeutralVariant80">@android:color/system_neutral2_200</item>
+        <item name="paletteNeutralVariant70">@android:color/system_neutral2_300</item>
+        <item name="paletteNeutralVariant60">@android:color/system_neutral2_400</item>
+        <item name="paletteNeutralVariant50">@android:color/system_neutral2_500</item>
+        <item name="paletteNeutralVariant40">@android:color/system_neutral2_600</item>
+        <item name="paletteNeutralVariant30">@android:color/system_neutral2_700</item>
+        <item name="paletteNeutralVariant20">@android:color/system_neutral2_800</item>
+        <item name="paletteNeutralVariant10">@android:color/system_neutral2_900</item>
+        <item name="paletteNeutralVariant0">@android:color/system_neutral2_1000</item>
     </style>
 
+    <style name="Theme" parent="Theme.Material3.Dark.Wadb">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <item name="colorPrimary">@color/m3_sys_color_dynamic_dark_primary</item>
+        <item name="colorOnPrimary">@color/m3_sys_color_dynamic_dark_on_primary</item>
+        <item name="colorPrimaryInverse">@color/m3_sys_color_dynamic_dark_inverse_primary</item>
+        <item name="colorPrimaryContainer">@color/m3_sys_color_dynamic_dark_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/m3_sys_color_dynamic_dark_on_primary_container</item>
+        <item name="colorSecondary">@color/m3_sys_color_dynamic_dark_secondary</item>
+        <item name="colorOnSecondary">@color/m3_sys_color_dynamic_dark_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/m3_sys_color_dynamic_dark_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/m3_sys_color_dynamic_dark_on_secondary_container</item>
+        <item name="colorTertiary">@color/m3_sys_color_dynamic_dark_tertiary</item>
+        <item name="colorOnTertiary">@color/m3_sys_color_dynamic_dark_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/m3_sys_color_dynamic_dark_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/m3_sys_color_dynamic_dark_on_tertiary_container</item>
+        <item name="android:colorBackground">@color/m3_sys_color_dynamic_dark_background</item>
+        <item name="colorOnBackground">@color/m3_sys_color_dynamic_dark_on_background</item>
+        <item name="colorSurface">@color/m3_sys_color_dynamic_dark_surface</item>
+        <item name="colorOnSurface">@color/m3_sys_color_dynamic_dark_on_surface</item>
+        <item name="colorSurfaceVariant">@color/m3_sys_color_dynamic_dark_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/m3_sys_color_dynamic_dark_on_surface_variant</item>
+        <item name="colorSurfaceInverse">@color/m3_sys_color_dynamic_dark_inverse_surface</item>
+        <item name="colorOnSurfaceInverse">@color/m3_sys_color_dynamic_dark_inverse_on_surface</item>
+        <item name="colorOutline">@color/m3_sys_color_dynamic_dark_outline</item>
+        <item name="colorError">@color/m3_sys_color_dark_error</item>
+        <item name="colorOnError">@color/m3_sys_color_dark_on_error</item>
+        <item name="colorErrorContainer">@color/m3_sys_color_dark_error_container</item>
+        <item name="colorOnErrorContainer">@color/m3_sys_color_dark_on_error_container</item>
+
+        <!-- Default Framework Text Colors. -->
+        <item name="android:textColorPrimary">@color/m3_dynamic_dark_default_color_primary_text</item>
+        <item name="android:textColorPrimaryInverse">@color/m3_dynamic_default_color_primary_text</item>
+        <item name="android:textColorSecondary">@color/m3_dynamic_dark_default_color_secondary_text</item>
+        <item name="android:textColorSecondaryInverse">@color/m3_dynamic_default_color_secondary_text</item>
+        <item name="android:textColorTertiary">@color/m3_dynamic_dark_default_color_secondary_text</item>
+        <item name="android:textColorTertiaryInverse">@color/m3_dynamic_default_color_secondary_text</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/m3_dynamic_dark_primary_text_disable_only</item>
+        <item name="android:textColorPrimaryInverseDisableOnly">@color/m3_dynamic_primary_text_disable_only</item>
+        <item name="android:textColorHint">@color/m3_dynamic_dark_hint_foreground</item>
+        <item name="android:textColorHintInverse">@color/m3_dynamic_hint_foreground</item>
+        <item name="android:textColorHighlight">@color/m3_dynamic_dark_highlighted_text</item>
+        <item name="android:textColorHighlightInverse">@color/m3_dynamic_highlighted_text</item>
+        <item name="android:textColorAlertDialogListItem">@color/m3_dynamic_dark_default_color_primary_text</item>
+
+        <!-- MaterialColorTokens -->
+        <item name="palettePrimary100">@android:color/system_accent1_0</item>
+        <item name="palettePrimary99">@android:color/system_accent1_10</item>
+        <item name="palettePrimary95">@android:color/system_accent1_50</item>
+        <item name="palettePrimary90">@android:color/system_accent1_100</item>
+        <item name="palettePrimary80">@android:color/system_accent1_200</item>
+        <item name="palettePrimary70">@android:color/system_accent1_300</item>
+        <item name="palettePrimary60">@android:color/system_accent1_400</item>
+        <item name="palettePrimary50">@android:color/system_accent1_500</item>
+        <item name="palettePrimary40">@android:color/system_accent1_600</item>
+        <item name="palettePrimary30">@android:color/system_accent1_700</item>
+        <item name="palettePrimary20">@android:color/system_accent1_800</item>
+        <item name="palettePrimary10">@android:color/system_accent1_900</item>
+        <item name="palettePrimary0">@android:color/system_accent1_1000</item>
+
+        <item name="paletteSecondary100">@android:color/system_accent2_0</item>
+        <item name="paletteSecondary99">@android:color/system_accent2_10</item>
+        <item name="paletteSecondary95">@android:color/system_accent2_50</item>
+        <item name="paletteSecondary90">@android:color/system_accent2_100</item>
+        <item name="paletteSecondary80">@android:color/system_accent2_200</item>
+        <item name="paletteSecondary70">@android:color/system_accent2_300</item>
+        <item name="paletteSecondary60">@android:color/system_accent2_400</item>
+        <item name="paletteSecondary50">@android:color/system_accent2_500</item>
+        <item name="paletteSecondary40">@android:color/system_accent2_600</item>
+        <item name="paletteSecondary30">@android:color/system_accent2_700</item>
+        <item name="paletteSecondary20">@android:color/system_accent2_800</item>
+        <item name="paletteSecondary10">@android:color/system_accent2_900</item>
+        <item name="paletteSecondary0">@android:color/system_accent2_1000</item>
+
+        <item name="paletteTertiary100">@android:color/system_accent3_0</item>
+        <item name="paletteTertiary99">@android:color/system_accent3_10</item>
+        <item name="paletteTertiary95">@android:color/system_accent3_50</item>
+        <item name="paletteTertiary90">@android:color/system_accent3_100</item>
+        <item name="paletteTertiary80">@android:color/system_accent3_200</item>
+        <item name="paletteTertiary70">@android:color/system_accent3_300</item>
+        <item name="paletteTertiary60">@android:color/system_accent3_400</item>
+        <item name="paletteTertiary50">@android:color/system_accent3_500</item>
+        <item name="paletteTertiary40">@android:color/system_accent3_600</item>
+        <item name="paletteTertiary30">@android:color/system_accent3_700</item>
+        <item name="paletteTertiary20">@android:color/system_accent3_800</item>
+        <item name="paletteTertiary10">@android:color/system_accent3_900</item>
+        <item name="paletteTertiary0">@android:color/system_accent3_1000</item>
+
+        <item name="paletteNeutral100">@android:color/system_neutral1_0</item>
+        <item name="paletteNeutral99">@android:color/system_neutral1_10</item>
+        <item name="paletteNeutral95">@android:color/system_neutral1_50</item>
+        <item name="paletteNeutral90">@android:color/system_neutral1_100</item>
+        <item name="paletteNeutral80">@android:color/system_neutral1_200</item>
+        <item name="paletteNeutral70">@android:color/system_neutral1_300</item>
+        <item name="paletteNeutral60">@android:color/system_neutral1_400</item>
+        <item name="paletteNeutral50">@android:color/system_neutral1_500</item>
+        <item name="paletteNeutral40">@android:color/system_neutral1_600</item>
+        <item name="paletteNeutral30">@android:color/system_neutral1_700</item>
+        <item name="paletteNeutral20">@android:color/system_neutral1_800</item>
+        <item name="paletteNeutral10">@android:color/system_neutral1_900</item>
+        <item name="paletteNeutral0">@android:color/system_neutral1_1000</item>
+
+        <item name="paletteNeutralVariant100">@android:color/system_neutral2_0</item>
+        <item name="paletteNeutralVariant99">@android:color/system_neutral2_10</item>
+        <item name="paletteNeutralVariant95">@android:color/system_neutral2_50</item>
+        <item name="paletteNeutralVariant90">@android:color/system_neutral2_100</item>
+        <item name="paletteNeutralVariant80">@android:color/system_neutral2_200</item>
+        <item name="paletteNeutralVariant70">@android:color/system_neutral2_300</item>
+        <item name="paletteNeutralVariant60">@android:color/system_neutral2_400</item>
+        <item name="paletteNeutralVariant50">@android:color/system_neutral2_500</item>
+        <item name="paletteNeutralVariant40">@android:color/system_neutral2_600</item>
+        <item name="paletteNeutralVariant30">@android:color/system_neutral2_700</item>
+        <item name="paletteNeutralVariant20">@android:color/system_neutral2_800</item>
+        <item name="paletteNeutralVariant10">@android:color/system_neutral2_900</item>
+        <item name="paletteNeutralVariant0">@android:color/system_neutral2_1000</item>
+    </style>
 </resources>

@@ -1,7 +1,11 @@
 import java.nio.file.Paths
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+plugins {
+    id('com.android.application')
+    id('kotlin-android')
+    id('dev.rikka.tools.autoresconfig')
+    id('dev.rikka.tools.materialthemebuilder')
+}
 
 def localFile = rootProject.file('local.properties')
 def localProps = new Properties()
@@ -89,6 +93,38 @@ android {
     dependenciesInfo.includeInApk false
 }
 
+autoResConfig {
+    generateClass = false
+    generateRes = false
+}
+
+materialThemeBuilder {
+    themes {
+        wadb {
+            primaryColor = "#009688"
+            lightThemeFormat = "Theme.Material3.Light.%s"
+            lightThemeParent = "Theme.Material3.Light.Rikka"
+            darkThemeFormat = "Theme.Material3.Dark.%s"
+            darkThemeParent = "Theme.Material3.Dark.Rikka"
+        }
+        teal {
+            primaryColor = "#009688"
+            lightThemeFormat = "ThemeOverlay.%s.Light"
+            lightThemeParent = "ThemeOverlay"
+            darkThemeFormat = "ThemeOverlay.%s.Dark"
+            darkThemeParent = "ThemeOverlay"
+        }
+        pink {
+            primaryColor = "#F5A9B8"
+            lightThemeFormat = "ThemeOverlay.%s.Light"
+            lightThemeParent = "ThemeOverlay"
+            darkThemeFormat = "ThemeOverlay.%s.Dark"
+            darkThemeParent = "ThemeOverlay"
+        }
+    }
+    generatePalette = true
+}
+
 def optimizeReleaseResources = task('optimizeReleaseResources').doLast {
     def aapt2 = Paths.get(project.android.sdkDirectory.path, 'build-tools', project.android.buildToolsVersion, 'aapt2')
     def zip = Paths.get(project.buildDir.path, 'intermediates',
@@ -148,18 +184,19 @@ configurations.all {
 dependencies {
     compileOnly project(':hidden')
 
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.preference:preference-ktx:1.2.0'
 
-    implementation "dev.rikka.rikkax.appcompat:appcompat:1.2.0-rc01"
-    implementation "dev.rikka.rikkax.core:core:1.3.2"
+    implementation "dev.rikka.rikkax.appcompat:appcompat:1.4.1"
+    implementation "dev.rikka.rikkax.core:core:1.3.4"
     implementation 'dev.rikka.rikkax.html:html-ktx:1.1.2'
-    implementation 'dev.rikka.rikkax.material:material:1.6.5'
-    implementation 'dev.rikka.rikkax.recyclerview:recyclerview-ktx:1.2.2'
-    implementation 'dev.rikka.rikkax.widget:borderview:1.0.1'
+    implementation 'dev.rikka.rikkax.material:material:2.1.0'
+    implementation 'dev.rikka.rikkax.material:material-preference:1.0.0'
+    implementation 'dev.rikka.rikkax.recyclerview:recyclerview-ktx:1.3.1'
+    implementation 'dev.rikka.rikkax.widget:borderview:1.1.0'
 
     def libsuVersion = '4.0.3'
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"

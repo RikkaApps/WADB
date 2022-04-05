@@ -9,7 +9,6 @@
     <string name="settings_start_on_boot_summary">Включать «%s» по окончанию загрузки системы</string>
     <string name="settings_start_on_boot">Автозагрузка</string>
     <string name="theme_pink">Розовая</string>
-    <string name="theme_white">Белая</string>
     <string name="theme_default">По умолчанию</string>
     <string name="theme">Тема</string>
     <string name="settings_use_low_priority_notification_summary">Уведомление будет показываться внизу, отдельно от остальных, а значок уведомления будет скрыт из строки состояния</string>

@@ -6,7 +6,6 @@
     <string name="settings_start_on_boot_summary">Ativar \"%s\" quando o aparelho inicializar</string>
     <string name="settings_start_on_boot">Iniciar com o boot</string>
     <string name="theme_pink">Rosa</string>
-    <string name="theme_white">Claro</string>
     <string name="theme_default">Padrão</string>
     <string name="theme">Tema</string>
     <string name="settings_use_low_priority_notification_summary">A notificação será mostrada na parte inferior de outras pessoas e o ícone de notificação ficará oculto na barra de status</string>

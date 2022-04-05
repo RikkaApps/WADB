@@ -3,25 +3,8 @@
 
     <style name="ThemeOverlay" />
 
-    <style name="ThemeOverlay.Classic">
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-    </style>
+    <style name="ThemeOverlay.Teal" parent="ThemeOverlay.Teal.Light"/>
 
-    <style name="ThemeOverlay.White">
-        <item name="appBarColor">@android:color/white</item>
+    <style name="ThemeOverlay.Pink" parent="ThemeOverlay.Pink.Light"/>
 
-        <item name="colorSecondary">@color/material_teal_500</item>
-        <item name="colorSecondaryVariant">@color/material_teal_500</item>
-    </style>
-
-    <style name="ThemeOverlay.Pink">
-        <item name="appBarColor">@color/pink_appbar_light</item>
-
-        <item name="colorPrimary">@color/pink_primary_light</item>
-        <item name="colorPrimaryVariant">@color/pink_primary_light</item>
-        <item name="colorSecondary">@color/pink_secondary_light</item>
-        <item name="colorSecondaryVariant">@color/pink_secondary_light</item>
-    </style>
 </resources>

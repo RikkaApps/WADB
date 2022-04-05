@@ -23,27 +23,24 @@ abstract class AppActivity : MaterialActivity() {
     }
 
     override fun computeUserThemeKey(): String? {
-        return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-            ThemeHelper.getTheme()
-        } else null
+        return ThemeHelper.getTheme()
     }
 
     override fun onApplyUserThemeResource(theme: Resources.Theme, isDecorView: Boolean) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-            theme.applyStyle(ThemeHelper.getThemeStyleRes(), true)
-        }
+        theme.applyStyle(ThemeHelper.getThemeStyleRes(), true)
+        theme.applyStyle(R.style.ThemeOverlay_Rikka_Material3_Preference, true)
     }
 
     private fun updateTaskDescription() {
         val color: Int = theme.resolveColor(R.attr.appBarColor)
         val icon: Int = when (ThemeHelper.getTheme()) {
-            ThemeHelper.THEME_WHITE -> {
+            ThemeHelper.THEME_TEAL -> {
                 R.drawable.ic_task_icon_black
             }
             ThemeHelper.THEME_PINK -> {
                 R.drawable.ic_task_icon_black
             }
-            ThemeHelper.THEME_CLASSIC -> {
+            ThemeHelper.THEME_DEFAULT -> {
                 R.drawable.ic_task_icon_white
             }
             else -> {
@@ -56,7 +53,8 @@ abstract class AppActivity : MaterialActivity() {
         } else {
             val drawable = ContextCompat.getDrawable(this, icon)
 
-            val bitmap = Bitmap.createBitmap(drawable!!.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+            val bitmap =
+                Bitmap.createBitmap(drawable!!.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bitmap)
             drawable.setBounds(0, 0, canvas.width, canvas.height)
             drawable.draw(canvas)
