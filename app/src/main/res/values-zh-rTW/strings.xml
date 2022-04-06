@@ -37,4 +37,6 @@
     <string name="notification_settings_summary">從系統更改通知設定</string>
     <string name="tile_off">關閉</string>
     <string name="theme_teal">青色</string>
+    <string name="enable_wadb">啟用無線 adb</string>
+    <string name="settings_ip">IP 位址</string>
 </resources>

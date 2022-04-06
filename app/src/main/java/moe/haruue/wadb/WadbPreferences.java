@@ -4,6 +4,7 @@ import moe.haruue.wadb.util.ThemeHelper;
 
 public class WadbPreferences {
 
+    public static final String KEY_WAKE_IP = "pref_key_wadb_ip";
     public static final String KEY_WAKE_PORT = "pref_key_wadb_port";
     public static final String KEY_WAKE_LOCK = "pref_key_wake_lock";
     public static final String KEY_SCREEN_LOCK_SWITCH = "pref_key_screen_lock_switch";
