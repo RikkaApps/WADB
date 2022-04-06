@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ThemeOverlay.Teal" parent="ThemeOverlay.Teal.Dark"/>
+    <style name="ThemeOverlay.Green" parent="ThemeOverlay.Green.Dark"/>
 
     <style name="ThemeOverlay.Pink" parent="ThemeOverlay.Pink.Dark"/>
 

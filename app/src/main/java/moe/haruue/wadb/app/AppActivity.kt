@@ -34,7 +34,7 @@ abstract class AppActivity : MaterialActivity() {
     private fun updateTaskDescription() {
         val color: Int = theme.resolveColor(R.attr.appBarColor)
         val icon: Int = when (ThemeHelper.getTheme()) {
-            ThemeHelper.THEME_TEAL -> {
+            ThemeHelper.THEME_GREEN -> {
                 R.drawable.ic_task_icon_black
             }
             ThemeHelper.THEME_PINK -> {

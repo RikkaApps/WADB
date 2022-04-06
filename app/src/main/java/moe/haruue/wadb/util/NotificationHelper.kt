@@ -34,8 +34,8 @@ object NotificationHelper {
         // Android Q supports dark status bar, but still uses color restriction algorithm of light background,
         // so we still have to use light color here
         val color: Int = when (ThemeHelper.getTheme()) {
-            ThemeHelper.THEME_TEAL -> {
-                context.getColor(R.color.md_theme_teal_palette_primary_50)
+            ThemeHelper.THEME_GREEN -> {
+                context.getColor(R.color.md_theme_green_palette_primary_50)
             }
             ThemeHelper.THEME_PINK -> {
                 context.getColor(R.color.md_theme_pink_palette_primary_50)
@@ -44,7 +44,7 @@ object NotificationHelper {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     context.getColor(android.R.color.system_accent1_500)
                 } else {
-                    context.getColor(R.color.md_theme_teal_palette_primary_50)
+                    context.getColor(R.color.md_theme_green_palette_primary_50)
                 }
             }
         }

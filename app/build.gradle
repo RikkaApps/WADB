@@ -101,14 +101,14 @@ autoResConfig {
 materialThemeBuilder {
     themes {
         wadb {
-            primaryColor = "#009688"
+            primaryColor = "#88b984"
             lightThemeFormat = "Theme.Material3.Light.%s"
             lightThemeParent = "Theme.Material3.Light.Rikka"
             darkThemeFormat = "Theme.Material3.Dark.%s"
             darkThemeParent = "Theme.Material3.Dark.Rikka"
         }
-        teal {
-            primaryColor = "#009688"
+        green {
+            primaryColor = "#88b984"
             lightThemeFormat = "ThemeOverlay.%s.Light"
             lightThemeParent = "ThemeOverlay"
             darkThemeFormat = "ThemeOverlay.%s.Dark"

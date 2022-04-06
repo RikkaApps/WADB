@@ -3,7 +3,7 @@
 
     <style name="ThemeOverlay" />
 
-    <style name="ThemeOverlay.Teal" parent="ThemeOverlay.Teal.Light"/>
+    <style name="ThemeOverlay.Green" parent="ThemeOverlay.Green.Light"/>
 
     <style name="ThemeOverlay.Pink" parent="ThemeOverlay.Pink.Light"/>
 

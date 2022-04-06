@@ -30,7 +30,7 @@ This software is open source (%1$s) under %2$s.
     <string name="settings_use_low_priority_notification_summary">The notification will be shown at the bottom from others and the notification icon will be hidden from the status bar</string>
     <string name="theme">Theme</string>
     <string name="theme_default">Default</string>
-    <string name="theme_teal">Teal</string>
+    <string name="theme_green">Green</string>
     <string name="theme_pink">Pink</string>
     <string name="settings_start_on_boot">Start on boot</string>
     <string name="settings_start_on_boot_summary">Enable \"%s\" when the device starts</string>

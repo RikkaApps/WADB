@@ -33,7 +33,7 @@ class HomeActivity : AppBarFragmentActivity() {
             ) else
             arrayOf(
                 getString(R.string.theme_default),
-                getString(R.string.theme_teal),
+                getString(R.string.theme_green),
                 getString(R.string.theme_pink),
             )
     }
@@ -45,7 +45,7 @@ class HomeActivity : AppBarFragmentActivity() {
         ) else
         arrayOf(
             ThemeHelper.THEME_DEFAULT,
-            ThemeHelper.THEME_TEAL,
+            ThemeHelper.THEME_GREEN,
             ThemeHelper.THEME_PINK
         )
 
