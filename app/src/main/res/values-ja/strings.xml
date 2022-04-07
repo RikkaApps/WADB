@@ -31,4 +31,6 @@
     <string name="open_source_info">このアプリは、%2$s によってオープンソース（%1$s）されていました。</string>
     <string name="wireless_adb">無線 ADB</string>
     <string name="translation_contributors">翻訳は %s 提供されます。</string>
+    <string name="tile_off">オフ</string>
+    <string name="theme_green">緑</string>
 </resources>
