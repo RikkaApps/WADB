@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_settings_summary">Thay đổi cài đặt thông báo từ hệ thống</string>
+    <string name="notification_settings">Cài đặt thông báo</string>
+    <string name="notification_channel_state">Trạng thái đang chạy</string>
+    <string name="settings_start_on_boot_summary">Bật \"%s\" khi thiết bị khởi động</string>
+    <string name="settings_start_on_boot">Bắt đầu khi khởi động</string>
+    <string name="theme_pink">Hồng</string>
+    <string name="theme_default">Mặc định</string>
+    <string name="theme">Chủ đề</string>
+    <string name="settings_use_low_priority_notification_summary">Thông báo sẽ được hiển thị ở dưới cùng với những thông báo khác và biểu tượng thông báo sẽ bị ẩn khỏi thanh trạng thái</string>
+    <string name="settings_use_low_priority_notification">Sử dụng thông báo có mức độ ưu tiên thấp</string>
+    <string name="toast_bad_port_number">Số cổng phải là 1025–65535</string>
+    <string name="settings_port">Cổng</string>
+    <string name="settings_keep_screen_on_summary">Giữ màn hình bật khi \"%s\" được bật</string>
+    <string name="settings_keep_screen_on">Giữ màn hình bật</string>
+    <string name="dialog_hide_icon_message_q">Lưu ý, bắt đầu từ Android 10, hệ thống có thể buộc tất cả các ứng dụng hiển thị trên màn hình chính.</string>
+    <string name="settings_hide_icon_summary">Ẩn ứng dụng này khỏi màn hình chính</string>
+    <string name="settings_hide_icon">Ẩn khỏi màn hình chính</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Cho phép chuyển từ cài đặt nhanh khi màn hình bị khóa</string>
+    <string name="settings_allow_toggle_lock_screen">Cho phép chuyển đổi khi bị khóa</string>
+    <string name="settings_show_notification_summary">Hiện một thông báo khi \"%s\" được bật</string>
+    <string name="settings_show_notification">Hiện thông báo</string>
+    <string name="settings_toggle_summary_off">Đã vô hiệu hoá</string>
+    <string name="settings_toggle_summary_on">Đã bật</string>
+    <string name="notification_wadb_enabled_button_disable">Vô hiệu hóa %s</string>
+    <string name="notification_wadb_enabled_title">%s đã bật</string>
+    <string name="dialog_not_rooted_message">Thiết bị này chưa được root hoặc yêu cầu bị từ chối bởi trình quản lí root.</string>
+    <string name="open_source_info">Phần mềm này là mã nguồn mở (%1$s) dưới %2$s.</string>
+    <string name="about">Về</string>
+    <string name="wireless_adb">ADB không dây</string>
+    <string name="translation_contributors">Bản dịch được đóng góp bởi %s.</string>
+    <string name="contribute_translation">Đóng góp bản dịch</string>
+    <string name="translators">The Primal Pea</string>
+</resources>

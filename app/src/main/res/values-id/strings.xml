@@ -10,4 +10,26 @@
     <string name="settings_toggle_summary_off">Dinonaktifkan</string>
     <string name="settings_toggle_summary_on">Diaktifkan</string>
     <string name="about">Tentang</string>
+    <string name="translation_contributors">Penerjemahan dibantu oleh %s.</string>
+    <string name="contribute_translation">Bantu penerjemahan</string>
+    <string name="notification_settings_summary">Ubah pengaturan notifikasi dari sistem</string>
+    <string name="settings_start_on_boot_summary">Aktifkan \"%s\" saat perangkat dimulai</string>
+    <string name="settings_start_on_boot">Mulai saat boot</string>
+    <string name="theme_pink">Merah muda</string>
+    <string name="theme_default">Bawaan</string>
+    <string name="settings_use_low_priority_notification_summary">Pemberitahuan akan ditampilkan di bagian bawah dari yang lain dan ikon pemberitahuan akan disembunyikan dari bilah status</string>
+    <string name="settings_use_low_priority_notification">Gunakan pemberitahuan prioritas rendah</string>
+    <string name="settings_keep_screen_on_summary">Tetap aktifkan layar saat \"%s\" diaktifkan</string>
+    <string name="dialog_hide_icon_message_q">Catatan, mulai dari Android 10, sistem dapat memberlakukan semua aplikasi untuk ditampilkan di layar beranda.</string>
+    <string name="settings_hide_icon_summary">Sembunyikan aplikasi ini dari layar beranda</string>
+    <string name="settings_hide_icon">Sembunyikan dari layar beranda</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Izinkan beralih dari pengaturan cepat saat layar terkunci</string>
+    <string name="settings_show_notification_summary">Tampilkan notifikasi saat \"%s\" diaktifkan</string>
+    <string name="settings_show_notification">Tampilkan notifikasi</string>
+    <string name="notification_wadb_enabled_button_disable">Nonaktifkan %s</string>
+    <string name="notification_wadb_enabled_title">%s diaktifkan</string>
+    <string name="dialog_not_rooted_message">Perangkat ini tidak di-root atau permintaan ditolak oleh pengelola root.</string>
+    <string name="open_source_info">Perangkat lunak ini open source (%1$s) di bawah %2$s.</string>
+    <string name="wireless_adb">Adb nirkabel</string>
+    <string name="translators">Ian</string>
 </resources>

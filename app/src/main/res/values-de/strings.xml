@@ -5,8 +5,25 @@
     <string name="toast_bad_port_number">Port kann nur 1025–65535 sein</string>
     <string name="settings_port">Port</string>
     <string name="settings_keep_screen_on">Lasse den Bildschirm an</string>
-    <string name="settings_allow_toggle_lock_screen">Erlaube umschalten wenn der Bildschirm gesperrt ist</string>
+    <string name="settings_allow_toggle_lock_screen">Erlaube umschalten, wenn der Bildschirm gesperrt ist</string>
     <string name="settings_toggle_summary_off">Deaktiviert</string>
     <string name="settings_toggle_summary_on">Aktiviert</string>
     <string name="about">Über</string>
+    <string name="wireless_adb">Drahtloses ADB</string>
+    <string name="settings_hide_icon">Auf dem Startbildschirm ausblenden</string>
+    <string name="settings_keep_screen_on_summary">Bildschirm eingeschaltet lassen, wenn \"%s\"aktiviert ist</string>
+    <string name="theme_default">Standard</string>
+    <string name="settings_show_notification">Zeige Benachrichtigungen</string>
+    <string name="open_source_info">Die Software ist Open Source (%1$s) unter%2$s.</string>
+    <string name="settings_hide_icon_summary">Diese App auf dem Startbildschirm ausblenden</string>
+    <string name="notification_settings_summary">Benachrichtigungseinstellungen vom System aus ändern</string>
+    <string name="settings_show_notification_summary">Zeige Benachrichtigungen, wenn \"%s\" aktiviert ist</string>
+    <string name="settings_start_on_boot">Beim Booten starten</string>
+    <string name="settings_use_low_priority_notification">Benachrichtigung mit niedriger Priorität verwenden</string>
+    <string name="translation_contributors">Die Übersetzung wird bereitgestellt von %s.</string>
+    <string name="dialog_not_rooted_message">Dieses Gerät ist nicht gerootet oder die Anfrage wurde vom Root-Manager abgelehnt.</string>
+    <string name="notification_wadb_enabled_title">%s ist aktiviert</string>
+    <string name="notification_wadb_enabled_button_disable">Deaktiviere %s</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Umschalten aus den Schnelleinstellungen erlauben, wenn der Bildschirm gesperrt ist</string>
+    <string name="settings_start_on_boot_summary">Aktiviere \"%s\", wenn das Gerät startet</string>
 </resources>

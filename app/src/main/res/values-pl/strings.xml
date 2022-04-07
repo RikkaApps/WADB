@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_hide_icon_message_q">Ważne, od Androida 10, system może wymusić pokazywanie na ekranie startowym.</string>
+    <string name="translation_contributors">W tłumaczeniu pomogli: %s.</string>
+    <string name="notification_settings_summary">Zmień ustawienia powiadomień z poziomu systemu</string>
+    <string name="notification_settings">Ustawienia powiadomień</string>
+    <string name="notification_channel_state">Status działania</string>
+    <string name="settings_start_on_boot_summary">Włącz \"%s\" gdy urządzenie startuje</string>
+    <string name="settings_start_on_boot">Uruchom przy starcie systemu</string>
+    <string name="theme_pink">Różowy</string>
+    <string name="theme_default">Domyślny</string>
+    <string name="theme">Motyw</string>
+    <string name="settings_use_low_priority_notification_summary">Powiadomienie będzie ukryte na dole i ikona zostanie ukryta z paska powiadomień</string>
+    <string name="settings_use_low_priority_notification">Użyj powiadomienia z niskim priorytetem</string>
+    <string name="toast_bad_port_number">Numer portu mysi być między 1025 a 65535</string>
+    <string name="settings_port">Port</string>
+    <string name="settings_keep_screen_on_summary">Utrzymaj ekran włączony gdy \"%s\" jest włączone</string>
+    <string name="settings_keep_screen_on">Utrzymaj ekran włączony</string>
+    <string name="settings_hide_icon">Ukryj na ekranu głównym</string>
+    <string name="settings_hide_icon_summary">Ukryj tę aplikację na ekranie startowym</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Dopuść przełączanie z szybkich ustawień gdy ekran jest zablokowany</string>
+    <string name="settings_allow_toggle_lock_screen">Dopuść przełączanie gdy zablokowano</string>
+    <string name="settings_show_notification_summary">Pokaż powiadomienie gdy \"%s\" jest włączone</string>
+    <string name="settings_show_notification">Pokaż powiadomienie</string>
+    <string name="settings_toggle_summary_off">Wyłączone</string>
+    <string name="settings_toggle_summary_on">Włączone</string>
+    <string name="notification_wadb_enabled_button_disable">Wyłącz %s</string>
+    <string name="notification_wadb_enabled_title">%s jest włączone</string>
+    <string name="dialog_not_rooted_message">Urządzenie nie jest zrootowane, bądź żądanie zostało odrzucone przez manager roota.</string>
+    <string name="open_source_info">To oprogramowanie jest otwartoźródłowe (%1$s) pod %2$s.</string>
+    <string name="about">O aplikacji</string>
+    <string name="wireless_adb">Bezprzewodowe ADB</string>
+    <string name="contribute_translation">Pomóż w tłumaczeniu</string>
+    <string name="translators">Gabriel Markowski</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_not_rooted_message">Este dispositivo no está rooteado o el administrador root rechazó la solicitud.</string>
+    <string name="open_source_info">Este software es de código abierto (%1$s) bajo %2$s.</string>
+    <string name="about">Acerca de</string>
+    <string name="translation_contributors">La traducción es aportada por %s.</string>
+    <string name="contribute_translation">Contribuir con la traducción</string>
+    <string name="translators">—Peter Cuevas</string>
+</resources>

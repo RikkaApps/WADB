@@ -26,7 +26,7 @@
     <string name="notification_wadb_enabled_button_disable">Desativar %s</string>
     <string name="notification_wadb_enabled_title">%s está ativado</string>
     <string name="dialog_not_rooted_message">Este aparelho não está rooteado ou a solicitação foi negada pelo SuperSU ou Magisk.</string>
-    <string name="open_source_info">Esse software é de código aberto (%1$S) sob %2$s.</string>
+    <string name="open_source_info">Esse software é de código aberto (%1$s) sob %2$s.</string>
     <string name="about">Sobre</string>
     <string name="wireless_adb">ADB via Wireless</string>
     <string name="translation_contributors">A tradução foi elaborada por %s.</string>

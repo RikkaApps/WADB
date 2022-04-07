@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_settings_summary">시스템에서 알림 설정 변경</string>
+    <string name="notification_settings">알림 설정</string>
+    <string name="notification_channel_state">실행 상태</string>
+    <string name="settings_start_on_boot_summary">장치 시작 시 \"%s\" 활성화</string>
+    <string name="settings_start_on_boot">부팅 시 시작</string>
+    <string name="theme_pink">핑크</string>
+    <string name="theme_default">기본값</string>
+    <string name="theme">테마</string>
+    <string name="settings_use_low_priority_notification_summary">알림은 다른 알림의 하단에 표시되고 알림 아이콘은 상태 표시줄에서 숨겨집니다.</string>
+    <string name="settings_use_low_priority_notification">낮은 우선 순위 알림 사용</string>
+    <string name="toast_bad_port_number">포트 번호는 1025–65535 사이여야 합니다</string>
+    <string name="settings_port">포트</string>
+    <string name="settings_keep_screen_on_summary">\"%s\"이(가) 활성화된 경우 화면을 켜진 상태로 유지</string>
+    <string name="settings_keep_screen_on">화면 켜기</string>
+    <string name="dialog_hide_icon_message_q">Android 10부터 시스템은 모든 앱이 홈 화면에 표시되도록 강제할 수 있습니다.</string>
+    <string name="settings_hide_icon_summary">홈 화면에서 이 앱 숨기기</string>
+    <string name="settings_hide_icon">홈 화면에서 숨기기</string>
+    <string name="settings_allow_toggle_lock_screen_summary">화면이 잠겨 있을 때 빠른 설정에서 전환 허용</string>
+    <string name="settings_allow_toggle_lock_screen">잠겨 있을 때 전환 허용</string>
+    <string name="settings_show_notification_summary">\"%s\" 가 활성화되면 알림 표시</string>
+    <string name="settings_show_notification">알림 표시</string>
+    <string name="settings_toggle_summary_off">비활성화됨</string>
+    <string name="settings_toggle_summary_on">활성화됨</string>
+    <string name="notification_wadb_enabled_button_disable">%s 비활성화</string>
+    <string name="notification_wadb_enabled_title">%s이(가) 활성화되었습니다</string>
+    <string name="dialog_not_rooted_message">이 장치는 루팅되지 않았거나 루트 관리자가 요청을 거부했습니다.</string>
+    <string name="open_source_info">이 소프트웨어는 %2$s 에 따라 오픈 소스 (%1$s) 입니다.</string>
+    <string name="about">정보</string>
+    <string name="wireless_adb">무선 adb</string>
+    <string name="translation_contributors">이 번역은 %s 에 의해 기여 되었습니다.</string>
+    <string name="contribute_translation">번역 기여</string>
+</resources>
