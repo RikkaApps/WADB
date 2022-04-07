@@ -29,9 +29,10 @@
     <string name="notification_wadb_enabled_button_disable">%sを無効にする</string>
     <string name="dialog_not_rooted_message">このデバイスはROOT化されていません。もしくはこのアプリはROOTを拒否されています。</string>
     <string name="open_source_info">このアプリは、%2$s によってオープンソース（%1$s）されていました。</string>
-    <string name="wireless_adb">無線 ADB</string>
+    <string name="wireless_adb">無線ADB</string>
     <string name="translation_contributors">翻訳は %s 提供されます。</string>
     <string name="tile_off">オフ</string>
     <string name="theme_green">緑</string>
     <string name="settings_ip">IPアドレス</string>
+    <string name="enable_wadb">無線ADBを有効にする</string>
 </resources>
