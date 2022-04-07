@@ -8,12 +8,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.TwoStatePreference
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import moe.haruue.wadb.R
 import moe.haruue.wadb.WadbApplication
 import moe.haruue.wadb.WadbPreferences.*
@@ -129,7 +129,7 @@ class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFail
         launcherIconPreference.setOnPreferenceChangeListener { _, newValue ->
             if (newValue as Boolean) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    AlertDialog.Builder(requireContext())
+                    MaterialAlertDialogBuilder(requireContext())
                         .setMessage(R.string.dialog_hide_icon_message_q)
                         .setNegativeButton(android.R.string.cancel, null)
                         .setPositiveButton(android.R.string.ok) { _, _ ->
@@ -213,7 +213,7 @@ class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFail
 
         onWadbStopped()
 
-        AlertDialog.Builder(activity)
+        MaterialAlertDialogBuilder(activity)
             .setMessage(activity.getString(R.string.dialog_not_rooted_message))
             .setPositiveButton(android.R.string.ok, null)
             .create()

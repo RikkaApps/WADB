@@ -12,9 +12,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import moe.haruue.wadb.BuildConfig
 import moe.haruue.wadb.R
 import moe.haruue.wadb.app.AppBarFragmentActivity
@@ -104,7 +104,7 @@ class HomeActivity : AppBarFragmentActivity() {
                 }
                 text.append("<p>").append(BuildConfig.COPYRIGHT)
 
-                val dialog: Dialog = AlertDialog.Builder(context)
+                val dialog: Dialog = MaterialAlertDialogBuilder(context)
                     .setView(R.layout.dialog_about)
                     .show()
                 (dialog.findViewById<View>(R.id.design_about_icon) as ImageView).setImageDrawable(context.getDrawable(R.drawable.ic_launcher))
