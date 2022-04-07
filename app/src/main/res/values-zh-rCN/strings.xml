@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="translators" />
     <string name="contribute_translation">协助翻译</string>
     <string name="translation_contributors">翻译由 %s 贡献。</string>
-
     <string name="wireless_adb">无线 adb</string>
     <string name="about">关于</string>
     <string name="open_source_info"><![CDATA[
