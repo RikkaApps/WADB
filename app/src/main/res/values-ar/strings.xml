@@ -1,2 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="settings_ip">عنوان IP</string>
+    <string name="enable_wadb">تفعيل ADB اللاسلكي</string>
+    <string name="tile_off">إيقاف</string>
+    <string name="notification_settings_summary">تغيير إعدادات الإخطار من النظام</string>
+    <string name="notification_settings">إعدادات الإشعار</string>
+    <string name="notification_channel_state">حالة التشغيل</string>
+    <string name="settings_start_on_boot_summary">قم بتمكين \"%s\" عند بدء تشغيل الجهاز</string>
+    <string name="settings_start_on_boot">ابدأ في التمهيد</string>
+    <string name="theme_pink">زهري</string>
+    <string name="theme_green">ثيم أخضر</string>
+    <string name="theme_default">ثيم افتراضي</string>
+    <string name="theme">ثـِيم</string>
+    <string name="settings_use_low_priority_notification_summary">سيظهر الإشعار في الجزء السفلي من الآخرين وسيتم إخفاء رمز الإشعار من شريط الحالة</string>
+    <string name="settings_use_low_priority_notification">استخدم إشعارًا ذا أولوية منخفضة</string>
+    <string name="toast_bad_port_number">يجب أن يكون رقم المنفذ 1025-65535</string>
+    <string name="settings_port">بوابة الدخول</string>
+    <string name="settings_keep_screen_on_summary">حافظ على الشاشة قيد التشغيل \"%s\" عند تشغيل</string>
+    <string name="settings_keep_screen_on">حافظ على الشاشة قيد التشغيل</string>
+    <string name="dialog_hide_icon_message_q">ملاحظة ، بدءًا من Android 10 ، قد يفرض النظام عرض جميع التطبيقات على الشاشة الرئيسية.</string>
+    <string name="settings_hide_icon_summary">إخفاء هذا التطبيق من الشاشة الرئيسية</string>
+    <string name="settings_hide_icon">إخفاء من الشاشة الرئيسية</string>
+    <string name="settings_allow_toggle_lock_screen_summary">اسمح بالتبديل من الإعدادات السريعة عندما تكون الشاشة مقفلة</string>
+    <string name="settings_allow_toggle_lock_screen">السماح بالتبديل عند القفل</string>
+    <string name="settings_show_notification_summary">إظهار إشعار \"%s\" عند تشغيل</string>
+    <string name="settings_show_notification">إظهار الإشعارات</string>
+    <string name="settings_toggle_summary_off">إيقاف</string>
+    <string name="settings_toggle_summary_on">تشغيل</string>
+    <string name="notification_wadb_enabled_button_disable">تعطيل %s</string>
+    <string name="notification_wadb_enabled_title">تم تمكين %s</string>
+    <string name="dialog_not_rooted_message">لم يتم عمل روت لهذا الجهاز أو تم رفض الطلب من قبل مدير الجذر.</string>
+    <string name="open_source_info">هذا البرنامج مفتوح المصدر (<xliff:g id="github_url">%1$s</xliff:g>) under <xliff:g id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
+    <string name="about">حول</string>
+    <string name="wireless_adb">ADB اللاسلكي</string>
+    <string name="translation_contributors">ساهم في الترجمة <xliff:g id="translator_names">%1$s</xliff:g>.</string>
+    <string name="contribute_translation">المساهمة في الترجمة</string>
+</resources>
