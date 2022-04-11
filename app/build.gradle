@@ -88,13 +88,17 @@ android {
         }
     }
     packagingOptions {
-        exclude '/META-INF/*.version'
-        exclude '/META-INF/*.version'
-        exclude '/META-INF/*.kotlin_module'
-        exclude '/kotlin/**'
+        jniLibs {
+            excludes += ['/kotlin/**']
+        }
+        resources {
+            excludes += ['/META-INF/*.version', '/META-INF/*.version', '/META-INF/*.kotlin_module', '/kotlin/**']
+        }
     }
-    lintOptions.checkReleaseBuilds false
     dependenciesInfo.includeInApk false
+    lint {
+        checkReleaseBuilds false
+    }
 }
 
 autoResConfig {
