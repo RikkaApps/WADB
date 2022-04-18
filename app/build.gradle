@@ -110,6 +110,7 @@ materialThemeBuilder {
     themes {
         wadb {
             primaryColor = "#88b984"
+            dynamicColors = true
             lightThemeFormat = "Theme.Material3.Light.%s"
             lightThemeParent = "Theme.Material3.Light.Rikka"
             darkThemeFormat = "Theme.Material3.Dark.%s"
@@ -131,6 +132,7 @@ materialThemeBuilder {
         }
     }
     generatePalette = true
+    packageName = "moe.haruue.wadb"
 }
 
 def optimizeReleaseResources = task('optimizeReleaseResources').doLast {
