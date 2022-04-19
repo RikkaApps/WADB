@@ -26,10 +26,14 @@
     <string name="notification_wadb_enabled_button_disable">Vô hiệu hóa %s</string>
     <string name="notification_wadb_enabled_title">%s đã bật</string>
     <string name="dialog_not_rooted_message">Thiết bị này chưa được root hoặc yêu cầu bị từ chối bởi trình quản lí root.</string>
-    <string name="open_source_info">Phần mềm này là mã nguồn mở (%1$s) dưới %2$s.</string>
+    <string name="open_source_info">Phần mềm này là mã nguồn mở (<xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="github_url">%1$s</xliff:g>) dưới <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
     <string name="about">Về</string>
     <string name="wireless_adb">ADB không dây</string>
-    <string name="translation_contributors">Bản dịch được đóng góp bởi %s.</string>
+    <string name="translation_contributors">Bản dịch được đóng góp bởi <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="translator_names">%1$s</xliff:g>.</string>
     <string name="contribute_translation">Đóng góp bản dịch</string>
     <string name="translators">The Primal Pea</string>
+    <string name="settings_ip">Địa chỉ IP</string>
+    <string name="enable_wadb">Bật adb không dây</string>
+    <string name="tile_off">Tắt</string>
+    <string name="theme_green">Xanh lá cây</string>
 </resources>
