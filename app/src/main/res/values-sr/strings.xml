@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="dialog_not_rooted_message">Ovaj uređaj nije rutovan ili je zahtjev odbijen od root manager-a.</string>
+    <string name="open_source_info">Ovaj softver je open source (
+\n<xliff:g id="github_url">%1$s</xliff:g>) ispod <xliff:g id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
+    <string name="about">O tome</string>
+    <string name="wireless_adb">Bežični adb</string>
+    <string name="translation_contributors">Ovoj tranzlaciji doprinosi
+\n<xliff:g id="translator_names">%1$s</xliff:g>.</string>
+</resources>
