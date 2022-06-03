@@ -1,5 +1,6 @@
 package moe.haruue.wadb.util
 
+import androidx.annotation.Keep
 import java.lang.IllegalStateException
 import java.lang.reflect.Method
 
@@ -36,6 +37,7 @@ object LibWADB {
     }
 
     @JvmStatic
+    @Keep
     @JNC(JNC.ID_ipsListAdd)
     fun ipsListAdd(outList: MutableList<InterfaceIPPair>, idx: Int, family: Byte, interfaceName: String, ip: String) {
         outList.add(InterfaceIPPair(idx, family.toInt(), interfaceName, ip))
