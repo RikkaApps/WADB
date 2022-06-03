@@ -220,6 +220,11 @@ class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFail
             .show()
     }
 
+    override fun onStart() {
+        super.onStart()
+        GlobalRequestHandler.checkWadbState()
+    }
+
     override fun onSharedPreferenceChanged(preferences: SharedPreferences, key: String) {
         val context = requireContext()
         when (key) {
