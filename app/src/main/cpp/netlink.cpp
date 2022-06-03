@@ -1,5 +1,8 @@
 #include "netlink.h"
 
+#include <map>
+#include <vector>
+
 #include <stdint.h>
 #include <errno.h>
 #include <string.h>
@@ -54,7 +57,7 @@ namespace wadb::netlink {
             return sendmsg(fd, &msg, 0);
         }
 
-        ssize_t send_get_addr_msg(int fd, uint if_index) {
+        ssize_t send_get_addr_msg(int fd) {
             struct Request {
                 nlmsghdr nh;
                 ifaddrmsg ifa;
@@ -65,8 +68,6 @@ namespace wadb::netlink {
             req.nh.nlmsg_type = RTM_GETADDR;
             req.nh.nlmsg_flags = NLM_F_REQUEST | NLM_F_DUMP;
             req.nh.nlmsg_seq = 1;
-            req.ifa.ifa_family = AF_INET;
-            req.ifa.ifa_index = if_index;
 
             sockaddr_nl sa{};
             sa.nl_family = AF_NETLINK;
@@ -99,7 +100,8 @@ namespace wadb::netlink {
             return recvmsg(fd, &msg, 0);
         }
 
-        int parse_netlink_getlink_response_for_ifidx(const void *buf, size_t len, const std::string &if_name, uint &outidx) {
+        int parse_netlink_getlink_response_for_interfaces(const void *buf, size_t len,
+                                                          std::map<uint, std::string> &out_if_idx_name_map) {
             uint16_t last_nlmsg_type = NLMSG_DONE;
 
             for (auto *nh = reinterpret_cast<const nlmsghdr *>(buf);
@@ -109,7 +111,7 @@ namespace wadb::netlink {
 
                 if (nh->nlmsg_type == NLMSG_ERROR) {
                     return -1;
-                } else if (outidx == 0 && nh->nlmsg_type == RTM_NEWLINK) {
+                } else if (nh->nlmsg_type == RTM_NEWLINK) {
                     auto ifi = reinterpret_cast<const ifinfomsg *>(NLMSG_DATA(nh));
                     auto ifi_len = IFLA_PAYLOAD(nh);
 
@@ -118,13 +120,7 @@ namespace wadb::netlink {
                          rta = RTA_NEXT(rta, ifi_len)) {
                         if (rta->rta_type == IFLA_IFNAME) {
                             std::string_view rta_if_name{reinterpret_cast<const char *>(RTA_DATA(rta))};
-                            if (rta_if_name == if_name) {
-                                outidx = ifi->ifi_index;
-
-                                // we cannot stop here with NLMSG_DONE,
-                                // since we need to purge remaining response
-                                return last_nlmsg_type;
-                            }
+                            out_if_idx_name_map.emplace(ifi->ifi_index, rta_if_name);
                         }
                     }
 
@@ -134,7 +130,10 @@ namespace wadb::netlink {
             return last_nlmsg_type;
         }
 
-        int parse_netlink_getaddr_response_for_ips(const void *buf, size_t len, uint if_index, std::vector<std::string> &ips) {
+        int parse_netlink_getaddr_response_for_ips(const void *buf, size_t len,
+                                                   bool include_ipv6,
+                                                   const std::map<uint, std::string> &out_if_idx_name_map,
+                                                   std::list<InterfaceIPPair> &ips) {
             uint16_t last_nlmsg_type = NLMSG_DONE;
 
             for (auto *nh = reinterpret_cast<const nlmsghdr *>(buf);
@@ -148,15 +147,21 @@ namespace wadb::netlink {
                     auto ifa = reinterpret_cast<const ifaddrmsg *>(NLMSG_DATA(nh));
                     auto ifa_len = IFA_PAYLOAD(nh);
 
-                    // double check for kernel without NETLINK_GET_STRICT_CHK
-                    if (ifa->ifa_index == if_index) {
+                    if (ifa->ifa_family != AF_INET) {
+                        if (!include_ipv6 || ifa->ifa_family != AF_INET6) {
+                            continue;
+                        }
+                    }
+
+                    if (auto it = out_if_idx_name_map.find(ifa->ifa_index);
+                        it != out_if_idx_name_map.cend()) {
                         for (auto rta = reinterpret_cast<const rtattr *>(IFA_RTA(ifa));
                              RTA_OK(rta, ifa_len);
                              rta = RTA_NEXT(rta, ifa_len)) {
                             if (rta->rta_type == IFA_ADDRESS) {
                                 std::string ip_str_buf(64, '\0');
                                 inet_ntop(ifa->ifa_family, RTA_DATA(rta), ip_str_buf.data(), ip_str_buf.size());
-                                ips.emplace_back(ip_str_buf.data());
+                                ips.emplace_back(ifa->ifa_index, ifa->ifa_family, it->second, ip_str_buf.data());
                             }
                         }
                     }
@@ -167,7 +172,7 @@ namespace wadb::netlink {
         }
     }
 
-    int get_interface_ips(const std::string &if_name, std::vector<std::string> &ips) {
+    int get_interface_ips(bool include_ipv6, std::list<InterfaceIPPair> &ips) {
         hx::tux::unique_fd fd{socket(AF_NETLINK, SOCK_RAW|SOCK_CLOEXEC, NETLINK_ROUTE)};
         if (fd == -1) {
             ALOGE("socket(AF_NETLINK) failed with errno=%d", errno);
@@ -185,15 +190,8 @@ namespace wadb::netlink {
             return ret;
         }
         std::vector<char> rcvbuf(static_cast<size_t>(rcvbuf_size));
-        int enabled = 1;
-        if (auto ret = setsockopt(3, SOL_NETLINK, NETLINK_GET_STRICT_CHK, &enabled, 4);
-            ret < 0) {
-            ALOGE("setsockopt(NETLINK_GET_STRICT_CHK) failed with ret=%d, errno=%d", ret, errno);
-            // unsupported on old kernel
-        }
 
-        // to filter the result of RTM_GETADDR, we need if_index instead of if_name
-        uint target_if_index{};
+        std::map<uint, std::string> if_idx_name_map{};
 
         // both if_indextoname(3) and if_nametoindex(3) won't work on android (permission denied),
         // and if_nameindex(3) requires SDK >= 24 (we are 23 now),
@@ -217,25 +215,24 @@ namespace wadb::netlink {
                 break;
             }
 
-            auto last_netlink_msg_type = parse_netlink_getlink_response_for_ifidx(rcvbuf.data(), len, if_name, target_if_index);
+            auto last_netlink_msg_type = parse_netlink_getlink_response_for_interfaces(rcvbuf.data(), len, if_idx_name_map);
 
             if (last_netlink_msg_type == NLMSG_DONE) {
                 break;
             }
 
             if (last_netlink_msg_type == NLMSG_ERROR) {
-                ALOGE("parse_netlink_getlink_response_for_ifidx: NLMSG_ERROR");
+                ALOGE("parse_netlink_getlink_response_for_interfaces: NLMSG_ERROR");
                 return -1;
             }
         }
 
-        if (target_if_index == 0) {
-            ALOGE("if_index not found for %s", if_name.c_str());
+        if (if_idx_name_map.empty()) {
+            ALOGE("no if_idx found");
             return -1;
         }
 
-        // now we can filter the result with the if_index we got
-        if (auto ret = send_get_addr_msg(fd.get(), target_if_index);
+        if (auto ret = send_get_addr_msg(fd.get());
             ret < 0) {
             ALOGE("send_get_addr_msg failed with ret=%zd, errno=%d", ret, errno);
             return ret;
@@ -254,7 +251,7 @@ namespace wadb::netlink {
                 break;
             }
 
-            auto last_netlink_msg_type = parse_netlink_getaddr_response_for_ips(rcvbuf.data(), len, target_if_index, ips);
+            auto last_netlink_msg_type = parse_netlink_getaddr_response_for_ips(rcvbuf.data(), len, include_ipv6, if_idx_name_map, ips);
 
             if (last_netlink_msg_type == NLMSG_DONE) {
                 break;

@@ -180,14 +180,22 @@ class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFail
     override fun onWadbStarted(port: Int) {
         val context = context ?: return
 
-        val ips = NetworksUtils.getLocalIPAddresses(context)
+        val ipInfoList = NetworksUtils.getLocalIPInfo(context)
 
         // refresh switch
         togglePreference.isChecked = true
-        if (ips.size > 1) {
-            ipPreference.summary = "[WLAN]\t${ips[0]}:$port\n[\t\tAP\t\t]\t${ips[1]}:$port"
-        } else {
-            ipPreference.summary = "${ips[0]}:$port"
+        when {
+            ipInfoList.isEmpty() -> {
+                ipPreference.summary = ""
+            }
+            ipInfoList.size == 1 -> {
+                ipPreference.summary = "${ipInfoList[0].ip}:$port"
+            }
+            else -> {
+                ipPreference.summary = ipInfoList.joinToString(separator = "\n") {
+                    "[${it.interfaceName}] ${it.ip}:$port"
+                }
+            }
         }
         // refresh port
         portPreference.text = port.toString()

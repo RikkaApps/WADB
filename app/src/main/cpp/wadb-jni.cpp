@@ -11,7 +11,8 @@ namespace wadb {
     struct JniGlobal {
         JavaVM *vm;
 
-        jmethodID m_List_add;
+        jclass c_LibWADB;
+        jmethodID m_ipsListAdd;
     };
 
     JniGlobal &jni_global() {
@@ -33,26 +34,24 @@ namespace wadb {
 
     namespace jni_methods {
         void initializeNative(JNIEnv *env, jobject,
-                              jobject methodListAdd) {
-            jni_global().m_List_add = env->FromReflectedMethod(methodListAdd);
+                              jobject method_ipsListAdd) {
+            jni_global().m_ipsListAdd = env->FromReflectedMethod(method_ipsListAdd);
         }
 
         jint getInterfaceIps(JNIEnv *env, jobject,
-                             jstring ifName, jobject outList) {
-            auto chars_ifName = env->GetStringUTFChars(ifName, nullptr);
-            std::string s_if_name{chars_ifName, static_cast<size_t>(env->GetStringUTFLength(ifName))};
-            env->ReleaseStringUTFChars(ifName, chars_ifName);
+                             jboolean j_include_ipv6, jobject outList) {
+            auto c_LibWADB = jni_global().c_LibWADB;
+            auto m_ipsListAdd = jni_global().m_ipsListAdd;
+            assert(m_ipsListAdd != nullptr);
 
-            auto m_List_add = jni_global().m_List_add;
-            assert(m_List_add != nullptr);
-
-            auto append_to_java_list = [env, m_List_add, outList] (const std::string &s) {
-                auto js = env->NewStringUTF(s.c_str());
-                env->CallBooleanMethod(outList, m_List_add, js);
+            auto append_to_java_list = [env, c_LibWADB, m_ipsListAdd, outList] (const auto &info) {
+                auto js_if_name = env->NewStringUTF(info.interface.c_str());
+                auto js_ip = env->NewStringUTF(info.ip.c_str());
+                env->CallStaticVoidMethod(c_LibWADB, m_ipsListAdd, outList, info.idx, info.family, js_if_name, js_ip);
             };
 
-            std::vector<std::string> ips{};
-            auto ret = netlink::get_interface_ips(s_if_name, ips);
+            std::list<wadb::netlink::InterfaceIPPair> ips{};
+            auto ret = netlink::get_interface_ips(j_include_ipv6 == JNI_TRUE, ips);
 
             for (const auto &ip : ips) {
                 append_to_java_list(ip);
@@ -66,8 +65,8 @@ namespace wadb {
         jint jni_on_load(JavaVM *vm, void *reserved) {
             jni_global().vm = vm;
             auto env = ensure_jni_env_for_current_thread();
-            jclass jc_LibWADB = env->FindClass("moe/haruue/wadb/util/LibWADB");
-            assert(jc_LibWADB != nullptr);
+            jni_global().c_LibWADB = (jclass) env->NewGlobalRef(env->FindClass("moe/haruue/wadb/util/LibWADB"));
+            assert(jni_global().c_LibWADB != nullptr);
             std::vector<JNINativeMethod> methods{};
             /*initializeNative*/ {
                 auto &m = methods.emplace_back();
@@ -77,11 +76,11 @@ namespace wadb {
             }
             /*getInterfaceIps*/ {
                 auto &m = methods.emplace_back();
-                m.name = "getInterfaceIps";
-                m.signature = "(Ljava/lang/String;Ljava/util/List;)I";
+                m.name = "nativeGetInterfaceIps";
+                m.signature = "(ZLjava/util/List;)I";
                 m.fnPtr = reinterpret_cast<void *>(jni_methods::getInterfaceIps);
             }
-            auto ret = env->RegisterNatives(jc_LibWADB, methods.data(), methods.size());
+            auto ret = env->RegisterNatives(jni_global().c_LibWADB, methods.data(), methods.size());
             if (ret < 0) {
                 return JNI_ERR;
             }
