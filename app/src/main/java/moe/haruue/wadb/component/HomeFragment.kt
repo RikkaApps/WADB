@@ -193,7 +193,12 @@ class HomeFragment : PreferenceFragmentCompat(), WadbStateChangedEvent, WadbFail
             }
             else -> {
                 ipPreference.summary = ipInfoList.joinToString(separator = "\n") {
-                    "[${it.interfaceName}] ${it.ip}:$port"
+                    val uiInterfaceName = when (it.interfaceName) {
+                        "wlan0" -> "WLAN"
+                        "wlan1" -> "\t\tAP\t\t"
+                        else -> it.interfaceName
+                    }
+                    "[${uiInterfaceName}]\t${it.ip}:$port"
                 }
             }
         }
