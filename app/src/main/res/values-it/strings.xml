@@ -15,7 +15,7 @@
     <string name="notification_wadb_enabled_button_disable">Disattiva %s</string>
     <string name="contribute_translation">Contribuisci alla traduzione</string>
     <string name="wireless_adb">ADB Wireless</string>
-    <string name="translation_contributors">La traduzione u fornita da <xliff:g id="translator_names">%1$s</xliff:g>.</string>
+    <string name="translation_contributors">La traduzione è fornita da <xliff:g id="translator_names">%1$s</xliff:g>.</string>
     <string name="settings_start_on_boot_summary">Abilita \"%s\" all\'avvio del dispositivo</string>
     <string name="settings_start_on_boot">Abilita all\'avvio</string>
     <string name="notification_wadb_enabled_title">%s è abilitato</string>
