@@ -1,2 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="settings_ip">IP адреса</string>
+    <string name="enable_wadb">Увімкнути бездротовий adb</string>
+    <string name="tile_off">Вимкнено</string>
+    <string name="notification_settings_summary">Змінити налаштування сповіщень у самій системі</string>
+    <string name="notification_settings">Налаштування сповіщення</string>
+    <string name="notification_channel_state">Поточний статус</string>
+    <string name="settings_start_on_boot_summary">Вмикати \"%s\" при запуску системи</string>
+    <string name="settings_start_on_boot">Автозапуск</string>
+    <string name="theme_green">Зелена</string>
+    <string name="theme_pink">Рожева</string>
+    <string name="theme_default">За замовчуванням</string>
+    <string name="theme">Тема</string>
+    <string name="settings_use_low_priority_notification_summary">Повідомлення буде показуватися знизу, окремо від інших, а іконка повідомлення буде захована від рядка стану</string>
+    <string name="settings_use_low_priority_notification">Використовувати повідомлення з низьки пріоритетом</string>
+    <string name="toast_bad_port_number">Номер порту має бути від 1025 до 65535</string>
+    <string name="settings_port">Порт</string>
+    <string name="settings_keep_screen_on_summary">Не вимикати екран поки \"%s\" увімкнено</string>
+    <string name="settings_keep_screen_on">Не вимикати екран</string>
+    <string name="dialog_hide_icon_message_q">Увага, починаючи з Android 10, система може вимушено відображати всі програми на домашньому екрані.</string>
+    <string name="settings_hide_icon_summary">Прибрати цю програму з головного екрану</string>
+    <string name="settings_hide_icon">Заховати з домашнього екрану</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Дозволити перемикання із швидких налаштувань при заблокованому екрані</string>
+    <string name="settings_allow_toggle_lock_screen">Дозволити перемикання при заблокованому екрані</string>
+    <string name="settings_show_notification_summary">Показати сповіщення коли \"%s\" увімкнено</string>
+    <string name="settings_show_notification">Показати сповіщення</string>
+    <string name="settings_toggle_summary_off">Вимкнено</string>
+    <string name="settings_toggle_summary_on">Увімкнено</string>
+    <string name="notification_wadb_enabled_button_disable">Вимкнути %s</string>
+    <string name="notification_wadb_enabled_title">%s ввімкнено</string>
+    <string name="dialog_not_rooted_message">Цей пристрій не рутований або запит відхилено менеджером root.</string>
+    <string name="open_source_info">Цей додаток з відкритим кодом (<xliff:g id="github_url">%1$s</xliff:g>) по ліцензії <xliff:g id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
+    <string name="about">Про додаток</string>
+    <string name="wireless_adb">Бездротовий adb</string>
+    <string name="translation_contributors">Переклад надано <xliff:g id="translator_names">%1$s</xliff:g>.</string>
+    <string name="contribute_translation">Внести свій переклад</string>
+</resources>
