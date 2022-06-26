@@ -22,7 +22,7 @@
         app:iconSpaceReserved="true"
         app:useSimpleSummaryProvider="true" />
 
-    <SwitchPreference
+    <rikka.material.preference.MaterialSwitchPreference
         android:defaultValue="true"
         android:key="pref_key_notification"
         android:title="@string/settings_show_notification"
@@ -30,7 +30,7 @@
         app:icon="@drawable/ic_outline_notifications_24"
         app:iconSpaceReserved="true" />
 
-    <SwitchPreference
+    <rikka.material.preference.MaterialSwitchPreference
         android:defaultValue="false"
         android:dependency="pref_key_notification"
         android:key="pref_key_notification_low_priority"
@@ -53,27 +53,27 @@
         </intent>
     </Preference>
 
-    <SwitchPreference
+    <rikka.material.preference.MaterialSwitchPreference
         android:defaultValue="false"
         android:key="pref_key_wake_lock"
         android:title="@string/settings_keep_screen_on"
         app:icon="@drawable/ic_outline_wb_sunny_24"
         app:iconSpaceReserved="true" />
 
-    <SwitchPreference
+    <rikka.material.preference.MaterialSwitchPreference
         android:defaultValue="false"
         android:key="pref_key_screen_lock_switch"
         android:summary="@string/settings_allow_toggle_lock_screen_summary"
         android:title="@string/settings_allow_toggle_lock_screen"
         app:iconSpaceReserved="true" />
 
-    <SwitchPreference
+    <rikka.material.preference.MaterialSwitchPreference
         android:defaultValue="false"
         android:key="start_on_boot"
         android:title="@string/settings_start_on_boot"
         app:iconSpaceReserved="true" />
 
-    <SwitchPreference
+    <rikka.material.preference.MaterialSwitchPreference
         android:defaultValue="false"
         android:key="pref_key_hide_launcher_icon"
         android:summary="@string/settings_hide_icon_summary"
