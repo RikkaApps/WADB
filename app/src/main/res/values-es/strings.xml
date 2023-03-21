@@ -7,11 +7,11 @@
     <string name="contribute_translation">Contribuir con la traducción</string>
     <string name="translators">—Peter Cuevas</string>
     <string name="settings_show_notification_summary">Mostrar notificación cuando \"%s\" es activado</string>
-    <string name="settings_hide_icon_summary">Ocultar esta app en el inicio de pantalla</string>
+    <string name="settings_hide_icon_summary">Ocultar esta app en la pantalla de inicio.</string>
     <string name="settings_ip">Dirección IP</string>
     <string name="enable_wadb">Activar adb wifi</string>
     <string name="tile_off">Apagado</string>
-    <string name="notification_settings_summary">Cambiar ajustes de notificación desde el sistema</string>
+    <string name="notification_settings_summary">Cambiar ajustes de las notificaciónes desde el sistema</string>
     <string name="notification_settings">Configuración de las notificaciones</string>
     <string name="notification_channel_state">Estado de funcionamiento</string>
     <string name="settings_start_on_boot_summary">Activar \"%s\" cuando el dispositivo se inicie</string>
@@ -21,11 +21,11 @@
     <string name="theme_default">Por defecto</string>
     <string name="theme">Tema</string>
     <string name="settings_use_low_priority_notification_summary">La notificación se mostrará en la parte inferior de los demás y el icono de notificación se ocultará de la barra de estado</string>
-    <string name="settings_use_low_priority_notification">Usar prioridad baja en notificación</string>
+    <string name="settings_use_low_priority_notification">Usar prioridad baja en las notificaciónes</string>
     <string name="toast_bad_port_number">El número de puerto debe ser 1025-65535</string>
     <string name="settings_port">Puerto</string>
     <string name="settings_keep_screen_on_summary">Mantener la pantalla encendida cuando \"%s\" este activado</string>
-    <string name="settings_keep_screen_on">Mantener pantalla encendida</string>
+    <string name="settings_keep_screen_on">Mantener la pantalla encendida</string>
     <string name="dialog_hide_icon_message_q">Nota, a partir de Android 10, el sistema puede obligar a que todas las aplicaciones se muestren en la pantalla de inicio.</string>
     <string name="settings_hide_icon">Ocultar desde la pantalla de inicio</string>
     <string name="settings_allow_toggle_lock_screen">Aceptar el cambio cuando esté bloqueado</string>
