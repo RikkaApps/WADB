@@ -7,11 +7,11 @@
     <string name="contribute_translation">Contribuir con la traducción</string>
     <string name="translators">—Peter Cuevas</string>
     <string name="settings_show_notification_summary">Mostrar notificación cuando \"%s\" es activado</string>
-    <string name="settings_hide_icon_summary">Ocultar esta app en la pantalla de inicio.</string>
+    <string name="settings_hide_icon_summary">Ocultar esta app en la pantalla de inicio</string>
     <string name="settings_ip">Dirección IP</string>
     <string name="enable_wadb">Activar adb wifi</string>
     <string name="tile_off">Apagado</string>
-    <string name="notification_settings_summary">Cambiar ajustes de las notificaciónes desde el sistema</string>
+    <string name="notification_settings_summary">Cambiar ajustes de las notificaciones desde el sistema</string>
     <string name="notification_settings">Configuración de las notificaciones</string>
     <string name="notification_channel_state">Estado de funcionamiento</string>
     <string name="settings_start_on_boot_summary">Activar \"%s\" cuando el dispositivo se inicie</string>
