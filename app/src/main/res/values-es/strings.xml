@@ -34,6 +34,6 @@
     <string name="settings_toggle_summary_off">Desactivado</string>
     <string name="settings_toggle_summary_on">Activado</string>
     <string name="notification_wadb_enabled_button_disable">Desactivar %s</string>
-    <string name="notification_wadb_enabled_title">%s es activado</string>
-    <string name="wireless_adb">Wifi adb</string>
+    <string name="notification_wadb_enabled_title">%s está activado</string>
+    <string name="wireless_adb">ADB Inalámbrico</string>
 </resources>
