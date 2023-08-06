@@ -30,7 +30,7 @@
     <string name="notification_wadb_enabled_button_disable">Вимкнути %s</string>
     <string name="notification_wadb_enabled_title">%s ввімкнено</string>
     <string name="dialog_not_rooted_message">Цей пристрій не рутований або запит відхилено менеджером root.</string>
-    <string name="open_source_info">Цей додаток з відкритим кодом (<xliff:g id="github_url">%1$s</xliff:g>) по ліцензії <xliff:g id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
+    <string name="open_source_info">Ця програма з відкритим кодом (<xliff:g id="github_url">%1$s</xliff:g>) по ліцензії <xliff:g id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
     <string name="about">Про додаток</string>
     <string name="wireless_adb">Бездротовий adb</string>
     <string name="translation_contributors">Переклад надано <xliff:g id="translator_names">%1$s</xliff:g>.</string>
