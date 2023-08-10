@@ -26,10 +26,14 @@
     <string name="notification_wadb_enabled_button_disable">Desativar %s</string>
     <string name="notification_wadb_enabled_title">%s está ativado</string>
     <string name="dialog_not_rooted_message">Este aparelho não está rooteado ou a solicitação foi negada pelo SuperSU ou Magisk.</string>
-    <string name="open_source_info">Esse software é de código aberto (%1$s) sob %2$s.</string>
+    <string name="open_source_info">Este software é de código aberto (<xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="github_url">%1$s</xliff:g>) under <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
     <string name="about">Sobre</string>
     <string name="wireless_adb">ADB via Wireless</string>
-    <string name="translation_contributors">A tradução foi elaborada por %s.</string>
+    <string name="translation_contributors">A tradução é uma contribuição de <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="translator_names">%1$s</xliff:g>.</string>
     <string name="contribute_translation">Contribua com a tradução</string>
     <string name="translators">Augusto Peres (Telegram: @augusto_peress)</string>
+    <string name="settings_ip">Endereço IP</string>
+    <string name="enable_wadb">Ativar wireless adb</string>
+    <string name="tile_off">Desligado</string>
+    <string name="theme_green">Verde</string>
 </resources>
