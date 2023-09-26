@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Translator names -->
-    <string name="translators">"Different Languages "</string>
+    <string name="translators"></string>
     <string name="contribute_translation">Contribute translation</string>
     <string name="translation_contributors">The translation is contributed by <xliff:g id="translator_names">%1$s</xliff:g>.</string>
     <string name="wireless_adb_short" translatable="false">WADB</string>
