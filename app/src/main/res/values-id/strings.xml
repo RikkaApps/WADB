@@ -32,8 +32,8 @@
     <string name="open_source_info">This software is open source (<xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="github_url">%1$s</xliff:g>) under <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
     <string name="wireless_adb">Adb nirkabel</string>
     <string name="translators">Ian</string>
-    <string name="settings_ip">IP address</string>
-    <string name="enable_wadb">Enable wireless adb</string>
-    <string name="tile_off">Off</string>
-    <string name="theme_green">Green</string>
+    <string name="settings_ip">Alamat IP</string>
+    <string name="enable_wadb">Aktifkan adb wireless</string>
+    <string name="tile_off">Mati</string>
+    <string name="theme_green">Hijau</string>
 </resources>
