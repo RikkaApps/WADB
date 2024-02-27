@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="notification_settings_summary">Alterar as configurações de notificação deste APP no sistema</string>
-    <string name="notification_settings">Configuração da notificação</string>
+    <string name="notification_settings_summary">Altere as configurações de notificação deste app no sistema</string>
+    <string name="notification_settings">Configurações de notificação</string>
     <string name="notification_channel_state">Status de execução</string>
-    <string name="settings_start_on_boot_summary">Ativar \"%s\" quando o aparelho inicializar</string>
-    <string name="settings_start_on_boot">Iniciar com o boot</string>
+    <string name="settings_start_on_boot_summary">Ative \"%s\" quando o dispositivo for iniciado</string>
+    <string name="settings_start_on_boot">Iniciar app no boot</string>
     <string name="theme_pink">Rosa</string>
     <string name="theme_default">Padrão</string>
     <string name="theme">Tema</string>
     <string name="settings_use_low_priority_notification_summary">A notificação será mostrada na parte inferior de outras pessoas e o ícone de notificação ficará oculto na barra de status</string>
-    <string name="settings_use_low_priority_notification">Use notificação de baixa prioridade</string>
+    <string name="settings_use_low_priority_notification">Usar notificação de baixa prioridade</string>
     <string name="toast_bad_port_number">O número da porta deve ser de 1025 até 65535</string>
     <string name="settings_port">Porta</string>
-    <string name="settings_keep_screen_on_summary">Manter a tela ligada quando \"%s\" está ativado</string>
+    <string name="settings_keep_screen_on_summary">Mantenha a tela ligada quando \"%s\" estiver ativado</string>
     <string name="settings_keep_screen_on">Manter a tela ligada</string>
-    <string name="dialog_hide_icon_message_q">Observe que, a partir do Android 10, o sistema pode obrigar todos os aplicativos a serem exibidos na tela inicial.</string>
-    <string name="settings_hide_icon_summary">Ocultar o ícone deste aplicativo da tela inicial</string>
+    <string name="dialog_hide_icon_message_q">Observe que a partir do Android 10, o sistema pode forçar a exibição de todos os apps na tela inicial.</string>
+    <string name="settings_hide_icon_summary">Ocultar o ícone deste app da tela inicial</string>
     <string name="settings_hide_icon">Ocultar ícone da tela inicial</string>
-    <string name="settings_allow_toggle_lock_screen_summary">Permitir a mudança das configurações rápidas quando a tela estiver bloqueada</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Permite a alternar entre configurações rápidas quando a tela estiver bloqueada</string>
     <string name="settings_allow_toggle_lock_screen">Permitir troca quando bloqueado</string>
-    <string name="settings_show_notification_summary">Mostrar uma notificação quando \"%s\" está ativada</string>
+    <string name="settings_show_notification_summary">Mostrar uma notificação quando \"%s\" estiver ativado</string>
     <string name="settings_show_notification">Mostrar notificação</string>
-    <string name="settings_toggle_summary_off">Desativada</string>
+    <string name="settings_toggle_summary_off">Desativado</string>
     <string name="settings_toggle_summary_on">Ativado</string>
     <string name="notification_wadb_enabled_button_disable">Desativar %s</string>
     <string name="notification_wadb_enabled_title">%s está ativado</string>
-    <string name="dialog_not_rooted_message">Este aparelho não está rooteado ou a solicitação foi negada pelo SuperSU ou Magisk.</string>
-    <string name="open_source_info">Este software é de código aberto (<xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="github_url">%1$s</xliff:g>) under <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
+    <string name="dialog_not_rooted_message">Este dispositivo não está rooteado ou a solicitação foi negada pelo gerenciador root.</string>
+    <string name="open_source_info">Este software é de código aberto (<xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="github_url">%1$s</xliff:g>) sob <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
     <string name="about">Sobre</string>
-    <string name="wireless_adb">ADB via Wireless</string>
+    <string name="wireless_adb">ADB sem fio</string>
     <string name="translation_contributors">A tradução é uma contribuição de <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="translator_names">%1$s</xliff:g>.</string>
     <string name="contribute_translation">Contribua com a tradução</string>
     <string name="translators">Augusto Peres (Telegram: @augusto_peress)</string>
     <string name="settings_ip">Endereço IP</string>
-    <string name="enable_wadb">Ativar wireless adb</string>
+    <string name="enable_wadb">Ativar ADB sem fio</string>
     <string name="tile_off">Desligado</string>
     <string name="theme_green">Verde</string>
 </resources>
