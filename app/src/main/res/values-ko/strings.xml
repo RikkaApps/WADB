@@ -29,6 +29,6 @@
     <string name="open_source_info">이 소프트웨어는 %2$s 에 따라 오픈 소스 (%1$s) 입니다.</string>
     <string name="about">정보</string>
     <string name="wireless_adb">무선 adb</string>
-    <string name="translation_contributors">이 번역은 %s 에 의해 기여 되었습니다.</string>
+    <string name="translation_contributors">&lt;xliff:g xmlns:xliff=\"urn:oasis:names:tc:xliff:document:1.2\" id=\"translator_names\"&gt;이 번역은 %s 에 의해 기여 되었습니다.</string>
     <string name="contribute_translation">번역 기여</string>
 </resources>
