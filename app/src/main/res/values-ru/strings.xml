@@ -28,7 +28,7 @@
     <string name="notification_wadb_enabled_title">%s включен</string>
     <string name="dialog_not_rooted_message">На этом устройстве заблокирован root или запрос был отклонен root-менеджером.</string>
     <string name="open_source_info">Это приложение с открытым исходным кодом (<xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="github_url">%1$s</xliff:g>) по лицензии <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
-    <string name="about">О приложении</string>
+    <string name="about">IP-адрес</string>
     <string name="wireless_adb">Беспроводной adb</string>
     <string name="contribute_translation">Помочь с переводом</string>
     <string name="translators">ruvlad</string>
