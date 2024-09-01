@@ -1,2 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="settings_keep_screen_on_summary">Keep the screen on when \"%s\" is enabled</string>
+    <string name="settings_show_notification">Show notification</string>
+    <string name="settings_toggle_summary_off">Disabled</string>
+    <string name="notification_wadb_enabled_title">%s is enabled</string>
+    <string name="wireless_adb">Wireless adb</string>
+    <string name="open_source_info">This software is open source (<xliff:g id="github_url">%1$s</xliff:g>) under <xliff:g id="license_name" example="Apache License 2.0">%2$s</xliff:g>.</string>
+    <string name="settings_port">Port</string>
+    <string name="settings_keep_screen_on">Keep screen on</string>
+    <string name="dialog_hide_icon_message_q">Note, starting from Android 10, the system may enforce all apps to be shown on the home screen.</string>
+    <string name="settings_hide_icon_summary">Hide this app from the home screen</string>
+    <string name="settings_hide_icon">Hide from home screen</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Allow switching from quick settings when the screen is locked</string>
+    <string name="settings_show_notification_summary">Show a notification when \"%s\" is enabled</string>
+    <string name="settings_allow_toggle_lock_screen">Allow switching when locked</string>
+    <string name="settings_toggle_summary_on">Enabled</string>
+    <string name="dialog_not_rooted_message">This device is not rooted or the request was denied by the root manager.</string>
+    <string name="notification_wadb_enabled_button_disable">’</string>
+    <string name="about">IP address</string>
+    <string name="translation_contributors">The translation is contributed by <xliff:g id="translator_names">%1$s</xliff:g>.</string>
+    <string name="contribute_translation">Contribute translation</string>
+    <string name="translators">translators</string>
+</resources>
