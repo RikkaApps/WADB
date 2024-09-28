@@ -31,7 +31,7 @@
     <string name="about">IP-адрес</string>
     <string name="wireless_adb">Беспроводной adb</string>
     <string name="contribute_translation">Помочь с переводом</string>
-    <string name="translators">ruvlad</string>
+    <string name="translators">Переводчики</string>
     <string name="settings_ip">IP-адрес</string>
     <string name="enable_wadb">Включить беспроводную отладку</string>
     <string name="tile_off">Отключено</string>
