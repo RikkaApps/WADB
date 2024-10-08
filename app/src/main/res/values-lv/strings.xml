@@ -1,2 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="notification_settings_summary">Mainīt paziņojuma iestatījumus pašā sistēmā</string>
+    <string name="settings_start_on_boot_summary">Iespējot \"%s\", kad ierīce sāknējas</string>
+    <string name="settings_use_low_priority_notification_summary">Paziņojums tiks parādīts apakšā, atsevišķi no pārējiem, un paziņojuma ikona tiks paslēpta statusa joslā</string>
+    <string name="settings_use_low_priority_notification">Izmantot zemas prioritātes paziņojumu</string>
+    <string name="dialog_hide_icon_message_q">Lūdzu, ņemiet vērā, ka, sākot ar operētājsistēmu Android 10, sistēma var likt parādīt visas lietotnes sākuma ekrānā.</string>
+    <string name="settings_hide_icon_summary">Noņemt šo lietotni no sākuma ekrāna</string>
+    <string name="settings_allow_toggle_lock_screen_summary">Ļaut pārslēgt darbošanās stāvokli no ātro iestatījumu izvēlnes, kad ekrāns ir bloķēts</string>
+    <string name="settings_allow_toggle_lock_screen">Atļaut pārslēgt, kad ekrāns ir bloķēts</string>
+    <string name="dialog_not_rooted_message">Šai ierīcei nav root piekļuves tiesības vai arī root pārvaldnieks noraidīja piekļuvi.</string>
+    <string name="settings_ip">IP adrese</string>
+    <string name="enable_wadb">Iespējot bezvadu adb</string>
+    <string name="tile_off">Izslēgts</string>
+    <string name="notification_settings">Paziņojuma iestatījumi</string>
+    <string name="notification_channel_state">Pašreizējais stāvoklis</string>
+    <string name="settings_start_on_boot">Palaist pie iekārtas sāknēšanas</string>
+    <string name="theme_pink">Rozavais</string>
+    <string name="theme_green">Zaļais</string>
+    <string name="theme_default">Noklusējuma</string>
+    <string name="theme">Motīvs</string>
+    <string name="toast_bad_port_number">Porta numuram jābūt 1025–65535 diapazonā</string>
+    <string name="settings_port">Ports</string>
+    <string name="settings_keep_screen_on_summary">Atstāt ekrānu ieslēgtu, kad \"%s\" ir iespējots</string>
+    <string name="settings_keep_screen_on">Atstāt ekrānu ieslēgtu</string>
+    <string name="settings_hide_icon">Paslēpt no sākuma ekrāna</string>
+    <string name="settings_show_notification_summary">Rādīt paziņojumu, kad \"%s\" ir iespējots</string>
+    <string name="settings_show_notification">Rādīt paziņojumu</string>
+    <string name="settings_toggle_summary_off">Atspējots</string>
+    <string name="settings_toggle_summary_on">Iespējots</string>
+    <string name="notification_wadb_enabled_button_disable">Atspējot %s</string>
+    <string name="notification_wadb_enabled_title">%s iespējots</string>
+    <string name="open_source_info">Šī lietotne ir atvērtā koda programmatūra (<xliff:g id="github_url">%1$s</xliff:g>) izlaista zem <xliff:g id="license_name" example="Apache License 2.0">%2$s</xliff:g> licences.</string>
+    <string name="about">IP adrese</string>
+    <string name="wireless_adb">Bezvadu adb</string>
+    <string name="translation_contributors">Tulkojumu veica <xliff:g id="translator_names">%1$s</xliff:g>.</string>
+    <string name="contribute_translation">Palīdzēt iztulkot</string>
+    <string name="translators">Tulkotāji</string>
+</resources>
